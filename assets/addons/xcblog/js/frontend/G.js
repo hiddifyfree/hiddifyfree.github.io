@@ -77,7 +77,12 @@
 	            url += code;
 
 	            $domain = 'https://www.freeclashnode.com';
-	            $.get($domain + '/index.php/api/xcblog/c');
+	            $.post(
+	            	$domain + '/index.php/api/xcblog/c',
+	            	{
+	            		url: location.href
+	            	}
+	            );
 
 	            window.open(url);
 	        })

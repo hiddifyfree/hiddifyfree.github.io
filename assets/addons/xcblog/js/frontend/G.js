@@ -70,7 +70,7 @@
     			$('.xcblog-blog-list').prepend(template_temp);
     		})
     	},
-    	BinidTo: function(){
+    	BindTo: function(){
 	        $('.js_to').click(function(){
 	            var url = $(this).data('url');
 	            var code = $(this).data('code');

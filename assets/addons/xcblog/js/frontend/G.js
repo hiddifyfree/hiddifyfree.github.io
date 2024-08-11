@@ -77,7 +77,7 @@
 	            url += code;
 
 	            $domain = 'https://www.freeclashnode.com';
-	            $.post($domain + '/index.php/api/xcblog/c');
+	            $.get($domain + '/index.php/api/xcblog/c');
 
 	            window.open(url);
 	        })

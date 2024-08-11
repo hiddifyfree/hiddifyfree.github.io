@@ -81,7 +81,7 @@
 
 	            window.open(url);
 	        })
-    	}
+    	},
         //初始化操作
         init: function (page_code) {
 			switch(page_code)

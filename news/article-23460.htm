@@ -2,13 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://hiddifyfree.github.io" />
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-23460.htm" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>2024-10归档 - HiddifyFree免费节点官网</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+    <title>自动化加载Express的路由设置</title>
+        <meta name="description" content="在使用node + express进行后台开发时，对路由进行配置时，往往需要现在routes文件夹下创建对应的路由，然后在app.js里逐个的require进来，然后使用 app.use('/path" />
         <link rel="icon" href="__ADDON__/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-spy="scroll" data-target=".navbar-collapse" data-page="category">
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
         <!-- navigation -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -61,9 +60,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
-                    <h1>2024-10 归档</h1>
+                    <h1>自动化加载Express的路由设置</h1>
                     <p>
-                        <a href="/">首页</a> / <span>2024-10 归档</span>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                     </p>
                 </div>
             </div>
@@ -74,23 +73,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-1-hiddify-next-windows.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240811-1/72bbe00cdda0bf26f7557568928383c2.webp" class="img-responsive" alt="「10月1日」最高速度18M/S，2024年Hiddify每天更新免费机场订阅节点链接">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <a href="/free-nodes/2024-10-1-hiddify-next-windows.htm" class="xcblog-blog-url">
-                                    <h3 class="xcblog-blog-title">「10月1日」最高速度18M/S，2024年Hiddify每天更新免费机场订阅节点链接</h3>
-                                </a>
-                                <p>这一次的节点更新覆盖了韩国、欧洲、新加坡、香港、加拿大、日本、美国等地区,最高速度可达18 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
-                </div>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <p>在使用node + express进行后台开发时，对路由进行配置时，往往需要现在routes文件夹下创建对应的路由，然后在app.js里逐个的<span style="color:#ff6666;">require</span>进来，然后使用 <span style="color:#ff6666;">app.use('/path', route)</span>逐个配置，当网站比较简单路由文件较少是还好，但是在路由文件逐渐增加的时候就显得代码有点冗杂且笨。对于配置路由这种机械化的工作当然是交给代码来实现比较好，如下代码，我提供了一个可以帮我们自动配置路由的方法。</p> <p>&nbsp;</p> <p><span style="color:#ff6666;">首先是 untils/getRouters.js</span></p> <pre class="has"><code class="hljs">const fs = require('fs'); var exp = {}; let files = fs.readdirSync(__dirname+'/../routes'); let reg = /([\S]+)\.js$/i; files.forEach(function(val){         let matchs = reg.exec(val);         if(matchs &amp;&amp; matchs.index &gt;= 0){         exp[matchs[1]] = require('../routes/'+ val);     } }); module.exports = exp;&nbsp;</code></pre> <p>代码大致效果就是读取routes下的路由文件，然后逐个require进来，用路由文件名做key值放进exports对象里。</p> <p>&nbsp;</p> <p><span style="color:#ff6666;">然后是app.js</span>//配置路由</p> <pre class="has"><code class="hljs">!function(){     var routes = require('./untils/getRouters');     var keys = Object.keys(routes);     keys.forEach(function(k){         let cPath = '';         if(!!routes[k].cPath){             cPath = routes[k].cPath; &nbsp; //cPath为路由对应的路径，在路由文件里配置，默认为路由文件名         }else{             cPath = k; &nbsp;&nbsp;         }         app.use('/'+cPath,routes[k]);     }); }();</code></pre> <p>在app.js里require getRouters.js模块，获得路由对象，然后逐个添加到app里。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23457.htm">在拦截器中获取 url 路径里面 @PathVariable 的参数值</a></p>
+                                    </div>
+                                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -98,16 +85,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-hiddify-next-windows.htm" title="「12月7日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月7日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-15-hiddify-next-node-share.htm" title="「11月15日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月15日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-21611.htm" title="北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）">北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-5-hiddify-next-windows.htm" title="「11月5日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月5日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-27-latest-hiddify-next-node.htm" title="「8月27日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月27日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-15-node-share-links.htm" title="「8月15日」最高速度19.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月15日」最高速度19.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-hiddify-next-node-share.htm" title="「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-3-latest-hiddify-next-node.htm" title="「10月3日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月3日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-hiddify-next-github.htm" title="「9月23日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月23日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-hiddify-next-node-github.htm" title="「10月16日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月16日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-latest-hiddify-next-node.htm" title="「11月10日」最高速度21.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月10日」最高速度21.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-latest-hiddify-next-node.htm" title="「9月22日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月22日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-13-hiddify-next-windows.htm" title="「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-16-today-hiddify-next-node.htm" title="「8月16日」最高速度19.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月16日」最高速度19.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-subscribe-node.htm" title="「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-25-today-hiddify-next-node.htm" title="「10月25日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月25日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-30-node-share.htm" title="「9月30日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月30日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-hiddify-next-node.htm" title="「10月26日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月26日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-today-hiddify-next-node.htm" title="「12月6日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月6日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>

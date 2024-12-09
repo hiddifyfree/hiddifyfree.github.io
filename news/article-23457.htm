@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-23457.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>在拦截器中获取 url 路径里面 @PathVariable 的参数值</title>
+        <meta name="description" content="解决办法 Map pathVariables = (Map) request.getAttribute( HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE" />
+        <link rel="icon" href="__ADDON__/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>在拦截器中获取 url 路径里面 @PathVariable 的参数值</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <h4> <a id="_1" rel="nofollow"></a>解决办法</h4> <pre><code class="prism language-Java">Map pathVariables = (Map) request.getAttribute( HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);  String classId = (String)pathVariables.get("classId"); </code></pre> <h4> <a id="_9" rel="nofollow"></a>示例接口</h4> <pre><code class="prism language-Java">    // 获取某个班级下面的学生列表     @RequestMapping("/classes/{classId}/students")     public String list(@PathVariable String classId){          return "学生列表";     } </code></pre> <h4> <a id="_21" rel="nofollow"></a>完整示例</h4> <pre><code class="prism language-Java">package com.example.demo;  import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse;  import org.springframework.web.servlet.HandlerInterceptor; import org.springframework.web.servlet.HandlerMapping; import org.springframework.web.servlet.ModelAndView;  import java.util.Map;  public class SpringMVCInterceptor implements HandlerInterceptor {   	@Override 	public boolean preHandle(HttpServletRequest request, 			HttpServletResponse response, Object handler) throws Exception { 		Map pathVariables = (Map) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE); 		String chatbotId = (String)pathVariables.get("classId"); 		System.out.println("classId: " + classId); 		if ("1234".equals(classId)) 			return true; 		return false; 	} 	 	 	@Override 	public void postHandle(HttpServletRequest request, 			HttpServletResponse response, Object handler, 			ModelAndView modelAndView) throws Exception { 		// TODO Auto-generated method stub 		 	}  	@Override 	public void afterCompletion(HttpServletRequest request, 			HttpServletResponse response, Object handler, Exception ex) 	throws Exception { 		// TODO Auto-generated method stub 		 	} 	 }  </code></pre> <pre><code class="prism language-Java"> package com.example.demo;  import org.springframework.context.annotation.Configuration; import org.springframework.web.servlet.config.annotation.InterceptorRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;  @Configuration public class MvcInterceptorConfig extends WebMvcConfigurationSupport{        @Override     protected void addInterceptors(InterceptorRegistry registry) {         registry.addInterceptor(new SpringMVCInterceptor()).addPathPatterns("/chatbot/**");         super.addInterceptors(registry);     } }  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-22986.htm">圣诞节送什么给男生好(圣诞节送什么给男生比较好)</a></p>
+                                        <p>下一个：<a href="/news/article-23460.htm">自动化加载Express的路由设置</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-node-subscribe.htm" title="「10月7日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月7日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-5-free-hiddify-next-node.htm" title="「10月5日」最高速度20.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月5日」最高速度20.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-today-hiddify-next-node.htm" title="「12月6日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月6日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-hiddify-next-node.htm" title="「11月8日」最高速度20.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月8日」最高速度20.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-node-share-links.htm" title="「10月29日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月29日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-node-share-links.htm" title="「10月9日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月9日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-hiddify-next-node-share.htm" title="「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-hiddify-next-node-share.htm" title="「9月4日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月4日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-2-node-share-links.htm" title="「10月2日」最高速度20.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月2日」最高速度20.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23460.htm" title="自动化加载Express的路由设置">自动化加载Express的路由设置</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

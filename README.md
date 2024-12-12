@@ -1,4 +1,4 @@
-# 「12月11日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接  更新时间 2024-12-11 09:59:39
+# 「12月12日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接  更新时间 2024-12-12 10:13:08
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hiddifyfree.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://hiddifyfree.github.io/uploads/2024/12/0-20241211.yaml
-- https://hiddifyfree.github.io/uploads/2024/12/1-20241211.yaml
-- https://hiddifyfree.github.io/uploads/2024/12/2-20241211.yaml
-- https://hiddifyfree.github.io/uploads/2024/12/3-20241211.yaml
-- https://hiddifyfree.github.io/uploads/2024/12/4-20241211.yml
+- https://hiddifyfree.github.io/uploads/2024/12/0-20241212.yaml
+- https://hiddifyfree.github.io/uploads/2024/12/1-20241212.yaml
+- https://hiddifyfree.github.io/uploads/2024/12/2-20241212.yaml
+- https://hiddifyfree.github.io/uploads/2024/12/3-20241212.yaml
+- https://hiddifyfree.github.io/uploads/2024/12/4-20241212.yml
 
 ### V2ray订阅链接
 
-- https://hiddifyfree.github.io/uploads/2024/12/0-20241211.txt
-- https://hiddifyfree.github.io/uploads/2024/12/1-20241211.txt
-- https://hiddifyfree.github.io/uploads/2024/12/2-20241211.txt
-- https://hiddifyfree.github.io/uploads/2024/12/3-20241211.txt
-- https://hiddifyfree.github.io/uploads/2024/12/4-20241211.txt
+- https://hiddifyfree.github.io/uploads/2024/12/0-20241212.txt
+- https://hiddifyfree.github.io/uploads/2024/12/1-20241212.txt
+- https://hiddifyfree.github.io/uploads/2024/12/2-20241212.txt
+- https://hiddifyfree.github.io/uploads/2024/12/3-20241212.txt
+- https://hiddifyfree.github.io/uploads/2024/12/4-20241212.txt
 
 ## 更多clash节点订阅 ：
 

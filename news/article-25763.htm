@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-25763.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python类内部成员的访问及外部访问</title>
+        <meta name="description" content="class Student():     school = "xcxy"                    # 类属性     __major = "computer"              " />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>python类内部成员的访问及外部访问</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code>class Student():     school = "xcxy"                    # 类属性     __major = "computer"               # 类私有属性          def __init__(self ,name, age):     # 构造方法         self.name = name               # 实例属性         self.__age = age               # 实例私有属性      def match(self, score):            # 实例方法         print(self.school)             # 访问类属性       self.类属性名         print(Student.school)          # 访问类属性       类名.类属性名         print(self.__major)            # 访问类私有属性    self.类私有属性名         print(Student.__major)         # 访问类私有属性    类名.类私有属性名         print(self.name)               # 访问实例属性      self.实例属性名         print(self.__age)              # 访问实例私有属性   self.实例私有属性名      def __fly(self,nnn):               # 私有方法     外部访问只能是  对象._类名__私有方法名         print(nnn)                     # 其他和实例方法相同      @classmethod     def eat(cls,num):                  # 类方法         print(cls.school)              # cls.类属性         print(Student.school)          # 类名.类属性         print(cls.__major)             # cls.类私有属性         print(Student.__major)         # 类名.类私有属性      @staticmethod     def run(numm):         print(Student.school)          # 类名.类属性         print(Student.__major)         # 类名._ _私有类属性 stu = Student("hjh",24)         # 实例化对象</code></pre> </h1> <p>以下称为外部</p> </h1> <pre><code>print(stu.school)               # 对象.类属性名   xcxy print(Student.school)           # 类名.类属性名   xcxy</code></pre> </h1> <pre><code>stu.school = "qhdx"             # 对象. 类属性名 = "qhdx" print(stu.school) Student.school = "bjdx"         # 类名. 类属性名 = "bjdx" print(Student.school)</code></pre> </h1> <pre><code>print(stu._Student__major)               # 对象._类名__私有属性名   computer print(Student._Student__major)           # 类名._类名__私有属性名   computer</code></pre> </h1> <pre><code>stu._Student__major = "jixie"            # 对象._类名__私有属性名 = "jixie" print(stu._Student__major)                Student._Student__major = "dianqi"       # 类名._类名__私有属性名 = "dianqi" print(Student._Student__major)</code></pre> </h1> <pre><code>print(stu.name)                		 # 对象.实例属性名</code></pre> </h1> <pre><code>stu.name = "hsf"                # 对象.实例属性名 = "hsf" print(stu.name)</code></pre> </h1> <pre><code>print(stu._Student__age)                 # 对象.实例属性名</code></pre> </h1> <pre><code>stu._Student__age = 20                   # 对象._类名__实例属性名 = "hsf" print(stu._Student__age)</code></pre> </h1> <pre><code>stu.match(300)              # 对象.方法名（参数列表）   不能使用  类名.实例方法名  的方式调用</code></pre> </h1> <pre><code>stu._Student__fly(500)</code></pre> </h1> <pre><code>Student.eat(200)                # 类名.类方法名([实参列表]) stu.eat(200)                    # 对象.类方法名([实参列表])</code></pre> </h1> <pre><code>Student.run(800)                # 类名.静态方法名([实参列表]) stu.run(800)                    # 对象.静态方法名([实参列表])</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25761.htm">toString()和new String()区别</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="「11月18日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月18日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-high-speed-nodes.htm" title="「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-26-hiddify-next-node-share.htm" title="「8月26日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月26日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-today-hiddify-next-node.htm" title="「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-hiddify-next-node.htm" title="「9月29日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月29日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-hiddify-next-node-github.htm" title="「12月9日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月9日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-today-hiddify-next-node.htm" title="「10月24日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月24日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-hiddify-next-windows.htm" title="「10月27日」最高速度21.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月27日」最高速度21.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-hiddify-next-github.htm" title="「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe-links.htm" title="「11月13日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月13日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

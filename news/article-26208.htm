@@ -2,12 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-25761.htm" />
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-26208.htm" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>toString()和new String()区别</title>
-        <meta name="description" content="今天遇到上游通过消息队列传给我byte字节码，我用toString()方法转字符串接收，发现转了后是[B@90f6bfd这样的格式，瞬间懵逼，流下没技术的眼泪。 研究一番，发现字节码如果调用toStr" />
+    <title>vue-cli4.0脚手架中路由的配置过程</title>
+        <meta name="description" content="1.vue create&nbsp; + 项目名 2.运行命令：npm run serve，默认是这样 3.&nbsp; - Local: &nbsp; http://localhost:8081/ " />
         <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
@@ -60,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
-                    <h1>toString()和new String()区别</h1>
+                    <h1>vue-cli4.0脚手架中路由的配置过程</h1>
                     <p>
                         <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                     </p>
@@ -73,10 +73,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>今天遇到上游通过消息队列传给我byte字节码，我用toString()方法转字符串接收，发现转了后是<strong>[B@90f6bfd</strong>这样的格式，瞬间懵逼，流下没技术的眼泪。<br /> 研究一番，发现字节码如果调用toString()方法，其实是调用的Object类的toString方法，返回的是他的[class name]@[hashcode] 这样格式的内存地址 ，这肯定不是我们想要的数据。而通过new String()的话是根据 parameter是一个字节数组，通过虚拟机默认编码格式，将字节数组decoder为对应的字符，这样就能返回我们想要的字符串。</p> </div> 			                <div class="clearfix"></div>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <p>1.vue create&nbsp; + 项目名</p> <p>2.运行命令：npm run serve，默认是这样</p> <p>3.&nbsp; - Local: &nbsp; http://localhost:8081/<br /> &nbsp; - Network: http://192.168.46.189:8081/</p> <p>配置路由的过程：</p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220817/618d7aae652c0cd55cdf695ef35ee9f8.jpg"></p> <p>&nbsp;在src目录下新建router文件夹，然后在router内新建一个index.js文件，目录如下：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220817/ed3706e49ca497e644e81e3a59f6df5b.jpg"></p> <p>index.js文件用于路由的配置：注意是routes,不是routers,是component,不是components</p> <pre><code>// 配置路由 //第一步应该导入路由插件，vue import VueRouter from 'vue-router' import Vue from 'Vue' import Home from '../components/Home' import About from '../components/About'  // 2.使用vue.use来安装插件 Vue.use(VueRouter)  // 3.创建vue-router实例化对象，配置路由和组件之间的应用关系 const routes = [     {         path: '/home',         component: Home     },     {         path: '/about',         component: About     } ] const router = new VueRouter({     // 配置路由和组件之间的应用关系     routes })  //4.导出路由 export default router</code></pre> <p>&nbsp;&nbsp;main.js,需要导入路由</p> <pre><code>import Vue from 'vue' import App from './App.vue' import router from './router'  // 导入到router,会自动找到index Vue.config.productionTip = false  new Vue({   render: h =&gt; h(App),   router, }).$mount('#app')</code></pre> <p>&nbsp;Home.vue组件：</p> <pre><code>.&lt;template&gt;   &lt;div&gt;我是首页&lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {     name: "Home" } &lt;/script&gt;  &lt;style&gt;  &lt;/style&gt;</code></pre> <p>About.vue组件：</p> <pre><code>&lt;template&gt;   &lt;div&gt;我是关于&lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {     name: "About" } &lt;/script&gt;  &lt;style&gt;  &lt;/style&gt;</code></pre> <p>App.vue</p> <pre><code>&lt;template&gt;   &lt;div id="app"&gt;     &lt;router-link to="/home"&gt;首页&lt;/router-link&gt;     &lt;router-link to="/about"&gt;关于&lt;/router-link&gt;     //必须挂载到APP上才能显示，标签是内置的     &lt;router-view&gt;&lt;/router-view&gt;     //用于决定显示的位置   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   name: 'App' } &lt;/script&gt;  &lt;style&gt;  &lt;/style&gt;</code></pre> <p style="text-align:center;"> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-25300.htm">Centos7 离线安装 KVM，并安装 Csr1000v</a></p>
-                                        <p>下一个：<a href="/news/article-25763.htm">python类内部成员的访问及外部访问</a></p>
+                                        <p>上一个：<a href="/news/article-26207.htm">vuex几大模块和Vuex助手使用详解</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -86,16 +85,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-30-node-share.htm" title="「9月30日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月30日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-11-30-hiddify-next-github.htm" title="「11月30日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月30日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-23909.htm" title="在哪儿领养宠物（在哪里能领养宠物）">在哪儿领养宠物（在哪里能领养宠物）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-subscribe-node.htm" title="「12月4日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月4日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-27-node-share-links.htm" title="「9月27日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月27日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-hiddify-next-node.htm" title="「11月16日」最高速度22.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月16日」最高速度22.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-subscribe-node.htm" title="「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-19777.htm" title="猫咪多长时间驱虫一次比较好（猫咪多少时间驱虫一次）">猫咪多长时间驱虫一次比较好（猫咪多少时间驱虫一次）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-hiddify-next-windows.htm" title="「9月15日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月15日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-14-hiddify-next-node-share.htm" title="「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-node-share.htm" title="「9月25日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月25日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-11-hiddify-next-node.htm" title="「10月11日」最高速度22.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月11日」最高速度22.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23910.htm" title="宠物粮加盟 宠物粮加盟店">宠物粮加盟 宠物粮加盟店</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-hiddify-next-node.htm" title="「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-hiddify-next-github.htm" title="「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-19-hiddify-next-node.htm" title="「8月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-19322.htm" title="vue3 toRef() 函数">vue3 toRef() 函数</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-6-latest-hiddify-next-node.htm" title="「9月6日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月6日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>

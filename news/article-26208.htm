@@ -76,6 +76,7 @@
                                       				  				  				<div id="content_views" class="htmledit_views"> <p>1.vue create&nbsp; + 项目名</p> <p>2.运行命令：npm run serve，默认是这样</p> <p>3.&nbsp; - Local: &nbsp; http://localhost:8081/<br /> &nbsp; - Network: http://192.168.46.189:8081/</p> <p>配置路由的过程：</p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220817/618d7aae652c0cd55cdf695ef35ee9f8.jpg"></p> <p>&nbsp;在src目录下新建router文件夹，然后在router内新建一个index.js文件，目录如下：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220817/ed3706e49ca497e644e81e3a59f6df5b.jpg"></p> <p>index.js文件用于路由的配置：注意是routes,不是routers,是component,不是components</p> <pre><code>// 配置路由 //第一步应该导入路由插件，vue import VueRouter from 'vue-router' import Vue from 'Vue' import Home from '../components/Home' import About from '../components/About'  // 2.使用vue.use来安装插件 Vue.use(VueRouter)  // 3.创建vue-router实例化对象，配置路由和组件之间的应用关系 const routes = [     {         path: '/home',         component: Home     },     {         path: '/about',         component: About     } ] const router = new VueRouter({     // 配置路由和组件之间的应用关系     routes })  //4.导出路由 export default router</code></pre> <p>&nbsp;&nbsp;main.js,需要导入路由</p> <pre><code>import Vue from 'vue' import App from './App.vue' import router from './router'  // 导入到router,会自动找到index Vue.config.productionTip = false  new Vue({   render: h =&gt; h(App),   router, }).$mount('#app')</code></pre> <p>&nbsp;Home.vue组件：</p> <pre><code>.&lt;template&gt;   &lt;div&gt;我是首页&lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {     name: "Home" } &lt;/script&gt;  &lt;style&gt;  &lt;/style&gt;</code></pre> <p>About.vue组件：</p> <pre><code>&lt;template&gt;   &lt;div&gt;我是关于&lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {     name: "About" } &lt;/script&gt;  &lt;style&gt;  &lt;/style&gt;</code></pre> <p>App.vue</p> <pre><code>&lt;template&gt;   &lt;div id="app"&gt;     &lt;router-link to="/home"&gt;首页&lt;/router-link&gt;     &lt;router-link to="/about"&gt;关于&lt;/router-link&gt;     //必须挂载到APP上才能显示，标签是内置的     &lt;router-view&gt;&lt;/router-view&gt;     //用于决定显示的位置   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   name: 'App' } &lt;/script&gt;  &lt;style&gt;  &lt;/style&gt;</code></pre> <p style="text-align:center;"> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-26207.htm">vuex几大模块和Vuex助手使用详解</a></p>
+                                        <p>下一个：<a href="/news/article-26688.htm">建议穷人养的10种猫母猫和公猫混养（母猫和公猫哪个好养知乎）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -85,15 +86,15 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-hiddify-next-github.htm" title="「11月30日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月30日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-25-node-share.htm" title="「9月25日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月25日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-11-hiddify-next-node.htm" title="「10月11日」最高速度22.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月11日」最高速度22.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-23910.htm" title="宠物粮加盟 宠物粮加盟店">宠物粮加盟 宠物粮加盟店</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-5-hiddify-next-node.htm" title="「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-hiddify-next-github.htm" title="「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-19-hiddify-next-node.htm" title="「8月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-19322.htm" title="vue3 toRef() 函数">vue3 toRef() 函数</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22984.htm" title="动物疫苗价格查询表最新（动物接种疫苗多少钱）">动物疫苗价格查询表最新（动物接种疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-hiddify-next-github.htm" title="「9月16日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月16日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="「11月18日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月18日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-25-hiddify-next-node-github.htm" title="「8月25日」最高速度18.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月25日」最高速度18.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-hiddify-next-node.htm" title="「11月26日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月26日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-latest-hiddify-next-node.htm" title="「10月10日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月10日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-2-node-share-links.htm" title="「10月2日」最高速度20.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月2日」最高速度20.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-hiddify-next-node.htm" title="「11月16日」最高速度22.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月16日」最高速度22.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23457.htm" title="在拦截器中获取 url 路径里面 @PathVariable 的参数值">在拦截器中获取 url 路径里面 @PathVariable 的参数值</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-6-latest-hiddify-next-node.htm" title="「9月6日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月6日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
@@ -106,7 +107,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>

@@ -73,7 +73,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code>class Student():     school = "xcxy"                    # 类属性     __major = "computer"               # 类私有属性          def __init__(self ,name, age):     # 构造方法         self.name = name               # 实例属性         self.__age = age               # 实例私有属性      def match(self, score):            # 实例方法         print(self.school)             # 访问类属性       self.类属性名         print(Student.school)          # 访问类属性       类名.类属性名         print(self.__major)            # 访问类私有属性    self.类私有属性名         print(Student.__major)         # 访问类私有属性    类名.类私有属性名         print(self.name)               # 访问实例属性      self.实例属性名         print(self.__age)              # 访问实例私有属性   self.实例私有属性名      def __fly(self,nnn):               # 私有方法     外部访问只能是  对象._类名__私有方法名         print(nnn)                     # 其他和实例方法相同      @classmethod     def eat(cls,num):                  # 类方法         print(cls.school)              # cls.类属性         print(Student.school)          # 类名.类属性         print(cls.__major)             # cls.类私有属性         print(Student.__major)         # 类名.类私有属性      @staticmethod     def run(numm):         print(Student.school)          # 类名.类属性         print(Student.__major)         # 类名._ _私有类属性 stu = Student("hjh",24)         # 实例化对象</code></pre> </h1> <p>以下称为外部</p> </h1> <pre><code>print(stu.school)               # 对象.类属性名   xcxy print(Student.school)           # 类名.类属性名   xcxy</code></pre> </h1> <pre><code>stu.school = "qhdx"             # 对象. 类属性名 = "qhdx" print(stu.school) Student.school = "bjdx"         # 类名. 类属性名 = "bjdx" print(Student.school)</code></pre> </h1> <pre><code>print(stu._Student__major)               # 对象._类名__私有属性名   computer print(Student._Student__major)           # 类名._类名__私有属性名   computer</code></pre> </h1> <pre><code>stu._Student__major = "jixie"            # 对象._类名__私有属性名 = "jixie" print(stu._Student__major)                Student._Student__major = "dianqi"       # 类名._类名__私有属性名 = "dianqi" print(Student._Student__major)</code></pre> </h1> <pre><code>print(stu.name)                		 # 对象.实例属性名</code></pre> </h1> <pre><code>stu.name = "hsf"                # 对象.实例属性名 = "hsf" print(stu.name)</code></pre> </h1> <pre><code>print(stu._Student__age)                 # 对象.实例属性名</code></pre> </h1> <pre><code>stu._Student__age = 20                   # 对象._类名__实例属性名 = "hsf" print(stu._Student__age)</code></pre> </h1> <pre><code>stu.match(300)              # 对象.方法名（参数列表）   不能使用  类名.实例方法名  的方式调用</code></pre> </h1> <pre><code>stu._Student__fly(500)</code></pre> </h1> <pre><code>Student.eat(200)                # 类名.类方法名([实参列表]) stu.eat(200)                    # 对象.类方法名([实参列表])</code></pre> </h1> <pre><code>Student.run(800)                # 类名.静态方法名([实参列表]) stu.run(800)                    # 对象.静态方法名([实参列表])</code></pre> </div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code>class Student():     school = "xcxy"                    # 类属性     __major = "computer"               # 类私有属性          def __init__(self ,name, age):     # 构造方法         self.name = name               # 实例属性         self.__age = age               # 实例私有属性      def match(self, score):            # 实例方法         print(self.school)             # 访问类属性       self.类属性名         print(Student.school)          # 访问类属性       类名.类属性名         print(self.__major)            # 访问类私有属性    self.类私有属性名         print(Student.__major)         # 访问类私有属性    类名.类私有属性名         print(self.name)               # 访问实例属性      self.实例属性名         print(self.__age)              # 访问实例私有属性   self.实例私有属性名      def __fly(self,nnn):               # 私有方法     外部访问只能是  对象._类名__私有方法名         print(nnn)                     # 其他和实例方法相同      @classmethod     def eat(cls,num):                  # 类方法         print(cls.school)              # cls.类属性         print(Student.school)          # 类名.类属性         print(cls.__major)             # cls.类私有属性         print(Student.__major)         # 类名.类私有属性      @staticmethod     def run(numm):         print(Student.school)          # 类名.类属性         print(Student.__major)         # 类名._ _私有类属性 stu = Student("hjh",24)         # 实例化对象</code></pre> </h1> <p>以下称为外部</p> </h1> <pre><code>print(stu.school)               # 对象.类属性名   xcxy print(Student.school)           # 类名.类属性名   xcxy</code></pre> </h1> <pre><code>stu.school = "qhdx"             # 对象. 类属性名 = "qhdx" print(stu.school) Student.school = "bjdx"         # 类名. 类属性名 = "bjdx" print(Student.school)</code></pre> </h1> <pre><code>print(stu._Student__major)               # 对象._类名__私有属性名   computer print(Student._Student__major)           # 类名._类名__私有属性名   computer</code></pre> </h1> <pre><code>stu._Student__major = "jixie"            # 对象._类名__私有属性名 = "jixie" print(stu._Student__major)                Student._Student__major = "dianqi"       # 类名._类名__私有属性名 = "dianqi" print(Student._Student__major)</code></pre> </h1> <pre><code>print(stu.name)                		 # 对象.实例属性名</code></pre> </h1> <pre><code>stu.name = "hsf"                # 对象.实例属性名 = "hsf" print(stu.name)</code></pre> </h1> <pre><code>print(stu._Student__age)                 # 对象.实例属性名</code></pre> </h1> <pre><code>stu._Student__age = 20                   # 对象._类名__实例属性名 = "hsf" print(stu._Student__age)</code></pre> </h1> <pre><code>stu.match(300)              # 对象.方法名（参数列表）   不能使用  类名.实例方法名  的方式调用</code></pre> </h1> <pre><code>stu._Student__fly(500)</code></pre> </h1> <pre><code>Student.eat(200)                # 类名.类方法名([实参列表]) stu.eat(200)                    # 对象.类方法名([实参列表])</code></pre> </h1> <pre><code>Student.run(800)                # 类名.静态方法名([实参列表]) stu.run(800)                    # 对象.静态方法名([实参列表])</code></pre> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-25761.htm">toString()和new String()区别</a></p>
                                         <p>下一个：<a href="/news/article-26207.htm">vuex几大模块和Vuex助手使用详解</a></p>
@@ -86,16 +87,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-9-free-subscribe-node.htm" title="「9月9日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月9日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-30-free-node-subscribe.htm" title="「8月30日」最高速度18.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月30日」最高速度18.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-3-hiddify-next-windows.htm" title="「9月3日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月3日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-23-hiddify-next-github.htm" title="「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-23-hiddify-next-windows.htm" title="「11月23日」最高速度21.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月23日」最高速度21.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-24347.htm" title="兽用疫苗过敏如何处理（兽用疫苗过敏如何处理好）">兽用疫苗过敏如何处理（兽用疫苗过敏如何处理好）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-subscribe-node.htm" title="「12月4日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月4日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-node-subscribe.htm" title="「9月28日」最高速度20.6M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月28日」最高速度20.6M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-15-hiddify-next-node.htm" title="「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-hiddify-next-node.htm" title="「12月17日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月17日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-hiddify-next-windows.htm" title="「8月21日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月21日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-25299.htm" title="JDK8新特性Optional工具类">JDK8新特性Optional工具类</a></li>
+                        <li class="py-2"><a href="/news/article-22525.htm" title="蚁群算法（Ant System）（AS）">蚁群算法（Ant System）（AS）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-hiddify-next-windows.htm" title="「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-hiddify-next-windows.htm" title="「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-hiddify-next-node-github.htm" title="「11月22日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月22日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-hiddify-next-node-share.htm" title="「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-hiddify-next-node-github.htm" title="「9月14日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月14日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-node-share-links.htm" title="「10月9日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月9日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-hiddify-next-node-github.htm" title="「11月6日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月6日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -107,7 +108,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -135,6 +136,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                     <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
                 </div>
             </div>

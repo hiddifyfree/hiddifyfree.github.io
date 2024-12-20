@@ -73,7 +73,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <h4> <a id="_1" rel="nofollow"></a>解决办法</h4> <pre><code class="prism language-Java">Map pathVariables = (Map) request.getAttribute( HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);  String classId = (String)pathVariables.get("classId"); </code></pre> <h4> <a id="_9" rel="nofollow"></a>示例接口</h4> <pre><code class="prism language-Java">    // 获取某个班级下面的学生列表     @RequestMapping("/classes/{classId}/students")     public String list(@PathVariable String classId){          return "学生列表";     } </code></pre> <h4> <a id="_21" rel="nofollow"></a>完整示例</h4> <pre><code class="prism language-Java">package com.example.demo;  import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse;  import org.springframework.web.servlet.HandlerInterceptor; import org.springframework.web.servlet.HandlerMapping; import org.springframework.web.servlet.ModelAndView;  import java.util.Map;  public class SpringMVCInterceptor implements HandlerInterceptor {   	@Override 	public boolean preHandle(HttpServletRequest request, 			HttpServletResponse response, Object handler) throws Exception { 		Map pathVariables = (Map) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE); 		String chatbotId = (String)pathVariables.get("classId"); 		System.out.println("classId: " + classId); 		if ("1234".equals(classId)) 			return true; 		return false; 	} 	 	 	@Override 	public void postHandle(HttpServletRequest request, 			HttpServletResponse response, Object handler, 			ModelAndView modelAndView) throws Exception { 		// TODO Auto-generated method stub 		 	}  	@Override 	public void afterCompletion(HttpServletRequest request, 			HttpServletResponse response, Object handler, Exception ex) 	throws Exception { 		// TODO Auto-generated method stub 		 	} 	 }  </code></pre> <pre><code class="prism language-Java"> package com.example.demo;  import org.springframework.context.annotation.Configuration; import org.springframework.web.servlet.config.annotation.InterceptorRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;  @Configuration public class MvcInterceptorConfig extends WebMvcConfigurationSupport{        @Override     protected void addInterceptors(InterceptorRegistry registry) {         registry.addInterceptor(new SpringMVCInterceptor()).addPathPatterns("/chatbot/**");         super.addInterceptors(registry);     } }  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <h4> <a id="_1" rel="nofollow"></a>解决办法</h4> <pre><code class="prism language-Java">Map pathVariables = (Map) request.getAttribute( HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);  String classId = (String)pathVariables.get("classId"); </code></pre> <h4> <a id="_9" rel="nofollow"></a>示例接口</h4> <pre><code class="prism language-Java">    // 获取某个班级下面的学生列表     @RequestMapping("/classes/{classId}/students")     public String list(@PathVariable String classId){          return "学生列表";     } </code></pre> <h4> <a id="_21" rel="nofollow"></a>完整示例</h4> <pre><code class="prism language-Java">package com.example.demo;  import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse;  import org.springframework.web.servlet.HandlerInterceptor; import org.springframework.web.servlet.HandlerMapping; import org.springframework.web.servlet.ModelAndView;  import java.util.Map;  public class SpringMVCInterceptor implements HandlerInterceptor {   	@Override 	public boolean preHandle(HttpServletRequest request, 			HttpServletResponse response, Object handler) throws Exception { 		Map pathVariables = (Map) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE); 		String chatbotId = (String)pathVariables.get("classId"); 		System.out.println("classId: " + classId); 		if ("1234".equals(classId)) 			return true; 		return false; 	} 	 	 	@Override 	public void postHandle(HttpServletRequest request, 			HttpServletResponse response, Object handler, 			ModelAndView modelAndView) throws Exception { 		// TODO Auto-generated method stub 		 	}  	@Override 	public void afterCompletion(HttpServletRequest request, 			HttpServletResponse response, Object handler, Exception ex) 	throws Exception { 		// TODO Auto-generated method stub 		 	} 	 }  </code></pre> <pre><code class="prism language-Java"> package com.example.demo;  import org.springframework.context.annotation.Configuration; import org.springframework.web.servlet.config.annotation.InterceptorRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;  @Configuration public class MvcInterceptorConfig extends WebMvcConfigurationSupport{        @Override     protected void addInterceptors(InterceptorRegistry registry) {         registry.addInterceptor(new SpringMVCInterceptor()).addPathPatterns("/chatbot/**");         super.addInterceptors(registry);     } }  </code></pre> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-22986.htm">圣诞节送什么给男生好(圣诞节送什么给男生比较好)</a></p>
                                         <p>下一个：<a href="/news/article-23460.htm">自动化加载Express的路由设置</a></p>
@@ -86,16 +87,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-node-subscribe.htm" title="「10月7日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月7日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-27623.htm" title="中牧的疫苗质量怎么样 中牧的疫苗质量怎么样啊">中牧的疫苗质量怎么样 中牧的疫苗质量怎么样啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-hiddify-next-github.htm" title="「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-27-latest-hiddify-next-node.htm" title="「8月27日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月27日」最高速度21.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-8-19-hiddify-next-node.htm" title="「8月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-11-hiddify-next-windows.htm" title="「8月11日」最高速度19.4M/S，2024年HiddifyFree每天更新免费节点订阅链接">「8月11日」最高速度19.4M/S，2024年HiddifyFree每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-hiddify-next-node.htm" title="「11月20日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月20日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-hiddify-next-windows.htm" title="「12月7日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月7日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-today-hiddify-next-node.htm" title="「9月24日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月24日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-hiddify-next-node-share.htm" title="「10月8日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月8日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-24-free-node-subscribe-links.htm" title="「8月24日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月24日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-node-subscribe.htm" title="「9月28日」最高速度20.6M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月28日」最高速度20.6M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-4-hiddify-next-node-share.htm" title="「9月4日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月4日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-26-hiddify-next-node-share.htm" title="「8月26日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月26日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-today-hiddify-next-node.htm" title="「8月16日」最高速度19.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月16日」最高速度19.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-21611.htm" title="北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）">北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-node-subscribe.htm" title="「12月13日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月13日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-free-subscribe-node.htm" title="「9月9日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月9日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-hiddify-next-node.htm" title="「10月26日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月26日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -107,7 +108,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -135,6 +136,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                     <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
                 </div>
             </div>

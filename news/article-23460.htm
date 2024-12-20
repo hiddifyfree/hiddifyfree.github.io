@@ -73,7 +73,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>在使用node + express进行后台开发时，对路由进行配置时，往往需要现在routes文件夹下创建对应的路由，然后在app.js里逐个的<span style="color:#ff6666;">require</span>进来，然后使用 <span style="color:#ff6666;">app.use('/path', route)</span>逐个配置，当网站比较简单路由文件较少是还好，但是在路由文件逐渐增加的时候就显得代码有点冗杂且笨。对于配置路由这种机械化的工作当然是交给代码来实现比较好，如下代码，我提供了一个可以帮我们自动配置路由的方法。</p> <p>&nbsp;</p> <p><span style="color:#ff6666;">首先是 untils/getRouters.js</span></p> <pre class="has"><code class="hljs">const fs = require('fs'); var exp = {}; let files = fs.readdirSync(__dirname+'/../routes'); let reg = /([\S]+)\.js$/i; files.forEach(function(val){         let matchs = reg.exec(val);         if(matchs &amp;&amp; matchs.index &gt;= 0){         exp[matchs[1]] = require('../routes/'+ val);     } }); module.exports = exp;&nbsp;</code></pre> <p>代码大致效果就是读取routes下的路由文件，然后逐个require进来，用路由文件名做key值放进exports对象里。</p> <p>&nbsp;</p> <p><span style="color:#ff6666;">然后是app.js</span>//配置路由</p> <pre class="has"><code class="hljs">!function(){     var routes = require('./untils/getRouters');     var keys = Object.keys(routes);     keys.forEach(function(k){         let cPath = '';         if(!!routes[k].cPath){             cPath = routes[k].cPath; &nbsp; //cPath为路由对应的路径，在路由文件里配置，默认为路由文件名         }else{             cPath = k; &nbsp;&nbsp;         }         app.use('/'+cPath,routes[k]);     }); }();</code></pre> <p>在app.js里require getRouters.js模块，获得路由对象，然后逐个添加到app里。</p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>在使用node + express进行后台开发时，对路由进行配置时，往往需要现在routes文件夹下创建对应的路由，然后在app.js里逐个的<span style="color:#ff6666;">require</span>进来，然后使用 <span style="color:#ff6666;">app.use('/path', route)</span>逐个配置，当网站比较简单路由文件较少是还好，但是在路由文件逐渐增加的时候就显得代码有点冗杂且笨。对于配置路由这种机械化的工作当然是交给代码来实现比较好，如下代码，我提供了一个可以帮我们自动配置路由的方法。</p> <p>&nbsp;</p> <p><span style="color:#ff6666;">首先是 untils/getRouters.js</span></p> <pre class="has"><code class="hljs">const fs = require('fs'); var exp = {}; let files = fs.readdirSync(__dirname+'/../routes'); let reg = /([\S]+)\.js$/i; files.forEach(function(val){         let matchs = reg.exec(val);         if(matchs &amp;&amp; matchs.index &gt;= 0){         exp[matchs[1]] = require('../routes/'+ val);     } }); module.exports = exp;&nbsp;</code></pre> <p>代码大致效果就是读取routes下的路由文件，然后逐个require进来，用路由文件名做key值放进exports对象里。</p> <p>&nbsp;</p> <p><span style="color:#ff6666;">然后是app.js</span>//配置路由</p> <pre class="has"><code class="hljs">!function(){     var routes = require('./untils/getRouters');     var keys = Object.keys(routes);     keys.forEach(function(k){         let cPath = '';         if(!!routes[k].cPath){             cPath = routes[k].cPath; &nbsp; //cPath为路由对应的路径，在路由文件里配置，默认为路由文件名         }else{             cPath = k; &nbsp;&nbsp;         }         app.use('/'+cPath,routes[k]);     }); }();</code></pre> <p>在app.js里require getRouters.js模块，获得路由对象，然后逐个添加到app里。</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-23457.htm">在拦截器中获取 url 路径里面 @PathVariable 的参数值</a></p>
                                         <p>下一个：<a href="/news/article-23909.htm">在哪儿领养宠物（在哪里能领养宠物）</a></p>
@@ -86,16 +87,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-node-share-links.htm" title="「11月3日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月3日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-23-hiddify-next-github.htm" title="「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-node-subscribe.htm" title="「9月28日」最高速度20.6M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月28日」最高速度20.6M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-22-free-hiddify-next-node.htm" title="「8月22日」最高速度18.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月22日」最高速度18.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-22984.htm" title="动物疫苗价格查询表最新（动物接种疫苗多少钱）">动物疫苗价格查询表最新（动物接种疫苗多少钱）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-26-hiddify-next-node-share.htm" title="「8月26日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月26日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-high-speed-nodes.htm" title="「10月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-20235.htm" title="宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></li>
-                        <li class="py-2"><a href="/news/article-22525.htm" title="蚁群算法（Ant System）（AS）">蚁群算法（Ant System）（AS）</a></li>
-                        <li class="py-2"><a href="/news/article-21156.htm" title="宠物医师助理资格证怎么考（宠物医师助理的主要职责）">宠物医师助理资格证怎么考（宠物医师助理的主要职责）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-hiddify-next-node-share.htm" title="「11月19日」最高速度19.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月19日」最高速度19.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-hiddify-next-windows.htm" title="「10月28日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月28日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-15-hiddify-next-windows.htm" title="「9月15日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月15日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-node-share.htm" title="「9月7日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月7日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-today-hiddify-next-node.htm" title="「9月26日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月26日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-25761.htm" title="toString()和new String()区别">toString()和new String()区别</a></li>
+                        <li class="py-2"><a href="/news/article-25300.htm" title="Centos7 离线安装 KVM，并安装 Csr1000v">Centos7 离线安装 KVM，并安装 Csr1000v</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-hiddify-next-node.htm" title="「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-26207.htm" title="vuex几大模块和Vuex助手使用详解">vuex几大模块和Vuex助手使用详解</a></li>
+                        <li class="py-2"><a href="/news/article-21611.htm" title="北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）">北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）</a></li>
                     </ul>
     </div>
 </div>
@@ -107,7 +108,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -135,6 +136,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                     <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
                 </div>
             </div>

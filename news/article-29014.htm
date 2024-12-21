@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-29014.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kafka消费者执行异常重复消费_Kafka消费者的使用和原理</title>
+        <meta name="description" content="这周我们学习下消费者，仍然还是先从一个消费者的Hello World学起： public&nbsp;class&nbsp;Consumer&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>kafka消费者执行异常重复消费_Kafka消费者的使用和原理</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>这周我们学习下消费者，仍然还是先从一个消费者的Hello World学起：</p> <pre class="has"><code>public&nbsp;class&nbsp;Consumer&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1.&nbsp;配置参数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Properties&nbsp;properties&nbsp;=&nbsp;new&nbsp;Properties();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties.put("key.deserializer",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"org.apache.kafka.common.serialization.StringDeserializer");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties.put("value.deserializer",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"org.apache.kafka.common.serialization.StringDeserializer");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties.put("bootstrap.servers",&nbsp;"localhost:9092");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties.put("group.id",&nbsp;"group.demo");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2.&nbsp;根据参数创建KafkaConsumer实例(消费者)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KafkaConsumer&nbsp;consumer&nbsp;=&nbsp;new&nbsp;KafkaConsumer&lt;&gt;(properties);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;3.&nbsp;订阅主题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.subscribe(Collections.singletonList("topic-demo"));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 4. 轮循消费&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConsumerRecords&nbsp;records&nbsp;=&nbsp;consumer.poll(Duration.ofMillis(1000));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ConsumerRecord&nbsp;record&nbsp;:&nbsp;records)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(record.value());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;finally&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;5.&nbsp;关闭消费者&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.close();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;}}</code></pre> <p>前两步和生产者类似，配置参数然后根据参数创建实例，区别在于消费者使用的是反序列化器，以及多了一个必填参数group.id，用于指定消费者所属的消费组。关于消费组的概念在《图解Kafka中的基本概念》中介绍过了，消费组使得消费者的消费能力可横向扩展，这次再介绍一个新的概念<strong>“再均衡”</strong>，其意思是将分区的所属权进行重新分配，发生于消费者中有新的消费者加入或者有消费者宕机的时候。我们先了解再均衡的概念，至于如何再均衡不在此深究。</p> <p>我们继续看上面的代码，第3步，subscribe订阅期望消费的主题，然后进入第4步，轮循调用poll方法从Kafka服务器拉取消息。给poll方法中传递了一个Duration对象，指定poll方法的超时时长，即当缓存区中没有可消费数据时的阻塞时长，避免轮循过于频繁。poll方法返回的是一个ConsumerRecords对象，其内部对多个分区的ConsumerRecored进行了封装，其结构如下：</p> <pre class="has"><code>public&nbsp;class&nbsp;ConsumerRecords&nbsp;implements&nbsp;Iterable&gt;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;Map&gt;&gt;&nbsp;records;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;}</code></pre> <p>而ConsumerRecord则类似ProducerRecord，封装了消息的相关属性：</p> <pre class="has"><code>public&nbsp;class&nbsp;ConsumerRecord&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;String&nbsp;topic;&nbsp;&nbsp;//&nbsp;主题&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;int&nbsp;partition;&nbsp;&nbsp;//&nbsp;分区号&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;long&nbsp;offset;&nbsp;&nbsp;//&nbsp;偏移量&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;long&nbsp;timestamp;&nbsp;&nbsp;//&nbsp;时间戳&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;TimestampType&nbsp;timestampType;&nbsp;&nbsp;//&nbsp;时间戳类型&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;int&nbsp;serializedKeySize;&nbsp;&nbsp;//&nbsp;key序列化后的大小&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;int&nbsp;serializedValueSize;&nbsp;&nbsp;//&nbsp;value序列化后的大小&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;Headers&nbsp;headers;&nbsp;&nbsp;//&nbsp;消息头部&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;K&nbsp;key;&nbsp;&nbsp;//&nbsp;键&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;V&nbsp;value;&nbsp;&nbsp;//&nbsp;值&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;final&nbsp;Optional&nbsp;leaderEpoch;&nbsp;&nbsp;//&nbsp;leader的周期号</code></pre> <p>相比ProdercerRecord的属性更多，其中重点讲下<strong>偏移量</strong>，偏移量是分区中一条消息的唯一标识。消费者在每次调用poll方法时，则是根据偏移量去分区拉取相应的消息。而当一台消费者宕机时，会发生再均衡，将其负责的分区交给其他消费者处理，这时可以根据偏移量去继续从宕机前消费的位置开始。</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20230109/5930c45b515eb295fd479a0f5099a0e9.jpg" alt="kafka消费者执行异常重复消费_Kafka消费者的使用和原理"> </div> <p>而为了应对消费者宕机情况，偏移量被设计成不存储在消费者的内存中，而是被持久化到一个Kafka的内部主题__consumer_offsets中，在Kafka中，将偏移量存储的操作称作<strong>提交</strong>。而消费者在每次消费消息时都将会将偏移量进行提交，提交的偏移量为下次消费的位置，例如本次消费的偏移量为<em>x</em>，则提交的是<em>x</em>+1。</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20230109/e620ba9f00833911b136ee6a1bfd9e25.jpg" alt="kafka消费者执行异常重复消费_Kafka消费者的使用和原理"> </div> <p>在代码中我们并没有看到显示的提交代码，那么Kafka的默认提交方式是什么？默认情况下，消费者会定期以auto_commit_interval_ms(5秒)的频率进行一次<strong>自动提交</strong>，而提交的动作发生于poll方法里，在进行拉取操作前会先检查是否可以进行偏移量提交，如果可以，则会提交即将拉取的偏移量。</p> <p>下面我们看下这样一个场景，上次提交的偏移量为2，而当前消费者已经处理了2、3、4号消息，正准备提交5，但却宕机了。当发生再均衡时，其他消费者将继续从已提交的2开始消费，于是发生了<strong>重复消费</strong>的现象。</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20230109/1d1af8269e30b4eec271697600677445.jpg" alt="kafka消费者执行异常重复消费_Kafka消费者的使用和原理"> </div> <p>我们可以通过减小自动提交的时间间隔来减小重复消费的窗口大小，但这样仍然无法避免重复消费的发生。</p> <p>按照线性程序的思维，由于自动提交是延迟提交，即在处理完消息之后进行提交，所以应该不会出现<strong>消息丢失</strong>的现象，也就是已提交的偏移量会大于正在处理的偏移量。但放在多线程环境中，消息丢失的现象是可能发生的。例如线程A负责调用poll方法拉取消息并放入一个队列中，由线程B负责处理消息。如果线程A已经提交了偏移量5，而线程B还未处理完2、3、4号消息，这时候发生宕机，则将丢失消息。</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20230109/88c43f53a8d5a7e33a568114f8b45533.jpg" alt="kafka消费者执行异常重复消费_Kafka消费者的使用和原理"> </div> <p>从上述场景的描述，我们可以知道自动提交是存在风险的。所以Kafka除了自动提交，还提供了<strong>手动提交</strong>的方式，可以细分为<strong>同步提交</strong>和<strong>异步提交</strong>，分别对应了KafkaConsumer中的commitSync和commitAsync方法。我们先尝试使用同步提交修改程序：</p> <pre class="has"><code>while&nbsp;(true)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;ConsumerRecords&nbsp;records&nbsp;=&nbsp;consumer.poll(Duration.ofMillis(1000));&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ConsumerRecord&nbsp;record&nbsp;:&nbsp;records)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(record.value());&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;consumer.commitSync();;}</code></pre> <p>在处理完一批消息后，都会提交偏移量，这样能减小重复消费的窗口大小，但是由于是同步提交，所以程序会阻塞等待提交成功后再继续处理下一条消息，这样会限制程序的吞吐量。那我们改为使用异步提交：</p> <pre class="has"><code>while&nbsp;(true)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;ConsumerRecords&nbsp;records&nbsp;=&nbsp;consumer.poll(Duration.ofMillis(1000));&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ConsumerRecord&nbsp;record&nbsp;:&nbsp;records)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(record.value());&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;consumer.commitAsync();;}</code></pre> <p>异步提交时，程序将不会阻塞，但异步提交在提交失败时也不会进行重试，所以提交是否成功是无法保证的。因此我们可以组合使用两种提交方式。在轮询中使用异步提交，而当关闭消费者时，再通过同步提交来保证提交成功。</p> <pre class="has"><code>try&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConsumerRecords&nbsp;records&nbsp;=&nbsp;consumer.poll(Duration.ofMillis(1000));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ConsumerRecord&nbsp;record&nbsp;:&nbsp;records)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(record.value());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.commitAsync();&nbsp;&nbsp;&nbsp;&nbsp;}}&nbsp;finally&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.commitSync();&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;finally&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.close();&nbsp;&nbsp;&nbsp;&nbsp;}}</code></pre> <p>上述介绍的两种无参的提交方式都是提交的poll返回的一个批次的数据。若未来得及提交，也会造成重复消费，如果还想更进一步减少重复消费，可以在for循环中为commitAsync和commitSync传入分区和偏移量，进行更细粒度的提交，例如每1000条消息我们提交一次：</p> <pre class="has"><code>Map&nbsp;currentOffsets&nbsp;=&nbsp;new&nbsp;HashMap&lt;&gt;();int&nbsp;count&nbsp;=&nbsp;0;while&nbsp;(true)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;ConsumerRecords&nbsp;records&nbsp;=&nbsp;consumer.poll(Duration.ofMillis(1000));&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(ConsumerRecord&nbsp;record&nbsp;:&nbsp;records)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(record.value());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;偏移量加1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentOffsets.put(new&nbsp;TopicPartition(record.topic(),&nbsp;record.partition()),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;OffsetAndMetadata(record.offset()&nbsp;+&nbsp;1));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(count&nbsp;%&nbsp;1000&nbsp;==&nbsp;0)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.commitAsync(currentOffsets,&nbsp;null);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++;&nbsp;&nbsp;&nbsp;&nbsp;}}</code></pre> <p>关于提交就介绍到这里。在使用消费者的代理中，我们可以看到<strong>poll方法</strong>是其中最为核心的方法，能够拉取到我们需要消费的消息。所以接下来，我们一起深入到消费者API的幕后，看看在poll方法中，都发生了什么，其实现如下：</p> <pre class="has"><code>public&nbsp;ConsumerRecords&nbsp;poll(final&nbsp;Duration&nbsp;timeout)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;poll(time.timer(timeout),&nbsp;true);}</code></pre> <p>在我们使用设置超时时间的poll方法中，会调用重载方法，第二个参数includeMetadataInTimeout用于标识是否把元数据的获取算在超时时间内，这里传值为true，也就是算入超时时间内。下面再看重载的poll方法的实现：</p> <pre class="has"><code>private&nbsp;ConsumerRecords&nbsp;poll(final&nbsp;Timer&nbsp;timer,&nbsp;final&nbsp;boolean&nbsp;includeMetadataInTimeout)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1.&nbsp;获取锁并确保消费者没有关闭&nbsp;&nbsp;&nbsp;&nbsp;acquireAndEnsureOpen();&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2.记录poll开始&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.kafkaConsumerMetrics.recordPollStart(timer.currentTimeMs());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;3.检查是否有订阅主题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(this.subscriptions.hasNoSubscriptionOrUserAssignment())&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalStateException("Consumer&nbsp;is&nbsp;not&nbsp;subscribed&nbsp;to&nbsp;any&nbsp;topics&nbsp;or&nbsp;assigned&nbsp;any&nbsp;partitions");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;4.安全的唤醒消费者&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client.maybeTriggerWakeup();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;5.更新偏移量(如果需要的话)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(includeMetadataInTimeout)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateAssignmentMetadataIfNeeded(timer,&nbsp;false);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(!updateAssignmentMetadataIfNeeded(time.timer(Long.MAX_VALUE),&nbsp;true))&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.warn("Still&nbsp;waiting&nbsp;for&nbsp;metadata");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 6.拉取消息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Map&gt;&gt;&nbsp;records&nbsp;=&nbsp;pollForFetches(timer);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!records.isEmpty())&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;7.如果拉取到了消息或者有未处理的请求，由于用户还需要处理未处理的消息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;所以会再次发起拉取消息的请求(异步)，提高效率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(fetcher.sendFetches()&nbsp;&gt;&nbsp;0&nbsp;||&nbsp;client.hasPendingRequests())&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client.transmitSends();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;8.调用消费者拦截器处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this.interceptors.onConsume(new&nbsp;ConsumerRecords&lt;&gt;(records));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;while&nbsp;(timer.notExpired());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;ConsumerRecords.empty();&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;finally&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;9.释放锁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;release();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;10.记录poll结束&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.kafkaConsumerMetrics.recordPollEnd(timer.currentTimeMs());&nbsp;&nbsp;&nbsp;&nbsp;}}</code></pre> <p>我们对上面的代码逐步分析，首先是第1步acquireAndEnsureOpen方法，获取锁并确保消费者没有关闭，其实现如下：</p> <pre class="has"><code>private&nbsp;void&nbsp;acquireAndEnsureOpen()&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;acquire();&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(this.closed)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;release();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;IllegalStateException("This&nbsp;consumer&nbsp;has&nbsp;already&nbsp;been&nbsp;closed.");&nbsp;&nbsp;&nbsp;&nbsp;}}</code></pre> <p>其中acquire方法用于获取锁，为什么这里会要上锁。这是因为KafkaConsumer是线程不安全的，所以需要上锁，确保只有一个线程使用KafkaConsumer拉取消息，其实现如下：</p> <pre class="has"><code>private&nbsp;static&nbsp;final&nbsp;long&nbsp;NO_CURRENT_THREAD&nbsp;=&nbsp;-1L;private&nbsp;final&nbsp;AtomicLong&nbsp;currentThread&nbsp;=&nbsp;new&nbsp;AtomicLong(NO_CURRENT_THREAD);private&nbsp;final&nbsp;AtomicInteger&nbsp;refcount&nbsp;=&nbsp;new&nbsp;AtomicInteger(0);private&nbsp;void&nbsp;acquire()&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;threadId&nbsp;=&nbsp;Thread.currentThread().getId();&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(threadId&nbsp;!=&nbsp;currentThread.get()&nbsp;&amp;&amp;&nbsp;!currentThread.compareAndSet(NO_CURRENT_THREAD,&nbsp;threadId))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;ConcurrentModificationException("KafkaConsumer&nbsp;is&nbsp;not&nbsp;safe&nbsp;for&nbsp;multi-threaded&nbsp;access");&nbsp;&nbsp;&nbsp;&nbsp;refcount.incrementAndGet();}</code></pre> <p>用一个原子变量currentThread作为锁，通过cas操作获取锁，如果cas失败，即获取锁失败，表示发生了竞争，有多个线程在使用KafkaConsumer，则会抛出ConcurrentModificationException异常，如果cas成功，还会将refcount加一，用于重入。</p> <p>再看第2、3步，记录poll的开始以及检查是否有订阅主题。然后进入do-while循环，如果没有拉取到消息，将在不超时的情况下一直轮循。</p> <p>第4步，安全的唤醒消费者，并不是唤醒，而是检查是否有唤醒的风险，如果程序在执行不可中断的方法或是收到中断请求，会抛出异常，这里我还不是很明白，先放一下。</p> <p>第5步，更新偏移量，就是我们在前文说的在进行拉取操作前会先检查是否可以进行偏移量提交。</p> <p>第6步，pollForFetches方法拉取消息，其实现如下：</p> <pre class="has"><code>private&nbsp;Map&gt;&gt;&nbsp;pollForFetches(Timer&nbsp;timer)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;pollTimeout&nbsp;=&nbsp;coordinator&nbsp;==&nbsp;null&nbsp;?&nbsp;timer.remainingMs()&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;Math.min(coordinator.timeToNextPoll(timer.currentTimeMs()),&nbsp;timer.remainingMs());&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;1.如果消息已经有了，则立即返回&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;Map&gt;&gt;&nbsp;records&nbsp;=&nbsp;fetcher.fetchedRecords();&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!records.isEmpty())&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;records;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;2.准备拉取请求&nbsp;&nbsp;&nbsp;&nbsp;fetcher.sendFetches();&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!cachedSubscriptionHashAllFetchPositions&nbsp;&amp;&amp;&nbsp;pollTimeout&nbsp;&gt;&nbsp;retryBackoffMs)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pollTimeout&nbsp;=&nbsp;retryBackoffMs;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;Timer&nbsp;pollTimer&nbsp;=&nbsp;time.timer(pollTimeout);&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;3.发送拉取请求&nbsp;&nbsp;&nbsp;&nbsp;client.poll(pollTimer,&nbsp;()&nbsp;-&gt;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;!fetcher.hasAvailableFetches();&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;&nbsp;&nbsp;timer.update(pollTimer.currentTimeMs());&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;3.返回消息&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;fetcher.fetchedRecords();}</code></pre> <p>如果fetcher已经有消息了则立即返回，这里和下面将要讲的第7步对应。如果没有消息则使用Fetcher准备拉取请求然后再通过ConsumerNetworkClient发送请求，最后返回消息。</p> <p>为啥消息会已经有了呢，我们回到poll的第7步，如果拉取到了消息或者有未处理的请求，由于用户还需要处理未处理的消息，这时候可以使用异步的方式发起下一次的拉取消息的请求，将数据提前拉取，减少网络IO的等待时间，提高程序的效率。</p> <p>第8步，调用消费者拦截器处理，就像KafkaProducer中有ProducerInterceptor，在KafkaConsumer中也有ConsumerInterceptor，用于处理返回的消息，处理完后，再返回给用户。</p> <p>第9、10步，释放锁和记录poll结束，对应了第1、2步。</p> <p>对KafkaConsumer的poll方法就分析到这里。最后用一个思维导图回顾下文中较为重要的知识点：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20230109/7624019e89d4642054ee869b060fe759.jpg" alt="kafka消费者执行异常重复消费_Kafka消费者的使用和原理"> </div> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28552.htm">动物医院工作流程手册pdf 动物医院工作流程手册ppt</a></p>
+                                        <p>下一个：<a href="/news/article-29015.htm">动物疫苗接种时间表图片高清版 动物疫苗接种时间表图片高清版大全</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share.htm" title="「11月28日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月28日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23909.htm" title="在哪儿领养宠物（在哪里能领养宠物）">在哪儿领养宠物（在哪里能领养宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-free-high-speed-nodes.htm" title="「10月13日」最高速度18.6M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月13日」最高速度18.6M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-today-hiddify-next-node.htm" title="「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23457.htm" title="在拦截器中获取 url 路径里面 @PathVariable 的参数值">在拦截器中获取 url 路径里面 @PathVariable 的参数值</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22525.htm" title="蚁群算法（Ant System）（AS）">蚁群算法（Ant System）（AS）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-node-subscribe-links.htm" title="「12月8日」最高速度20.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月8日」最高速度20.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-hiddify-next-windows.htm" title="「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-hiddify-next-node-github.htm" title="「12月9日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月9日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

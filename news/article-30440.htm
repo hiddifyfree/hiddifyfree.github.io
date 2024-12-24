@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-30440.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C语言实现扫雷游戏（代码）</title>
+        <meta name="description" content="test.c #define _CRT_SECURE_NO_WARNINGS #pragma warning(disable:6031) #include "game.h"  void menu() " />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>C语言实现扫雷游戏（代码）</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>test.c</p> <pre><code class="language-cpp">#define _CRT_SECURE_NO_WARNINGS #pragma warning(disable:6031) #include "game.h"  void menu() { 	printf("*************************\n"); 	printf("*****   1. play      ****\n"); 	printf("*****   0. exit      ****\n"); 	printf("*************************\n"); }  void game() { 	char mine[ROWS][COLS] = { 0 };//存放布置好的雷的信息 	char show[ROWS][COLS] = { 0 };//存放排查出的雷的信息 	//初始化数组的内容为指定的内容 	//mine 数组在没有布置雷的时候，都是'0' 	InitBoard(mine, ROWS, COLS, '0'); 	//show 数组在没有排查雷的时候，都是'*' 	InitBoard(show, ROWS, COLS, '*');  	//设置雷 	SetMine(mine, ROW, COL);  	DisplayBoard(show, ROW, COL); 	DisplayBoard(mine, ROW, COL);  	//排查雷 	FindMine(mine, show, ROW, COL); }  int main() { 	int input = 0; 	//设置随机数的生成起点 	srand((unsigned int)time(NULL));  	do 	{ 		menu(); 		printf("请选择:&gt;"); 		scanf("%d", &amp;input); 		switch (input) 		{ 		case 1: 			game(); 			break; 		case 0: 			printf("退出游戏\n"); 			break; 		default: 			printf("选择错误\n"); 			break; 		} 	} while (input);  	return 0; }</code></pre> <p>&nbsp;game.h</p> <pre><code class="language-cpp">#pragma once  #include &lt;stdio.h&gt; #include &lt;time.h&gt; #include &lt;stdlib.h&gt;  #define ROW 9 #define COL 9  #define ROWS ROW+2 #define COLS COL+2  #define EASY_COUNT 10  void InitBoard(char board[ROWS][COLS], int rows, int cols, char set); void DisplayBoard(char board[ROWS][COLS], int row, int col); void SetMine(char board[ROWS][COLS], int row, int col); void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);</code></pre> <p>game,c</p> <pre><code class="language-cpp">#define _CRT_SECURE_NO_WARNINGS #pragma warning(disable:6031) #include "game.h"  void InitBoard(char board[ROWS][COLS], int rows, int cols, char set) { 	int i = 0; 	int j = 0; 	for (i = 0; i &lt; rows; i++) 	{ 		for (j = 0; j &lt; cols; j++) 		{ 			board[i][j] = set; 		} 	} }  void DisplayBoard(char board[ROWS][COLS], int row, int col) { 	int i = 0; 	int j = 0; 	printf("-------扫雷游戏-----\n"); 	for (j = 0; j &lt;= col; j++) 	{ 		printf("%d ", j); 	} 	printf("\n");  	for (i = 1; i &lt;= row; i++) 	{ 		printf("%d ", i); 		for (j = 1; j &lt;= col; j++) 		{ 			printf("%c ", board[i][j]); 		} 		printf("\n"); 	} 	printf("-------扫雷游戏-----\n");  }  void SetMine(char board[ROWS][COLS], int row, int col) { 	int count = EASY_COUNT; 	//1~9 	//1~9 	while (count) 	{ 		int x = rand() % row + 1; 		int y = rand() % col + 1;  		if (board[x][y] == '0') 		{ 			board[x][y] = '1'; 			count--; 		} 	} }  int get_mine_count(char board[ROWS][COLS], int x, int y) { 	return (board[x - 1][y] + 		board[x - 1][y - 1] + 		board[x][y - 1] + 		board[x + 1][y - 1] + 		board[x + 1][y] + 		board[x + 1][y + 1] + 		board[x][y + 1] + 		board[x - 1][y + 1] - 8 * '0'); }  void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col) { 	int x = 0; 	int y = 0; 	int win = 0;//找到非雷的个数 	while (win &lt; row * col - EASY_COUNT) 	{ 		printf("请输入要排查的坐标:&gt;"); 		scanf("%d%d", &amp;x, &amp;y); 		if (x &gt;= 1 &amp;&amp; x &lt;= row &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= col) 		{ 			if (show[x][y] != '*') 			{ 				printf("该坐标被排查过了，不能重复排查\n"); 			} 			else 			{ 				//如果是雷 				if (mine[x][y] == '1') 				{ 					printf("很遗憾，你被炸死了\n"); 					DisplayBoard(mine, ROW, COL); 					break; 				} 				else//如果不是雷 				{ 					win++; 					//统计mine数组中x,y坐标周围有几个雷 					int count = get_mine_count(mine, x, y); 					show[x][y] = count + '0';//转换成数字字符 					DisplayBoard(show, ROW, COL); 				} 			} 		} 		else 		{ 			printf("输入的坐标非法,请重新输入\n"); 		} 	} 	if (win == row * col - EASY_COUNT) 	{ 		printf("恭喜你，排雷成功\n"); 		DisplayBoard(mine, ROW, COL); 	} }  // //基础的功能 //1. 标记功能 //2. 展开一片的功能 //</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-29949.htm">宠物店卖什么狗粮 宠物店卖什么狗粮好</a></p>
+                                        <p>下一个：<a href="/news/article-30441.htm">在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-hiddify-next-windows.htm" title="「8月23日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月23日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-hiddify-next-github.htm" title="「12月19日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月19日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-18892.htm" title="领养宠物需要具备什么条件才能领养（领养宠物需要什么条件和费用）">领养宠物需要具备什么条件才能领养（领养宠物需要什么条件和费用）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-hiddify-next-node-share.htm" title="「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-27156.htm" title="宠物品牌排行前十名（知名宠物品牌）">宠物品牌排行前十名（知名宠物品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-hiddify-next-github.htm" title="「11月30日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月30日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-high-speed-nodes.htm" title="「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-hiddify-next-windows.htm" title="「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月13日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-hiddify-next-node-github.htm" title="「12月24日」最高速度22.5M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月24日」最高速度22.5M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-node-subscribe-links.htm" title="「10月30日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月30日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

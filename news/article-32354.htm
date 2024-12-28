@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-32354.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redis 缓存的三大问题及其解决方案</title>
+        <meta name="description" content="一、缓存穿透 缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起 id 为-1 的数据或者特别大的不存在的数据。有可能是黑客利用漏洞攻击从而去压垮应用的数据库。 1. 常见解决方案 对" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Redis 缓存的三大问题及其解决方案</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>一、缓存穿透</h2> <p>缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起 id 为-1 的数据或者特别大的不存在的数据。有可能是黑客利用漏洞攻击从而去压垮应用的数据库。</p> <h3>1. 常见解决方案</h3> <p>对于缓存穿透问题，常见的解决方案有以下三种：</p> <ul> <li> <p>验证拦截：接口层进行校验，如鉴定用户权限，对 ID 之类的字段做基础的校验，如 id&lt;=0 的字段直接拦截；</p> </li> <li> <p>缓存空数据：当数据库查询到的数据为空时，也将这条数据进行缓存，但缓存的有效性设置得要较短，以免影响正常数据的缓存；</p> <p>Copypublic Student getStudentsByID(Long id) {<!-- --></p> <pre><code>// 从Redis中获取学生信息 Student student = redisTemplate.opsForValue()     .get(String.valueOf(id)); if (student != null) {     return student; }  // 从数据库查询学生信息，并存入Redis student = studentDao.selectByStudentId(id); if (student != null) {     redisTemplate.opsForValue()         .set(String.valueOf(id), student, 60, TimeUnit.MINUTES); } else {     // 即使不存在，也将其存入缓存中     redisTemplate.opsForValue()         .set(String.valueOf(id), null, 60, TimeUnit.SECONDS); }  return student; 复制代码</code></pre> <p>}</p> </li> <li> <p>使用布隆过滤器：布隆过滤器是一种比较独特数据结构，有一定的误差。当它指定一个数据存在时，它不一定存在，但是当它指定一个数据不存在时，那么它一定是不存在的。</p> </li> </ul> <h3>2. 布隆过滤器</h3> <p>布隆过滤器是一种比较特殊的数据结构，有点类似与 HashMap，在业务中我们可能会通过使用 HashMap 来判断一个值是否存在，它可以在 O(1)时间复杂度内返回结果，效率极高，但是受限于存储容量，如果可能需要去判断的值超过亿级别，那么 HashMap 所占的内存就很可观了。</p> <p>而 BloomFilter 解决这个问题的方案很简单。首先用多个 bit 位去代替 HashMap 中的数组，这样的话储存空间就下来了，之后就是对 Key 进行多次哈希，将 Key 哈希后的值所对应的 bit 位置为 1。</p> <p>当判断一个元素是否存在时，就去判断这个值哈希出来的比特位是否都为 1，如果都为 1，那么可能存在，也可能不存在（如下图 F）。但是如果有一个 bit 位不为 1，那么这个 Key 就肯定不存在。</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230223/217d66485f35ea50dd73dcc730b47d4b.jpg"></p> <p>注意：BloomFilter 并不支持删除操作，只支持添加操作。这一点很容易理解，因为你如果要删除数据，就得将对应的 bit 位置为 0，但是你这个 Key 对应的 bit 位可能其他的 Key 也对应着。</p> <h3>3. 缓存空数据与布隆过滤器的比较</h3> <p>上面对这两种方案都进行了简单的介绍，缓存空数据与布隆过滤器都能有效解决缓存穿透问题，但使用场景有着些许不同；</p> <ul> <li> <p>当一些恶意攻击查询查询的 key 各不相同，而且数量巨多，此时缓存空数据不是一个好的解决方案。因为它需要存储所有的 Key，内存空间占用高。并且在这种情况下，很多 key 可能只用一次，所以存储下来没有意义。所以对于这种情况而言，使用布隆过滤器是个不错的选择；</p> </li> <li> <p>而对与空数据的 Key 数量有限、Key 重复请求效率较高的场景而言，可以选择缓存空数据的方案。</p> </li> </ul> <h2>二、缓存击穿</h2> <p>缓存击穿是指当前热点数据存储到期时，多个线程同时并发访问热点数据。因为缓存刚过期，所有并发请求都会到数据库中查询数据。</p> <h3>解决方案</h3> <ul> <li> <p>将热点数据设置为永不过期；</p> </li> <li> <p>加互斥锁：互斥锁可以控制查询数据库的线程访问，但这种方案会导致系统的吞吐量下降，需要根据实际情况使用。</p> <p>Copypublic String get(key) { String value = redis.get(key); if (value == null) { // 代表缓存值过期 // 设置3min的超时，防止del操作失败的时候，下次缓存过期一直不能load db if (redis.setnx(key_mutex, 1, 3 * 60) == 1) { // 代表设置成功 value = db.get(key); redis.set(key, value, expire_secs); redis.del(key_mutex); } else { // 这个时候代表同时候的其他线程已经load db并回设到缓存了，这时候重试获取缓存值即可 sleep(50); get(key); // 重试 } } else { return value; } }</p> </li> </ul> <h2>三、缓存雪崩</h2> <p>缓存雪崩发生有几种情况，比如大量缓存集中在或者缓存同时在大范围中失效，出现了大量请求去访问数据库，从而导致 CPU 和内存过载，甚至停机。</p> <p>一个简单的雪崩过程：</p> <ol> <li> <p>Redis 集群产生了大面积故障；</p> </li> <li> <p>缓存失败，此时仍有大量请求去访问 Redis 缓存服务器；</p> </li> <li> <p>在大量 Redis 请求失败后，这些请求将会去访问数据库；</p> </li> <li> <p>由于应用的设计依赖于数据库和 Redis 服务，很快就会造成服务器集群的雪崩，最终导致整个系统的瘫痪。</p> </li> </ol> <h3>解决方案</h3> <ul> <li> <p>【事前】高可用缓存：高可用缓存是防止出现整个缓存故障。即使个别节点，机器甚至机房都关闭，系统仍然可以提供服务，Redis 哨兵(Sentinel) 和 Redis 集群(Cluster) 都可以做到高可用；</p> </li> <li> <p>【事中】缓存降级（临时支持）：当访问次数急剧增加导致服务出现问题时，我们如何确保服务仍然可用。在国内使用比较多的是 Hystrix，它通过熔断、降级、限流三个手段来降低雪崩发生后的损失。只要确保数据库不死，系统总可以响应请求，每年的春节 12306 我们不都是这么过来的吗？只要还可以响应起码还有抢到票的机会；</p> </li> <li> <p>【事后】Redis 备份和快速预热：Redis 数据备份和恢复、快速缓存预热。</p> </li> </ul> <p> 作者：xcbeyond<br /> 链接：https://juejin.cn/post/6971597474498609183<br /> 来源：掘金<br /> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31884.htm">动物疫苗板块（动物疫苗板块什么时候能涨）</a></p>
+                                        <p>下一个：<a href="/news/article-32355.htm">全国最便宜的进货平台家纺的简单介绍</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-20693.htm" title="运城市动物园营业时间（运城市动物园营业时间最新）">运城市动物园营业时间（运城市动物园营业时间最新）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-1-node-share.htm" title="「9月1日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月1日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-21611.htm" title="北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）">北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）</a></li>
+                        <li class="py-2"><a href="/news/article-29482.htm" title="宠物领养需要带什么证件吗北京（北京正规领养宠物）">宠物领养需要带什么证件吗北京（北京正规领养宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-28090.htm" title="记将一个大型客户端应用项目迁移到 dotnet 6 的经验和决策_在线工具">记将一个大型客户端应用项目迁移到 dotnet 6 的经验和决策_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-hiddify-next-github.htm" title="「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22984.htm" title="动物疫苗价格查询表最新（动物接种疫苗多少钱）">动物疫苗价格查询表最新（动物接种疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-31-today-hiddify-next-node.htm" title="「8月31日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月31日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-hiddify-next-node.htm" title="「11月27日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月27日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-32354.htm" title="Redis 缓存的三大问题及其解决方案">Redis 缓存的三大问题及其解决方案</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

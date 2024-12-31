@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-33776.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appium+Python+Android自动化のdesired_caps会话参数</title>
+        <meta name="description" content="&nbsp;参数详解请见代码： from appium import webdriver from time import sleep  if __name__ == '__main__':     " />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Appium+Python+Android自动化のdesired_caps会话参数</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp;参数详解请见代码：</p> <pre><code class="language-python">from appium import webdriver from time import sleep  if __name__ == '__main__':     desired_caps = {}      # 必填参数：      #platformName：操作系统名（iOS, Android, FirefoxOS）     desired_caps['platformName'] = 'Android'      # deviceName：设备名（值有意义即可）     desired_caps['deviceName'] = 'Android Emulator'      # 指定要操作的APP有两种方式：         # 方式1（APP如果没有安装，自动安装）：     # app：apk的绝对路径     desired_caps['app'] = r"D:\AppPackage\TestApks\ApiDemos-debug.apk"         # 方式2（APP必须预先安装）：     # appPackage：应用的包名。appActivity：应用的任意窗口名。     # 这两参数需要一起指定。     desired_caps['appPackage'] = 'com.android.androidui'     desired_caps['appActivity'] = '.MainActivity'      # 可选参数：      # platformVersion：操作系统版本     # 在设置里查看。6是主版本号，0是次版本号，1是修订号。     desired_caps['platformVersion'] = '6.0.1'     desired_caps['platformVersion'] = '6.0'     desired_caps['platformVersion'] = '6'      # unicodeKeyboard和resetKeyboard：使用中文字符输入。     # 这两参数需要一起指定，值是布尔值。     desired_caps['unicodeKeyboard'] = True     desired_caps['resetKeyboard'] = True      # automationName：指定想使用的自动化测试引擎。     # ①Appium（uiautomator）：不指定的话默认     desired_caps['automationName'] = 'Appium'     # ②Selendroid：支持安卓4.2之前的版本，报错     desired_caps['automationName'] = 'Selendroid'     # ③uiautomator2：支持安卓6.0之后的版本     desired_caps['automationName'] = 'uiautomator2'      # udid：如果连接真机测试，必须指定设备的id（在adb devides里或设置里查看）     desired_caps['udid'] = '7N3HPX159H051514'     # 真机测试需要做的事情:     # ①打开开发者模式和USB调试模式     # ②在电脑上安装手机驱动     # ③用USB连接手机和电脑      driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desired_caps)      driver.find_element_by_id('android:id/text1').click()      # 启动一个窗口。     # 可以打开本APP的任意窗口，还可以打开其他APP的任意窗口，前提是APP已安装。     driver.start_activity('io.selendroid.testapp','.HomeScreenActivity')      driver.back()      sleep(2)     driver.quit()</code></pre> <p>from appium import webdriver<br /> from time import sleep<br /> &nbsp;<br /> if __name__ == '__main__':<br /> &nbsp;&nbsp;&nbsp; desired_caps = {}<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # 必填参数：<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; #<span style="color:#f33b45;"><strong>platformName</strong></span>：操作系统名（<span style="color:#86ca5e;"><strong>iOS, Android, FirefoxOS</strong></span>）<br /> &nbsp;&nbsp;&nbsp; desired_caps['platformName'] = 'Android'<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">deviceName</span></strong>：设备名（值有意义即可）<br /> &nbsp;&nbsp;&nbsp; desired_caps['deviceName'] = 'Android Emulator'<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # 指定要操作的APP有两种方式：<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 方式1（APP如果没有安装，自动安装）：<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">app</span></strong>：apk的绝对路径<br /> &nbsp;&nbsp;&nbsp; desired_caps['app'] = r"D:\AppPackage\TestApks\ApiDemos-debug.apk"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 方式2（APP必须预先安装）：<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">appPackage</span></strong>：应用的包名。<strong><span style="color:#f33b45;">appActivity</span></strong>：应用的任意窗口名。<br /> &nbsp;&nbsp;&nbsp; # 这两参数需要一起指定。<br /> &nbsp;&nbsp;&nbsp; desired_caps['appPackage'] = 'com.android.androidui'<br /> &nbsp;&nbsp;&nbsp; desired_caps['appActivity'] = '.MainActivity'<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # 可选参数：<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">platformVersion</span></strong>：操作系统版本<br /> &nbsp;&nbsp;&nbsp; # 在设置里查看。6是主版本号，0是次版本号，1是修订号。<br /> &nbsp;&nbsp;&nbsp; desired_caps['platformVersion'] = '6.0.1'<br /> &nbsp;&nbsp;&nbsp; desired_caps['platformVersion'] = '6.0'<br /> &nbsp;&nbsp;&nbsp; desired_caps['platformVersion'] = '6'<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">unicodeKeyboard</span></strong>和<strong><span style="color:#f33b45;">resetKeyboard</span></strong>：使用中文字符输入。<br /> &nbsp;&nbsp;&nbsp; # 这两参数需要一起指定，值是布尔值。<br /> &nbsp;&nbsp;&nbsp; desired_caps['unicodeKeyboard'] = <span style="color:#86ca5e;"><strong>True</strong></span><br /> &nbsp;&nbsp;&nbsp; desired_caps['resetKeyboard'] = <span style="color:#86ca5e;"><strong>True</strong></span><br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">automationName</span></strong>：指定想使用的自动化测试引擎。<br /> &nbsp;&nbsp;&nbsp; # ①<strong><span style="color:#86ca5e;">Appium</span></strong>（uiautomator）：不指定的话默认<br /> &nbsp;&nbsp;&nbsp; desired_caps['automationName'] = 'Appium'<br /> &nbsp;&nbsp;&nbsp; # ②<strong><span style="color:#86ca5e;">Selendroid</span></strong>：支持安卓4.2之前的版本，报错<br /> &nbsp;&nbsp;&nbsp; desired_caps['automationName'] = 'Selendroid'<br /> &nbsp;&nbsp;&nbsp; # ③<strong><span style="color:#86ca5e;">uiautomator2</span></strong>：支持安卓6.0之后的版本<br /> &nbsp;&nbsp;&nbsp; desired_caps['automationName'] = 'uiautomator2'<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # <strong><span style="color:#f33b45;">udid</span></strong>：如果连接真机测试，必须指定设备的id（在adb devides里或设置里查看）<br /> &nbsp;&nbsp;&nbsp; desired_caps['udid'] = '7N3HPX159H051514'<br /> &nbsp;&nbsp;&nbsp; # 真机测试需要做的事情:<br /> &nbsp;&nbsp;&nbsp; # ①打开开发者模式和USB调试模式<br /> &nbsp;&nbsp;&nbsp; # ②在电脑上安装手机驱动<br /> &nbsp;&nbsp;&nbsp; # ③用USB连接手机和电脑<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desired_caps)<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; driver.find_element_by_id('android:id/text1').click()<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; # 启动一个窗口。<br /> &nbsp;&nbsp;&nbsp; # 可以打开本APP的任意窗口，还可以打开其他APP的任意窗口，前提是APP已安装。<br /> &nbsp;&nbsp;&nbsp; driver.start_activity('io.selendroid.testapp','.HomeScreenActivity')<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; driver.back()<br /> &nbsp;<br /> &nbsp;&nbsp;&nbsp; sleep(2)<br /> &nbsp;&nbsp;&nbsp; driver.quit()</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-33293.htm">芭比堂宠物医院收费（芭比堂宠物医院收费多少）</a></p>
+                                        <p>下一个：<a href="/news/article-33777.htm">动物医院管理制度在哪网站可以查询（动物医院管理流程）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-node-share-links.htm" title="「11月3日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月3日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-27623.htm" title="中牧的疫苗质量怎么样 中牧的疫苗质量怎么样啊">中牧的疫苗质量怎么样 中牧的疫苗质量怎么样啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-hiddify-next-node-share.htm" title="「9月4日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月4日」最高速度22.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-free-hiddify-next-node.htm" title="「12月23日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月23日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-21611.htm" title="北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）">北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-today-hiddify-next-node.htm" title="「9月24日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月24日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-latest-hiddify-next-node.htm" title="「9月22日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月22日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22073.htm" title="Halo 开源项目学习实体类与数据表">Halo 开源项目学习实体类与数据表</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-node-subscribe.htm" title="「10月7日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月7日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-hiddify-next-node.htm" title="「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

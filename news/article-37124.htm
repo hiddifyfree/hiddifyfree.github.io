@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-37124.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>使用etcd选举sdk实践master/slave故障转移_在线工具</title>
+        <meta name="description" content="本次将记录[利用etcd选主sdk实践master/slave高可用]， 并利用etcdctl原生脚本验证选主sdk的工作原理。 master/slave高可用集群 本文目标 在异地多机房部署节点，s" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>使用etcd选举sdk实践master/slave故障转移_在线工具</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>本次将记录[利用etcd选主sdk实践master/slave高可用]， 并利用etcdctl原生脚本验证选主sdk的工作原理。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/dad23922e99d75de22ce2338ba9b581d.jpg" alt="使用etcd选举sdk实践master/slave故障转移_在线工具"></p> <h2 id="masterslave高可用集群">master/slave高可用集群</h2> <h5 id="本文目标">本文目标</h5> <p>在异地多机房部署节点，slave作为备用实例启动，但不接受业务流量， 监测到master宕机，slave节点自动提升为master并接管业务流量。</p> <h5 id="基本思路">基本思路</h5> <p>各节点向etcd注册带租约的节点信息， 并各自维持心跳保活，选主sdk根据<strong>目前存活的、最早创建的节点信息键值对</strong> 来判断leader， 并通过watch机制通知业务代码leader变更。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/ba99475e43916cb63c292680ab970d71.jpg" alt="使用etcd选举sdk实践master/slave故障转移_在线工具"></p> <p>讲道理，每个节点只需要知道两个信息就能各司其职</p> <ul> <li>谁是leader  <mark>&gt; 当前节点是什么角色</mark>=&gt; 当前节点该做什么事情</li> <li>感知集群leader变更的能力 ===》当前节点现在要不要改变行为</li> </ul> <p>除了官方etcd客户端go.etcd.io/etcd/client/v3， 还依赖<code>go.etcd.io/etcd/client/v3/concurrency</code> package：实现了基于etcd的分布式锁、屏障、选举</p> <table> <thead> <tr> <th>选主过程</th> <th>实质</th> <th>api</th> </tr> </thead> <tbody> <tr> <td>竞选前先查询leader了解现场</td> <td>查询当前存活的，最早创建的kv值</td> <td>*concurrency.Election.Leader()</td> </tr> <tr> <td>初始化时，各节点向etcd阻塞式竞选</td> <td>各节点向etcd注册带租约的键值对</td> <td>*concurrency.Election.compaign</td> </tr> <tr> <td>建立master/slave集群，还能及时收到变更通知</td> <td>通过chan传递最新的leader value</td> <td>*concurrency.Election.Observe()</td> </tr> </tbody> </table> <h2 id="重点解读">重点解读</h2> <h4 id="1初始化etcd-go客户端">1.初始化etcd go客户端</h4> <p>注意：etcd客户端和服务端是通过grpc来通信，目前新版本的etcd客户端默认使用非阻塞式连接， 也就是说<code>v3.New</code>函数仅表示从指定配置创建etcd客户端。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/199a1f3efb9057fc26373c284c32bbc4.jpg" alt="使用etcd选举sdk实践master/slave故障转移_在线工具"></p> <p>为快速确定etcd选举的可用性，本实践使用阻塞式创建客户端：</p> <pre><code>cli, err := v3.New(v3.Config{ 		Endpoints:   addr, 		DialTimeout: time.Second * 5, 		DialOptions: []grpc.DialOption{grpc.WithBlock()}, 	}) 	if err != nil { 		log.WithField("instance", Id).Errorln(err) 		return nil, err 	} </code></pre> <h4 id="2--竞选">2.  竞选</h4> <p>使用阻塞式命令<code>compaign</code>竞选之前，应先查询当前leader</p> <pre><code>// 将id：ip：port作为竞选时写入etcd的value func (c *Client) Election(id string, notify chan&lt;- bool) error { 	//竞选前先试图去了解情况 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*3) 	defer cancel() 	resp, err := c.election.Leader(ctx) 	if err != nil { 		if err != concurrency.ErrElectionNoLeader { 			return err 		} 	} else { // 已经有leader了 		c.Leader = string(resp.Kvs[0].Value) 		notify &lt;- (c.Leader == id) 	}  	if err = c.election.Campaign(context.TODO(), id); err != nil { 		log.WithError(err).WithField("id", id).Error("Campaign error") 		return err 	} else { 		log.Infoln("Campaign success!!!") 		c.Leader = id 		notify &lt;- true 	} 	c.election.Key() 	return nil } </code></pre> <p>参选： 将持续刷新的<code>leaseID</code>作为key，将特定的客户端标记(这里使用ip:port)作为value，写到etcd.</p> <p><strong>当选： 当前存活的、最早创建的key是leader ， 也就是说master/slave故障转移并不是随机的</strong>。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/1264d35cd994b6229251f7ae00d4d28b.jpg" alt="使用etcd选举sdk实践master/slave故障转移_在线工具"></p> <h4 id="3-watch-leader变更">3. watch leader变更</h4> <p>golang使用信道完成goroutine通信，</p> <p>本例声明信道： <code>notify = make(chan bool, 1)</code></p> <blockquote> <p>一石二鸟：标记集群leader是否发生变化；信道内传值表示当前节点是否是leader</p> </blockquote> <pre><code>func (c *Client) Watchloop(id string, notify chan&lt;- bool) error { 	ch := c.election.Observe(context.TODO()) // 观察leader变更 	tick := time.NewTicker(c.askTime)  	defer tick.Stop() 	for { 		var leader string  		select { 		case _ = &lt;-c.sessionCh: 			log.Warning("Recv session event") 			return fmt.Errorf("session Done") // 一次续约不稳，立马退出程序 		case e := &lt;-ch: 			log.WithField("event", e).Info("watch leader event") 			leader = string(e.Kvs[0].Value) 			ctx, cancel := context.WithTimeout(context.Background(), time.Second*3) 			defer cancel() 			resp, err := c.election.Leader(ctx) 			if err != nil { 				if err != concurrency.ErrElectionNoLeader { 					return err 				} else { // 目前没leader，开始竞选了 					if err = c.election.Campaign(context.TODO(), id); err != nil { 						log.WithError(err).WithField("id", id).Error("Campaign error") 						return err 					} else { // 竞选成功 						leader = id 					} 				} 			} else { 				leader = string(resp.Kvs[0].Value) 			} 		} 		if leader != c.Leader { 			log.WithField("before", c.Leader).WithField("after", leader == id).Info("leader changed") 			notify &lt;- (leader == id) 		} 		c.Leader = leader 	} } </code></pre> <p>c.election.Observe(context.TODO()) 返回最新的leader信息，配合<code>select case控制结构</code>能够及时拿到leader变更信息。</p> <p>如题：通过Leader字段和chan &lt;- bool， 掌控了整个选举集群的状态， 可根据这两个信息去完成业务上的master/slave故障转移。</p> <h2 id="使用etcdctl确定leader">使用etcdctl确定leader</h2> <p>election.Leader的源码证明了[当前存活的，最早创建的kv为leader]</p> <pre><code>// Leader returns the leader value for the current election. func (e *Election) Leader(ctx context.Context) (*v3.GetResponse, error) { 	client := e.session.Client() 	resp, err := client.Get(ctx, e.keyPrefix, v3.WithFirstCreate()...) 	if err != nil { 		return nil, err 	} else if len(resp.Kvs) == 0 { 		// no leader currently elected 		return nil, ErrElectionNoLeader 	} 	return resp, nil } </code></pre> <p>等价于<code>./etcdctl  --endpoints=127.0.0.1:2379 get  /merc --prefix  --sort-by=CREATE  --order=ASCEND  --limit=1</code></p> <blockquote> <p>--sort-by ：以x标准(创建时间)检索数据<br /> -- order ： 以升降序对已检出的数据排序<br /> -- limit： 从已检出的数据中取x条数据显示</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36644.htm">宠物粮网店运营策划方案怎么写（宠物粮网店运营策划方案怎么写好）</a></p>
+                                        <p>下一个：<a href="/news/article-37125.htm">宠物领养电子合同模板怎么写（宠物领养合同内容）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-hiddify-next-node.htm" title="「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22986.htm" title="圣诞节送什么给男生好(圣诞节送什么给男生比较好)">圣诞节送什么给男生好(圣诞节送什么给男生比较好)</a></li>
+                        <li class="py-2"><a href="/news/article-20693.htm" title="运城市动物园营业时间（运城市动物园营业时间最新）">运城市动物园营业时间（运城市动物园营业时间最新）</a></li>
+                        <li class="py-2"><a href="/news/article-30440.htm" title="C语言实现扫雷游戏（代码）">C语言实现扫雷游戏（代码）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-today-hiddify-next-node.htm" title="「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-29015.htm" title="动物疫苗接种时间表图片高清版 动物疫苗接种时间表图片高清版大全">动物疫苗接种时间表图片高清版 动物疫苗接种时间表图片高清版大全</a></li>
+                        <li class="py-2"><a href="/news/article-30441.htm" title="在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）">在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）</a></li>
+                        <li class="py-2"><a href="/news/article-18892.htm" title="领养宠物需要具备什么条件才能领养（领养宠物需要什么条件和费用）">领养宠物需要具备什么条件才能领养（领养宠物需要什么条件和费用）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-node-subscribe-links.htm" title="「10月30日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月30日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-hiddify-next-github.htm" title="「12月19日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月19日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-37736.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MySQL主从复制和读写分离</title>
+        <meta name="description" content="数据库的拆分 分库分表：属于数据库的一种数据拆分。 单表数据过大进行拆分：考虑大数据过大和磁盘读取速度问题，首先应该进行分库。 如500G在一个库： 1、分库（分到两个MySQL数据库中）   垂直分" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>MySQL主从复制和读写分离</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>数据库的拆分</strong></p> <p><strong>分库分表</strong>：属于数据库的一种数据拆分。</p> <p><strong>单表数据过大进行拆分</strong>：考虑大数据过大和磁盘读取速度问题，首先应该进行分库。</p> <p><strong>如500G在一个库</strong>：</p> <p><strong>1、分库（分到两个MySQL数据库中）</strong></p> <ol> <li> <p>垂直分库：按照业务拆分</p> </li> <li> <p>水平分库：统一业务的数据进行拆分（把同一个表的数据进行拆分成两张以上的表）</p> </li> </ol> <p><strong>MySQL主动复制</strong></p> <p>数据库也有可能出现问题，所以需要数据自动备份。MySQL提供了主从备份功能。</p> <p><strong>MySQL的权限</strong></p> <p>数据库是安全性比较高的存储设备，权限管理是数据库中非常重要的一块。以下是数据库的所有权限：</p> <table> <thead> <tr> <th>权限</th> <th>权限级别</th> <th>权限说明</th> </tr> </thead> <tbody> <tr> <td>CREATE</td> <td>数据库、表、索引</td> <td>创建数据库、表或索引权限</td> </tr> <tr> <td>DROP</td> <td>数据库、表</td> <td>删除数据库或表权限</td> </tr> <tr> <td>GRANT OPTION</td> <td>数据库、表</td> <td>赋予权限选项</td> </tr> <tr> <td>REFERENCES</td> <td>数据库或表</td> <td></td> </tr> <tr> <td>ALTER</td> <td>表</td> <td>更改表，比如添加字段、索引等</td> </tr> <tr> <td>DELETE</td> <td>表</td> <td>删除数据权限</td> </tr> <tr> <td>INDEX</td> <td>表</td> <td>索引权限</td> </tr> <tr> <td>INSERT</td> <td>表</td> <td>插入权限</td> </tr> <tr> <td>SELECT</td> <td>表</td> <td>查询权限</td> </tr> <tr> <td>UPDATE</td> <td>表</td> <td>更新权限</td> </tr> <tr> <td>CREATE VIEW</td> <td>视图</td> <td>创建视图权限</td> </tr> <tr> <td>SHOW VIEW</td> <td>视图</td> <td>查看视图权限</td> </tr> <tr> <td>ALTER ROUTINE</td> <td>存储过程</td> <td>更改存储过程权限</td> </tr> <tr> <td>CREATE ROUTINE</td> <td>存储过程</td> <td>创建存储过程权限</td> </tr> <tr> <td>EXECUTE</td> <td>存储过程</td> <td>执行存储过程权限</td> </tr> <tr> <td>FILE</td> <td>服务器主机上的文件访问</td> <td>文件访问权限</td> </tr> <tr> <td>CREATE TEMPORARY TABLES</td> <td>服务器管理</td> <td>创建临时表权限</td> </tr> <tr> <td>LOCK TABLES</td> <td>服务器管理</td> <td>锁表权限</td> </tr> <tr> <td>CREATE USER</td> <td>服务器管理</td> <td>创建用户权限</td> </tr> <tr> <td>PROCESS</td> <td>服务器管理</td> <td>查看进程权限</td> </tr> <tr> <td>RELOAD</td> <td>服务器管理</td> <td>执行flush-hosts, flush-logs, flush-privileges, flush-status, flush-tables, flush-threads, refresh, reload等命令的权限</td> </tr> <tr> <td>REPLICATION CLIENT</td> <td>服务器管理</td> <td>复制权限</td> </tr> <tr> <td>REPLICATION SLAVE</td> <td>服务器管理</td> <td>复制权限</td> </tr> <tr> <td>SHOW DATABASES</td> <td>服务器管理</td> <td>查看数据库权限</td> </tr> <tr> <td>SHUTDOWN</td> <td>服务器管理</td> <td>关闭数据库权限</td> </tr> <tr> <td>SUPER</td> <td>服务器管理</td> <td>执行kill线程权限</td> </tr> <tr> <td>all privileges</td> <td>所有权限</td> <td>拥有所有权限</td> </tr> </tbody> </table> <p><strong>授权语句</strong></p> <p>Grant 权限1，权限2，权限3 ON 数据库.表 TO 用户@‘IP地址’ IDENTIFIED BY ‘密码’ 。</p> <p>如：<br /> 授权用户删除表的权限：<br /> Grant DROP TO zhangsan@’%’ IDENTIFIED BY ‘123456’.</p> <p><strong>一、主从复制（分区）</strong></p> <p>故名思意，至少需要两台MySQL服务器，一台主（写）服务器（Master），一台从（读）服务器（Slave）。写在主服务器上的数据会自动同步到从服务器上。（windows作为从服务器、虚拟机linux作为主服务器）</p> <p>ysql_master_slave.pn</p> <p><strong>1.1、在主服务器上创建一个能远程访问的账户</strong></p> <p>从服务器同步主服务器的数据，需要登录主服务器。因此，需要一个账户用来做主从负责的工作。</p> <p>GRANT REPLICATION SLAVE,RELOAD,SUPER ON<em>.</em> TO root@’%’ IDENTIFIED BY ‘123456’;<br /> %是表示匹配所有IP地址</p> <p>其中192.168.72.188是从服务器的IP地址。“123456”是登录密码</p> <p>REPLICATION SLAVE：复制权限</p> <p>RELOAD：刷新配置和重新加载配置的权限</p> <p>SUPER：kill线程的权限。</p> <p><strong>1.2、配置Master</strong></p> <ol> <li>在/etc/文件夹下，进入my.cnf文件，</li> <li>在配置文件[mysqld]加入如下值：<br /> server-id=1 //主服务器的id值<br /> log-bin=mysql-bin //二进制变更日值</li> </ol> <p>以上配置为开启MySQL服务器的log-bin日志记录。比如：</p> <p>[mysqld]<br /> server-id=1 //服务器ID<br /> log-bin=mysql-bin //开启日志记录<br /> binlog-do-db=java1706 //只同步配置的这个数据库</p> <p><strong>1.3、重启Master服务器</strong></p> <pre><code>service mysql restart;</code></pre> <p>重启完成之后，测试是否配置成功，执行如下命令：</p> <pre><code>mysql&gt; SHOW MASTER STATUS ysql_master_slave2.pn</code></pre> <p><strong>1.4、配置Slave</strong></p> <p>在etc文件下进入my.cnf文件加上server-id= 131（如下图：下图是在windows环境下的my.ini配置）</p> <pre><code>ysql_master_slave3.pn</code></pre> <p>windows下的my.ini在MySQL安装目录下（比如：C:\ProgramData（隐藏文件夹）\MySQL\MySQL Server 5.7\my.ini）。 如果是Linux服务器下的mysql配置，测同Master配置路径。</p> <p><strong>1.5、重启Slave</strong></p> <ol> <li> <p><strong>linux</strong>:<br /> service mysql restart</p> </li> <li> <p><strong>windows</strong>:<br /> 右键选择MySQL启动图标，选择重启。</p> <p>进入计算机管理中的“服务”，选择mysql服务，右键关闭和开启</p> </li> </ol> <p><strong>1.6、slave连接到Master</strong></p> <p>change master to master_host=‘主服务器ip’,master_user=‘root’,master_password=‘123456’;（连接主服务器）<br /> 然后查看是否连通：SHOW SLAVE STATUS。<br /> ysql_master_slave<br /> Slave_IO_Running, 和Slave_SQL_Running是No表明slave还没有开始复制过程。<br /> 日志的位置为4而不是0，这是因为0只是日志文件的开始位置，并不是日志位置。（等于日志前有空格，日志没有顶格输入）。</p> <p><strong>1.7、开始主从复制</strong></p> <p>start slave<br /> 之后可以再看结果：SHOW SLAVE STATUS.</p> <p>如果结果不是两个yes，执行SHOW SLAVE STATUS命令后，在表中有一个log字段描述了错误原因;<br /> ysql_master_slave</p> <p>Slave_IO_Running, 和Slave_SQL_Running是yes则表示成功。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-37125.htm">宠物领养电子合同模板怎么写（宠物领养合同内容）</a></p>
+                                        <p>下一个：<a href="/news/article-37737.htm">成都宠物托运价格表最新消息（成都宠物托运价格表最新消息电话）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-33293.htm" title="芭比堂宠物医院收费（芭比堂宠物医院收费多少）">芭比堂宠物医院收费（芭比堂宠物医院收费多少）</a></li>
+                        <li class="py-2"><a href="/news/article-27156.htm" title="宠物品牌排行前十名（知名宠物品牌）">宠物品牌排行前十名（知名宠物品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-hiddify-next-github.htm" title="「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月23日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22074.htm" title="开宠物店去哪里进货渠道（开宠物店去哪里进货渠道好）">开宠物店去哪里进货渠道（开宠物店去哪里进货渠道好）</a></li>
+                        <li class="py-2"><a href="/news/article-36081.htm" title="仓鼠皮癣会传染人吗视频（仓鼠长皮癣）">仓鼠皮癣会传染人吗视频（仓鼠长皮癣）</a></li>
+                        <li class="py-2"><a href="/news/article-30920.htm" title="家庭式宠物寄养平台（家庭式宠物寄养平台朝阳区）">家庭式宠物寄养平台（家庭式宠物寄养平台朝阳区）</a></li>
+                        <li class="py-2"><a href="/news/article-27623.htm" title="中牧的疫苗质量怎么样 中牧的疫苗质量怎么样啊">中牧的疫苗质量怎么样 中牧的疫苗质量怎么样啊</a></li>
+                        <li class="py-2"><a href="/news/article-35728.htm" title="女人养猫的好处和坏处有哪些（女人养猫的好处和坏处有哪些图片）">女人养猫的好处和坏处有哪些（女人养猫的好处和坏处有哪些图片）</a></li>
+                        <li class="py-2"><a href="/news/article-34730.htm" title="动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）">动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-hiddify-next-node-share.htm" title="「12月1日」最高速度20.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月1日」最高速度20.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

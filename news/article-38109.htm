@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-38109.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>正则表达式（二）(python) ——21天养成好习惯</title>
+        <meta name="description" content="python 目录 系列文章目录 前言 一、什么是元字符 二、基本元字符有哪些 三丶元字符的使用和一些注意事项 &nbsp; &nbsp;&nbsp;A:简单使用 &nbsp;B:整体匹配 &nbsp" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>正则表达式（二）(python) ——21天养成好习惯</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p><span style="color:#999aaa;">python</span></p> <p id="main-toc"><strong>目录</strong></p> <p id="%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95-toc" style="margin-left:0px;"><a href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="系列文章目录" rel="nofollow">系列文章目录</a></p> <p id="%E5%89%8D%E8%A8%80-toc" style="margin-left:0px;"><a href="#%E5%89%8D%E8%A8%80" title="前言" rel="nofollow">前言</a></p> <p id="%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83%E5%AD%97%E7%AC%A6-toc" style="margin-left:0px;"><a href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83%E5%AD%97%E7%AC%A6" title="一、什么是元字符" rel="nofollow">一、什么是元字符</a></p> <p id="%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E5%85%83%E5%AD%97%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B-toc" style="margin-left:0px;"><a href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E5%85%83%E5%AD%97%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B" title="二、基本元字符有哪些" rel="nofollow">二、基本元字符有哪些</a></p> <p id="%E4%B8%89%E4%B8%B6%E5%85%83%E5%AD%97%E7%AC%A6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-toc" style="margin-left:40px;"><a href="#%E4%B8%89%E4%B8%B6%E5%85%83%E5%AD%97%E7%AC%A6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9" title="三丶元字符的使用和一些注意事项" rel="nofollow">三丶元字符的使用和一些注意事项</a></p> <p id="%C2%A0%20%C2%A0%C2%A0A%3A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8-toc" style="margin-left:80px;"><a href="#%C2%A0%20%C2%A0%C2%A0A%3A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8" title="&nbsp; &nbsp;&nbsp;A:简单使用" rel="nofollow">&nbsp; &nbsp;&nbsp;A:简单使用</a></p> <p id="%C2%A0B%3A%E6%95%B4%E4%BD%93%E5%8C%B9%E9%85%8D-toc" style="margin-left:80px;"><a href="#%C2%A0B%3A%E6%95%B4%E4%BD%93%E5%8C%B9%E9%85%8D" title="&nbsp;B:整体匹配" rel="nofollow">&nbsp;B:整体匹配</a></p> <p id="%C2%A0C%3A%C2%A0%20%7C%20%E4%B8%8E%20%5B%5D%20%E9%80%89%E6%8B%A9-toc" style="margin-left:80px;"><a href="#%C2%A0C%3A%C2%A0%20%7C%20%E4%B8%8E%20%5B%5D%20%E9%80%89%E6%8B%A9" title="&nbsp;C:&nbsp; | 与 [] 选择" rel="nofollow">&nbsp;C:&nbsp; | 与 [] 选择</a></p> <p id="D%3A%C2%A0%20%C2%A0()%E5%88%86%E7%BB%84-toc" style="margin-left:80px;"><a href="#D%3A%C2%A0%20%C2%A0%28%29%E5%88%86%E7%BB%84" title="D:&nbsp; &nbsp;()分组" rel="nofollow">D:&nbsp; &nbsp;()分组</a></p> <p id="%E6%80%BB%E7%BB%93-toc" style="margin-left:0px;"><a href="#%E6%80%BB%E7%BB%93" title="总结" rel="nofollow">总结</a></p> <hr id="hr-toc"/> <hr/> </h1> <p><span style="color:#999aaa;">今天写一下我对正则表达式元字符的理解，和一些匹配例子把，</span></p> <hr/> </h1> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 元字符我的理解是正则查找条件代码的字符</p> </h1> <hr/> <p><img fetchpriority="high" decoding="async" alt="" height="660" src="http://img.555519.xyz/uploads/20230119/fb331f60a6f3519e6a50c71be0be6388.jpg"></p> <p>&nbsp;以上差不多是会使用的一些基本的元字符匹配，下面简单运用几个说明一下</p> <h2 id="%E4%B8%89%E4%B8%B6%E5%85%83%E5%AD%97%E7%AC%A6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">三丶元字符的使用和一些注意事项</h2> <h3 id="%C2%A0%20%C2%A0%C2%A0A%3A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">&nbsp; &nbsp;&nbsp;A:简单使用</h3> <pre><code class="language-python">import re msg = 'A2bdhsg22sg2134dk555K2lk7ds5zjfl' result = re.findall('[a-zA-Z][0-9][a-zA-Z]',msg) print(result)#['A2b', 'K2l', 'k7d', 's5z'] '''当然也可以这样写''' result = re.findall(r'[A-Za-z]\d[a-zA-Z]',msg) print(result)#['A2b', 'K2l', 'k7d', 's5z'] # 如果中间有多位数字 a55h a46465h # 可以使用 + 至少出现一次 或者多次 result = re.findall(r'[A-Za-z]\d+[a-zA-Z]',msg) print(result)#['A2b', 'g22s', 'g2134d', 'k555K', 'k7d', 's5z'] </code></pre> <p>注意 ：转移字符\d 所有我们前面加个r 或者写\\ 都能完成匹配 # 后是结果</p> <h3 id="%C2%A0B%3A%E6%95%B4%E4%BD%93%E5%8C%B9%E9%85%8D">&nbsp;B:整体匹配</h3> <hr/> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;举一个简单的例子 我们要匹配一个身份证号18位数不含x, 身份证开头不能为0</p> <pre><code class="language-python">num2='123456789012345678' result2 = re.match('[1-9][0-9]{17}',num2) print(result2)#&lt;re.Match object; span=(0, 18), match='123456789012345678'&gt; num2='1234567890123456785555' result2 = re.match('[1-9][0-9]{17}',num2) print(result2)#&lt;re.Match object; span=(0, 18), match='123456789012345678'&gt;</code></pre> <p>&nbsp; 发现超过位数18位为我们还是可以成功匹配到，所以我们需要对整体进行匹配 加入元字符‘$' 和'^'</p> <p>进行匹配&nbsp;</p> <p><img decoding="async" alt="" height="693" src="http://img.555519.xyz/uploads/20230119/00ba1cb786bf72915e816826cead4f28.jpg"></p> <h3 id="%C2%A0C%3A%C2%A0%20%7C%20%E4%B8%8E%20%5B%5D%20%E9%80%89%E6%8B%A9">&nbsp;C:&nbsp; | 与 [] 选择</h3> <hr/> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在我们需要判断他是否唯一个合法的电子邮箱（126.qq.163)地址 该如何写出正则表达式：邮箱的格式应该是 xxxx@xx.xx.com eg: 24775366510@qq.com&nbsp;24775366510@163.com&nbsp; 不能以数字0开头 前面数字5-12位：</p> <pre><code class="language-python">email1 = '2477723@qq.com' email2 = '2477723@126.com' email3 = '24775dsjal23@163.com' result1 = re.match(r'[1-9]\d{4,11}@(qq|126|163)\.com',email1) result2 = re.match(r'[1-9]\d{4,11}@(qq|126|163)\.com',email2) result3 = re.match(r'[1-9]\d{4,11}@(qq|126|163)\.com',email3) print(result1)#&lt;re.Match object; span=(0, 14), match='2477723@qq.com'&gt; print(result2)#&lt;re.Match object; span=(0, 15), match='2477723@126.com'&gt; print(result3)#None</code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; | 元字符是选择字符串进行 而 []&nbsp; 是选择单个字符进行匹配</p> <h3 id="D%3A%C2%A0%20%C2%A0()%E5%88%86%E7%BB%84">D:&nbsp; &nbsp;()分组</h3> <hr/> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最后一个问题说一下分组 前面已经说过可以通过group 获取内容，现在讲一下分组，国际电话 xxx-xxxx形式，我们可以通过分组的形式分别获取前面的国家编号和电话内容</p> <p><img decoding="async" alt="" height="386" src="http://img.555519.xyz/uploads/20230119/b03d2b8567c8025af820e5a172d656c3.jpg"></p> <p>&nbsp;分组常用对网页标签的获取</p> <p>&nbsp;<img loading="lazy" decoding="async" alt="" height="463" src="http://img.555519.xyz/uploads/20230119/d4d29c4efeb0f0671a457dfecbe908cb.jpg"></p> <p>&nbsp; &nbsp;&nbsp;</p> <hr/> </h1> <p>ok 正则表达式大概我就介绍完了，贪婪匹配先欠着 ，下次写python 数据分析numpy 库的使用了 我刚学希望一起学习， 如果可以一起监督学习的话，可以私聊我一起哈哈哈虽然我很懒的&nbsp;这大概是我学习的方向 明天写个学习计划</p> <p><img loading="lazy" decoding="async" alt="" height="540" src="http://img.555519.xyz/uploads/20230119/036c99349c3b235786c02a5c2981be92.jpg"></p> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-37737.htm">成都宠物托运价格表最新消息（成都宠物托运价格表最新消息电话）</a></p>
+                                        <p>下一个：<a href="/news/article-38110.htm">宠物用品一件代发货源有哪些（宠物用品代理怎么做）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-hiddify-next-node-share.htm" title="「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月14日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-node-subscribe-links.htm" title="「12月29日」最高速度21.1M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月29日」最高速度21.1M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-20694.htm" title="猫咪三针疫苗间隔多久打一次啊（猫的三针疫苗相隔多久）">猫咪三针疫苗间隔多久打一次啊（猫的三针疫苗相隔多久）</a></li>
+                        <li class="py-2"><a href="/news/article-29482.htm" title="宠物领养需要带什么证件吗北京（北京正规领养宠物）">宠物领养需要带什么证件吗北京（北京正规领养宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-hiddify-next-node.htm" title="「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-free-high-speed-nodes.htm" title="「10月13日」最高速度18.6M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月13日」最高速度18.6M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-26208.htm" title="vue-cli4.0脚手架中路由的配置过程">vue-cli4.0脚手架中路由的配置过程</a></li>
+                        <li class="py-2"><a href="/news/article-30441.htm" title="在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）">在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）</a></li>
+                        <li class="py-2"><a href="/news/article-37125.htm" title="宠物领养电子合同模板怎么写（宠物领养合同内容）">宠物领养电子合同模板怎么写（宠物领养合同内容）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-node-share.htm" title="「12月10日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月10日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

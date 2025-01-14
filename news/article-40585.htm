@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-40585.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python中os.path模块</title>
+        <meta name="description" content="os.path模块是os模块根据系统类型从另一个模块导入的，并非由os模块实现 1、os.path.abspath（相对路径）-----返回对应路径的绝对路径 os.path.abspath(".")" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>python中os.path模块</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>os.path模块是os模块根据系统类型从另一个模块导入的，并非由os模块实现</p> <p>1、os.path.abspath（相对路径）-----返回对应路径的绝对路径 os.path.abspath(".")</p> <pre><code>import os.path print(os.path.abspath("."))</code></pre> <blockquote> <p>E:\python练习</p> </blockquote> <p>上一层路径“..”</p> <pre><code>import os.path print(os.path.abspath(".."))</code></pre> <blockquote> <p>E:\</p> </blockquote> <p>2、os.path.altsep 查看python中的各个符号（了解）</p> <p>3、os.path.dirname（）-----目录提取函数</p> <p>使用后可以得知文件所在目录，同时它可以从下往上一层一层提取目录，使用后路径会少一层目录</p> <pre><code>import os.path path = "E:/python/test/os.path" print(os.path.dirname(path)) print(os.path.dirname(os.path.dirname(path)))</code></pre> <blockquote> <p>E:/python/test<br /> E:/python</p> </blockquote> <p>注意：如果提供一个空字符串则返回当前文件所在目录的绝对路径，如果提供不带路径分割符的字符串则会返回绝对路径加上该字符串，但当字符串中有路径分割符则会把该字符串当做绝对路径返回</p> <p>4、os.path.basename（）--文件名称</p> <p>可以提取出文件名称</p> <p>5、os.path.exists ----判断文件或者目录是否存在（特别有用，使用爬虫的时候)</p> <p>存在返回True，否则返回False；Windows下如果目标路径为链接文件则会返回False</p> <pre><code>import os.path print(os.path.exists("E:\python练习"))</code></pre> <blockquote> <p>True</p> </blockquote> <p>6、os.path.getatime（path） -----返回最后一次访问指定路径的时间</p> <p>7、os.path.getctime （path）-----获取系统指定路径的ctime（ctime指的是UNIX中指定路径的最后一次元数据更改）</p> <p>8、os.path.getmtime （path）-----获取指定路径的最后修改时间</p> <p>9、os.path.getsize -----获取文件的大小，单位是字节</p> <p>10、os.path.isdir -----判断Path是不是目录(文件夹)</p> <pre><code>import os.path print(os.path.isdir("E:\python练习"))</code></pre> <blockquote> <p>True</p> </blockquote> <p>11、os.path.isfile -----判断Path是不是文件</p> <pre><code>import os.path print(os.path.exists("demo1.py"))</code></pre> <blockquote> <p>True</p> </blockquote> <p>如果只给定文件名，则会默认搜索路径为当前路径</p> <p>12、os.path.isabs ---判断是不是绝对路径</p> <pre><code>import os.path print(os.path.isabs("E:\python练习")) print(os.path.isabs("python练习"))</code></pre> <blockquote> <p>True<br /> False</p> </blockquote> <p>13、os.path.islink（path） ----判断给定的文件路径是不是链接</p> <p>在Windows下是直接返回False，只可在Linux下使用</p> <p>14、os.path.ismount ----判断是不是挂载文件（Linux下使用)</p> <p>15、os.path.join （path1,path2）------路径拼接函数</p> <pre><code>import os.path print(os.path.join("python","test","os.path"))</code></pre> <blockquote> <p>python\test\os.path</p> </blockquote> <p>16、os.path.pathjion(url,name)</p> <p>17、os.path.sep -----路径的分隔符</p> <p>18、os.path.split（path）-----分割路径</p> <p>此函数会找到path中的最后一个斜杠并对斜杠两边进行分割，返回值为元组（斜杠前部分和斜杠后部分）</p> <pre><code>import os.path print(os.path.split("E:\python练习\test\os.path")) print(os.path.split("E:\python练习\test\\"))</code></pre> <blockquote> <p>('E:\\python练习\test', 'os.path')<br /> ('E:\\python练习\test', '')</p> </blockquote> <p>注意：当斜杠后没内容时，则斜杠后部分为空</p> <p>19、os.path.realpath ----返回真实的路径和abspath是一样的</p> <p>返回所对应的真实文件的路径</p> <pre><code>import os.path print(os.path.realpath("."))</code></pre> <blockquote> <p>E:\python练习</p> </blockquote></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40101.htm">小型宠物粮食加工设备厂家电话地址（宠物粮食加工厂需要投资多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-40586.htm">springboot项目 Feign调用时，@RequestBody 接受字符串(String),json字符串多出引号</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-38602.htm" title="javascript删除数组元素的7个方法">javascript删除数组元素的7个方法</a></li>
+                        <li class="py-2"><a href="/news/article-21611.htm" title="北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）">北京宠爱国际动物医疗机构地址（北京宠爱国际动物医疗机构地址查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-node-share-links.htm" title="「1月11日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月11日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-34730.htm" title="动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）">动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-node-share-links.htm" title="「10月9日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月9日」最高速度20.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-32354.htm" title="Redis 缓存的三大问题及其解决方案">Redis 缓存的三大问题及其解决方案</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-hiddify-next-node.htm" title="「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月15日」最高速度18.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-today-hiddify-next-node.htm" title="「1月4日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月4日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-36081.htm" title="仓鼠皮癣会传染人吗视频（仓鼠长皮癣）">仓鼠皮癣会传染人吗视频（仓鼠长皮癣）</a></li>
+                        <li class="py-2"><a href="/news/article-24347.htm" title="兽用疫苗过敏如何处理（兽用疫苗过敏如何处理好）">兽用疫苗过敏如何处理（兽用疫苗过敏如何处理好）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

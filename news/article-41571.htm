@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-41571.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python实现自动整理文件_python_</title>
+        <meta name="description" content="前言： 平时工作没有养成分类的习惯，整个桌面杂乱无章都是文档和资料，几乎快占满整个屏幕了。所以必须要整理一下了，今天我们来看下用python如何批量将不同后缀的文件移动到同一文件夹。 演示效果：  使" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>python实现自动整理文件_python_</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p><strong>前言：</strong></p> <p>平时工作没有养成分类的习惯，整个桌面杂乱无章都是文档和资料，几乎快占满整个屏幕了。所以必须要整理一下了，今天我们来看下用python如何批量将不同后缀的文件移动到同一文件夹。</p> <p><strong>演示效果：</strong></p> <ul> <li>使用前</li> </ul> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220414/f2bb9ad27a95005925bfb287dc5ac4d5.jpg"></p> <ul> <li>使用后</li> </ul> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220414/e88f37e68df23bacec0d51aefda9a0be.jpg"></p> <p><strong>代码：</strong></p> <div class="ay1code"> <pre class="brush:py;"># # -*- coding:utf-8 -*-  import os  import glob  import shutil  import tkinter  import tkinter.filedialog  from datetime import datetime    def start():      root = tkinter.Tk()      root.withdraw()      dirname = tkinter.filedialog.askdirectory(parent=root,initialdir="/",title='请选择文件夹')      return dirname      # 定义一个文件字典，不同的文件类型，属于不同的文件夹  file_dict = {      "图片": ["jpeg", "jpg", "tiff", "gif", "bmp", "png", "bpg", "svg", "heif", "psd"],      "视频": ["avi", "flv", "wmv", "mov", "mp4", "webm", "vob", "mng", "qt", "mpg", "mpeg", "3gp", "mkv"],      "音频": ["aac", "aa", "aac", "dvf", "m4a", "m4b", "m4p", "mp3", "msv", "ogg", "oga", "raw", "vox", "wav", "wma"],      "文档": ["oxps", "epub", "pages", "docx", "doc", "fdf", "ods", "odt", "pwi", "xsn", "xps", "dotx", "docm", "dox",  "rvg", "rtf", "rtfd", "wpd", "xls", "xlsx","xlsm","ppt", "pptx", "csv", "pdf", "md","xmind"],      "压缩文件": ["a", "ar", "cpio", "iso", "tar", "gz", "rz", "7z", "dmg", "rar", "xar", "zip"],      "文本": ["txt", "in", "out","json","xml","log"],      "程序脚本": ["py", "html5", "html", "htm", "xhtml", "cpp", "java", "css","sql"],       '可执行程序': ['exe', 'bat', 'lnk', 'sys', 'com','apk'],      '字体文件': ['eot', 'otf', 'fon', 'font', 'ttf', 'ttc', 'woff', 'woff2','shx'],      '工程图文件':['bak','dwg','dxf','dwl','dwl2','stp','SLDPRT','ipj','ipt','idw']  }    # 定义一个函数，传入每个文件对应的后缀。判断文件是否存在于字典file_dict中；  # 如果存在，返回对应的文件夹名；如果不存在，将该文件夹命名为"未知分类"；  def JudgeFile(suffix):      for name, type_list in file_dict.items():          if suffix.lower() in type_list:              return name      return "未知分类"    if __name__ == '__main__':      try:          while True:              path = start()              print("----&gt;路径是: ",path)              if path == "":                  print("没有选择路径！")                  break              # 递归获取 "待处理文件路径" 下的所有文件和文件夹。              startTime = datetime.now().second              for file in glob.glob(f"{path}/**/*", recursive=True):                  # 由于我们是对文件分类，这里需要挑选出文件来。                  if os.path.isfile(file):                      # 由于isfile()函数，获取的是每个文件的全路径。这里再调用basename()函数，直接获取文件名；                      file_name = os.path.basename(file)                      suffix = file_name.split(".")[-1]                      # 判断 "文件名" 是否在字典中。                      name = JudgeFile(suffix)                      # 根据每个文件分类，创建各自对应的文件夹。                      if not os.path.exists(f"{path}\\{name}"):                          os.mkdir(f"{path}\\{name}")                          print('path--&gt;',name)                      # 将文件复制到各自对应的文件夹中。                      # shutil.copy(file, f"{path}\\{name}")                      # 将文件移动到各自对应的文件夹中。                      shutil.move(file, f"{path}\\{name}")              endTime = datetime.now().second              countTime= endTime-startTime              print("----&gt;已经整理完成。共花费 {} s".format(countTime))              a = input('----&gt;请按回车键退出:')              if a == '':                  break      except BaseException:          print('存在重复的文件！')</pre> </div> <p>执行起来很简单，只要写完程序，点击程运行，等待弹出窗口，选择需要整理的文件夹即可。</p> <p>如果觉得以上代码觉得复杂，可以尝试以下更为简单的程序。</p> <p><strong>如何实现文件自动分类？</strong></p> <p>同一目录下存在很多不同类型的资源条件</p> <ul> <li>1 .分类</li> <li>2.创建分类目录</li> <li>3.移动文件资源</li> </ul> <div class="ay1code"> <pre class="brush:py;">import os  import shutil  import tkinter  import tkinter.filedialog  from datetime import datetime    def start():      root = tkinter.Tk()      root.withdraw()      dirname = tkinter.filedialog.askdirectory(parent=root,initialdir="/",title='请选择文件夹')      return dirname    # 源文件存在路径  src_dir=start()  # 分类资源存在路径  dest_dir=src_dir  # 判断目录是否存在  if not os.path.exists(dest_dir):      os.mkdir(dest_dir)  # 源目录分析  files=os.listdir(src_dir)  for item in files:      src_path=os.path.join(src_dir,item)      # 判断状态      if os.path.isfile(src_path):          #如果是文件，进入代码块          # 判断文件资源的类型          ndir = item.split('.')[-1]          desc_path=os.path.join(dest_dir,ndir)          # 创建分类目录          if not os.path.exists(desc_path):              # 如果分类子目录不存在，创建              os.mkdir(desc_path)          shutil.move(src_path,desc_path)</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41092.htm">宠物粮批发网站哪个好一点（宠物粮从哪里进货便宜）</a></p>
+                                        <p>下一个：<a href="/news/article-41573.htm">宠物领养管理系统的开题答辩（宠物领养管理系统的开题答辩怎么写）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-hiddify-next-node-share.htm" title="「11月29日」最高速度21.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月29日」最高速度21.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-node-subscribe-links.htm" title="「1月12日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月12日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-hiddify-next-node-github.htm" title="「11月22日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月22日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-19777.htm" title="猫咪多长时间驱虫一次比较好（猫咪多少时间驱虫一次）">猫咪多长时间驱虫一次比较好（猫咪多少时间驱虫一次）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-subscribe-node.htm" title="「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-node-share-links.htm" title="「11月21日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月21日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-node-subscribe.htm" title="「12月30日」最高速度22M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月30日」最高速度22M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-29014.htm" title="kafka消费者执行异常重复消费_Kafka消费者的使用和原理">kafka消费者执行异常重复消费_Kafka消费者的使用和原理</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-today-hiddify-next-node.htm" title="「10月25日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月25日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-30920.htm" title="家庭式宠物寄养平台（家庭式宠物寄养平台朝阳区）">家庭式宠物寄养平台（家庭式宠物寄养平台朝阳区）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

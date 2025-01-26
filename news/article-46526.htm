@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-46526.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpringBoot 核心源码解读</title>
+        <meta name="description" content="Spring boot基本使用及 stater机制原理_踩踩踩从踩的博客-CSDN博客  前面文章对于springboot得基本使用以及stater机制 以及autoconfig 做了一个解读，如何手" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-46526.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="SpringBoot 核心源码解读" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/915ba27de3468ce66ef4ca58c2174e2a.webp" />
+        <meta property="og:release_date" content="2025-01-26T09:59:39" />
+    <meta property="og:updated_time" content="2025-01-26T09:59:39" />
+        <meta property="og:description" content="Spring boot基本使用及 stater机制原理_踩踩踩从踩的博客-CSDN博客  前面文章对于springboot得基本使用以及stater机制 以及autoconfig 做了一个解读，如何手" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot 核心源码解读">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>SpringBoot 核心源码解读</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_33373609/article/details/122892412?spm=1001.2014.3001.5501"  title="Spring boot基本使用及 stater机制原理_踩踩踩从踩的博客-CSDN博客" rel="nofollow">Spring boot基本使用及 stater机制原理_踩踩踩从踩的博客-CSDN博客</a></p> </h1> <p>前面文章对于springboot得基本使用以及stater机制 以及autoconfig 做了一个解读，如何手写一个starter的包，对于 自动装配 解读，有了个大概的思维；这篇文章继续讲解SpringBoot的核心源码 ，然后深入的解析整个Springboot怎么快速的构建项目 并管理我们的依赖jar包等等。</p> </h1> <h3><span style="color:#333333;"><strong>Application</strong></span><span style="color:#333333;"><strong>启动类</strong></span></h3> <div></div> <pre><code>@SpringBootApplication public class DeviceManagerApplication extends SpringBootServletInitializer {  	public static void main(String[] args) { 		SpringApplication.run(DeviceManagerApplication.class, args); 	}  	@Override 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) { 		return builder.sources(DeviceManagerApplication.class); 	}  }</code></pre> <div>  就注解&nbsp; 以及&nbsp; run方法</div> <div></div> <div><span style="color:#333333;"><strong>认识</strong></span><span style="color:#333333;"><strong>@SpringBootApplication注解</strong></span></div> <div><span style="color:#333333;"><strong></strong></span><span style="color:#aa5500;">//</span><span style="color:#aa5500;">没有指定包名，默认是加这个注解的类所在包</span></div> <div><img fetchpriority="high" decoding="async" alt="" height="72" src="http://img.555519.xyz/uploads3/20220902/7cce4edc7bd11f4313e01756c70928c6.jpg"></div> <div></div> <p><img decoding="async" alt="" height="667" src="http://img.555519.xyz/uploads3/20220902/b2c330c207e544273d2660ca990b09c2.jpg"></p> <div><span style="color:#333333;">@SpringBootApplication</span><span style="color:#333333;">是</span><span style="color:#333333;"> @Configuration @EnableAutoConfiguration @ComponentScan</span><span style="color:#333333;">三个注 解的复合</span></div> <div>  所有的 spring.factoies&nbsp; 所有的<span style="color:#333333;">EnableAutoConfiguration</span>&nbsp; 自动配置类。</div> <div></div> <div>  组成了原始的基本信息&nbsp; 基本注解。</div> <div></div> <div> <h3><span style="color:#333333;"><strong>入口方法</strong></span><span style="color:#333333;"><strong>SpringApplication.run</strong></span></h3> <p>对于springboot 只需要运行run方法就可以将我们的程序给运行起来。</p> </div> <div></div> <div> <pre><code>/** 	 * Static helper that can be used to run a {@link SpringApplication} from the 	 * specified source using default settings. 	 * @param primarySource the primary source to load 	 * @param args the application arguments (usually passed from a Java main method) 	 * @return the running {@link ApplicationContext} 	 */ 	public static ConfigurableApplicationContext run(Class&lt;?&gt; primarySource, String... args) { 		return run(new Class&lt;?&gt;[] { primarySource }, args); 	}</code></pre> <div><span style="color:#333333;">它的返回值：ConfigurableApplicationContext</span></div> <div></div> <div>   这个<span style="color:#333333;">ConfigurableApplicationContext</span>属于总的一个&nbsp; &nbsp;总的接口，也就是说可以创建的类可以是任意一个applicationcontext.</div> <div></div> <div><img decoding="async" alt="" height="703" src="http://img.555519.xyz/uploads3/20220902/35992ecab39bcd326fc1b17ac0d4a305.jpg"></div> <div></div> </div> <div>  对于<span style="color:#333333;"><strong>SpringApplication</strong></span>&nbsp;方法上的注释</div> <div> <p>该类，该类可用于从Java main引导和启动Spring应用程序方法。默认情况下，类将执行以下步骤来引导申请：</p> <p>下面的步骤&nbsp; 核心逻辑 就是&nbsp; 创建 applicationcontext&nbsp; 实例、</p> <p>并且 注册&nbsp;CommandLinePropertySource</p> <p>激活&nbsp;CommandLineRunner&nbsp; 这个接口&nbsp;&nbsp;用于指示当bean包含在&nbsp;&nbsp;一个{@link SpringApplication}。可以定义多个{@link CommandLineRunner}bean&nbsp;&nbsp;在同一个应用程序上下文中，可以使用{@link ordered}&nbsp;接口或{@link Order@Order}注释。&nbsp; 也就是说可以&nbsp; 查看当前springapplication创建了那些bean.</p> <p><img loading="lazy" decoding="async" alt="" height="241" src="http://img.555519.xyz/uploads3/20220902/06f296177db47573b85879f6e60f147b.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="499" src="http://img.555519.xyz/uploads3/20220902/9d48835a7de85687bc8d8d0f635705d1.jpg"></p> </div> <div></div> <div><span style="color:#333333;"><strong>SpringApplication</strong></span><span style="color:#333333;"><strong>构造方法解读</strong></span></div> <div></div> <div>  通过&nbsp; 构造的方式 springApplication 可以指定初始化器&nbsp; 以及 监听器等等。 都是可以使用的。</div> <div></div> <div> <div><span style="color:#000000;">setInitializers</span></div> <div></div> <div> <div><span style="color:#000000;">primarySources</span></div> <div><span style="color:#000000;">ApplicationListener</span></div> <div></div> <div><span style="color:#000000;">等等 都是可以构造的。</span></div> <div></div> </div> </div> <div><img loading="lazy" decoding="async" alt="" height="210" src="http://img.555519.xyz/uploads3/20220902/c52741faa3e6e755fc17d5fd0fb36563.jpg"></div> <div><img loading="lazy" decoding="async" alt="" height="210" src="http://img.555519.xyz/uploads3/20220902/9c6b7fee7fb1bc2ad9a1ccdb2944de38.jpg"></div> <pre><code>/**一：注释上的重要信息： 1、primary sources：application context从primarySource加载beans  	2、创建的SpringApplication实例在调用它的run(String...)方法前，可对其进行定制化设置 可以进行哪些设置？看类中提供的public方法。 	* Create a new {@link SpringApplication} instance. The application context will load * beans from the specified primary sources (see {@link SpringApplication class- level}  	* documentation for details. The instance can be customized before calling * {@link #run(String...)}.  	* @param resourceLoader the resource loader to use  	* @param primarySources the primary bean sources  	* @see #run(Class, String[])  	* @see #setSources(Set)  	*/@SuppressWarnings({ "unchecked", "rawtypes" })  	public SpringApplication(ResourceLoader resourceLoader, Class&lt;?&gt;... primarySources) {  		//二、构造方法中的逻辑：  		this.resourceLoader = resourceLoader;  		// 1、一定要指定primarySources  		Assert.notNull(primarySources, "PrimarySources must not be null"); 		this.primarySources = new LinkedHashSet&lt;&gt;(Arrays.asList(primarySources));  		// 2、deduce(推断)web类型(servlet、reactive、NoWeb)  		this.webApplicationType = WebApplicationType.deduceFromClasspath();  		// 3、从META-INF/spring.factories中获取 		ApplicationContextInitializer setInitializers((Collection)  		getSpringFactoriesInstances( ApplicationContextInitializer.class));  		// 4、从META-INF/spring.factories中获取 		ApplicationListener setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));  		// 5、推断执行的main方法的定义类 this.mainApplicationClass = deduceMainApplicationClass();  	}</code></pre> <p>webApplicationType&nbsp; 探测分配 是什么类型的 项目 ，其实是很简单的。 主要是判断 是否存在&nbsp; 父类</p> <p><img loading="lazy" decoding="async" alt="" height="352" src="http://img.555519.xyz/uploads3/20220902/df3944e113d87d689f6e066767d6b36e.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="383" src="http://img.555519.xyz/uploads3/20220902/a93eeafdc9cc3590f79b3d45afea6b08.jpg"></p> <p>创建获取实例， 将监听器都放进去就可以了。</p> <h3>对于<span style="color:#333333;">ApplicationContextInitializer</span></h3> <p><span style="color:#333333;">在初始化的时候会去调用</span></p> <p><img loading="lazy" decoding="async" alt="" height="345" src="http://img.555519.xyz/uploads3/20220902/e738f4930f8caee0e1838d64de365945.jpg"></p> <p>&nbsp;以及<span style="color:#333333;">ApplicationListener&nbsp; 是作为监听器存在的。</span></p> <h2><span style="color:#333333;"><strong>SpringApplication.run()</strong></span><span style="color:#333333;"><strong>实例方法解读</strong></span></h2> <div><span style="color:#333333;">相当于</span><span style="color:#333333;">ApplicationContext.refresh</span><span style="color:#333333;">一样重要</span></div> <div></div> <div></div> <div> <pre><code>/** 一：注释上的重要信息： 运行Spring application，创建并刷新一个 ApplicationContext    * Run the Spring application, creating and refreshing a new    * {@link ApplicationContext}.    * @param args the application arguments (usually passed from a Java main method)    * @return a running {@link ApplicationContext}    */   public ConfigurableApplicationContext run(String... args) {  	// 二、方法中的逻辑：    	// 1 StopWatch开启计时  	StopWatch stopWatch = new StopWatch();  	stopWatch.start();  	ConfigurableApplicationContext context = null;  Collection&lt;SpringBootExceptionReporter&gt; exceptionReporters = new ArrayList&lt;&gt; ();  	// 这是设置系统属性java.awt.headless，请百度了解 java.awt.headless的用途。 	configureHeadlessProperty();  	// 2、获取到 META-INF/spring.factories中配置的SpringApplicationRunListener  	// 疑问：又出一个Listener，这个SpringApplicationRunListener是监听什么的？ 	// 通过它的接口定义、注释了解它的用途  	SpringApplicationRunListeners listeners = getRunListeners(args);  	// 这里就调用它的starting()  	listeners.starting(); 	try { 		// 命令行参数包装为了ApplicationArguments  		ApplicationArguments applicationArguments = new DefaultApplicationArguments( args);  		// 3、准备好了Environment，此刻Environment中都有哪些配置参数了？ 		ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);  		configureIgnoreBeanInfo(environment);  		// 4、打印springboot LOGo图标  		Banner printedBanner = printBanner(environment);  		// 5、创建ApplicationContext context = createApplicationContext(); 		// 6、获取到 META-INF/spring.factories中配置的SpringBootExceptionReporter  		exceptionReporters = getSpringFactoriesInstances( SpringBootExceptionReporter.class, new Class[] {  		     ConfigurableApplicationContext.class }, context);  	     // 7、准备ApplicationContext  		 prepareContext(context, environment, listeners, applicationArguments, printedBanner);  		 // 8、刷新ApplicationContext  		 refreshContext(context);  		 afterRefresh(context, applicationArguments);  		 stopWatch.stop();  		 if (this.logStartupInfo) {  		     new StartupInfoLogger(this.mainApplicationClass) .logStarted(getApplicationLog(), stopWatch);  		}//  		9、发布started事件 listeners.started(context); 		// 10、执行所有的Runners  		callRunners(context, applicationArguments);  	}catch (Throwable ex) {  	   handleRunFailure(context, ex, exceptionReporters, listeners);  	   throw new IllegalStateException(ex);     }     try { 	// 11、发布running中事件  	listeners.running(context);       }catch (Throwable ex) {  	   handleRunFailure(context, ex, exceptionReporters, null);  	   throw new IllegalStateException(ex);  	 } 	// 12、返回ok的ConfigurableApplicationContext return context;  	}</code></pre> </div> <p>configureHeadlessProperty 方法&nbsp;该方法只做了一件事:设置了一个名为java.awt.headless的系统属性</p> <pre><code>	private void configureHeadlessProperty() { 		System.setProperty(SYSTEM_PROPERTY_JAVA_AWT_HEADLESS, 				System.getProperty(SYSTEM_PROPERTY_JAVA_AWT_HEADLESS, Boolean.toString(this.headless))); 	}</code></pre> <p>SpringApplicationRunListeners&nbsp; 返回<span style="color:#0d0016;">的所有&nbsp;SpringApplicationRunListener&nbsp;&nbsp;监听器&nbsp; ，&nbsp; 这里面就是 监听 它失败 等等状态。</span></p> <pre><code>	private SpringApplicationRunListeners getRunListeners(String[] args) { 		Class&lt;?&gt;[] types = new Class&lt;?&gt;[] { SpringApplication.class, String[].class }; 		return new SpringApplicationRunListeners(logger, 				getSpringFactoriesInstances(SpringApplicationRunListener.class, types, this, args), 				this.applicationStartup); 	}</code></pre> <p><img loading="lazy" decoding="async" alt="" height="364" src="http://img.555519.xyz/uploads3/20220902/dd335714e4499086a950cf5005d03be2.jpg"></p> <p>&nbsp;准备参数&nbsp;DefaultApplicationArguments&nbsp; 本身需要处理</p> <p><img loading="lazy" decoding="async" alt="" height="531" src="http://img.555519.xyz/uploads3/20220902/36927311f7fabe9c609df9ea1c8cc546.jpg"></p> <h3><span style="color:#0d0016;"><strong>其中比较重要的prepareEnvironment&nbsp; &nbsp;Environment中都有哪些配置参数</strong></span></h3> <div><span style="color:#0d0016;">根据应用类型，创建对应的Environment对象，会装载环境变量、系统参数、具体应用类型配置参</span></div> <div><span style="color:#0d0016;">数</span></div> <div> <div><span style="color:#0d0016;">配置环境：加入命令行参数PropertySource,配置启用的profiles</span></div> </div> <p><span style="color:#0d0016;">&nbsp;触发RunListener环境准备完成回调</span></p> <div><span style="color:#0d0016;">将environment绑定到SpringApplication</span></div> <div></div> <div></div> <p><img loading="lazy" decoding="async" alt="" height="534" src="http://img.555519.xyz/uploads3/20220902/dd86a9f219ac7115c9dc28a0fbc862b0.jpg"></p> <p>根据类型加载 不同的参数。</p> <p><img loading="lazy" decoding="async" alt="" height="282" src="http://img.555519.xyz/uploads3/20220902/66233c60a571115988c81bdf3fa0146c.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="323" src="http://img.555519.xyz/uploads3/20220902/aee1651dc9571ece3e99f3316b4db7ee.jpg"></p> <p>&nbsp;ConfigurationPropertySources</p> <p><img loading="lazy" decoding="async" alt="" height="201" src="http://img.555519.xyz/uploads3/20220902/147bd83e7ea18f6a8a394f1171b35033.jpg"></p> <p><span style="color:#0d0016;">包括各种 的配置启用的profiles &nbsp; &nbsp;也可以指定 profiles&nbsp; &nbsp;所以可以取出来做处理。</span></p> <p><img loading="lazy" decoding="async" alt="" height="412" src="http://img.555519.xyz/uploads3/20220902/d4845d6c50d66eb836b6c10785b22fb4.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="155" src="http://img.555519.xyz/uploads3/20220902/1010107e2676e513b49dc092763c7460.jpg"></p> <p>&nbsp;环境上准备 就有的这个。 参数配置</p> <div><span style="color:#333333;">ConfigFileApplicationListener&nbsp; &nbsp;这里是所有的配置&nbsp; &nbsp;包括配置的名称 和 路径。&nbsp; 名字 以及加载</span></div> <div></div> <div></div> <div>  主要在&nbsp;starter包 中</div> <div><img loading="lazy" decoding="async" alt="" height="464" src="http://img.555519.xyz/uploads3/20220902/941cda58e382108eb94fde2ee0b7070a.jpg"></div> <h3><img loading="lazy" decoding="async" alt="" height="277" src="http://img.555519.xyz/uploads3/20220902/dcd72d15bc1330e31474754f9be488a2.jpg"></h3> <p>这里面就是&nbsp; 加载的配置参数。</p> <div><span style="color:#333333;">实现的</span><span style="color:#333333;">ApplicationListener</span><span style="color:#333333;">方法</span></div> <p><img loading="lazy" decoding="async" alt="" height="245" src="http://img.555519.xyz/uploads3/20220902/1fce9f9eb8c95d662c0d059c2a40df97.jpg"></p> <p>&nbsp;会将事件给发布出来。</p> <p><img loading="lazy" decoding="async" alt="" height="413" src="http://img.555519.xyz/uploads3/20220902/28a6a26358fe70bf5d7e1f425b32f77f.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="449" src="http://img.555519.xyz/uploads3/20220902/7c532776e0392fd4deb4ae5858cdefff.jpg"></p> <p>&nbsp;完整的加载过程。</p> <h3><strong>&nbsp;createApplicationContext</strong></h3> <p>&nbsp;<img loading="lazy" decoding="async" alt="" height="124" src="http://img.555519.xyz/uploads3/20220902/cea97cb4a97b265d40243c07b60e38b4.jpg"></p> <div><span style="color:#0d0016;">如果没有编程式指定contextClass，则根据之前推断的webApplicationType来选择对</span></div> <div><span style="color:#0d0016;">应默认的 ApplicationContext实现类</span></div> <p><img loading="lazy" decoding="async" alt="" height="466" src="http://img.555519.xyz/uploads3/20220902/3504f4d8e5e6a8297f522c884e3cb3c6.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="475" src="http://img.555519.xyz/uploads3/20220902/b25f59df90858c18bbf714ec7bf5520f.jpg"></p> <p>在新版本中是添加</p> <div><span style="color:#333333;">默认的三个常量类名 是采用的 工厂方法去创建的，但是道理是一样的。</span></div> <div><img loading="lazy" decoding="async" alt="" height="311" src="http://img.555519.xyz/uploads3/20220902/f40cbceae594e34058fc9b30ebb356ac.jpg"></div> <div><img loading="lazy" decoding="async" alt="" height="483" src="http://img.555519.xyz/uploads3/20220902/00ec66b7e02a3ebe4eb3d80cf9c388c0.jpg"></div> <h3><span style="color:#333333;"><strong>准备过程</strong></span></h3> <div><span style="color:#0d0016;">prepareContext</span></div> <div> <div><span style="color:#0d0016;">1、设置环境对象</span></div> <div> <div><span style="color:#0d0016;">2、设置ApplicationContext的beanNameGenerator、resourceLoader、</span></div> <div> <div><span style="color:#0d0016;">3、应用初始化器对ApplicationContext进行初始化处理（Initializers在构造SpringApplication时就从spring.factories中加载到了）</span></div> <div> <div><span style="color:#0d0016;">4、发布ApplicationContext准备妥当事件</span></div> <div> <div><span style="color:#0d0016;">5、打印startup日志信息</span></div> <div> <div><span style="color:#0d0016;">6 、添加例 bean 到 beanFactory中</span></div> <div></div> <div></div> <div><img loading="lazy" decoding="async" alt="" height="707" src="http://img.555519.xyz/uploads3/20220902/186fd1cb8228e102167c1d53729559cb.jpg"></div> </div> </div> </div> </div> </div> </div> <div>  对应的资源进行加载创建 解读resource&nbsp; &nbsp;懒加载load</div> <div></div> <div></div> <h3><strong>&nbsp;refreshcontext&nbsp; &nbsp;刷新</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="303" src="http://img.555519.xyz/uploads3/20220902/3fa631dbf0fefd8bbaff7ad485a76bfe.jpg"></p> <p>这里最终调用 的applicationcontext. refresh方法。</p> <p><img loading="lazy" decoding="async" alt="" height="240" src="http://img.555519.xyz/uploads3/20220902/78c562bc391ca8c0eca2e78068c99439.jpg"></p> <h2><span style="color:#333333;"><strong>auto configuration</strong></span><span style="color:#333333;"><strong>的</strong></span><span style="color:#333333;"><strong>bean</strong></span><span style="color:#333333;"><strong>定义加载</strong></span></h2> <p><span style="color:#333333;"><strong>这个加载是整个 创建基础。</strong></span></p> <div><span style="color:#333333;">1. META-INF/spring.factories</span><span style="color:#333333;">中指定的</span><span style="color:#333333;">auto configuration Bean</span><span style="color:#333333;">定义在哪里完成的加载？</span></div> <div><span style="color:#333333;"></span></div> <div><span style="color:#333333;">而对于</span><span style="color:#333333;">从</span><span style="color:#333333;">META-INF/spring.factories</span><span style="color:#333333;">中加载其他的：</span></div> <pre><code>// 3、从META-INF/spring.factories中获取ApplicationContextInitializer  setInitializers((Collection) getSpringFactoriesInstances( ApplicationContextInitializer.class));</code></pre> <p>这个方法 是可以加载 spring.factories</p> <p>但是对于 EnableAutoconfiguration&nbsp; 的加载 是在那里去加载的，暂时不知道。</p> <div><span style="color:#333333;">那就从这个</span><span style="color:#333333;">getSpringFactoriesInstances</span><span style="color:#333333;">（</span><span style="color:#333333;">...</span><span style="color:#333333;">）方法调用中找到一个合适的点，</span></div> <div> <div><span style="color:#333333;">看到，它是调用的SpringFactoriesLoader.loadFactoryNames(type, classLoader));&nbsp; 去加载 的 auto configuration 的&nbsp;&nbsp;spring.factories 中</span></div> <div><img loading="lazy" decoding="async" alt="" height="463" src="http://img.555519.xyz/uploads3/20220902/a195ddee9dec3c568409566f188f71a5.jpg"></div> <div><span style="color:#333333;">从调用栈看到是在进行</span><span style="color:#333333;">ConfigurationClassPostProcessor</span><span style="color:#333333;">处理阶段</span></div> <div></div> <div><img loading="lazy" decoding="async" alt="" height="267" src="http://img.555519.xyz/uploads3/20220902/487ade26fcb9192ce89bcbae30904390.jpg"></div> <div>   其实最后就是<span style="color:#333333;">AutoConfigurationImportSelector</span><span style="color:#333333;">干的这个事</span></div> <div> <pre><code>public class AutoConfigurationImportSelector implements DeferredImportSelector, BeanClassLoaderAware, ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered {}</code></pre> <div><img loading="lazy" decoding="async" alt="" height="387" src="http://img.555519.xyz/uploads3/20220902/f62cba1f3eaca0ad8f17906a192f6099.jpg"><img loading="lazy" decoding="async" alt="" height="222" src="http://img.555519.xyz/uploads3/20220902/5dea25ebb40aa6c4ab877c997e2eeffb.jpg"></div> <div><span style="color:#333333;">AutoConfigurationImportSelector</span><span style="color:#333333;">实现了</span><span style="color:#333333;"> DeferredImportSelector</span></div> <div><span style="color:#333333;">DeferredImportSelector</span><span style="color:#333333;">是延迟导入选择器。所谓延迟：在所有指定的、包扫描到的</span></div> <div></div> <div><span style="color:#333333;">@Configuration</span><span style="color:#333333;">类中的</span><span style="color:#333333;">bean</span><span style="color:#333333;">定义注册后，才会来处理延迟导入的</span><span style="color:#333333;">@Configuration</span><span style="color:#333333;">类</span></div> </div> <div></div> </div> <div><span style="color:#0d0016;">所谓延迟：在所有指定的、包扫描到的@Configuration类中的bean定义注册后，才会来处理延迟导入 的</span></div> <p><img loading="lazy" decoding="async" alt="" height="230" src="http://img.555519.xyz/uploads3/20220902/4ce87f44a498e24849f7eccd907a1436.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="288" src="http://img.555519.xyz/uploads3/20220902/b92314f895662489c594b7659d810067.jpg"></p> <div><span style="color:#333333;">让我们自己编程配置的</span><span style="color:#333333;">bean</span><span style="color:#333333;">提前注册，这样自动配置时的条件判断能发现到我们配置的，</span></div> <div><span style="color:#333333;">就能做到不再配置 自动配置的</span><span style="color:#333333;">bean</span><span style="color:#333333;">等。比如：如果我们自己配置了数据源</span><span style="color:#333333;">bean</span><span style="color:#333333;">，则使用我们配置</span></div> <div><span style="color:#333333;">的数据源，不在自动配置数据源。数 据源自动配置的代码中可以看到</span></div> <div><span style="color:#333333;">@ConditionalOnMissingBean({ DataSource.class, XADataSource.class })</span><span style="color:#333333;">：</span></div> <h3><span style="color:#333333;"><strong>callRunners(context, applicationArguments)</strong></span></h3> <p><img loading="lazy" decoding="async" alt="" height="290" src="http://img.555519.xyz/uploads3/20220902/818fd6ebcc99b7a6aa9b79ba138eea32.jpg"></p> <div><span style="color:#333333;">在代码中我们看到，从</span><span style="color:#333333;">applicationContext</span><span style="color:#333333;">获取了所有</span><span style="color:#333333;"> ApplicationRunner</span><span style="color:#333333;">、</span><span style="color:#333333;">CommandLineRunner</span><span style="color:#333333;">类 型的bean</span><span style="color:#333333;">，并执行了它们的</span><span style="color:#333333;">run</span><span style="color:#333333;">方法。</span></div> <div><span style="color:#333333;"><strong>Tomcat</strong></span><span style="color:#333333;"><strong>是如何跑起来</strong></span></div> <div> <div><span style="color:#333333;">从创建</span><span style="color:#333333;">ApplicationContext</span><span style="color:#333333;">处开始，对于servlet的AnnotationConfigServletWebServerApplicationContext类</span></div> <div></div> <div></div> <div> <blockquote> <div><span style="color:#0d0016;">public class AnnotationConfigServletWebServerApplicationContext</span></div> <div><span style="color:#0d0016;">extends ServletWebServerApplicationContext implements AnnotationConfigRegistry {</span></div> <div><span style="color:#0d0016;">}</span></div> </blockquote> </div> <div></div> </div> <div><span style="color:#333333;">类</span><span style="color:#333333;">ServletWebServerApplicationContext</span></div> <div><span style="color:#0d0016;">这个context会通过从自身查找一个ServletWebServerFactory单例bean来创建、初始化、运行一个</span></div> <div><span style="color:#0d0016;">WebServer</span></div> <p><img loading="lazy" decoding="async" alt="" height="649" src="http://img.555519.xyz/uploads3/20220902/1e9e4f11d1ed39f4357ebc3434527521.jpg"></p> <div><span style="color:#333333;">onRefresh()</span><span style="color:#333333;">方法是</span><span style="color:#333333;">AbstractApplicationContext</span><span style="color:#333333;">中定义的供子类实现的空模板方法，在</span><span style="color:#333333;">refresh()</span><span style="color:#333333;">方法中被调用。</span></div> <div><span style="color:#333333;">TomcatServletWebServerFactory</span><span style="color:#333333;">中的实现：</span></div> <pre><code>@Override 	public WebServer getWebServer(ServletContextInitializer... initializers) { 		if (this.disableMBeanRegistry) { 			Registry.disableRegistry(); 		} 		Tomcat tomcat = new Tomcat(); 		File baseDir = (this.baseDirectory != null) ? this.baseDirectory : createTempDir("tomcat"); 		tomcat.setBaseDir(baseDir.getAbsolutePath()); 		Connector connector = new Connector(this.protocol); 		connector.setThrowOnFailure(true); 		tomcat.getService().addConnector(connector); 		customizeConnector(connector); 		tomcat.setConnector(connector); 		tomcat.getHost().setAutoDeploy(false); 		configureEngine(tomcat.getEngine()); 		for (Connector additionalConnector : this.additionalTomcatConnectors) { 			tomcat.getService().addConnector(additionalConnector); 		} 		prepareContext(tomcat.getHost(), initializers); 		return getTomcatWebServer(tomcat); 	}</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-46053.htm">适合新手开店的是什么（适合新手开店的是什么职业）</a></p>
+                                        <p>下一个：<a href="/news/article-46528.htm">猫三联加狂犬疫苗多少钱（猫三联和狂犬疫苗一共多少钱）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-hiddify-next-node-github.htm" title="「1月25日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月25日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-hiddify-next-windows.htm" title="「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-subscribe-node.htm" title="「12月4日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月4日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-hiddify-next-node-share.htm" title="「12月15日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月15日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-37736.htm" title="MySQL主从复制和读写分离">MySQL主从复制和读写分离</a></li>
+                        <li class="py-2"><a href="/news/article-22986.htm" title="圣诞节送什么给男生好(圣诞节送什么给男生比较好)">圣诞节送什么给男生好(圣诞节送什么给男生比较好)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-hiddify-next-node-share.htm" title="「10月8日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月8日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-hiddify-next-node-github.htm" title="「1月9日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月9日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-33292.htm" title="猫粮的制作机器有哪些 猫粮的制作机器有哪些品牌">猫粮的制作机器有哪些 猫粮的制作机器有哪些品牌</a></li>
+                        <li class="py-2"><a href="/news/article-33293.htm" title="芭比堂宠物医院收费（芭比堂宠物医院收费多少）">芭比堂宠物医院收费（芭比堂宠物医院收费多少）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

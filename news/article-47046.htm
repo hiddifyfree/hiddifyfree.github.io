@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-47046.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素</title>
+        <meta name="description" content="问题：select更改选项后，使用form.render();并没能够刷新所选择的元素。 在进入页面后会访问服务端加载一些数据，然后根据数据去更改下拉框的选项，第一次加载是对的，而后续加载下拉框的选择" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-47046.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/9b4317d89254f8b40e9f989961bbec17.webp" />
+        <meta property="og:release_date" content="2025-01-27T08:18:58" />
+    <meta property="og:updated_time" content="2025-01-27T08:18:58" />
+        <meta property="og:description" content="问题：select更改选项后，使用form.render();并没能够刷新所选择的元素。 在进入页面后会访问服务端加载一些数据，然后根据数据去更改下拉框的选项，第一次加载是对的，而后续加载下拉框的选择" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>问题：select更改选项后，使用form.render();并没能够刷新所选择的元素。</p> <p>在进入页面后会访问服务端加载一些数据，然后根据数据去更改下拉框的选项，第一次加载是对的，而后续加载下拉框的选择就是错误的了。代码如下：</p> <pre><code class="prism language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option[value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payType<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> form<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>如下页面，支付类型中"未现付"虽然是selected，但是在其后跟随的div中，layui-this的样式仍然在"现付"选项上：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/8ab5e4034b12a9c5dfbb26a7a9e1e650.jpg" alt="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素"></p> <p>为什么select中已经选择了“未现付”并且也已经调用了form.render()了但结果不是期望的？初步估计是不是form.render()没有起效果？所以修改代码，其中手动去修改div中的样式，并且在2秒后再调用form.render()，代码如下：</p> <pre><code class="prism language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option[value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payType<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> $selectDiv<span class="token operator">=</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType + div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> $selectDiv<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"dl dd"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"layui-this"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> $selectDD<span class="token operator">=</span> $selectDiv<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'dl dd[lay-value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payType<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> $selectDD<span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"layui-this"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> $selectDiv<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"div input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span>$selectDD<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     form<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>更改后在form.render()之前是对的，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/5143356b4af990afa08b11c69ca947e1.jpg" alt="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素"></p> <p>而在2秒后触发setTimeout中的form.render()之后反而变成错的了，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/136a4deb8812005a54383b8efec44231.jpg" alt="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素"></p> <p>看来不是form.render()没有执行而且里面有bug吧？所以暂时的解决方案是不使用form.render()，而是如上直接另写代码使选择框成为正常的状态。</p> <p>对于radio也是有同样的问题，但是因为radio只能有一个选中，所以使用click()事件就可以了。</p> <pre><code class="prism language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#multiCheckbox"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'input[value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payWay<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>但是对于checkbox，估计也是要另写代码了。这样感觉挺困扰的，本来是用框架就是要快速构建，反而因为复选框的问题要去调。</p> <p>后续版本应该会更新吧？ &gt;_&lt;</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-46528.htm">猫三联加狂犬疫苗多少钱（猫三联和狂犬疫苗一共多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-47047.htm">动物医院社会实践报告总结 动物医院社会实践报告总结怎么写</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-41573.htm" title="宠物领养管理系统的开题答辩（宠物领养管理系统的开题答辩怎么写）">宠物领养管理系统的开题答辩（宠物领养管理系统的开题答辩怎么写）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-node-subscribe.htm" title="「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-hiddify-next-node-github.htm" title="「1月2日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月2日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-47513.htm" title="专业卖狗的网站（专业卖狗的网站叫什么）">专业卖狗的网站（专业卖狗的网站叫什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-today-hiddify-next-node.htm" title="「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月12日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-41092.htm" title="宠物粮批发网站哪个好一点（宠物粮从哪里进货便宜）">宠物粮批发网站哪个好一点（宠物粮从哪里进货便宜）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-today-hiddify-next-node.htm" title="「1月10日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月10日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-37125.htm" title="宠物领养电子合同模板怎么写（宠物领养合同内容）">宠物领养电子合同模板怎么写（宠物领养合同内容）</a></li>
+                        <li class="py-2"><a href="/news/article-32822.htm" title="动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载">动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载</a></li>
+                        <li class="py-2"><a href="/news/article-22073.htm" title="Halo 开源项目学习实体类与数据表">Halo 开源项目学习实体类与数据表</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

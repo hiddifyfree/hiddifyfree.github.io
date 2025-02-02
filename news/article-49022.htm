@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-49022.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Antd的Form.Item自定义类型输入框</title>
+        <meta name="description" content="inputGenerator() {         const { getFieldDecorator } = this.props.form;         return function (n" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-49022.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Antd的Form.Item自定义类型输入框" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/d69f5a5bf6019682d6f9a439b51a68e0.webp" />
+        <meta property="og:release_date" content="2025-01-31T07:19:14" />
+    <meta property="og:updated_time" content="2025-01-31T07:19:14" />
+        <meta property="og:description" content="inputGenerator() {         const { getFieldDecorator } = this.props.form;         return function (n" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Antd的Form.Item自定义类型输入框">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                                <a href="/" class="navbar-brand"><span>Hiddify Free</span></a>
+                            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Antd的Form.Item自定义类型输入框</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <pre class="has"><code class="language-javascript">    inputGenerator() {         const { getFieldDecorator } = this.props.form;         return function (name, type, { initialValue = '', rules = [], label = '' }) {             let defaultValueInput = &lt;Input placeholder="请输入"/&gt;,                 defaultValueRules = [...rules];             switch (type) {                 case 'string': // 字符串                     break;                 case 'int': // 整型                     defaultValueRules.push({                         message: '请输入数字', pattern: new RegExp("^[0-9]+$")                     });                     break;                 case 'float': // 浮点型                     defaultValueRules.push({                         message: '请输入数字或小数点', pattern: new RegExp("^[0-9.]+$")                     });                     break;                 case 'boolean': // 布尔类型                     defaultValueInput = (&lt;Select&gt;                         &lt;Select.Option value={ true }&gt;TRUE&lt;/Select.Option&gt;                         &lt;Select.Option value={ false }&gt;FALSE&lt;/Select.Option&gt;                     &lt;/Select&gt;);                     break;                 case 'time': // 时间类型                     defaultValueInput = &lt;TimePicker /&gt;;                     break;             }             const valueInput = getFieldDecorator(name, {                 rules: [                     { required: true, message: `请输入${ label }!` },                     ...defaultValueRules                 ],                 initialValue             })(                 defaultValueInput             );             return valueInput;         }     }</code></pre> <p>目的是可以根据输入类型返回对应的输入方式：一般输入框，选择菜单，时间选择器</p> <pre class="has"><code class="language-javascript">import inputGenerator from 'utils';  Form.create() class MyComponent extends Component {     render() {         const genrator = inputGenerator.call(this);         return {             &lt;From&gt;                 &lt;From.Item label='名字'&gt;                     genrator('name', 'string');                 &lt;/From.Item&gt;                 &lt;From.Item label='出生日期'&gt;                     genrator('name', 'time');                 &lt;/From.Item&gt;                 &lt;From.Item label='年龄'&gt;                     genrator('name', 'int');                 &lt;/From.Item&gt;             &lt;/From&gt;     } }</code></pre> <p>随便写了几个，大概这个意思</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-48396.htm">南京农大动物医院电话号码（南京农业大学动物医院电话）</a></p>
+                                        <p>下一个：<a href="/news/article-49023.htm">动物疫苗要打几针的呢 动物疫苗要打几针的呢多少钱</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-hiddify-next-node-github.htm" title="「12月12日」最高速度18.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月12日」最高速度18.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-34730.htm" title="动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）">动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）</a></li>
+                        <li class="py-2"><a href="/news/article-44078.htm" title="vue用命令直接修复ESLint">vue用命令直接修复ESLint</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-high-speed-nodes.htm" title="「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-47046.htm" title="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素">layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-subscribe-node.htm" title="「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月2日」最高速度20.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-hiddify-next-windows.htm" title="「12月26日」最高速度22.9M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月26日」最高速度22.9M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-node-subscribe.htm" title="「1月8日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月8日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-hiddify-next-windows.htm" title="「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-hiddify-next-node.htm" title="「11月11日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月11日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

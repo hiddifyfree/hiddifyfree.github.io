@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifyfree.github.io/news/article-41090.htm" />
@@ -9,6 +9,34 @@
     <title>【kafka】一次磁盘故障后消费者无法消费</title>
         <meta name="description" content="转载：Kafka 运维纪实 – 一次磁盘故障后消费者无法消费   Kafka 自从某个版本加入 isr 等机制后真是越来越复杂了，再也不是原来那个单纯的 The log 了，碰上网络有个什么风吹草动经" />
         <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-41090.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="【kafka】一次磁盘故障后消费者无法消费" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/0ab3f472bbdb4ea7712ec02d189d7341.webp" />
+        <meta property="og:release_date" content="2025-01-15T09:50:50" />
+    <meta property="og:updated_time" content="2025-01-15T09:50:50" />
+        <meta property="og:description" content="转载：Kafka 运维纪实 – 一次磁盘故障后消费者无法消费   Kafka 自从某个版本加入 isr 等机制后真是越来越复杂了，再也不是原来那个单纯的 The log 了，碰上网络有个什么风吹草动经" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【kafka】一次磁盘故障后消费者无法消费">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
@@ -86,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月14日」最高速度20.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-high-speed-nodes.htm" title="「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-19779.htm" title="狗粮制造机 狗粮制造机器">狗粮制造机 狗粮制造机器</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="「1月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-node-share-links.htm" title="「11月3日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月3日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-20235.htm" title="宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-hiddify-next-node-share.htm" title="「12月11日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月11日」最高速度20M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-41092.htm" title="宠物粮批发网站哪个好一点（宠物粮从哪里进货便宜）">宠物粮批发网站哪个好一点（宠物粮从哪里进货便宜）</a></li>
+                        <li class="py-2"><a href="/news/article-38603.htm" title="idea社区版中使用tomcat部署Maven搭建的web项目">idea社区版中使用tomcat部署Maven搭建的web项目</a></li>
                         <li class="py-2"><a href="/news/article-22984.htm" title="动物疫苗价格查询表最新（动物接种疫苗多少钱）">动物疫苗价格查询表最新（动物接种疫苗多少钱）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-9-hiddify-next-node-github.htm" title="「11月9日」最高速度21.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月9日」最高速度21.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-24347.htm" title="兽用疫苗过敏如何处理（兽用疫苗过敏如何处理好）">兽用疫苗过敏如何处理（兽用疫苗过敏如何处理好）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-hiddify-next-node.htm" title="「12月17日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月17日」最高速度21.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-24836.htm" title="免费领养狗狗,网站 免费领养狗狗,网站有哪些">免费领养狗狗,网站 免费领养狗狗,网站有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-48005.htm" title="狗咬了多久过安全期没有打针（狗咬了多久过安全期没有打针了）">狗咬了多久过安全期没有打针（狗咬了多久过安全期没有打针了）</a></li>
+                        <li class="py-2"><a href="/news/article-31292.htm" title="养猫最忌讳的一个生肖马是什么意思（养猫最忌讳的一个生肖马是什么意思啊）">养猫最忌讳的一个生肖马是什么意思（养猫最忌讳的一个生肖马是什么意思啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-latest-hiddify-next-node.htm" title="「12月28日」最高速度19.7M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月28日」最高速度19.7M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-3-hiddify-next-node-github.htm" title="「1月3日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月3日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-19323.htm" title="宠物用品货源网站大全（宠物用品货源都从哪里来）">宠物用品货源网站大全（宠物用品货源都从哪里来）</a></li>
                     </ul>
     </div>
 </div>
@@ -107,16 +135,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

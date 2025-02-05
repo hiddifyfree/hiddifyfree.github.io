@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifyfree.github.io/news/article-34250.htm" />
@@ -9,6 +9,34 @@
     <title>springBoot中base64与文件的相互转换</title>
         <meta name="description" content="这个问题主要是承接上文，上文说到，需要解析前端传递的base64字符串，转成文件并保存到文件服务器中，这就用到了base64转码等操作。刚开始没当回事觉得很常见，但是做的时候才各种坑。后续大家注意以下" />
         <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-34250.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="springBoot中base64与文件的相互转换" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/9b4317d89254f8b40e9f989961bbec17.webp" />
+        <meta property="og:release_date" content="2025-01-01T06:40:01" />
+    <meta property="og:updated_time" content="2025-01-01T06:40:01" />
+        <meta property="og:description" content="这个问题主要是承接上文，上文说到，需要解析前端传递的base64字符串，转成文件并保存到文件服务器中，这就用到了base64转码等操作。刚开始没当回事觉得很常见，但是做的时候才各种坑。后续大家注意以下" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springBoot中base64与文件的相互转换">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
@@ -86,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-16-hiddify-next-node-github.htm" title="「10月16日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月16日」最高速度19.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-20694.htm" title="猫咪三针疫苗间隔多久打一次啊（猫的三针疫苗相隔多久）">猫咪三针疫苗间隔多久打一次啊（猫的三针疫苗相隔多久）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-hiddify-next-github.htm" title="「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月4日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-34250.htm" title="springBoot中base64与文件的相互转换">springBoot中base64与文件的相互转换</a></li>
-                        <li class="py-2"><a href="/news/article-24346.htm" title="动物医学社会实践日记20篇怎么写（动物医院社会实践报告）">动物医学社会实践日记20篇怎么写（动物医院社会实践报告）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-node-subscribe.htm" title="「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-hiddify-next-node-share.htm" title="「12月25日」最高速度22.6M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月25日」最高速度22.6M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/news/article-34730.htm" title="动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）">动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-7-hiddify-next-windows.htm" title="「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月7日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-node-share-links.htm" title="「8月15日」最高速度19.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月15日」最高速度19.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-22525.htm" title="蚁群算法（Ant System）（AS）">蚁群算法（Ant System）（AS）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share.htm" title="「11月28日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月28日」最高速度22.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-latest-hiddify-next-node.htm" title="「12月28日」最高速度19.7M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月28日」最高速度19.7M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-43072.htm" title="厦门狗狗领养平台 厦门狗狗领养平台有哪些">厦门狗狗领养平台 厦门狗狗领养平台有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-node-subscribe-links.htm" title="「12月29日」最高速度21.1M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月29日」最高速度21.1M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-22527.htm" title="瑞派宠物医院价格表（瑞派宠物医院贵吗）">瑞派宠物医院价格表（瑞派宠物医院贵吗）</a></li>
+                        <li class="py-2"><a href="/news/article-44079.htm" title="猫咪领养协议模板怎么写的（猫咪领养协议模板怎么写的图片）">猫咪领养协议模板怎么写的（猫咪领养协议模板怎么写的图片）</a></li>
+                        <li class="py-2"><a href="/news/article-30441.htm" title="在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）">在我的城市有一家宠物医院英语怎么说（在我的城市有一家宠物医院翻译）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-node-subscribe-links.htm" title="「12月8日」最高速度20.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月8日」最高速度20.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-latest-hiddify-next-node.htm" title="「11月10日」最高速度21.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月10日」最高速度21.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -107,22 +135,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

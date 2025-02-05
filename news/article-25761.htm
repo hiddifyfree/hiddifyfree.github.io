@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifyfree.github.io/news/article-25761.htm" />
@@ -9,6 +9,34 @@
     <title>toString()和new String()区别</title>
         <meta name="description" content="今天遇到上游通过消息队列传给我byte字节码，我用toString()方法转字符串接收，发现转了后是[B@90f6bfd这样的格式，瞬间懵逼，流下没技术的眼泪。 研究一番，发现字节码如果调用toStr" />
         <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-25761.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="toString()和new String()区别" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/9b4317d89254f8b40e9f989961bbec17.webp" />
+        <meta property="og:release_date" content="2024-12-14T10:12:45" />
+    <meta property="og:updated_time" content="2024-12-14T10:12:45" />
+        <meta property="og:description" content="今天遇到上游通过消息队列传给我byte字节码，我用toString()方法转字符串接收，发现转了后是[B@90f6bfd这样的格式，瞬间懵逼，流下没技术的眼泪。 研究一番，发现字节码如果调用toStr" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="toString()和new String()区别">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
@@ -86,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-hiddify-next-node-github.htm" title="「11月6日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月6日」最高速度23M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-latest-hiddify-next-node.htm" title="「10月10日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月10日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-high-speed-nodes.htm" title="「12月20日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月20日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-22-latest-hiddify-next-node.htm" title="「9月22日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月22日」最高速度22.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-14-today-hiddify-next-node.htm" title="「12月14日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月14日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-21-hiddify-next-node-github.htm" title="「10月21日」最高速度21.6M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月21日」最高速度21.6M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-28090.htm" title="记将一个大型客户端应用项目迁移到 dotnet 6 的经验和决策_在线工具">记将一个大型客户端应用项目迁移到 dotnet 6 的经验和决策_在线工具</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-27-hiddify-next-node-share.htm" title="「12月27日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月27日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-5-hiddify-next-node.htm" title="「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-node-share-links.htm" title="「10月29日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月29日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-46526.htm" title="SpringBoot 核心源码解读">SpringBoot 核心源码解读</a></li>
+                        <li class="py-2"><a href="/news/article-38602.htm" title="javascript删除数组元素的7个方法">javascript删除数组元素的7个方法</a></li>
+                        <li class="py-2"><a href="/news/article-31882.htm" title="经营动物疫苗药品需要什么手续办理流程（动物疫苗经营许可证如何办）">经营动物疫苗药品需要什么手续办理流程（动物疫苗经营许可证如何办）</a></li>
+                        <li class="py-2"><a href="/news/article-20693.htm" title="运城市动物园营业时间（运城市动物园营业时间最新）">运城市动物园营业时间（运城市动物园营业时间最新）</a></li>
+                        <li class="py-2"><a href="/news/article-44078.htm" title="vue用命令直接修复ESLint">vue用命令直接修复ESLint</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-free-hiddify-next-node.htm" title="「12月23日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月23日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-high-speed-nodes.htm" title="「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月2日」最高速度22.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-node-subscribe.htm" title="「1月28日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月28日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-node-subscribe.htm" title="「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-high-speed-nodes.htm" title="「12月16日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月16日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -107,22 +135,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

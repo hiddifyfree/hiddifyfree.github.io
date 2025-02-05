@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifyfree.github.io/news/article-32354.htm" />
@@ -9,6 +9,34 @@
     <title>Redis 缓存的三大问题及其解决方案</title>
         <meta name="description" content="一、缓存穿透 缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起 id 为-1 的数据或者特别大的不存在的数据。有可能是黑客利用漏洞攻击从而去压垮应用的数据库。 1. 常见解决方案 对" />
         <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-32354.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Redis 缓存的三大问题及其解决方案" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/c35dbdf377a1b8d3371e63d14b6a6aa6.webp" />
+        <meta property="og:release_date" content="2024-12-28T10:06:39" />
+    <meta property="og:updated_time" content="2024-12-28T10:06:39" />
+        <meta property="og:description" content="一、缓存穿透 缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起 id 为-1 的数据或者特别大的不存在的数据。有可能是黑客利用漏洞攻击从而去压垮应用的数据库。 1. 常见解决方案 对" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis 缓存的三大问题及其解决方案">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
@@ -86,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-20236.htm" title="宠物粮食厂家联系方式 宠物粮食厂家联系方式电话">宠物粮食厂家联系方式 宠物粮食厂家联系方式电话</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-node-share-links.htm" title="「10月29日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月29日」最高速度19.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-free-node-subscribe.htm" title="「10月31日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月31日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-30-free-node-subscribe.htm" title="「8月30日」最高速度18.4M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月30日」最高速度18.4M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-hiddify-next-node-github.htm" title="「11月25日」最高速度21.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月25日」最高速度21.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-high-speed-nodes.htm" title="「10月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月19日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-22527.htm" title="瑞派宠物医院价格表（瑞派宠物医院贵吗）">瑞派宠物医院价格表（瑞派宠物医院贵吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-23-hiddify-next-windows.htm" title="「8月23日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「8月23日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-2-free-node-subscribe.htm" title="「9月2日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接">「9月2日」最高速度21.3M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-31882.htm" title="经营动物疫苗药品需要什么手续办理流程（动物疫苗经营许可证如何办）">经营动物疫苗药品需要什么手续办理流程（动物疫苗经营许可证如何办）</a></li>
+                        <li class="py-2"><a href="/news/article-31884.htm" title="动物疫苗板块（动物疫苗板块什么时候能涨）">动物疫苗板块（动物疫苗板块什么时候能涨）</a></li>
+                        <li class="py-2"><a href="/news/article-47512.htm" title="动物疫苗新法案例分析报告（动物疫苗市场分析）">动物疫苗新法案例分析报告（动物疫苗市场分析）</a></li>
+                        <li class="py-2"><a href="/news/article-40101.htm" title="小型宠物粮食加工设备厂家电话地址（宠物粮食加工厂需要投资多少钱）">小型宠物粮食加工设备厂家电话地址（宠物粮食加工厂需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-hiddify-next-node-github.htm" title="「1月2日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月2日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-45056.htm" title="免费领养狗狗的app（免费领养狗狗的文案）">免费领养狗狗的app（免费领养狗狗的文案）</a></li>
+                        <li class="py-2"><a href="/news/article-33776.htm" title="Appium+Python+Android自动化のdesired_caps会话参数">Appium+Python+Android自动化のdesired_caps会话参数</a></li>
+                        <li class="py-2"><a href="/news/article-20235.htm" title="宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-hiddify-next-node.htm" title="「1月29日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月29日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-35063.htm" title="动物防疫工作计划怎么写（动物防疫年度计划）">动物防疫工作计划怎么写（动物防疫年度计划）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-today-hiddify-next-node.htm" title="「12月14日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月14日」最高速度22M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -107,22 +135,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

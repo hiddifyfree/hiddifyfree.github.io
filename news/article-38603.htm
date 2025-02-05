@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifyfree.github.io/news/article-38603.htm" />
@@ -9,6 +9,34 @@
     <title>idea社区版中使用tomcat部署Maven搭建的web项目</title>
         <meta name="description" content="背景：由于社区版的idea中没有提供tomcat server用于部署项目，故不能用tomcat服务部署web项目的war包用于开发调试 可以使用社区版的插件smart tomcat来部署，步骤 1、" />
         <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-38603.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="idea社区版中使用tomcat部署Maven搭建的web项目" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/d41781d235fd3b8a87488506a1a9ae15.webp" />
+        <meta property="og:release_date" content="2025-01-10T10:43:56" />
+    <meta property="og:updated_time" content="2025-01-10T10:43:56" />
+        <meta property="og:description" content="背景：由于社区版的idea中没有提供tomcat server用于部署项目，故不能用tomcat服务部署web项目的war包用于开发调试 可以使用社区版的插件smart tomcat来部署，步骤 1、" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="idea社区版中使用tomcat部署Maven搭建的web项目">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- stylesheet css -->
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
@@ -86,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-31293.htm" title="动物医院运营管理员的工作内容 动物医院运营管理员的工作内容是什么">动物医院运营管理员的工作内容 动物医院运营管理员的工作内容是什么</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-hiddify-next-windows.htm" title="「12月7日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月7日」最高速度18.7M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-33293.htm" title="芭比堂宠物医院收费（芭比堂宠物医院收费多少）">芭比堂宠物医院收费（芭比堂宠物医院收费多少）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-latest-hiddify-next-node.htm" title="「10月10日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月10日」最高速度18.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-10-today-hiddify-next-node.htm" title="「1月10日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月10日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-24-hiddify-next-node-github.htm" title="「12月24日」最高速度22.5M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月24日」最高速度22.5M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-9-hiddify-next-node-github.htm" title="「12月9日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月9日」最高速度18.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-hiddify-next-node-share.htm" title="「10月8日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接">「10月8日」最高速度19.1M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-27157.htm" title="猫咪三针疫苗间隔多久打第一针疫苗（猫咪三针疫苗多久打一次）">猫咪三针疫苗间隔多久打第一针疫苗（猫咪三针疫苗多久打一次）</a></li>
-                        <li class="py-2"><a href="/news/article-33777.htm" title="动物医院管理制度在哪网站可以查询（动物医院管理流程）">动物医院管理制度在哪网站可以查询（动物医院管理流程）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-node-subscribe-links.htm" title="「1月12日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月12日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-today-hiddify-next-node.htm" title="「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-hiddify-next-node.htm" title="「1月27日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月27日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-42079.htm" title="义乌宠物狗免费领养中心（义乌宠物狗免费领养中心在哪里）">义乌宠物狗免费领养中心（义乌宠物狗免费领养中心在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-hiddify-next-windows.htm" title="「12月26日」最高速度22.9M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月26日」最高速度22.9M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-hiddify-next-node-share.htm" title="「12月27日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月27日」最高速度20.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-today-hiddify-next-node.htm" title="「1月1日」最高速度19.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月1日」最高速度19.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-35062.htm" title="打过疫苗猫抓伤出血要***吗（打过疫苗猫抓伤出血要***吗）">打过疫苗猫抓伤出血要***吗（打过疫苗猫抓伤出血要***吗）</a></li>
+                        <li class="py-2"><a href="/news/article-28091.htm" title="参观动物医院的实验报告 参观动物医院的实验报告怎么写">参观动物医院的实验报告 参观动物医院的实验报告怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-25300.htm" title="Centos7 离线安装 KVM，并安装 Csr1000v">Centos7 离线安装 KVM，并安装 Csr1000v</a></li>
                     </ul>
     </div>
 </div>
@@ -107,16 +135,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

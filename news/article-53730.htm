@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-53730.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈</title>
+        <meta name="description" content="文章目录  运行时数据区概述及线程   概述 程序计数器（PC寄存器）   PC 寄存器中常见的面试问题   虚拟机栈   概述 栈的存储单位   栈帧中的存储结构   局部变量表   Code 属性" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-53730.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/5966e3d9a3f28846abd02121a626fc1f.webp" />
+        <meta property="og:release_date" content="2025-02-09T10:05:32" />
+    <meta property="og:updated_time" content="2025-02-09T10:05:32" />
+        <meta property="og:description" content="文章目录  运行时数据区概述及线程   概述 程序计数器（PC寄存器）   PC 寄存器中常见的面试问题   虚拟机栈   概述 栈的存储单位   栈帧中的存储结构   局部变量表   Code 属性" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_2" rel="nofollow">运行时数据区概述及线程</a></li> <li> <ul> <li><a href="#_4" rel="nofollow">概述</a></li> <li><a href="#PC_46" rel="nofollow">程序计数器（PC寄存器）</a></li> <li> <ul> <li><a href="#PC__92" rel="nofollow">PC 寄存器中常见的面试问题</a></li> </ul> </li> <li><a href="#_122" rel="nofollow">虚拟机栈</a></li> <li> <ul> <li><a href="#_124" rel="nofollow">概述</a></li> <li><a href="#_158" rel="nofollow">栈的存储单位</a></li> <li> <ul> <li><a href="#_180" rel="nofollow">栈帧中的存储结构</a></li> </ul> </li> <li><a href="#_193" rel="nofollow">局部变量表</a></li> <li> <ul> <li><a href="#Code__211" rel="nofollow">Code 属性</a></li> <li><a href="#LineNumberTable__216" rel="nofollow">LineNumberTable 属性</a></li> <li><a href="#LocalVariableTable__221" rel="nofollow">LocalVariableTable 属性</a></li> <li><a href="#Slot__228" rel="nofollow">Slot 的理解</a></li> <li><a href="#Slot__261" rel="nofollow">Slot 的重复利用问题</a></li> </ul> </li> <li><a href="#_293" rel="nofollow">操作数栈</a></li> <li> <ul> <li><a href="#_317" rel="nofollow">代码追踪</a></li> </ul> </li> <li><a href="#_399" rel="nofollow">动态链接</a></li> <li><a href="#_415" rel="nofollow">方法的调用</a></li> <li> <ul> <li><a href="#_436" rel="nofollow">虚方法与非虚方法</a></li> </ul> </li> <li><a href="#_454" rel="nofollow">方法返回地址</a></li> <li><a href="#_477" rel="nofollow">一些附加信息</a></li> <li><a href="#_485" rel="nofollow">虚拟机栈相关面试</a></li> </ul> </li> <li><a href="#_509" rel="nofollow">本地方法接口与栈</a></li> <li> <ul> <li><a href="#_519" rel="nofollow">本地方法栈</a></li> </ul> </li> </ul> </li> </ul> </div> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.bilibili.com/video/BV1PJ411n7xZ"  rel="nofollow">大家可以去尚硅谷学习JVM，传送门</a></p> </h1> <h2><a id="_4" rel="nofollow"></a>概述</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/798e7aa1389b40db8b0b53aeffc2a9a2.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p>当类的字节码文件加载进入到方法区后，就开始了运行时数据区的复习（ ( ^ _ ^ ) ）</p> <blockquote> <p>内存是非常重要的系统资源，是硬盘和 CPU 的中间仓库及桥梁，承载着操作系统和应用程序的实时运行。JVM 内存布局规定了 Java 在运行过程中内存申请，分配，管理的策略，保证了 JVM 的高效稳定运行；<strong>不同的 JVM 对于内存的划分方式和管理机制存在着部分差异。</strong></p> </blockquote> <p>下图为 1.8 的结构图（1.8 去掉了 1.7 的永久代，使用了元数据区实现了方法区）：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/5430eefec6ff42c8b569c690992439e4.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p>Java 虚拟机定义了若干种程序运行期间会使用到的运行时数据区，其中有一些会随着虚拟机启动而创建，随着虚拟机退出而销毁。另外一些则是与线程一一对应的，这些与线程对应的数据区域会随着线程开始和结束而创建和销毁；</p> <p><strong>每个线程：独立包括程序计数器，虚拟机栈，本地栈；</strong><br /><strong>线程间共享：堆，堆外内存（永久代或元空间，代码缓存）；</strong>、</p> <hr/> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/a28f4e2c1042db1593a6fc2beba599d7.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p>每个 JVM 只有一个 Runtime 实例，即为<strong>运行时环境</strong>，相当于内存结构的中间的那个运行时数据区：运行时环境；</p> <hr/> <p><strong>线程</strong></p> <p>线程是一个程序里的运行单元， JVM 允许一个应用有多个线程并行的执行；在 Hotspot JVM 里，每个线程都与操作系统的本地线程直接映射；</p> <ul> <li>当一个 Java 线程准备好执行以后，此时一个操作系统的本地线程也同时创建， Java 线程执行终止后，本地线程也会回收；</li> </ul> <p>操作系统负责所有线程的安排调度到任何一个可用的CPU上，<strong>一旦本地线程初始化成功，它就会调用 Java 线程中的 run() 方法；</strong></p> <hr/> <h2><a id="PC_46" rel="nofollow"></a>程序计数器（PC寄存器）</h2> <p><strong>程序计数器是什么？</strong></p> <ul> <li>JVM 中的程序计数寄存器（Program Counter Register） 中，Register 的命名源于 CPU 的寄存器，寄存器存储指令相关的现场信息；CPU 只有把数据装载到寄存器才能够运行；</li> <li>这里，并非是广义上所指的物理寄存器，或许将其翻译为 PC 计数器（或指令计数器）会更加贴切（也称为程序钩子），并且也不容易引起一些不必要的误会；<strong>JVM 中的 PC 寄存器是对物理 PC 寄存器的一种抽象模拟；</strong></li> </ul> <p><strong>作用</strong></p> <ul> <li><strong>PC 寄存器用来存储指向下一条指令的地址，也即，将要执行的指令代码。由执行引擎读取下一条指令；</strong></li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/929983f1b23f0e33f504441e65debe6c.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p><strong>特点</strong></p> <ul> <li><strong>它是一块很小的内存空间，几乎可以忽略不记；也是运行速度最快的存储区域；</strong></li> <li><strong>在 JVM 规范中，每个线程都有它自己的程序计数器</strong>，**是线程私有的，生命周期与线程的生命周期保持一致；**任何时间一个线程都只有一个方法在执行，也就是所谓的当前方法。<strong>程序计数器会存储当前线程正在执行的 Java 方法的 JVM 指令地址；或者，如果是在执行 native 方法，则显示是未指定值（undefined，因为 native 方法是由 C/C++ 编写的）；</strong></li> <li>它是程序控制流的指示器；分支，循环，跳转，异常处理，线程恢复等基础功能都需要依赖这个计数器来完成；</li> <li>字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令；</li> <li><strong>它是唯一一个在 Java 虚拟机规范中没有规定任何 OutOfMemoryError 情况的区域（也没有 GC）；</strong></li> </ul> <hr/> <p><strong>示例</strong></p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">PCRegisterTest</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span><span class="token keyword">int</span> k<span class="token operator">=</span> i<span class="token operator">+</span> j<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/6f8af006dcfed28146f5dde7002be476.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p><strong>下图解释： PC 寄存器存储的是对应的指令地址，然后执行引擎获取出 PC 寄存器中的指令地址，然后再去获取出对应的操作指令，接着就会将其翻译成机器指令，最终让 CPU 进行计算执行；</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/08c83b1519412a8e65fd3e93cededf0a.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <hr/> <h3><a id="PC__92" rel="nofollow"></a>PC 寄存器中常见的面试问题</h3> <p><strong>问：使用 PC 寄存器存储字节码指令地址有什么用呢？什么使用 PC 寄存器记录当前线程的执行地址呢？（一个问题）</strong></p> <p>答：<strong>因为 CPU 需要不停的切换各个线程，这时切换回来以后，就得知道接着从哪开始继续执行；</strong></p> <p><strong>JVM 的字节码解释器就需要通过改变 PC 寄存器的值来明确下一条应该执行什么样的字节码指令。</strong></p> <hr/> <p><strong>问：PC 寄存器为什么会被设定为线程私有的？</strong></p> <p>答：我们都知道所谓的多线程在一个特定的时间段内只会执行其中某一个线程的方法，<strong>CPU 会不停地做任务切换</strong>，这样必然导致经常中断或恢复，如何保证分毫无差呢？</p> <p><strong>为了能够准确地记录各个线程正在执行的当前字节码指令地址，最好的办法自然是为每一个线程都分配一个 PC 寄存器，这样一来各个线</strong></p> <p><strong>程之间便可以进行独立计算，从而不会出现相互干扰的情况；</strong></p> <hr/> <p><strong>CPU 时间片</strong></p> <p><strong>CPU 时间片即 CPU 分配给各个程序的时间，每个线程被分配一个时间段，称作它的时间片。</strong></p> <p>在宏观上：我们可以同时打开多个应用程序，每个程序并行不悖，同时运行；但在微观上：由于只有一个 CPU ，一次只能处理程序要求的一部分，如何处理公平，一种方法就是引入时间片，<strong>每个程序轮流执行</strong>；</p> <hr/> <h2><a id="_122" rel="nofollow"></a>虚拟机栈</h2> <h3><a id="_124" rel="nofollow"></a>概述</h3> <p><strong>Java 虚拟机栈是什么？</strong></p> <ul> <li>Java 虚拟机栈（Java Virtual Machine Stack），早期也叫 Java 栈；</li> <li><strong>每个线程在创建时都会创建一个虚拟机栈，其内部保存一个个的栈帧（Stack Frame），对应着一次次的 Java 方法调用；</strong><br /><strong>Java 虚拟机栈是线程私有的；</strong></li> </ul> <p><strong>生命周期</strong></p> <ul> <li>与线程一致；</li> </ul> <p><strong>作用</strong></p> <ul> <li><strong>主管 Java 程序的运行，它保存方法的局部变量，部分结果，并参与方法的调用和返回；</strong></li> </ul> <p>特点</p> <ul> <li><strong>栈是一种快速有效的分配存储方式，访问速度仅次于程序计数器；</strong></li> <li>JVM 直接对 Java 栈的操作只有两个：每个方法执行，伴随着进栈（入栈、压栈）和执行结束后的出栈工作；</li> <li>对于栈来说不存在垃圾回收问题（不存在 OOM，但是存在<strong>StackOverflowError</strong>）；</li> </ul> <hr/> <p>如何设置栈的大小？</p> <p><strong>使用参数<code>-Xss</code> 来设置线程中的最大栈空间，栈的大小直接决定了函数的调用的最大可达深度，在 Windows 系统下，栈空间大小默认值取决于虚拟内存空间；</strong></p> <p>设置如： -Xss256k ，设置为 256kb ；</p> <hr/> <h3><a id="_158" rel="nofollow"></a>栈的存储单位</h3> <p>栈中存储的是什么？</p> <ul> <li><strong>每个线程都有自己的栈，栈中的数据都是以栈帧（stack Frame）的格式存在；</strong></li> <li><strong>在这个线程上正在执行的每个方法都各自对应一个栈帧（Stack Frame）；</strong></li> <li><strong>栈帧是一个内存区块，是一个数据集，维系着方法执行过程中的各种数据信息；</strong></li> </ul> <hr/> <p>栈的运行原理</p> <ul> <li>JVM 直接对 Java 栈的操作只有两个，就是对栈帧的压栈和出栈，<strong>遵循“先进后出”/“后进先出”原则；</strong></li> <li>在一条活动线程中，一个时间点上，只会有一个活动的栈帧，即只有当前正在执行的方法的栈帧（栈顶栈帧）是有效的，这个栈帧被称为<strong>当前栈帧（Current Frame）</strong> ，与当前栈帧相对应的方法就是<strong>当前方法（Current Method）</strong>，定义这个方法的类就是<strong>当前类（Current Class）</strong>；</li> <li><strong>执行引擎运行的所有字节码指令只针对当前栈帧进行操作；</strong></li> <li>如果在该方法中调用了其他方法，对应的新的栈帧会被创建出来，放在栈的顶端，成为新的当前帧；</li> <li><strong>不同线程中所包含的栈帧是不允许存在相互引用的，即不可能在一个栈帧之中引用另外一个线程的栈帧；</strong></li> <li>如果当前方法调用了其他方法，方法返回之际，当前栈帧会传回此方法的执行结果给前一个栈帧，接着，虚拟机会丢弃当前栈帧，使得前一个栈帧重新成为当前栈帧；</li> <li><strong>Java 方法有两种返回函数的方式：一种是正常的函数返回，使用 return 指令，另外一种是抛出异常</strong>。不管使用哪种方式，都会导致栈帧被弹出；</li> </ul> <hr/> <h4><a id="_180" rel="nofollow"></a>栈帧中的存储结构</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3bd20b5e60b8c38dbfbc0754d4b2f4d3.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li><strong>局部变量表（Local variables）；</strong></li> <li><strong>操作数栈（operand Stack） （或表达式栈）；</strong></li> <li>动态链接（Dynamic Linking）（或<strong>指向运行时常量池的方法引用</strong>）；</li> <li>方法返回地址（Return Address）（或<strong>方法正常退出或者异常退出的定义</strong>）；</li> <li>一些附加信息；</li> </ul> <hr/> <h3><a id="_193" rel="nofollow"></a>局部变量表</h3> <ul> <li>局部变量表也被称之为局部变量数组或本地变量表；</li> <li><mark>定义为一个数字<strong>数组</strong>，主要用于存储方法参数和定义在方法体内的局部变量</mark>，这些数据类型包括各类基本数据类型、对象引用（reference） ，以及 returnAddress 方法返回值类型；</li> <li>由于局部变量表是建立在线程的栈上，是线程的私有数据，因此<mark>不存在数据安全问题</mark>；</li> <li><mark>局部变量表所需的容量大小是在编译期确定下来的</mark>，并保存在方法的 Code 属性的 maximum local variables 数据项中。在方法运行期间是不会改变局部变量表的大小的；</li> <li><mark>方法嵌套调用的次数由栈的大小决定。一般来说，栈越大，方法嵌套调用次数越多</mark>。对一个函数而言，它的参数和局部变量越多，使得局部变量表膨胀，它的栈帧就越大，以满足方法调用所需传递的信息增大的需求。进而函数调用就会占用更多的栈空间，导致其嵌套调用次数就会减少；</li> <li><mark>局部变量表中的变量只在当前方法调用中有效</mark>。在方法执行时，虚拟机通过使用局部变量表完成参数值到参数变量列表的传递过程。当方法调用结束后，<mark>随着方法栈帧的销毁，局部变量表也会随之销毁</mark>；</li> </ul> <hr/> <p><code>方法 Methods 属性</code></p> <blockquote> <p>javap -v xxx.class 或使用 jclasslib 工具（插件）进行对字节码文件的解析（反汇编）：</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/ca7891b234c4c96c345d85d40927527f.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <h4><a id="Code__211" rel="nofollow"></a>Code 属性</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/efcd1aa94579cf04f0f7b50bcc81b895.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <h4><a id="LineNumberTable__216" rel="nofollow"></a>LineNumberTable 属性</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3fdb5b75846996ffb1ea1cfea77de762.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <h4><a id="LocalVariableTable__221" rel="nofollow"></a>LocalVariableTable 属性</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/79684066a942dac49a032a93e8107db7.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <hr/> <h4><a id="Slot__228" rel="nofollow"></a>Slot 的理解</h4> <ul> <li>参数值的存放总是在局部变量数组的 index0 开始，到 数组长度-1 的索引结束；</li> <li><strong>局部变量表，最基本的存储单元是Slot （变量槽）；</strong></li> <li>局部变量表中存放编译期可知的各种基本数据类型（8种），引用类型（reference），returnAddress 类型的变量；</li> <li>在局部变量表里，<strong>32位以内的类型只占用一个 Slot （包括 returnAddress 类型)，64位的类型（long 和 double）占用两个 Slot ；</strong> <ul> <li>byte，short，char ，float 在存储前被转换为int，boolean 也被转<br /> 换为 int ，0 表示 false ，非 0 表示 true ；</li> <li>long 和 double 则占据两个 Slot ；</li> </ul> </li> <li>JVM 会为局部变量表中的每一个 Slot 都分配一个访问索引，通过这个索引即可成功访问到局部变量表中指定的局部变量值；</li> <li>当一个实例方法被调用的时候，它的方法参数和方法体内部定义的局部变量将会<mark>按照顺序</mark>被复制到局部变量表中的每一个 Slot 上；</li> <li>如果需要访问局部变量表中一个 64bit 的局部变量值时，<mark>只需要使用前一个索引即可；</mark>（比如：访问 long 或 double 类型变量）；</li> <li>如果当前栈帧是由<mark>构造方法或者实例方法创建的</mark>，那么<mark>该对象引用 this 将会存放在 index 为 0 的 Slot 处</mark>，其余的参数按照参数表顺序继续排列；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/96c741644ed71258681bc569ffc1fe69.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p><code>代码示例</code></p> <pre><code class="prism language-java"><span class="token keyword">public</span> String<span class="token function">test2</span><span class="token punctuation">(</span>Date dateP<span class="token punctuation">,</span> String name2<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         dateP<span class="token operator">=</span> null<span class="token punctuation">;</span>         name2<span class="token operator">=</span><span class="token string">"songqixia"</span><span class="token punctuation">;</span><span class="token keyword">double</span> weight<span class="token operator">=</span><span class="token number">130</span><span class="token punctuation">;</span><span class="token comment">//占据两个slot</span><span class="token keyword">char</span> gender<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span><span class="token keyword">return</span> dateP<span class="token operator">+</span> name2<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p><code>对应的局部变量表</code></p> <hr/> <h4><a id="Slot__261" rel="nofollow"></a>Slot 的重复利用问题</h4> <ul> <li><mark>栈帧中的局部变量表中的槽位是可以重用的</mark>，如果一个局部变量过了其作用域，那么在其作用域之后申明的新的局部变量就很有可能会复用过期局部变量的槽位，从而<mark>达到节省资源的目的；</mark></li> </ul> <p><code>示例代码</code></p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">test4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>             b<span class="token operator">=</span> a<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">//变量c使用的是之前已经销毁的变量b占据的slot的位置</span><span class="token keyword">int</span> c<span class="token operator">=</span> a<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>注意：此处的行号不是 Java 代码中的行号，而是字节码指令的行号；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/85e312490f6b80206e8ca8bb4ec9c3ac.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <hr/> <p><code>说明</code></p> <ul> <li>在栈帧中，与性能调优关系最为密切的部分就是提到的局部变量表；在方法执行时，虚拟机使用局部变量表完成方法的传递；</li> <li><mark>局部变量表中的变量也是重要的垃圾回收根节点（可达性分析算法），只要被局部变量表中直接或间接引用的对象都不会被回收；</mark></li> </ul> <hr/> <h3><a id="_293" rel="nofollow"></a>操作数栈</h3> <ul> <li>每一个独立的栈帧中除了包含局部变量表以外，还包含一个<mark>后进先出</mark>（Last-In-First-Out）的操作数栈，也可以称之为表达式栈<br /> （Expression Stack）；</li> <li><mark>操作数栈，在方法执行过程中，根据字节码指令，往栈中写入数据或提取数据，即入栈（push）/出栈（pop）；</mark> <ul> <li>某些字节码指令将值压入操作数栈，其余的字节码指令将操作数取出栈；使用它们后再把结果压入栈；</li> <li>比如：执行复制，交换，求和等操作；</li> </ul> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/c7368207ed09a471774059d11eda5bae.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li>操作数栈，<mark>主要用于保存计算过程的中间结果，同时作为计算过程中变量临时的存储空间；</mark></li> <li>操作数栈就是 JVM 执行引擎的一个工作区，当一个方法刚开始执行的时候，一个新的栈帧也会随之被创建出来，这个方法的操作数栈就是空的；</li> <li>每一个操作数栈都会拥有一个明确的栈深度用于存储数值，<mark>其所需的最大深度在编译期就定义好了</mark>，保存在方法的 Code 属性中，为 max_ stack 的值；</li> <li>栈中的任何一个元素都可以是任意的 Java 数据类型： <ul> <li>32bit 的类型占用一个栈单位深度；</li> <li>64bit 的类型占用两个栈单位深度；</li> </ul> </li> <li><mark>操作数栈并非采用访问索引的方式来进行数据访问</mark>的，而是只能通过标准的入栈（push）和出栈（pop）操作来完成一次数据访问；</li> <li>如果被调用的方法带有返回值的话，其返回值将会被压入当前栈帧的操作数栈中，并更新 PC寄存器 中下一条需要执行的字节码指令；</li> <li>操作数栈中元素的数据类型必须与字节码指令的序列严格匹配，这由编译器在编译期间进行验证，同时在类加载过程中的类检验阶段的数据流分析阶段要再次验证；</li> <li>另外， Java 虚拟机的<mark>解释引擎是基于栈的执行引擎</mark>，其中的栈指的就是操作数栈；</li> </ul> <hr/> <h4><a id="_317" rel="nofollow"></a>代码追踪</h4> <p><code>示例代码</code></p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">OperandStackTest</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">testAddOperation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">byte</span> i<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">;</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">;</span><span class="token keyword">int</span> k<span class="token operator">=</span> i<span class="token operator">+</span> j<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>上述代码进行解析之后：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/dda605457d2eebae8fe488ff8020db93.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <p>然后对上述的代码进行逐步分析有：</p> <p><code>注意：字节码文件是在执行前已经编译好的，因此，其中的局部变量表和操作数栈的长度都已经确定好了</code></p> <ul> <li>将 15 压入操作数栈；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3c91c6dbb3d5224cb23bf73c6b4eb2d3.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li>PC 寄存器调整到第 2 步，将 15 弹出操作数栈，然后将其存储到局部变量表索引为 1 的位置中（索引为 0 存储的是 this ）；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3564fb7c62653326aca20319566329da.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li>接着将 8 压入操作数栈；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3bebb054925fe4d22fc116b18e43ea9f.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li>接着将 8 弹出操作数栈，存入局部变量表的索引为 2 的位置中；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/6184b76e4045f32f2a630e173fd2a3f8.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li>接着 PC 寄存器就会调整到第 6 步和第 7 步， iload_1 和 iload_2 就是取出之前存入局部变量表中的 15 和 8，并且将取出的值再次压入操作数中，等待下一步的 iadd ，也就是相加；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/a8e1433323608e2d4cc4c934ce211477.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <ul> <li>接着上一步，执行引擎就会将操作数栈中的值依次取出并将字节码指令翻译成机器码指令在 CPU 中进行对应的计算，这里是相加操作，计算出结果为 23，然后就会将 23 压入操作数栈中，最后根据 PC寄存器的调整，执行 istore_3 指令，将 23 存入局部变量表中索引为 3 的位置上；</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/b280a90bf39ada5237bb93fa4fc17b56.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <hr/> <p><code>示例代码</code></p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">int</span><span class="token function">getSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">int</span> n<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token keyword">int</span> m<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span><span class="token keyword">int</span> res<span class="token operator">=</span> n<span class="token operator">+</span> m<span class="token punctuation">;</span><span class="token keyword">return</span> res<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">testGetSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token function">getSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>会有如下结果：</p> <p>aload_0 ：从局部变量表的相应位置装载一个对象引用到操作数栈的栈顶；</p> <p>invokevirtual：是一种调用方法的字节码指令（属于动态派分，该指令也是调用所有虚方法（如果有继承，可以被重写的方法都是虚方法），见方法的调用）；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/ac795bcbf5c8c79c79dd4174316664dd.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <hr/> <h3><a id="_399" rel="nofollow"></a>动态链接</h3> <blockquote> <p><strong>动态链接，也是指向运行时常量池的方法引用；</strong></p> </blockquote> <ul> <li><strong>每一个栈帧内部都包含一个指向运行时常量池中该栈帧所属方法的引用</strong>；包含这个引用的目的就是为了支持当前方法的代码能够实现动态链接（Dynamic Linking） 。比如：invokedynamic 指令；</li> <li><strong>在 Java 源文件被编译到字节码文件中时，所有的变量和方法引用都作为符号引用（Symbolic Reference） 保存在 class 文件的常量池里；比如：描述一个方法调用了另外的其他方法时，就是通过常量池中指向方法的符号引用来表示的，那么<mark>动态链接的作用就是为了将这些符号引用转换为调用方法的直接引用</mark>。</strong></li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/bde52bd3e57c0e49a4ff9a030fa63ef8.jpg" alt="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈"></p> <blockquote> <p>为什么需要常量池呢？</p> <p><strong>它的作用就是，为了提供一些符号引用和常量，便于指令的识别，并且节省了空间。</strong></p> </blockquote> <hr/> <h3><a id="_415" rel="nofollow"></a>方法的调用</h3> <p>在 JVM 中，将符号引用转换为调用方法的直接引用与方法的绑定机制息息相关；</p> <ul> <li>静态链接<br /> 当一个字节码文件被装载进 JVM 内部时，<strong>如果被调用的目标方法在编译期可知，且运行期保持不变时，这种情况下将调用方法的符号引用转换为直接引用的过程称之为静态链接；</strong></li> <li>动态链接<br /> 如果被调用的方法在编译期无法被确定下来，也就是说，<strong>只能够在程序运行期将调用方法的符号引用转换为直接引用，由于这种引用转换过程具备动态性，因此也就被称之为动态链接；</strong></li> </ul> <p>对应的方法的绑定机制为：早期绑定（Early Binding）和晚期绑定（Late Binding） ；绑定是一个字段，方法或者类在符号引用被替换为直接引用的过程，这仅仅发生一次；</p> <ul> <li> <p>早期绑定<br /> 早期绑定就是指被调用的目标方法如果在编译期可知，且运行期保持不变时，即可将这个方法与所属的类型进行绑定，这样一来，由于明确了被调用的目标方法究竟是哪一个，因此也就可以使用静态链接的方式将符号引用转换为直接引用；</p> </li> <li> <p>晚期绑定<br /> 如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法，这种绑定方式也就被称之为晚期绑定；</p> </li> <li> <p>随着高级语言的横空出世，类似于 Java 一样的基于面向对象的编程语言如今越来越多，尽管这类编程语言在语法风格上存在一定的差别，但是它们彼此之间始终保持着一个共性，那就是都支持封装，继承和多态等面向对象特性，<mark>既然这一类的编程语言具备多态特性，那么自然也就具备早期绑定和晚期绑定两种绑定方式；</mark></p> </li> <li> <p><strong>Java 中任何一个普通的方法其实都具备虚函数的特征，它们相当于 C++ 语言中的虛函数（C++ 中则需要使用关键字 virtual 来显式定义）。如果在 Java 程序中不希望某个方法拥有虛函数的特征时，则可以使用关键字 final 来标记这个方法；</strong></p> </li> </ul> <hr/> <h4><a id="_436" rel="nofollow"></a>虚方法与非虚方法</h4> <ul> <li>如果方法在编译期就确定了具体的调用版本，这个版本在运行时是不可变的，这样的方法称为非虚方法；</li> <li><strong>静态方法，私有方法，final方法，实例构造器，父类方法都是非虚方法；</strong></li> <li>其他方法称为虚方法；</li> </ul> <p><code>虚拟机中提供了以下几条方法调用指令</code></p> <ul> <li>普通调用指令 <ul> <li><strong>invokestatic：调用静态方法，解析阶段确定唯一方法版本；</strong></li> <li><strong>invokespecial：调用 &lt; init &gt; 方法、 私有及父类方法，解析阶段确定唯一方法版本；</strong></li> <li>invokevirtual：调用所有虛方法；</li> <li>invokeinterface：调用接口方法；</li> </ul> </li> <li>动态调用指令 <ul> <li>invokedynamic：动态解析出需要调用的方法，然后执行；</li> </ul> </li> </ul> <hr/> <h3><a id="_454" rel="nofollow"></a>方法返回地址</h3> <ul> <li>存放调用该方法的 pc寄存器 的值；</li> <li>一个方法的结束，有两种方式： <ul> <li>正常执行完成；</li> <li>出现未处理的异常，非正常退出；</li> </ul> </li> <li>无论通过哪种方式退出，在方法退出后都返回到该方法被调用的位置；方法正常退出时，<mark>调用者的 pc寄存器 的值作为返回地址，即调用该方法的指令的下一条指令的地址</mark>，而通过异常退出的，返回地址是要通过异常表来确定，栈帧中一般不会保存这部分信息；</li> </ul> <p>本质上，方法的退出就是当前栈帧出栈的过程。此时，需要恢复上层方法的局部变量表，操作数栈，将返回值压入调用者栈帧的操作数栈，设置 PC寄存器 值等，让调用者方法继续执行下去；</p> <p><mark>正常完成出口和异常完成出口的区别在于：通过异常完成出口退出的不会给他的上层调用者产生任何的返回值；</mark></p> <hr/> <ol> <li>执行引擎遇到任意一个方法返回的字节码指令（return），会有返回值传递给上层的方法调用者，简称正常完成出口： <ul> <li>一个方法在正常调用完成之后究竟需要使用哪一个返回指令还需要根据方法返回值<br /> 的实际数据类型而定；</li> <li>在字节码指令中，<strong>返回指令包含 ireturn （当返回值是 boolean，byte，char，short 和 int 类型时使用），lreturn（long 类型），freturn（float 类型），dreturn（double 类型）以及 areturn（引用类型），另</strong><br /><strong>外还有一个return指令供声明为void的方法、实例初始化方法、类和接口的初始化方法使用</strong>；</li> </ul> </li> <li>在方法执行的过程中遇到了异常（Exception） ，并且这个异常没有在方法内进行处理，也就是只要在本方法的异常表中没有搜索到匹配的异常处理器，就会导致方法退出，简称异常完成出口；方法执行过程中抛出异常时的异常处理，存储在一个异常处理表，方便在发生异常的时候找到处理异常的代码；</li> </ol> <hr/> <h3><a id="_477" rel="nofollow"></a>一些附加信息</h3> <p>栈帧中还允许携带与 Java 虚拟机实现相关的一些附加信息；</p> <p><strong>例如，对程序调试提供支持的信息；</strong></p> <hr/> <h3><a id="_485" rel="nofollow"></a>虚拟机栈相关面试</h3> <ul> <li> <p>举例栈溢出的情况？</p> <p>StackOverflowError，可以通过设置<code>-Xss</code> 设置栈的大小；</p> </li> <li> <p>调整栈大小，就能保证不出现溢出吗？</p> <p>不能保证，只能说不容易出现，如果有失败的递归，那么肯定会 StackOverflowError；</p> </li> <li> <p>分配的栈内存越大越好吗？</p> <p>不是，如果栈内存很大，那么对其他的内存存储也是有影响的；</p> </li> <li> <p>垃圾回收是否会涉及到虚拟机栈？</p> <p>不会！</p> </li> <li> <p>方法中定义的局部变量是否线程安全？</p> <p>具体问题具体分析；如果是在方法内部申明的变量，那么就会使线程安全的；如果变量是从参数传入的，那么就不是线程安全的；</p> </li> </ul> <hr/> <h2><a id="_509" rel="nofollow"></a>本地方法接口与栈</h2> <p><strong>什么是本地方法？</strong></p> <p>简单地讲，一个 Native Method 就是一个 Java 调用非 Java 代码的接口，一个 Native Method 是这样一个 Java 方法： 该方法的实现由非 Java 语言实现，比如 C 语言；这个特征并非 Java 所特有，很多其它的编程语言都有这一机制，比如在 C++ 中，可以用extern “C” 告知 C++ 编译器去调用一个 C 的函数；</p> <blockquote> <p>“A native method is a Java method whose implementation is provided by non-java code.”</p> </blockquote> <p>在定义一个 Native Method 时， 并不提供实现体（有些像定义一个 Java interface），因为其实现体是由非 Java 语言在外面实现的。本地接口的作用是融合不同的编程语言为 Java 所用，它的初衷是融合 C/C++ 程序；</p> <h3><a id="_519" rel="nofollow"></a>本地方法栈</h3> <ul> <li><strong>Java 虚拟机栈用于管理 Java 方法的调用，而本地方法栈用于管理本地方法的调用；</strong></li> <li><strong>本地方法栈，也是线程私有的</strong>；</li> <li>允许被实现成固定或者是可动态扩展的内存大小；（在内存溢出方面是相同的） <ul> <li>如果线程请求分配的栈容量超过本地方法栈允许的最大容量，Java 虚拟机将会抛出一个 StackOverflowError 异常；</li> <li>如果本地方法栈可以动态扩展，并且在尝试扩展的时候无法申请到足够的内存，或者在创建新的线程时没有足够的内存去创建对应的本地方法栈，那么 Java 虚拟机将会抛出一个 OutofMemoryError 异常；</li> </ul> </li> <li>本地方法是使用 C 语言实现的；</li> <li>它的具体做法是 Native Method Stack 中登记 native 方法，在 Execution Engine 执行时加载本地方法库；</li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-53203.htm">宠物领养数据库建表 宠物领养系统数据库</a></p>
+                                        <p>下一个：<a href="/news/article-53731.htm">动物医院看病多少钱一次门诊啊（动物医院看病多少钱一次门诊啊）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-26207.htm" title="vuex几大模块和Vuex助手使用详解">vuex几大模块和Vuex助手使用详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-node-share-links.htm" title="「1月19日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月19日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-41573.htm" title="宠物领养管理系统的开题答辩（宠物领养管理系统的开题答辩怎么写）">宠物领养管理系统的开题答辩（宠物领养管理系统的开题答辩怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-27157.htm" title="猫咪三针疫苗间隔多久打第一针疫苗（猫咪三针疫苗多久打一次）">猫咪三针疫苗间隔多久打第一针疫苗（猫咪三针疫苗多久打一次）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-today-hiddify-next-node.htm" title="「1月4日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月4日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-today-hiddify-next-node.htm" title="「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-30440.htm" title="C语言实现扫雷游戏（代码）">C语言实现扫雷游戏（代码）</a></li>
+                        <li class="py-2"><a href="/news/article-22074.htm" title="开宠物店去哪里进货渠道（开宠物店去哪里进货渠道好）">开宠物店去哪里进货渠道（开宠物店去哪里进货渠道好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-hiddify-next-node.htm" title="「2月4日」最高速度21.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月4日」最高速度21.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-hiddify-next-node.htm" title="「11月27日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月27日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-54834.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python协程编程实例_Python异步IO编程之-asyncio协程应用例子</title>
+        <meta name="description" content="前面，我们从大的结构上认识了最新的Python 3.7里面的asyncio标准库。接下来，我们就开始一点一点的来学习asyncio的使用。  一、安装 Python 3.7 我的系统是 Ubuntu " />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-54834.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="python协程编程实例_Python异步IO编程之-asyncio协程应用例子" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/0ab3f472bbdb4ea7712ec02d189d7341.webp" />
+        <meta property="og:release_date" content="2025-02-11T05:43:53" />
+    <meta property="og:updated_time" content="2025-02-11T05:43:53" />
+        <meta property="og:description" content="前面，我们从大的结构上认识了最新的Python 3.7里面的asyncio标准库。接下来，我们就开始一点一点的来学习asyncio的使用。  一、安装 Python 3.7 我的系统是 Ubuntu " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python协程编程实例_Python异步IO编程之-asyncio协程应用例子">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>python协程编程实例_Python异步IO编程之-asyncio协程应用例子</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>前面，我们从大的结构上认识了最新的Python 3.7里面的asyncio标准库。接下来，我们就开始一点一点的来学习asyncio的使用。</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>一、安装 Python 3.7</p> <p>我的系统是 Ubuntu 16.04，里面有 Python 2.7 和 Python 3.6。2.7是系统自带的，其它系统软件对此有依赖，不能破坏。3.6 是通过ppa源apt install的，然后通过 virtualenvwrapper 管理虚拟环境。同样的，安装3.7也是用ppa源。</p> <p>sudo add-apt-repository ppa:deadsnakes/ppa</p> <p>sudo apt update</p> <p>sudo apt install python3.7 python3.7-dev</p> <p>安装python3.7-dev包的目的是编译C/C++模块时需要Python.h等头文件。安装好后，建立一个Python 3.7 的虚拟环境，就叫 py3.7 吧：</p> <p>mkvirtualenv -p python3.7 py3.7</p> <p>建立好虚拟环境，通过命令：workon py3.7 就可以使用 3.7 了。</p> <p>Windows 的安装可以移步猿人学网站，阅读《Python开发环境的安装配置》这篇文章，里面有详细说明。</p> <p>二、创建第一个协程</p> <p>Python 3.7 推荐使用 async/await 语法来声明协程，来编写异步应用程序。我们来创建第一个协程函数：首先打印一行“你好”，等待1秒钟后再打印“猿人学”。</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>sayhi()函数通过 async 声明为协程函数，较之前的修饰器声明更简洁明了。</p> <p>在实践过程中，什么功能的函数要用async声明为协程函数呢？就是那些能发挥异步IO性能的函数，比如读写文件、读写网络、读写数据库，这些都是浪费时间的IO操作，把它们协程化、异步化从而提高程序的整体效率(速度)。</p> <p>sayhi()函数是通过 asyncio.run()来运行的，而不是直接调用这个函数(协程)。因为，直接调用并不会把它加入调度日程，而只是简单的返回一个协程对象：</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>那么，如何真正运行一个协程呢？asyncio 提供了三种机制：</p> <p>(1)asyncio.run() 函数，这是异步程序的主入口，相当于C语言中的main函数。</p> <p>(2)用await等待协程，比如上例中的 await asyncio.sleep(1) 。再看下面的例子，我们定义了协程 say_delay() ，在main()协程中调用两次，第一次延迟1秒后打印“你好”，第二次延迟2秒后打印“猿人学”。这样我们通过 await 运行了两个协程。</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>从起止时间可以看出，两个协程是顺序执行的，总共耗时1+2=3秒。</p> <p>(3)通过 asyncio.create_task() 函数并发运行作为 asyncio 任务(Task) 的多个协程。下面，我们用create_task()来修改上面的main()协程，从而让两个say_delay()协程并发运行：</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>从运行结果的起止时间可以看出，两个协程是并发执行的了，总耗时等于最大耗时2秒。</p> <p>asyncio.create_task() 是一个很有用的函数，在爬虫中它可以帮助我们实现大量并发去下载网页。在Python 3.6中与它对应的是 ensure_future()。</p> <p>三、可等待对象(awaitables)</p> <p>可等待对象，就是可以在 await 表达式中使用的对象，前面我们已经接触了两种可等待对象的类型：协程和任务，还有一个是低层级的Future。</p> <p>asyncio模块的许多API都需要传入可等待对象，比如 run(), create_task() 等等。</p> <p>(1)协程</p> <p>协程是可等待对象，可以在其它协程中被等待。协程两个紧密相关的概念是：</p> <p>协程函数：通过 async def 定义的函数；</p> <p>协程对象：调用协程函数返回的对象。</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>运行上面这段程序，结果为：</p> <p>co is now is 1548512708.2026224</p> <p>now is 1548512708.202648</p> <p>可以看到，直接运行协程函数 whattime()得到的co是一个协程对象，因为协程对象是可等待的，所以通过 await 得到真正的当前时间。now2是直接await 协程函数，也得到了当前时间的返回值。</p> <p>(2)任务</p> <p>前面我们讲到，任务是用来调度协程的，以便并发执行协程。当一个协程通过 asyncio.create_task() 被打包为一个 任务，该协程将自动加入程序调度日程准备立即运行。</p> <p>create_task()的基本使用前面例子已经讲过。它返回的task通过await来等待其运行完。如果，我们不等待，会发生什么？“准备立即运行”又该如何理解呢？先看看下面这个例子：</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>运行这段代码的情况是这样的：</p> <p>首先，1秒钟后打印一行，这是第13，14行代码运行的结果：</p> <p>calling:0, now is 09:15:15</p> <p>接着，停顿1秒后，连续打印4行：</p> <p>calling:1, now is 09:15:16</p> <p>calling:2, now is 09:15:16</p> <p>calling:3, now is 09:15:16</p> <p>calling:4, now is 09:15:16</p> <p>从这个结果看，asyncio.create_task()产生的4个任务，我们并没有await，它们也执行了。关键在于第18行的 await，如果把这一行去掉或是sleep的时间小于1秒(比whattime()里面的sleep时间少即可)，就会只看到第一行的输出结果而看不到后面四行的输出。这是因为，main()不sleep或sleep少于1秒钟，main()就在whattime()还未来得及打印结果(因为，它要sleep1秒)就退出了，从而整个程序也退出了，就没有whattime()的输出结果。</p> <p>再来理解一下“准备立即执行”这个说法。它的意思就是，create_task()只是打包了协程并加入调度队列还未执行，并准备立即执行，什么时候执行呢？在“主协程”(调用create_task()的协程)挂起的时候，这里的“挂起”有两个方式：</p> <p>一是，通过 await task 来执行这个任务；</p> <p>另一个是，主协程通过 await sleep 挂起，事件循环就去执行task了。</p> <p>我们知道，asyncio是通过事件循环实现异步的。在主协程 main()里面，没有遇到 await 时，事件就是执行main()函数，遇到 await 时，事件循环就去执行别的协程，即create_task()生成的whattime()的4个任务，这些任务一开始就是 await sleep 1秒。这时候，主协程和4个任务协程都挂起了，CPU空闲，事件循环等待协程的消息。</p> <p>如果main()协程只sleep了0.1秒，它就先醒了，给事件循环发消息，事件循环就来继续执行main()协程，而main()后面已经没有代码，就退出该协程，退出它也就意味着整个程序退出，4个任务就没机会打印结果；</p> <p>如果main()协程sleep时间多余1秒，那么4个任务先唤醒，就会得到全部的打印结果；</p> <p>如果main()的18行sleep等于1秒时，和4个任务的sleep时间相同，也会得到全部打印结果。这是为什么呢？</p> <p>我猜想是这样的：4个任务生成在前，第18行的sleep在后，事件循环的消息响应可能有个先进先出的顺序。后面深入asyncio的代码专门研究一下这个猜想正确与否。</p> <p>(3)Future</p> <p>它是一个低层级的可等待对象，表示一个异步操作的最终结果。目前，我们写应用程序还用不到它，暂不学习。</p> <p>asyncio异步IO协程总结</p> <p>协程就是我们异步操作的片段。通常，写程序都会把全部功能分成很多不同功能的函数，目的是为了结构清晰；进一步，把那些涉及耗费时间的IO操作(读写文件、数据库、网络)的函数通过 async def 异步化，就是异步编程。</p> <p>那些异步函数(协程函数)都是通过消息机制被事件循环管理调度着，整个程序的执行是单线程的，但是某个协程A进行IO时，事件循环就去执行其它协程非IO的代码。当事件循环收到协程A结束IO的消息时，就又回来执行协程A，这样事件循环不断在协程之间转换，充分利用了IO的闲置时间，从而并发的进行多个IO操作，这就是异步IO。</p> <p>写异步IO程序时记住一个准则：需要IO的地方异步。其它地方即使用了协程函数也是没用的。</p> <p>网络爬虫就是异步IO的用武之地，接下来的文章，我们就来实现一个异步IO爬虫，敬请期待。</p> <p align="center"><img decoding="async" src="" alt=""/></p> <p>我的公众号：猿人学 Python 上会分享更多心得体会，敬请关注。</p> <p>***版权申明:若没有特殊说明，文章皆是猿人学 yuanrenxue.com 原创，没有猿人学授权，请勿以任何形式转载。***</p> </div> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-54274.htm">正规免费领养宠物机构有哪些（正规免费领养宠物狗）</a></p>
+                                        <p>下一个：<a href="/news/article-54835.htm">宠物食品加盟（宠物食品招商加盟）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-26691.htm" title="给动物打疫苗属于什么（给动物打疫苗属于什么行业）">给动物打疫苗属于什么（给动物打疫苗属于什么行业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-hiddify-next-node.htm" title="「2月9日」最高速度19.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月9日」最高速度19.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-34730.htm" title="动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）">动物疫苗属于疫苗分类吗对吗为什么（动物疫苗定义）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-node-subscribe.htm" title="「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月21日」最高速度18.2M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-43562.htm" title="国内宠物粮生产厂家有哪些品牌（中国宠物粮品牌）">国内宠物粮生产厂家有哪些品牌（中国宠物粮品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-hiddify-next-windows.htm" title="「12月26日」最高速度22.9M/S，2024年Hiddify每天更新免费订阅节点地址分享">「12月26日」最高速度22.9M/S，2024年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-22073.htm" title="Halo 开源项目学习实体类与数据表">Halo 开源项目学习实体类与数据表</a></li>
+                        <li class="py-2"><a href="/news/article-29482.htm" title="宠物领养需要带什么证件吗北京（北京正规领养宠物）">宠物领养需要带什么证件吗北京（北京正规领养宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-21155.htm" title="SpringBoot使用线程池之ThreadPoolTaskExecutor和ThreadPoolExecutor">SpringBoot使用线程池之ThreadPoolTaskExecutor和ThreadPoolExecutor</a></li>
+                        <li class="py-2"><a href="/news/article-32354.htm" title="Redis 缓存的三大问题及其解决方案">Redis 缓存的三大问题及其解决方案</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

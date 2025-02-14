@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-55940.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pyspark读取hive表数据进行处理，将结果插入到hive及hbase</title>
+        <meta name="description" content="文章目录  前言 一、基本思路   1.创建参数初始化方法ReadConfig(); 2.创建一个数据处理类DataDeal()：   二、实现过程及说明   1.初始化sparksession 2." />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-55940.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Pyspark读取hive表数据进行处理，将结果插入到hive及hbase" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/9b4317d89254f8b40e9f989961bbec17.webp" />
+        <meta property="og:release_date" content="2025-02-13T03:10:37" />
+    <meta property="og:updated_time" content="2025-02-13T03:10:37" />
+        <meta property="og:description" content="文章目录  前言 一、基本思路   1.创建参数初始化方法ReadConfig(); 2.创建一个数据处理类DataDeal()：   二、实现过程及说明   1.初始化sparksession 2." />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Pyspark读取hive表数据进行处理，将结果插入到hive及hbase">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Pyspark读取hive表数据进行处理，将结果插入到hive及hbase</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark">                     <font color="#999AAA"> </font> </p> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_7" rel="nofollow">前言</a></li> <li><a href="#_17" rel="nofollow">一、基本思路</a></li> <li> <ul> <li><a href="#1ReadConfig_18" rel="nofollow">1.创建参数初始化方法ReadConfig();</a></li> <li><a href="#2DataDeal_26" rel="nofollow">2.创建一个数据处理类DataDeal()：</a></li> </ul> </li> <li><a href="#_34" rel="nofollow">二、实现过程及说明</a></li> <li> <ul> <li><a href="#1sparksession_45" rel="nofollow">1.初始化sparksession</a></li> <li><a href="#2hive_54" rel="nofollow">2.读取hive数据</a></li> <li><a href="#3_68" rel="nofollow">3.数据处理</a></li> <li><a href="#4hive_81" rel="nofollow">4.插入到hive</a></li> <li><a href="#5hbase_91" rel="nofollow">5.插入到hbase</a></li> <li><a href="#_113" rel="nofollow">主函数及参数处理</a></li> </ul> </li> <li><a href="#_143" rel="nofollow">总结</a></li> </ul> </div> <hr color="#000000" size="1&quot;"/> </h1> <p> 项目需要使用pyspark将hive数据进行处理插入到hive表及hbase中，刚开始接触spark，记录了学习的过程帮助初学者。  </p> <hr color="#000000" size="1&quot;"/> <font color="#999AAA"> </font></p> </h1> <h2> <a id="1ReadConfig_18" rel="nofollow"></a>1.创建参数初始化方法ReadConfig();</h2> <p>读取key:value格式的配置文件，获取“表名”、“列名”、“日期”等相关的参数传递给数据处理类。<br /> 配置文件格式如下：<br /> source_table:test_a #源表<br /> target_table:test_b #目标表<br /> columns:A,B,C #列名<br /> base_hdfs_dir:/warehouse/tablespace/managed/hive/test.db/test_a/ #源表hdfs路径<br /> inner_tb_loc:/warehouse/tablespace/managed/hive/test.db/test_b/ #目标表hdfs路径</p> <h2> <a id="2DataDeal_26" rel="nofollow"></a>2.创建一个数据处理类DataDeal()：</h2> <p>包括sparksession的初始化方法：CreateSparkSession(self,SessionName)；<br /> 包括hive数据读取方法：HiveExtenalRead(self)；<br /> 数据处理方法：InnerTbDeal(self,DataFrame)；<br /> 插入到hive方法：JsonToHive(self, DataFrame)；<br /> 插入到hbase方法：JsonToHbaseShc(self, DataFrame)；</p> </h1> <p>DataDeal类的初始化</p> <pre><code>    def __init__(self,source_tb,target_tb,data_dt,column,tb_loc):         self.source_tb = source_tb         self.target_tb = target_tb         self.data_dt = data_dt         self.column=column         self.tb_loc=tb_loc </code></pre> <h2> <a id="1sparksession_45" rel="nofollow"></a>1.初始化sparksession</h2> <pre><code>    def CreateSparkSession(self,SessionName):         spark = SparkSession.builder.appName(SessionName).config('spark.executor.memory',                                                              '10g').config('hive.exec.dynamic.partition.mode','nonstrict').config('hive.exec.dynamic.partition','true').enableHiveSupport().getOrCreate()         spark.sparkContext.setLogLevel("WARN")         return spark </code></pre> <h2> <a id="2hive_54" rel="nofollow"></a>2.读取hive数据</h2> <pre><code># 读取hive外部表，插入到hive内部表中，后续处理速度快     def HiveExtenalRead(self):         time_start = time.time()         sc = self.CreateSparkSession("HiveExtenalRead")         sql="select "+self.column+" from "+self.source_tb +' where data_dt='+self.data_dt         df=sc.sql(sql)         inner_tb=self.target_tb+"_inner"         #写入指定目录下         df.write.orc(self.tb_loc,'overwrite')         return df </code></pre> <h2> <a id="3_68" rel="nofollow"></a>3.数据处理</h2> <pre><code>def InnerTbDeal(self,DataFrame):         sc = self.CreateSparkSession("InnerTbDeal")         DataFrame.createOrReplaceTempView('InnerTbDeal')         col=DataFrame.columns         strcol = 'select A,B,C from InnerTbDeal'         dt=sc.sql(strcol)         df.show(20) 		return dt </code></pre> <h2> <a id="4hive_81" rel="nofollow"></a>4.插入到hive</h2> <pre><code>    def JsonToHive(self, DataFrame):         sc = self.CreateSparkSession("JsonToHive")         json_tb_loc=self.tb_loc         DataFrame.write.orc(json_tb_loc, 'overwrite')         return 0 </code></pre> <h2> <a id="5hbase_91" rel="nofollow"></a>5.插入到hbase</h2> <p>使用开源shc框架，搜索shc框架下载一份复制到spark各节点就行了。</p> <pre><code># Shc框架写入到到hbase     def JsonToHbaseShc(self, DataFrame):         sc = self.CreateSparkSession("JsonToHbaseShc")         table = self.target_tb         cataconf="""{             "table":{"namespace":"名字空间", "name":\""""+表名+"""\"},             "rowkey":"key",             "columns":{                 "A":{"cf":"rowkey", "col":"key", "type":"string"},                 "B":{"cf":"jk_data", "col":"B", "type":"string"},                 "C":{"cf":"jk_data", "col":"C", "type":"string"}             }         }"""         catalog = ''.join(cataconf.split())         data_source_format = 'org.apache.spark.sql.execution.datasources.hbase'         DataFrame.write.options(catalog=catalog,newTable="5").format(data_source_format).save()         return 0 </code></pre> <h2> <a id="_113" rel="nofollow"></a>主函数及参数处理</h2> <p>参数处理方法</p> <pre><code>def ReadConfig(TbName):     dict = {}     config_loc='./Config/'+TbName+'.ini'     config = open(config_loc, 'r')     for line in config:         if line.find(':') &gt; 0:             strs = line.replace('\n', '').split(':')             dict[strs[0]] = strs[1]     return dict </code></pre> <p>主函数</p> <pre><code>if __name__=='__main__':     #获取输入参数     prop = ReadConfig(sys.argv[1])     data_dt=sys.argv[2]     #内部表hdfs路径     tb_loc=prop['base_hdfs_dir']+prop['inner_tb_loc']+'data_dt='+data_dt     s1=DataDeal(prop['source_table'],prop['target_table'],data_dt,prop['columns'],tb_loc)     dt=s1.HiveExtenalRead()     dt2=s1.InnerTbDeal(dt)     s1.JsonToHive(dt2)     s1.JsonToHbaseShc(dt2) </code></pre> </h1> <p>结果是简单的，过程是复杂的。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-55371.htm">动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译</a></p>
+                                        <p>下一个：<a href="/news/article-55941.htm">有关JavaScript事件循环的若干疑问探究</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-3-hiddify-next-node-github.htm" title="「1月3日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月3日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-33776.htm" title="Appium+Python+Android自动化のdesired_caps会话参数">Appium+Python+Android自动化のdesired_caps会话参数</a></li>
+                        <li class="py-2"><a href="/news/article-20236.htm" title="宠物粮食厂家联系方式 宠物粮食厂家联系方式电话">宠物粮食厂家联系方式 宠物粮食厂家联系方式电话</a></li>
+                        <li class="py-2"><a href="/news/article-52664.htm" title="参观动物医院实验报告怎么写 参观动物医院实验报告怎么写的">参观动物医院实验报告怎么写 参观动物医院实验报告怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-46526.htm" title="SpringBoot 核心源码解读">SpringBoot 核心源码解读</a></li>
+                        <li class="py-2"><a href="/news/article-32822.htm" title="动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载">动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载</a></li>
+                        <li class="py-2"><a href="/news/article-20235.htm" title="宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-hiddify-next-node.htm" title="「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月5日」最高速度20.8M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="「1月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-41571.htm" title="python实现自动整理文件_python_">python实现自动整理文件_python_</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

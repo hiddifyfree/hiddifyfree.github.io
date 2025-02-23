@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-61663.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mongodb 数据块的迁移流程介绍 &#8211; xinghebuluo</title>
+        <meta name="description" content="1.1 Chunk（数据块） 表示特定服务器上面，连续范围的分片键值所包含的一组数据，是一个逻辑概念。 例如，某数据块记录如下：  {"_id" :"chunk-a",  // 数据块Id"ns" :" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-61663.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="mongodb 数据块的迁移流程介绍 &#8211; xinghebuluo" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/14533b23bfb4c21a217a6fbfcac0b668.webp" />
+        <meta property="og:release_date" content="2025-02-23T09:47:09" />
+    <meta property="og:updated_time" content="2025-02-23T09:47:09" />
+        <meta property="og:description" content="1.1 Chunk（数据块） 表示特定服务器上面，连续范围的分片键值所包含的一组数据，是一个逻辑概念。 例如，某数据块记录如下：  {"_id" :"chunk-a",  // 数据块Id"ns" :" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="mongodb 数据块的迁移流程介绍 &#8211; xinghebuluo">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>mongodb 数据块的迁移流程介绍 &#8211; xinghebuluo</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <h2>1.1 Chunk（数据块）</h2> <p>表示特定服务器上面，<strong>连续范围的分片键值所包含的一组数据</strong>，是一个逻辑概念。</p> <p>例如，某数据块记录如下：</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">{</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">_id</span><span style="color: rgba(128, 0, 0, 1)">"</span> :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">chunk-a</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,  // 数据块Id</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ns</span><span style="color: rgba(128, 0, 0, 1)">"</span> :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">user.address</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,  // 该数据块对应的数据库名和表名</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">min</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)"> : {               // 该数据块对应的分片键值的起始值（包含），是“Shi Jiazhuang”</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">city</span><span style="color: rgba(128, 0, 0, 1)">"</span> :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Shi Jiazhuang</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">     },</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">max</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)"> : {               // 该数据块对应的分片键值的结束值（不包含），是“Nanjjing”</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">city</span><span style="color: rgba(128, 0, 0, 1)">"</span> :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Nan Jing</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">     },</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">shard</span><span style="color: rgba(128, 0, 0, 1)">"</span> :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">repa</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">        // 该数据块存储在repa分片服务器                }<br/>// 即该数据块记录表示，数据库user中的表address中的“city”字段中，其值从“Shi Jiazhuang”（包含）到“Nan Jing”（不包含）这段连续区间的数据，都存储在名为repa的分片服务器。</span></pre> </div> <h2>1.2 Chunk Size（数据块大小）</h2> <p>数据块所对应的数据，如果超过64M（默认值），则会被系统自动切分为两个数据，即数据块会从1块切分为2块，图示如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c5539c0816cdbd044c98235a4bf7165e.jpg" alt="mongodb 数据块的迁移流程介绍 - xinghebuluo "></p> <h2>1.3 Migration（数据块迁移）</h2> <p>mongodb有一个后台的平衡器进程，它会监控各个分片服务器上面的数据块的数量，如果发现不同的分片服务器上面数据块的数量差异，超过阈值，则会启动数据块迁移任务，</p> <p>直至不同的分片服务器之间的数据块的数量差异落在阈值之内，图示如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/bc05e01beb8d705faec4200096e8d6bf.jpg" alt="mongodb 数据块的迁移流程介绍 - xinghebuluo "></p> <h2>1.4 Migration Thresholds（迁移阈值）</h2> <p>数据块的迁移阈值，是和该表的数据块总数相关的，具体如下：</p> <table style="height: 133px; width: 283px" border="0" align="left"> <tbody> <tr> <td>数据块总数量</td> <td>阈值</td> </tr> <tr> <td style="text-align: left">小于20</td> <td>2</td> </tr> <tr> <td>20-79</td> <td>4</td> </tr> <tr> <td>大于等于80</td> <td>8</td> </tr> </tbody> </table> </h1> </h1> </h1> <p>数据块的迁移对于用户和应用层来说是透明的，当然可能会有些性能的损失，整个迁移流程有7个步骤，图示如下</p> <p><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220509/fca8e181dffc0868f84b208ed6e56dcf.jpg" alt="mongodb 数据块的迁移流程介绍 - xinghebuluo "></p> <p>各个步骤的内容如下：</p> <p>1. 平衡器发送迁移命令给源节点。</p> <p>2. 源节点启动了一个内部的数据块迁移命令给目标节点，同时在数据块迁移期间，对于该数据块的请求依然路由到源节点。</p> <p>3. 目标节点首先创建该数据块上缺失的索引（如果需要的话）。</p> <p>4. 目标节点到源节点拉取数据。</p> <p>5. 目标节点需要到源节点再请求在步骤4执行期间的增量变更数据（新增、更新和删掉），如果有则跳转到步骤4，直到没有增量数据。</p> <p>6. 数据全部迁移成功后，源节点会向配置服务器（config server）发送请求，更新该数据块的元数据中的"分片服务器（shard）"的值为目标节点。</p> <p>7. 源节点删除本地的该数据块对应的数据。</p> </h1> <p>以上分享了数据块和数据块迁移的一些基本概念和流程，下面是一些最佳实践。</p> <h2>3.1 关于数据块大小的选择</h2> <p>数据块的大小，默认是64M，通常情况下是不需要修改它的，但是有时候该值的大小根据不同的业务场景会带来不同的影响，需要综合多方面的因素来设置该值。</p> <p>数据块大小太小：通常情况下，较小的数据块大小，会带来更频繁的数据块迁移，数据在集群间的分布会更加均衡，但是如果分片键设置的不够合理，则会产生很多无法切分（split）的大数据块，太大的数据块无法在分片之间迁移，从而导致数据分布的不均衡性，此时需要把数据块大小调大。</p> <p>数据块大小太大：较大的数据块，意味着更少的数据块迁移，数据在集群间的分布容易出现不平衡，同时也容易产生读写热点（可手动切分），此时需要把数据块大小调小。</p> <h2>3.2 关于数据块迁移对集群性能的影响</h2> <p>数据块迁移除了占用目标节点和源节点的带宽和磁盘读写资源外，在迁移流程中的步骤6会短暂阻塞对该数据块的访问，影响应用的访问，因此建议设置平衡器的活跃时间窗口，设置为业务低估时进行，步骤如下：</p> <p>1. 连接到mongos。</p> <p>2. 切换到config数据库</p> <div class="cnblogs_code"> <pre>use config</pre> </div> <p>3. 启动平衡器</p> <p>如果平衡器是关闭状态，则设置活跃时间窗口也是不会做数据迁移的，命令如下：</p> <div class="cnblogs_code"> <pre>sh.startBalancer()</pre> </div> <p>4. 修改活跃时间窗口</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">db.settings.updateOne(    { _id:</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">balancer</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)"> },    { $</span><span style="color: rgba(0, 0, 255, 1)">set</span>: { activeWindow : { start :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">01:00</span><span style="color: rgba(128, 0, 0, 1)">"</span>, stop :<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">06:00</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)"> } } },  // start和stop的格式为"HH:MM"，其中HH的取值范围是0到23，MM的取值范围是00到59    { upsert:</span><span style="color: rgba(0, 0, 255, 1)">true</span><span style="color: rgba(0, 0, 0, 1)"> } )</span></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-61072.htm">动物疫苗行业排名前十名有哪些 动物疫苗行业排名前十名有哪些品牌</a></p>
+                                        <p>下一个：<a href="/news/article-61664.htm">2021年公务员国考报名时间（2021公务员国考报考时间）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="「11月18日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月18日」最高速度22.2M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-45541.htm" title="java基础面试题">java基础面试题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-hiddify-next-node-github.htm" title="「11月22日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「11月22日」最高速度18.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-42567.htm" title="宠颐生动物医院（重庆宠颐生动物医院）">宠颐生动物医院（重庆宠颐生动物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-30920.htm" title="家庭式宠物寄养平台（家庭式宠物寄养平台朝阳区）">家庭式宠物寄养平台（家庭式宠物寄养平台朝阳区）</a></li>
+                        <li class="py-2"><a href="/news/article-53731.htm" title="动物医院看病多少钱一次门诊啊（动物医院看病多少钱一次门诊啊）">动物医院看病多少钱一次门诊啊（动物医院看病多少钱一次门诊啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-hiddify-next-node-share.htm" title="「12月15日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月15日」最高速度22.9M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-27157.htm" title="猫咪三针疫苗间隔多久打第一针疫苗（猫咪三针疫苗多久打一次）">猫咪三针疫苗间隔多久打第一针疫苗（猫咪三针疫苗多久打一次）</a></li>
+                        <li class="py-2"><a href="/news/article-47047.htm" title="动物医院社会实践报告总结 动物医院社会实践报告总结怎么写">动物医院社会实践报告总结 动物医院社会实践报告总结怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-21155.htm" title="SpringBoot使用线程池之ThreadPoolTaskExecutor和ThreadPoolExecutor">SpringBoot使用线程池之ThreadPoolTaskExecutor和ThreadPoolExecutor</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">68</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-65924.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vue项目在打包时,如何去掉所有的console.log输出_vue.js_</title>
+        <meta name="description" content="目录  vue打包去掉所有的console.log输出  安装插件 添加配置  vue npm run build 打包去掉console和警告  其实就两行代码就可以了      vue打包去掉所有" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-65924.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="vue项目在打包时,如何去掉所有的console.log输出_vue.js_" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/14533b23bfb4c21a217a6fbfcac0b668.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:38:14" />
+    <meta property="og:updated_time" content="2025-03-02T09:38:14" />
+        <meta property="og:description" content="目录  vue打包去掉所有的console.log输出  安装插件 添加配置  vue npm run build 打包去掉console和警告  其实就两行代码就可以了      vue打包去掉所有" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue项目在打包时,如何去掉所有的console.log输出_vue.js_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>vue项目在打包时,如何去掉所有的console.log输出_vue.js_</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">vue打包去掉所有的console.log输出</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">安装插件</a></li> <li><a href="#_lab2_0_1" rel="nofollow">添加配置</a></li> </ul> <li><a href="#_label1" rel="nofollow">vue npm run build 打包去掉console和警告</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_2" rel="nofollow">其实就两行代码就可以了 </a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>vue打包去掉所有的console.log输出</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>安装插件</h3> <div class="ay1code"> <pre class="brush:js;">npm install babel-plugin-transform-remove-console --save-dev  </pre> </div> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>添加配置</h3> <p>安装babel-plugin-transform-remove-console开发依赖，然后在项目的babel.config.js的plugin中添加节点。再build就不会有console警告了。</p> <p>如下配置无论在开发环境还是生产环境都会去掉所有的console输出语句。</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220416/bf3eabf99bef8834802f792bc3f816be.jpg"></p> <p>但是babel.config.js文件是全局共享的，无论是开发阶段还是生产阶段，都会移除所有的console，我们想在开发阶段保留console该怎么做呢？</p> <p>如下：</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220416/a51f26a5eaef4d661576b7eb44bcfee4.jpg"></p> <p>代码：</p> <div class="ay1code"> <pre class="brush:js;">// 项目在发布时需要用到的babel插件数组  const proPlugins = [];  // 如果当前是生产环境，则使用去掉console的插件  if (process.env.NODE_ENV === 'production') {      proPlugins.push('transform-remove-console');  }  module.exports = {    presets: [      '@vue/cli-plugin-babel/preset'    ],    plugins:[      ...proPlugins    ]  }  </pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>vue npm run build 打包去掉console和警告</h2> <p>在本地开发环境中肯定都会去打印一些数据，但是你如果上传到正式环境呢这些肯定不能再有了，但是你也不能一行一行的去注释掉吧，这样很麻烦所以vue在配置的时候其实是有这个配置的但是需要你自己去配置文件里面修改一下，这样才能方便你的开发二可以达到偷懒的地步。下面就说一下这个配置吧</p> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>其实就两行代码就可以了 </h3> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220416/b5f4993b63a28c13a6fa38ef5ffdf28c.jpg"></p> <p>在build下面的webpack.prod.conf.js里面找到这里添加上</p> <div class="ay1code"> <pre class="brush:js;">drop_console: true,  pure_funcs: [‘console.log']</pre> </div> <p>这两句就可以完美解决了。 </p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65281.htm">猫亲近人有什么寓意（猫 亲近）</a></p>
+                                        <p>下一个：<a href="/news/article-65925.htm">宠物粮食批发网站大全免费下载（中国宠物粮厂家批发网）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23910.htm" title="宠物粮加盟 宠物粮加盟店">宠物粮加盟 宠物粮加盟店</a></li>
+                        <li class="py-2"><a href="/news/article-44556.htm" title="猫几个月才认识主人（猫几个月大认主人）">猫几个月才认识主人（猫几个月大认主人）</a></li>
+                        <li class="py-2"><a href="/news/article-35727.htm" title="动物医院好评模板图片高清大全下载（动物医院好评语）">动物医院好评模板图片高清大全下载（动物医院好评语）</a></li>
+                        <li class="py-2"><a href="/news/article-64071.htm" title="板栗红烧肉的做法 最正宗的做法大全(板栗红烧肉的家常做法窍门)">板栗红烧肉的做法 最正宗的做法大全(板栗红烧肉的家常做法窍门)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-today-hiddify-next-node.htm" title="「12月6日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月6日」最高速度21.5M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-40585.htm" title="python中os.path模块">python中os.path模块</a></li>
+                        <li class="py-2"><a href="/news/article-43072.htm" title="厦门狗狗领养平台 厦门狗狗领养平台有哪些">厦门狗狗领养平台 厦门狗狗领养平台有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-high-speed-nodes.htm" title="「12月16日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接">「12月16日」最高速度19M/S，2024年Hiddify每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-46526.htm" title="SpringBoot 核心源码解读">SpringBoot 核心源码解读</a></li>
+                        <li class="py-2"><a href="/news/article-39100.htm" title="前端开发中需要搞懂的字符编码知识_在线工具">前端开发中需要搞懂的字符编码知识_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

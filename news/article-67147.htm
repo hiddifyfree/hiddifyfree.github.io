@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-67147.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>netty系列之:netty中的核心MessageToByte编码器</title>
+        <meta name="description" content="目录  简介 MessageToByte框架简介 MessageToByteEncoder ByteToMessageDecoder ByteToMessageCodec 总结    之前的文章中，我" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-67147.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="netty系列之:netty中的核心MessageToByte编码器" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/14533b23bfb4c21a217a6fbfcac0b668.webp" />
+        <meta property="og:release_date" content="2025-03-04T10:14:54" />
+    <meta property="og:updated_time" content="2025-03-04T10:14:54" />
+        <meta property="og:description" content="目录  简介 MessageToByte框架简介 MessageToByteEncoder ByteToMessageDecoder ByteToMessageCodec 总结    之前的文章中，我" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="netty系列之:netty中的核心MessageToByte编码器">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>netty系列之:netty中的核心MessageToByte编码器</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E7%AE%80%E4%BB%8B" rel="nofollow">简介</a></li> <li><a href="#messagetobyte%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B" rel="nofollow">MessageToByte框架简介</a></li> <li><a href="#messagetobyteencoder" rel="nofollow">MessageToByteEncoder</a></li> <li><a href="#bytetomessagedecoder" rel="nofollow">ByteToMessageDecoder</a></li> <li><a href="#bytetomessagecodec" rel="nofollow">ByteToMessageCodec</a></li> <li><a href="#%E6%80%BB%E7%BB%93" rel="nofollow">总结</a></li> </ul> </div> </h1> <p>之前的文章中，我们讲解了netty中从一个message转换成为另外一个message的框架叫做MessageToMessage编码器。但是message to message只考虑了channel中消息在处理过程中的转换，但是我们知道channel中最终传输的数据一定是ByteBuf，所以我们还需要一个message和ByteBuf相互转换的框架，这个框架就叫做MessageToByte。</p> <p>注意，这里的byte指的是ByteBuf而不是byte这个字节类型。</p> </h1> <p>为了方便扩展和用户的自定义，netty封装了一套MessageToByte框架，这个框架中有三个核心的类，分别是MessageToByteEncoder,ByteToMessageDecoder和ByteToMessageCodec。</p> <p>我们分别看一下这三个核心类的定义：</p> <pre><code>public abstract class MessageToByteEncoder&lt;I&gt; extends ChannelOutboundHandlerAdapter</code></pre> <pre><code>public abstract class ByteToMessageDecoder extends ChannelInboundHandlerAdapter</code></pre> <pre><code>public abstract class ByteToMessageCodec&lt;I&gt; extends ChannelDuplexHandler</code></pre> <p>这三个类分别继承自ChannelOutboundHandlerAdapter，ChannelInboundHandlerAdapter和ChannelDuplexHandler，分别表示的是向channel中写消息，从channel中读消息和一个向channel中读写消息的双向操作。</p> <p>这三个类都是抽象类，接下来我们会详细分析这三个类的具体实现逻辑。</p> </h1> <p>先来看encoder，如果你对比MessageToByteEncoder和MessageToMessageEncoder的源码实现，可以发现他们有诸多相似之处。</p> <p>首先在MessageToByteEncoder中定义了一个用作消息类型匹配的TypeParameterMatcher。</p> <p>这个matcher用来匹配收到的消息类型，如果类型匹配则进行消息的转换操作，否则直接将消息写入channel中。</p> <p>和MessageToMessageEncoder不同的是，MessageToByteEncoder多了一个preferDirect字段，这个字段表示消息转换成为ByteBuf的时候是使用diret Buf还是heap Buf。</p> <p>这个字段的使用情况如下：</p> <pre><code>    protected ByteBuf allocateBuffer(ChannelHandlerContext ctx, @SuppressWarnings("unused") I msg,                                boolean preferDirect) throws Exception {         if (preferDirect) {             return ctx.alloc().ioBuffer();         } else {             return ctx.alloc().heapBuffer();         }     }</code></pre> <p>最后来看一下它的核心方法write:</p> <pre><code>    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {         ByteBuf buf = null;         try {             if (acceptOutboundMessage(msg)) {                 @SuppressWarnings("unchecked")                 I cast = (I) msg;                 buf = allocateBuffer(ctx, cast, preferDirect);                 try {                     encode(ctx, cast, buf);                 } finally {                     ReferenceCountUtil.release(cast);                 }                  if (buf.isReadable()) {                     ctx.write(buf, promise);                 } else {                     buf.release();                     ctx.write(Unpooled.EMPTY_BUFFER, promise);                 }                 buf = null;             } else {                 ctx.write(msg, promise);             }         } catch (EncoderException e) {             throw e;         } catch (Throwable e) {             throw new EncoderException(e);         } finally {             if (buf != null) {                 buf.release();             }         }     }</code></pre> <p>上面我们已经提到了，write方法首先通过matcher来判断是否是要接受的消息类型，如果是的话就调用encode方法，将消息对象转换成为ByteBuf，如果不是，则直接将消息写入channel中。</p> <p>和MessageToMessageEncoder不同的是，encode方法需要传入一个ByteBuf对象，而不是CodecOutputList。</p> <p>MessageToByteEncoder有一个需要实现的抽象方法encode如下，</p> <pre><code>    protected abstract void encode(ChannelHandlerContext ctx, I msg, ByteBuf out) throws Exception;</code></pre> </h1> <p>ByteToMessageDecoder用来将channel中的ByteBuf消息转换成为特定的消息类型，其中Decoder中最重要的方法就是好channelRead方法,如下所示：</p> <pre><code>    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {         if (msg instanceof ByteBuf) {             CodecOutputList out = CodecOutputList.newInstance();             try {                 first = cumulation == null;                 cumulation = cumulator.cumulate(ctx.alloc(),                         first ? Unpooled.EMPTY_BUFFER : cumulation, (ByteBuf) msg);                 callDecode(ctx, cumulation, out);             } catch (DecoderException e) {                 throw e;             } catch (Exception e) {                 throw new DecoderException(e);             } finally {                 try {                     if (cumulation != null &amp;&amp; !cumulation.isReadable()) {                         numReads = 0;                         cumulation.release();                         cumulation = null;                     } else if (++numReads &gt;= discardAfterReads) {                         numReads = 0;                         discardSomeReadBytes();                     }                      int size = out.size();                     firedChannelRead |= out.insertSinceRecycled();                     fireChannelRead(ctx, out, size);                 } finally {                     out.recycle();                 }             }         } else {             ctx.fireChannelRead(msg);         }     }</code></pre> <p>channelRead接收要进行消息读取的Object对象，因为这里只接受ByteBuf消息，所以在方法内部调用了<code>msg instanceof ByteBuf</code> 来判断消息的类型，如果不是ByteBuf类型的消息则不进行消息的转换。</p> <p>输出的对象是CodecOutputList，在将ByteBuf转换成为CodecOutputList之后，调用fireChannelRead方法将out对象传递下去。</p> <p>这里的关键就是如何将接收到的ByteBuf转换成为CodecOutputList。</p> <p>转换的方法叫做callDecode，它接收一个叫做cumulation的参数，在上面的方法中，我们还看到一个和cumulation非常类似的名称叫做cumulator。那么他们两个有什么区别呢？</p> <p>在ByteToMessageDecoder中cumulation是一个ByteBuf对象，而Cumulator是一个接口，这个接口定义了一个cumulate方法：</p> <pre><code>    public interface Cumulator {         ByteBuf cumulate(ByteBufAllocator alloc, ByteBuf cumulation, ByteBuf in);     }</code></pre> <p>Cumulator用来将传入的ByteBuf合并成为一个新的ByteBuf。</p> <p>ByteToMessageDecoder中定义了两种Cumulator，分别是MERGE_CUMULATOR和COMPOSITE_CUMULATOR。</p> <p>MERGE_CUMULATOR是将传入的ByteBuf通过memory copy的方式拷贝到目标ByteBuf cumulation中。</p> <p>而COMPOSITE_CUMULATOR则是将ByteBuf添加到一个 CompositeByteBuf 的结构中，并不做memory copy，因为目标的结构比较复杂，所以速度会比直接进行memory copy要慢。</p> <p>用户要扩展的方法就是decode方法，用来将一个ByteBuf转换成为其他对象：</p> <pre><code>    protected abstract void decode(ChannelHandlerContext ctx, ByteBuf in, List&lt;Object&gt; out) throws Exception;</code></pre> </h1> <p>最后要介绍的类是ByteToMessageCodec，ByteToMessageCodec表示的是message和ByteBuf之间的互相转换，它里面的encoder和decoder分别就是上面讲到的MessageToByteEncoder和ByteToMessageDecoder。</p> <p>用户可以继承ByteToMessageCodec来同时实现encode和decode的功能，所以需要实现encode和decode这两个方法：</p> <pre><code>    protected abstract void encode(ChannelHandlerContext ctx, I msg, ByteBuf out) throws Exception;      protected abstract void decode(ChannelHandlerContext ctx, ByteBuf in, List&lt;Object&gt; out) throws Exception;</code></pre> <p>ByteToMessageCodec的本质就是封装了MessageToByteEncoder和ByteToMessageDecoder，然后实现了编码和解码的功能。</p> </h1> <p>如果想实现ByteBuf和用户自定义消息的直接转换，那么选择netty提供的上面三个编码器是一个很好的选择。</p> <blockquote> <p>本文已收录于<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.flydean.com/14-0-2-netty-codec-msg-to-bytebuf/"  target="_blank" rel="nofollow">http://www.flydean.com/14-0-2-netty-codec-msg-to-bytebuf/</a></p> <p>最通俗的解读，最深刻的干货，最简洁的教程，众多你不知道的小技巧等你来发现！</p> <p>欢迎关注我的公众号:「程序那些事」,懂技术，更懂你！</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66529.htm">三国杀已出武将（三国杀出武将顺序）</a></p>
+                                        <p>下一个：<a href="/news/article-67148.htm">免费宠物救助站深圳（深圳 宠物救助）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-56483.htm" title="宠物领养协议书模板下载电子版 宠物领养协议书模板下载电子版图片">宠物领养协议书模板下载电子版 宠物领养协议书模板下载电子版图片</a></li>
+                        <li class="py-2"><a href="/news/article-54835.htm" title="宠物食品加盟（宠物食品招商加盟）">宠物食品加盟（宠物食品招商加盟）</a></li>
+                        <li class="py-2"><a href="/news/article-55940.htm" title="Pyspark读取hive表数据进行处理，将结果插入到hive及hbase">Pyspark读取hive表数据进行处理，将结果插入到hive及hbase</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-today-hiddify-next-node.htm" title="「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-45054.htm" title="中国动物疫苗十强名单最新（全国动物用疫苗销量排行）">中国动物疫苗十强名单最新（全国动物用疫苗销量排行）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-free-subscribe-node.htm" title="「2月25日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月25日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-44079.htm" title="猫咪领养协议模板怎么写的（猫咪领养协议模板怎么写的图片）">猫咪领养协议模板怎么写的（猫咪领养协议模板怎么写的图片）</a></li>
+                        <li class="py-2"><a href="/news/article-47512.htm" title="动物疫苗新法案例分析报告（动物疫苗市场分析）">动物疫苗新法案例分析报告（动物疫苗市场分析）</a></li>
+                        <li class="py-2"><a href="/news/article-46051.htm" title="成都的宠物领养中心在哪里（成都宠物领养机构电话）">成都的宠物领养中心在哪里（成都宠物领养机构电话）</a></li>
+                        <li class="py-2"><a href="/news/article-65280.htm" title="动物医院好评语30字以内怎么写（动物医院好评模板）">动物医院好评语30字以内怎么写（动物医院好评模板）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

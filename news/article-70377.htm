@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-70377.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP如何通过引用传递</title>
+        <meta name="description" content="介绍 在PHP中，函数的参数可以按值传递或按引用传递。默认情况下，实际参数的值按值传递给形式参数，形式参数成为函数内部的局部变量。因此，对这些变量的修改不会更改实际参数变量的值。 当实参通过引用传递时" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-70377.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="PHP如何通过引用传递" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/915ba27de3468ce66ef4ca58c2174e2a.webp" />
+        <meta property="og:release_date" content="2025-03-09T09:46:29" />
+    <meta property="og:updated_time" content="2025-03-09T09:46:29" />
+        <meta property="og:description" content="介绍 在PHP中，函数的参数可以按值传递或按引用传递。默认情况下，实际参数的值按值传递给形式参数，形式参数成为函数内部的局部变量。因此，对这些变量的修改不会更改实际参数变量的值。 当实参通过引用传递时" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PHP如何通过引用传递">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>PHP如何通过引用传递</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>介绍</h2> <p>在PHP中<strong>，</strong>函数的参数可以按值传递或按引用传递。默认情况下，实际参数的值按值传递给形式参数，形式参数成为函数内部的局部变量。因此，对这些变量的修改不会更改实际参数变量的值。</p> <p>当实参通过引用传递时，形式实参的值更改会反映在实际实参变量中，因为前者是对后者的引用。因此，按引用传递机制有助于间接处理全局空间中的数据。它还有助于克服一个函数只能返回一个变量的事实。</p> <h2>值传递</h2> <p>在下面的示例中，两个变量被传递给<code>swap()</code>函数。即使交换机制发生在函数内部，它也不会更改已传递变量的值</p> <h2>示例</h2> <pre>&lt;?php function&nbsp;swap($arg1,&nbsp;$arg2){ &nbsp;&nbsp;&nbsp;echo&nbsp;"inside&nbsp;function&nbsp;before&nbsp;swapping:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; &nbsp;&nbsp;&nbsp;$temp=$arg1; &nbsp;&nbsp;&nbsp;$arg1=$arg2; &nbsp;&nbsp;&nbsp;$arg2=$temp; &nbsp;&nbsp;&nbsp;echo&nbsp;"inside&nbsp;function&nbsp;after&nbsp;swapping:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; } $arg1=10; $arg2=20; echo&nbsp;"before&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; swap($arg1,&nbsp;$arg2); echo&nbsp;"after&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; ?&gt;</pre> <p>输出结果</p> <p>本示例给出以下输出</p> <pre>before&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=10&nbsp;arg2=20 inside&nbsp;function&nbsp;before&nbsp;swapping:&nbsp;arg1=10&nbsp;arg2=20 inside&nbsp;function&nbsp;after&nbsp;swapping:&nbsp;arg1=20&nbsp;arg2=10 after&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=10&nbsp;arg2=20</pre> <h2>通过参考</h2> <p>为了通过引用接收参数，使用的变量形式参数必须以＆符号为前缀。它引用了用于调用函数的变量。因此，内部函数交换的结果也将反映在传递的原始变量中</p> <h2>示例</h2> <pre>&lt;?php function&nbsp;swap(&amp;$arg1,&nbsp;&amp;$arg2){ &nbsp;&nbsp;&nbsp;echo&nbsp;"inside&nbsp;function&nbsp;before&nbsp;swapping:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; &nbsp;&nbsp;&nbsp;$temp=$arg1; &nbsp;&nbsp;&nbsp;$arg1=$arg2; &nbsp;&nbsp;&nbsp;$arg2=$temp; &nbsp;&nbsp;&nbsp;echo&nbsp;"inside&nbsp;function&nbsp;after&nbsp;swapping:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; } $arg1=10; $arg2=20; echo&nbsp;"before&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; swap($arg1,&nbsp;$arg2); echo&nbsp;"after&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=$arg1&nbsp;arg2=$arg2\n"; ?&gt;</pre> <p>输出结果</p> <p>交换结果如下所示</p> <pre>before&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=10&nbsp;arg2=20 inside&nbsp;function&nbsp;before&nbsp;swapping:&nbsp;arg1=10&nbsp;arg2=20 inside&nbsp;function&nbsp;after&nbsp;swapping:&nbsp;arg1=20&nbsp;arg2=10 after&nbsp;calling&nbsp;function&nbsp;:&nbsp;arg1=20&nbsp;arg2=10</pre> <p>在下面的示例中，数组元素是对数组初始化之前声明的各个变量的引用。如果元素被修改，变量的值也会改变</p> <h2>示例</h2> <pre>&lt;?php $a&nbsp;=&nbsp;10; $b&nbsp;=&nbsp;20; $c=30; $arr&nbsp;=&nbsp;array(&amp;$a,&nbsp;&amp;$b,&nbsp;&amp;$c); for&nbsp;($i=0;&nbsp;$i&lt;3;&nbsp;$i++) $arr[$i]++; echo&nbsp;"$a&nbsp;$b&nbsp;$c"; ?&gt;</pre> <p>输出结果</p> <p>$a，$b和$c的值也会增加</p> <pre>11&nbsp;21&nbsp;31</pre> <p>也可以通过引用将数组传递给函数</p> <h2>示例</h2> <pre>&lt;?php function&nbsp;arrfunction(&amp;$arr){ &nbsp;&nbsp;&nbsp;for&nbsp;($i=0;$i&lt;5;$i++) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$arr[$i]=$arr[$i]+10; } $arr=[1,2,3,4,5]; arrfunction($arr); foreach&nbsp;($arr&nbsp;as&nbsp;$i) echo&nbsp;$i&nbsp;.&nbsp;"&nbsp;"; ?&gt;</pre> <p>输出结果</p> <p>修改后的数组将显示如下</p> <pre>11&nbsp;12&nbsp;13&nbsp;14&nbsp;15</pre> <h2>对象和参考</h2> <p>在PHP中，默认情况下，对象是通过引用传递的。创建对象的引用时，其引用也将以$this的形式作为参数发送，这也是对第一个对象的引用</p> <h2>示例</h2> <pre>&lt;?php class&nbsp;test1{ &nbsp;&nbsp;&nbsp;private&nbsp;$name; &nbsp;&nbsp;&nbsp;function&nbsp;getname(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$this-&gt;name; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;function&nbsp;setname($name){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;name=$name; &nbsp;&nbsp;&nbsp;} } $obj1=new&nbsp;test1(); $obj2=&amp;$obj1; $obj1-&gt;setname("Amar"); echo&nbsp;"name:&nbsp;"&nbsp;.$obj2-&gt;getname(); ?&gt;</pre> <p>输出结果</p> <p>上面的代码将显示以下输出</p> <pre>name:&nbsp;Amar</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69742.htm">福州农大动物医院（福建农大宠物医院营业时间）</a></p>
+                                        <p>下一个：<a href="/news/article-70378.htm">动物疫苗过敏反应有哪些症状（动物打疫苗后的不良反应）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-latest-hiddify-next-node.htm" title="「2月3日」最高速度19.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月3日」最高速度19.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-high-speed-nodes.htm" title="「3月4日」最高速度18.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月4日」最高速度18.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-53731.htm" title="动物医院看病多少钱一次门诊啊（动物医院看病多少钱一次门诊啊）">动物医院看病多少钱一次门诊啊（动物医院看病多少钱一次门诊啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-today-hiddify-next-node.htm" title="「1月4日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月4日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-45056.htm" title="免费领养狗狗的app（免费领养狗狗的文案）">免费领养狗狗的app（免费领养狗狗的文案）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-hiddify-next-node-share.htm" title="「3月2日」最高速度21.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月2日」最高速度21.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-node-subscribe-links.htm" title="「2月18日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月18日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-67801.htm" title="免费领养猫猫的app（领养猫咪在哪个软件可以免费领养）">免费领养猫猫的app（领养猫咪在哪个软件可以免费领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-22-free-node-subscribe.htm" title="「2月22日」最高速度21.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月22日」最高速度21.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-48004.htm" title="上海宠物救助站浦东新区（上海宠物狗救助站）">上海宠物救助站浦东新区（上海宠物狗救助站）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

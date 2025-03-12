@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-71708.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shell基础变量定义的规则和分类详解</title>
+        <meta name="description" content="目录  1、定义变量的规则 2、变量的分类   1、定义变量的规则 在定义变量时，有一些规则需要遵守  变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是2name则是错误的。 在" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-71708.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Shell基础变量定义的规则和分类详解" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/915ba27de3468ce66ef4ca58c2174e2a.webp" />
+        <meta property="og:release_date" content="2025-03-11T07:47:59" />
+    <meta property="og:updated_time" content="2025-03-11T07:47:59" />
+        <meta property="og:description" content="目录  1、定义变量的规则 2、变量的分类   1、定义变量的规则 在定义变量时，有一些规则需要遵守  变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是2name则是错误的。 在" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Shell基础变量定义的规则和分类详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Shell基础变量定义的规则和分类详解</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#1%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%84%E5%88%99" rel="nofollow">1、定义变量的规则</a></li> <li><a href="#2%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB" rel="nofollow">2、变量的分类</a></li> </ul> </div> <h2 id="1定义变量的规则">1、定义变量的规则</h2> <p>在定义变量时，有一些规则需要遵守</p> <ul> <li>变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是<code>2name</code>则是错误的。</li> <li>在Bash中，变量的默认类型都是字符串型，如果要进行数值运算，则必修指定变量类型为数值型。</li> <li>变量用等号连接值，等号左右两侧不能有空格。 <pre><code class="language-shell">[root@localhost ~]# name = cangls -bash: name: command not found</code></pre> </li> <li>变量的值如果有空格，需要使用单引号或双引号包括。如：<code>test="hello world!"</code>。其中双引号括起来的内容<code>$</code>、<code>\</code>和反引号都拥有特殊含义，而单引号括起来的内容都是普通字符。</li> <li>在变量的值中，可以使用“\”转义符。</li> <li>如果需要增加变量的值，那么可以进行变量值的叠加。不过变量需要用双引号包含<code>"$变量名"</code>或用<code>${变量名}</code>包含变量名（就相当于Java中字符串连接）。例如： <pre><code class="language-shell">#叠加变量 test，变量值变成了123456 [root@localhost ~ ] # test=123 [root@localhost ~ ] # test="$test"456 [root@localhost ~ ] # echo $test 123456  #再叠加变量 test，变量值变成了123456789 [root@localhost ~ ] # test=${test}789 [root@localhost ~ ] # echo $test 123456789</code></pre> <blockquote> <p>总结：变量值的叠加可以使用两种格式：<code>"$变量名"</code>或<code>${变量名}</code></p> </blockquote> </li> <li>如果是把命令的结果作为变量值赋予变量，则需要使用反引号或<code>$( )</code>包含命令。之前说过，例如： <pre><code class="language-shell">[root@localhost ~ ] # test=$(date) [root@localhost ~ ] # echo $test 2018年 10月 21日 星期一 20：27：50 CST</code></pre> </li> <li>环境变量名建议大写，便于和命令区分。</li> </ul> <h2 id="2变量的分类">2、变量的分类</h2> <p>Shell中变量的分类并不是安装变量的类型进行分类的。</p> <ul> <li><strong>用户自定义变量</strong>：这种变量是最常见的变量，由用户自由定义变量名和变量的值。（只在当前Shell中生效，子Shell中不生效）</li> <li><strong>环境变量</strong>：这种变量中主要保存的是和系统操作环境相关的数据，比如当前登录用户，用户的家目录，命令的提示符等。环境变量的变量名可以自由定义，但是一般对系统起作用的环境变量的变量名是系统预先设定好的。<br /> <blockquote> <p>说明：环境变量分为两种，一种是允许用户自定义的，还有一种是系统定义好的。用户定义的这种环境变量，对整个操作系统的环境来说作用不是很大，唯一的作用就是，在父子Shell中都生效（这个以后再说）。而系统定义的环境变量，会对我们的操作环境产生一定影响。对系统定义的环境变量，我们不能修改变量的名称和作用，只能修改变量的属性值。系统定义的环境变量主要就是在几个重要的环境变量配置文件中的变量，如<code>/etc/profile</code>文件中的变量。<br /> ...<br /> 提示：环境变量的作用域是整个系统都生效，包括父Shell子Shell。在这种情况下，为了避免和系统命令产生冲突，建议环境变量的名称都是大写（主要是自定义的环境变量，系统定义的环境变量一般都是大写的，也不能改），因为Linux系统中所有的系统命令都是小写（只有大写的命令选项），这样就可以避免混淆了。</p> </blockquote> </li> <li><strong>预定义变量</strong>：是Bash中已经定义好的变量，变量名不能自定义，变量作用也是固定的。</li> <li><strong>位置参数变量</strong>：这种变量主要是用来向脚本当中传递参数或数据的，变量名不能自定义，变量作用是固定的。（位置参数变量其实就是预定义变量中的一个类型）</li> </ul> <blockquote> <p>说明：预定义变量和位置参数变量一共就几种，需要记住（以后详细讲）。</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71062.htm">不用一滴油的炸鸡柳 香的做法是什么(香炸鸡柳的做法大全)</a></p>
+                                        <p>下一个：<a href="/news/article-71709.htm">宠物领养协议文案范文怎么写 宠物领养协议文案范文怎么写的</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-53202.htm" title="宠物领养系统的开题报告前言（宠物领养网站设计的需求调研）">宠物领养系统的开题报告前言（宠物领养网站设计的需求调研）</a></li>
+                        <li class="py-2"><a href="/news/article-55370.htm" title="宠物医院办理诊疗许可证需要什么材料（宠物医院证件办理流程）">宠物医院办理诊疗许可证需要什么材料（宠物医院证件办理流程）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-hiddify-next-node.htm" title="「1月29日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月29日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-35728.htm" title="女人养猫的好处和坏处有哪些（女人养猫的好处和坏处有哪些图片）">女人养猫的好处和坏处有哪些（女人养猫的好处和坏处有哪些图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-hiddify-next-node-share.htm" title="「3月12日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月12日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-66529.htm" title="三国杀已出武将（三国杀出武将顺序）">三国杀已出武将（三国杀出武将顺序）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-hiddify-next-node-share.htm" title="「1月7日」最高速度20.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月7日」最高速度20.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-71709.htm" title="宠物领养协议文案范文怎么写 宠物领养协议文案范文怎么写的">宠物领养协议文案范文怎么写 宠物领养协议文案范文怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-49509.htm" title="宠物粮批发进货渠道在哪里（宠物粮批发进货渠道在哪里找）">宠物粮批发进货渠道在哪里（宠物粮批发进货渠道在哪里找）</a></li>
+                        <li class="py-2"><a href="/news/article-43562.htm" title="国内宠物粮生产厂家有哪些品牌（中国宠物粮品牌）">国内宠物粮生产厂家有哪些品牌（中国宠物粮品牌）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

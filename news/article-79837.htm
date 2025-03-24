@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-79837.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spring Cloud Config 配置中心(用途、使用、加解密)</title>
+        <meta name="description" content="目录  一、什么是配置中心 二、为什么需要分布式配置中心 三、常用分布式配置中心框架 四、什么是Spring Cloud Config 五、Spring Cloud Config 的工作原理 六、构建" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-79837.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Spring Cloud Config 配置中心(用途、使用、加解密)" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/762eca5d9963b4b33321788944b2544f.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:24:27" />
+    <meta property="og:updated_time" content="2025-03-23T08:24:27" />
+        <meta property="og:description" content="目录  一、什么是配置中心 二、为什么需要分布式配置中心 三、常用分布式配置中心框架 四、什么是Spring Cloud Config 五、Spring Cloud Config 的工作原理 六、构建" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring Cloud Config 配置中心(用途、使用、加解密)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Spring Cloud Config 配置中心(用途、使用、加解密)</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>目录</h3> <ul> <li><a href="#_5" rel="nofollow">一、什么是配置中心</a></li> <li><a href="#_25" rel="nofollow">二、为什么需要分布式配置中心</a></li> <li><a href="#_38" rel="nofollow">三、常用分布式配置中心框架</a></li> <li><a href="#Spring_Cloud_Config_71" rel="nofollow">四、什么是Spring Cloud Config</a></li> <li><a href="#Spring_Cloud_Config__79" rel="nofollow">五、Spring Cloud Config 的工作原理</a></li> <li><a href="#_Spring_Cloud_Config__96" rel="nofollow">六、构建 Spring Cloud Config 配置中心仓库</a></li> <li><a href="#_Spring_Cloud_Config__118" rel="nofollow">七、构建 Spring Cloud Config 配置中心服务端</a></li> <li><a href="#_Spring_Cloud_Config__202" rel="nofollow">八、构建 Spring Cloud Config 配置中心客户端</a></li> <li><a href="#_258" rel="nofollow">九、配置信息的加解密安全处理</a></li> <li> <ul> <li><a href="#1__JCE_263" rel="nofollow">1. 安装 JCE</a></li> <li><a href="#2__276" rel="nofollow">2. 对称加密</a></li> </ul> </li> </ul> </div> <hr/> </h1> <p>1、传统配置方式 ：</p> <blockquote> <p>配置信息分散到系统各个角落方式，配置文件或者在代码中。</p> </blockquote> <p>2、集中式配置中心 ：</p> <blockquote> <p>将应用系统中对配置信息的管理作为一个新的应用功能模块，进行集中统一管理，并且提供额外功能。</p> </blockquote> <p>3、分布式配置中心 ：</p> <blockquote> <p>分布式、微服务架构中，独立的配置中心服务。</p> </blockquote> </h1> <p>在分布式微服务体系中，服务的数量以及配置信息日益增多，比如各种服务器参数配置、各种数据库访问参数配置、各种环境下配置信息的不同、配置信息修改之后实时生效等等，传统的配置文件方式或者将配置信息存放于数据库中的方式已无法满足开发人员对配置管理的要求。</p> <p>安全性：配置跟随源代码保存在代码库中，容易造成配置泄漏。</p> <p>时效性：修改配置，需要重启服务才能生效。</p> <p>局限性：无法支持动态调整：例如日志开关、功能开关。</p> </h1> <p>1、Apollo（阿波罗）</p> <blockquote> <p>携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。</p> </blockquote> <p>2、diamond</p> <blockquote> <p>淘宝开源的持久配置中心，支持各种持久信息（比如各种规则，数据库配置等）的发布和订阅。（更新稍微落后一点）</p> </blockquote> <p>3、XDiamond</p> <blockquote> <p>全局配置中心，存储应用的配置项，解决配置混乱分散的问题，名字来源于淘宝的开源项目 diamond，前面加上一个字母 X 以示区别。</p> </blockquote> <p>4、Qconf</p> <blockquote> <p>奇虎360内部分布式配置管理工具，用来替代传统的配置文件，使得配置信息和程序代码分离，同时配置变化能够实时同步到客户端，而且保证用户高效读取配置，这使的工程师从琐碎的配置修改、代码提交、配置上线流程中解放出来，极大地简化了配置管理工作。</p> </blockquote> <p>5、Disconf</p> <blockquote> <p>百度的分布式配置管理平台，专注于各种分布式系统配置管理的通用组件和通用平台, 提供统一的配置管理服务。</p> </blockquote> <p>6、Spring Cloud Config</p> <blockquote> <p>Spring Cloud微服务开发的配置中心，提供服务端和客户端支持。</p> </blockquote> <p>国外也有很多开源的配置中心 Apache 的 Apache Commons Configuration、owner、cfg4j 等等；</p> <p>大型互联网公司自己内部都有自己独立分布式配置中心，用于解决服务配置管理问题。</p> </h1> <p>Spring Cloud Config 是一个解决分布式系统的配置管理方案。它包含 Client 和 Server 两个部分，Server 提供配置文件的存储、以接口的形式将配置文件的内容提供出去，Client 通过接口获取数据、并依据此数据初始化自己的应用。</p> <p>Spring Cloud Config使用 git 或 svn 、也可以是本地存放配置文件，默认情况下使用 git。</p> </h1> <p>Spring cloud Config Server 的工作过程如下图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/d7a92feedc51d69303d454141f52230d.jpg" alt=" Spring Cloud Config 配置中心(用途、使用、加解密)"><br /> 1、首先需要一个远程 Git 仓库，平时测试可以使用 GitHub，在实际生产环境 中，需要自己搭建一个 Git 服务器，远程 Git 仓库的主要作用是用来保存我们的配置文件。</p> <p>2、除了远程 Git 仓库之外，我们还需要一个本地 Git 仓库，每当 Config Server访问远程 Git 仓库时，都会克隆一份到本地，这样当远程仓库无法连接时，就直接使用本地存储的配置信息。</p> <p>3、微服务 A、微服务 B 则是我们的具体应用，这些应用在启动的时会从 Config Server 中获取相应的配置信息。</p> <p>4、当微服务 A、微服务 B 尝试从 Config Server 中加载配置信息的时候，Config Server 会先通过 git clone 命令克隆一份配置文件保存到本地。</p> <p>5、由于配置文件是存储在 Git 仓库中，所以配置文件天然具有版本管理功能。</p> </h1> <p>前面我们介绍了 Sring Cloud Config 的配置中心一般是采用 git 存储配置，(我们在这里采用国内的码云 Gitee， 也可以使用国外的 GitHub，由于使用 Github 网络比较慢，可能连接失败) 。</p> <p>接下来我们需要在 Gitee 上设置好配置中心，我们通过 IDEA 把 Gitee上的SpringCloud项目 clone 到本地，然后再项目下创建一个文件夹 config-center，然后在 config-center 中创建四个配置文件，如下：</p> <p>application.properties<br /> application-dev.properties<br /> application-test.properties<br /> application-online.properties</p> <p>在四个文件里面分别写上要测试的内容：</p> <p>比如：</p> <p>url=http://www.fancy.com<br /> url=http://dev.fancy.com<br /> url=http://test.fancy.com<br /> url=http://online.fancy.com</p> <p>然后通过 IDEA 将本地文件同步到 Gitee 仓库中。</p> </h1> <p>构建一个 spring cloud config 配置中心按照如下方式进行</p> <p><strong>A、创建一个普通的 Spring Boot 项目</strong></p> <p><strong>B、在 pom.xml 文件中添加如下依赖</strong></p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-config-server<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <p><strong>C、在入口类，也就是 main 方法的类上添加注解 @EnableConfigServer</strong></p> <pre><code class="prism language-java"><span class="token annotation punctuation">@EnableConfigServer</span><span class="token comment">//开启Spring Cloud Config 配置中心支持</span><span class="token annotation punctuation">@SpringBootApplication</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">Application</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p><strong>D、在 application.properties 中配置一下 git 仓库信息，此处我们使用 Gitee</strong></p> <pre><code class="prism language-java">server<span class="token punctuation">.</span>port<span class="token operator">=</span><span class="token number">8888</span> spring<span class="token punctuation">.</span>application<span class="token punctuation">.</span>name<span class="token operator">=</span>springcloud<span class="token operator">-</span>service<span class="token operator">-</span>config spring<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>git<span class="token punctuation">.</span>uri<span class="token operator">=</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>gitee<span class="token punctuation">.</span>com<span class="token operator">/</span>fancyry<span class="token operator">/</span>springcloud<span class="token punctuation">.</span>git spring<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>git<span class="token punctuation">.</span>search<span class="token operator">-</span>paths<span class="token operator">=</span>config<span class="token operator">-</span>center spring<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>git<span class="token punctuation">.</span>username<span class="token operator">=</span>fancy spring<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>git<span class="token punctuation">.</span>password<span class="token operator">=</span>password</code></pre> <p>1、uri 表示配置中心所在仓库的位置<br /> 2、search-paths 表示仓库下的子目录<br /> 3、username 表示你的 GitHub 或 Gitee 用户名<br /> 4、password 表示你的 GitHub 或 Gitee 密码</p> <p>至此我们的配置中心服务端就创建好了。 此时启动我们的配置中心，通过 /{application}/{profile}/{label} 就能访问到我们的配置文件了。</p> <blockquote> <p>/{application}/{profile}[/{label}]<br /> http://localhost:8888/application/dev/master</p> </blockquote> <blockquote> <p>/{application}-{profile}.properties<br /> http://localhost:8888/application-dev.properties</p> </blockquote> <blockquote> <p>/{label}/{application}-{profile}.properties<br /> http://localhost:8888/master/application-dev.properties</p> </blockquote> <blockquote> <p>/{application}-{profile}.yml<br /> http://localhost:8888/application-dev.yml</p> </blockquote> <blockquote> <p>/{label}/{application}-{profile}.yml<br /> http://localhost:8888/master/application-dev.yml</p> </blockquote> <p>其中：</p> <ul> <li><code>{application}</code> 表示配置文件的名字，对应的配置文件即 application</li> <li><code>{profile}</code> 表示环境，有 dev、test、online 及默认</li> <li><code>{label}</code> 表示分支，默认我们放在 master 分支上</li> </ul> <p>通过浏览器上访问 http://localhost:8888/application/dev/master</p> <p>返回的 JSON 格式的数据：</p> <p><code>name</code> 表示配置文件名 application 部分<br /><code>profiles</code> 表示环境部分<br /><code>label</code> 表示分支<br /><code>version</code> 表示 GitHub 或 Gitee 上提交时产生的版本号</p> <p>同时当我们访问成功后，在控制台会打印了相关的日志信息。</p> <p>当访问成功后配置中心会通过 git clone 命令将远程配置文件在本地也保存一份，以确保在 git 仓库故障时我们的应用还可以继续正常使用。</p> </h1> <p>前面已经搭建好了配置中心的服务端，并且通过访问接口从 Config 服务端读取配置信息， 不过实际开发中，更多的不是我们人为去获取配置信息，而是由微服务自己从 Config 服务端上加载配置信息， 那么怎么来加载呢?</p> <p>1、我们的各个微服务都是客户端，比如服务提供者、服务消费者等各个微服务都可以从配置中心获取配置信息，但是要添加如下依赖：</p> <pre><code class="prism language-xml"><span class="token comment">&lt;!-- spring-cloud-starter-config --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-config<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <p>2、创建 bootstrap.properties 文件，用于获取配置信息，文件内容如下</p> <p>(注意这些信息一定要放在 bootstrap.properties 文件中才有效)</p> <pre><code class="prism language-xml">spring.application.name=application spring.cloud.config.profile=dev spring.cloud.config.label=master spring.cloud.config.uri=http://localhost:8888/</code></pre> <p>解释一下 bootstrap.properties 文件：</p> <p>Spring Cloud 有一个 引导上下文 的概念，这是主应用程序的父上下文。引导上下文负责从配置服务器加载配置属性，以及解密外部配置文件中的属性。和主应用程序加载 application.(yml或 properties) 中的属性不同，引导上下文加载(bootstrap.)中的属性。配置在 bootstrap.*中的属性有更高的优先级，因此默认情况下它们不能被本地配置覆盖。</p> <p>3、创建一个 Controller 进行测试：</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RefreshScope</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ConfigController</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${url}"</span><span class="token punctuation">)</span><span class="token comment">//读取远程配置中心配置的信息</span><span class="token keyword">private</span><span class="token class-name">String</span> url<span class="token punctuation">;</span><span class="token annotation punctuation">@Autowired</span><span class="token keyword">private</span><span class="token class-name">Environment</span> env<span class="token punctuation">;</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/cloud/url"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token class-name">String</span> url<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">this</span><span class="token punctuation">.</span>url<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/cloud/url2"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token class-name">String</span> url2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> env<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>我们可以直接使用 @Value 注解注入配置的属性值，也可以通过 Environment 对象来获取配置的属性值。</p> </h1> <p>前面是在 Git 仓库中明文存储配置信息值，很多场景下，对于某些敏感的配置内容 (例如数据库账号、密码等)，应该加密存储，config server 为我们考虑到了这一点，对配置内容提供了加密与解密支持。</p> <h2><a id="1__JCE_263" rel="nofollow"></a>1. 安装 JCE</h2> <p>config server 的加解密功能依赖 Java Cryptography Extension(JCE)</p> <p>Java 8 JCE下载地址：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html"  rel="nofollow">http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html</a></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/47b20fe7eac9c437c57e580194fbed64.jpg" alt=" Spring Cloud Config 配置中心(用途、使用、加解密)"><br /> 下载得到JCE的zip压缩包并解压，<strong>将其中的 jar 包覆盖到 JDK/jre/lib/security 目录下</strong></p> <h2><a id="2__276" rel="nofollow"></a>2. 对称加密</h2> <p>config server 提供了加密与解密的接口，分别是</p> <p>加密接口：http://localhost:8888/encrypt<br /> 解密接口：http://localhost:8888/decrypt (这个接口我们不需要用)</p> <p>解密是 config-server 自动完成的。</p> <p>在原来的 springcloud-service-config 项目中添加bootstrap.properties 配置文件，里面配置密钥：</p> <pre><code class="prism language-bash"><span class="token comment">#设置对称密钥，用这个密钥进行加密和解密</span> encrypt.key<span class="token operator">=</span>cat</code></pre> <p>运行项目，验证加解密：</p> <p>加密：<code>curl http://localhost:8888/encrypt -d root</code></p> <p>得到：</p> <p>9455e7d7333e1cc9d1a8680244f6db3aae6de93825d4bc6f9f4258993f7a8cad</p> <p>解密：</p> <pre><code class="prism language-bash"><span class="token function">curl</span> http://localhost:8888/decrypt -d 9455e7d7333e1cc9d1a8680244f6db3aae6de93825d4bc6f9f4258993f7a8cad</code></pre> <p>在 git 仓库增加修改配置文件 application-dev.properties，增加如下内容：</p> <pre><code class="prism language-bash">spring.datasource.username<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>cipher<span class="token punctuation">}</span>9455e7d7333e1cc9d1a8680244f6db3aae6de93825d4bc6f9f4258993f7a8cad</code></pre> <pre><code class="prism language-bash">spring.datasource.password<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>cipher<span class="token punctuation">}</span>5a6e3e417d416736d638cd4db7a6380a71a8709c3ec335a28e01cff05705eeaa</code></pre> <p>访问地址：http://localhost:8888/application-dev.properties 得到密钥原文说明config server 能自动解密配置内容。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-79136.htm">动物接种疫苗的方法有哪几种 动物接种疫苗的方法有哪几种类型</a></p>
+                                        <p>下一个：<a href="/news/article-79838.htm">天津猫狗救助站（天津猫狗救助站在哪里）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-36080.htm" title="动物疫苗价格一览表图片高清版大全 动物疫苗价格查询">动物疫苗价格一览表图片高清版大全 动物疫苗价格查询</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-hiddify-next-node-share.htm" title="「2月2日」最高速度20.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月2日」最高速度20.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-42079.htm" title="义乌宠物狗免费领养中心（义乌宠物狗免费领养中心在哪里）">义乌宠物狗免费领养中心（义乌宠物狗免费领养中心在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-55371.htm" title="动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译">动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-19-free-hiddify-next-node.htm" title="「2月19日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月19日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-today-hiddify-next-node.htm" title="「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-hiddify-next-node-github.htm" title="「3月17日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月17日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-44078.htm" title="vue用命令直接修复ESLint">vue用命令直接修复ESLint</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-hiddify-next-github.htm" title="「2月21日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月21日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-51087.htm" title="沈阳兽医学校成人培训（沈阳兽医学校成人培训多少钱）">沈阳兽医学校成人培训（沈阳兽医学校成人培训多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">71</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-81237.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spring Cloud之负载均衡组件Ribbon原理分析</title>
+        <meta name="description" content="前言  在微服务中，对服务进行拆分之后，必然会带来微服务之间的通信需求，而每个微服务为了保证高可用性，又会去部署集群，那么面对一个集群微服务进行通信的时候，如何进行负载均衡也是必然需要考虑的问题。那么" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-81237.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Spring Cloud之负载均衡组件Ribbon原理分析" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/9b4317d89254f8b40e9f989961bbec17.webp" />
+        <meta property="og:release_date" content="2025-03-25T08:19:43" />
+    <meta property="og:updated_time" content="2025-03-25T08:19:43" />
+        <meta property="og:description" content="前言  在微服务中，对服务进行拆分之后，必然会带来微服务之间的通信需求，而每个微服务为了保证高可用性，又会去部署集群，那么面对一个集群微服务进行通信的时候，如何进行负载均衡也是必然需要考虑的问题。那么" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring Cloud之负载均衡组件Ribbon原理分析">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Spring Cloud之负载均衡组件Ribbon原理分析</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header"><span style="font-size: 2em;">前言</span></div> </div> <p>在微服务中，对服务进行拆分之后，必然会带来微服务之间的通信需求，而每个微服务为了保证高可用性，又会去部署集群，那么面对一个集群微服务进行通信的时候，如何进行负载均衡也是必然需要考虑的问题。那么有需求自然就有供给，由此一大批优秀的开源的负载均衡组件应运而生，本文就让我们一起来分析一下<code>Spring Cloud Netflix</code> 套件中的负载均衡组件<code>Ribbon</code>。</p> </h1> <p>首先我们来看一个问题，假如说我们现在有两个微服务，一个<code>user-center</code>，一个<code>user-order</code>，我现在需要在<code>user-center</code> 服务中调用<code>user-order</code> 服务的一个接口。</p> <p>这时候我们可以使用<code>HttpClient</code>，<code>RestTemplate</code> 等发起<code>http</code> 请求，<code>user-center</code> 服务端口为<code>8001</code>，如下图所示：</p> <pre><code class="language-java">@RestController @RequestMapping(value = "/user") public class UserController {     @Autowired     private RestTemplate restTemplate;      @Bean     public RestTemplate restTemplate(){         return new RestTemplate();     }      @GetMapping("/order")     public String queryOrder(){         return restTemplate.getForObject("http://localhost:8002/order/query",String.class);     } }</code></pre> <p>而<code>user-order</code> 服务中只是简单的定义了一个接口，<code>user-order</code> 服务端口为<code>8002</code>：</p> <pre><code class="language-java">@RestController @RequestMapping(value = "/order") public class UserOrderController {      @GetMapping(value = "/query")     public String queryAllOrder(){         return "all orders";     } }</code></pre> <p>这时候只需要将两个服务启动，访问<code>http://localhost:8001/user/order</code> 就可以获取到所有的订单信息。</p> <p>可以看到，这样是可以在两个微服务之间进行通讯的，但是，假如说我们的<code>user-order</code> 服务是一个集群呢？这时候怎么访问呢？因为<code>user-order</code> 服务已经是集群，所以必然需要一种算法来决定应该请求到哪个<code>user-order</code> 服务中，最简单的那么自然就是随机或者轮询机制，轮询或者随机其实就是简单的负载均衡算法，而<code>Ribbon</code> 就是用来实现负载均衡的一个组件，其内部支持轮询，等算法。</p> </h1> <p>接下来我们看看<code>Ribbon</code> 的简单使用。</p> <ul> <li>首先改造<code>user-order</code> 服务，在<code>user-order</code> 服务中定义一个服务名配置：</li> </ul> <pre><code class="language-properties">spring.application.name=user-order-service</code></pre> <ul> <li>将<code>user-order</code> 服务中的<code>UserOrderController</code> 稍微改造一下，新增一个端口的输出来区分：</li> </ul> <pre><code class="language-java">@RestController @RequestMapping(value = "/order") public class UserOrderController {      @Value("${server.port}")     private int serverPort;      @GetMapping(value = "/query")     public String queryAllOrder(){         return "订单来自：" + serverPort;     } }</code></pre> <ul> <li> <p>通过 VM 参数<code>-Dserver.port=8002</code> 和<code>-Dserver.port=8003</code> 分别来启动两个<code>user-order</code> 服务。</p> </li> <li> <p>接下来改造<code>user-center</code> 服务，在<code>user-center</code> 服务中引入<code>Ribbon</code> 的相关依赖：</p> </li> </ul> <pre><code class="language-xml"> &lt;dependency&gt;       &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;       &lt;artifactId&gt;spring-cloud-starter-netflix-ribbon&lt;/artifactId&gt;       &lt;version&gt;2.2.3.RELEASE&lt;/version&gt;     &lt;/dependency&gt;</code></pre> <ul> <li><code>user-center</code> 服务中新增一个<code>Ribbon</code> 相关配置，列举出需要访问的所有服务：</li> </ul> <pre><code class="language-properties">user-order-service.ribbon.listOfServers=\   localhost:8002,localhost:8003</code></pre> <ul> <li>对<code>user-center</code> 服务中的<code>UserController</code> 进行改造：</li> </ul> <pre><code class="language-java">@RestController @RequestMapping(value = "/user") public class UserController {     @Autowired     private RestTemplate restTemplate;      @Autowired     private LoadBalancerClient loadBalancerClient;      @Bean     public RestTemplate restTemplate(){         return new RestTemplate();     }      @GetMapping("/order")     public String queryOrder(){         //获取一个 user-order 服务         ServiceInstance serviceInstance = loadBalancerClient.choose("user-order-service");         String url = String.format("http://%s:%s",serviceInstance.getHost(),serviceInstance.getPort()) + "/order/query";         return restTemplate.getForObject(url,String.class);     } }</code></pre> <p>这时候我们再次访问<code>http://localhost:8001/user/order</code> 就可以看到请求的<code>user-order</code> 服务会在<code>8002</code> 和<code>8003</code> 之间进行切换。</p> </h1> <p>看了上面<code>Ribbon</code> 的使用示例，会不会觉得有点麻烦，每次还需要自己去获取<code>ip</code> 和端口，然后格式化<code>url</code>，但是其实实际开发过程中我们并不会通过这么原始的方式来编写代码，接下来我们再对上面的示例进行一番改造：</p> <pre><code class="language-java">@RestController @RequestMapping(value = "/user") public class UserController3 {     @Autowired     private RestTemplate restTemplate;      @Bean     @LoadBalanced     public RestTemplate restTemplate(){         return new RestTemplate();     }      @GetMapping("/order")     public String queryOrder(){         return restTemplate.getForObject("http://user-order-service/order/query",String.class);     } }</code></pre> <p>在这个示例中，主要就是一个关键主键起了作用：@LoadBalanced。</p> <h2 id="loadbalanced-注解">@LoadBalanced 注解</h2> <p>进入<code>@LoadBalanced</code> 注解中，我们可以看到，这个注解其实没有任何逻辑，只是加了一个<code>@Qualifier</code> 注解：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/59732a713bf6456abf913810cc4a22c6.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>这个注解大家应该很熟悉了，常用语同一个<code>Bean</code> 有多个不同名称注入的场景。</p> <h3 id="qualifier注解">@Qualifier注解</h3> <p>下面我们通过一个例子来演示一下<code>Qualifier</code>注解的用法。</p> <p>新建一个空的<code>TestDemo</code> 类，并新增一个<code>TestConfiguration</code> 类来创建不同名称的<code>TestDemo</code>：</p> <pre><code class="language-java">@Configuration public class TestConfiguration {     @Bean("testDemo1")     public TestDemo testDemo(){         return new TestDemo();     }      @Bean("testDemo2")     public TestDemo testDemo2(){         return new TestDemo();     } }</code></pre> <p>这时候我们如果需要注入<code>TestDemo</code>，那么有很多种办法，具体的使用就需要看业务需要来决定。</p> <ul> <li>方法一：直接使用<code>@Autowired</code>，并使用<code>List</code> 集合来接收<code>Bean</code>，这样所有<code>TestDemo</code> 类型的<code>Bean</code> 都会被注入。</li> <li>方法二：通过使用<code>@Resource(name = "testDemo1")</code> 注解来指定名称，这样就可以只注入一个<code>Bean</code>。</li> <li>方法三：通过使用<code>@Resource</code> 和<code>@Qualifier(value = "testDemo1")</code> 来指定一个<code>Bean</code>，其实这种方式和方法二的效果基本一致。</li> <li>方法四：使用<code>@Autowired</code> 和<code>@Qualifier</code> 注解来注入，不指定任何名称，如下所示：</li> </ul> <pre><code class="language-java">@RestController @RequestMapping(value = "/test") public class TestQualifierController {      @Autowired(required = false)     @Qualifier     private List&lt;TestDemo&gt; testDemo = Collections.emptyList();      @GetMapping("/all")     public String allDemo(){         for (TestDemo testDemo : testDemos){             System.out.println(testDemo.toString());         }         return "succ";     } }</code></pre> <p>这时候运行之后我们发现不会有任何<code>Bean</code> 被注入到集合中，这是因为当使用这种方式来注入时，<code>Spring</code> 会认为当前只需要注入被<code>@Qualifier</code> 注解标记的<code>Bean</code>，而我们上面定义的两个<code>TestDemo</code> 都没有被<code>@Qualifier</code> 修饰。</p> <p>这时候，我们只需要在<code>TestConfiguration</code> 稍微改造，在<code>TestDemo</code> 的定义上加上<code>@Qualifier</code> 修饰即可：</p> <pre><code class="language-java">@Configuration public class TestConfiguration {      @Bean("testDemo1")     @Qualifier     public TestDemo testDemo(){         return new TestDemo();     }      @Bean("testDemo2")     @Qualifier     public TestDemo testDemo2(){         return new TestDemo();     } }</code></pre> <p>这时候再去运行，就会发现，<code>testDemo1</code> 和<code>testDemo2</code> 都会被注入。</p> <h2 id="loadbalancerautoconfiguration-自动装配">LoadBalancerAutoConfiguration 自动装配</h2> <p><code>SpringCloud</code> 是基于<code>SpringBoot</code> 实现的，所以我们常用的这些分布式组件都会基于<code>SpringBoot</code> 自动装配来实现，我们进入<code>LoadBalancerAutoConfiguration</code> 自动装配类可以看到，<code>RestTemplate</code> 的注入加上了<code>@LoadBalanced</code>，这就是为什么我们前面的例子中加上了<code>@LoadBalanced</code> 就能被自动注入的原因：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/1fd760d7c07c03ed4f37e76070be1b0b.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <h3 id="resttemplatecustomizer">RestTemplateCustomizer</h3> <p>上面我们看到，<code>RestTemplate</code> 被包装成为了<code>RestTemplateCustomizer</code>，而<code>RestTemplateCustomizer</code> 的注入如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/64a20e2518c96b932a17c595616b16d2.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>可以看到这里面加入了一个拦截器<code>LoadBalancerInterceptor</code>，事实上即使不看这里，我们也可以猜测到，我们直接使用服务名就可以进行通讯的原因必然是底层有拦截器对其进行转换成<code>ip</code> 形式，并在底层进行负载均衡选择合适的服务进行通讯。</p> <h3 id="loadbalancerinterceptor">LoadBalancerInterceptor</h3> <p><code>LoadBalancerInterceptor</code> 是<code>Ribbon</code> 中默认的一个拦截器，所以当我们调用<code>RestTemplate</code> 的<code>getObject</code> 方法时，必然会调用拦截器中的方法。</p> <p>从源码中可以看到，<code>LoadBalancerInterceptor</code> 中只有一个<code>intercept()</code> 方法：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/afc3346ad203aec20e083284b9ffa729.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <h3 id="ribbonloadbalancerclientexecute">RibbonLoadBalancerClient#execute</h3> <p>继续跟进<code>execute</code> 方法会进入到<code>RibbonLoadBalancerClient</code> 类（由<code>RibbonAutoConfiguration</code> 自动装配类初始化）中：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/09e0bc81cf44d5a610e2f909a5142a54.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>这个方法中也比较好理解，首先获取一个负载均衡器，然后再通过<code>getServer</code> 方法获取一个指定的服务，也就是当我们有多个服务时，到这里就会选出一个服务进行通讯。</p> <p>进入<code>getServer</code> 方法：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e322e15fc91966c318d3ea2d869a5e28.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>我们看到，最终会调用<code>ILoadBalancer</code> 中的<code>chooseServer</code> 方法，而<code>ILoadBalancer</code> 是一个顶层接口，这时候具体会调用哪个实现类那么就需要先来看一下类图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/1d93beac71e1b96765d1394878f47916.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>这里直接看类图也无法看出到底会调用哪一个，但是不论调用哪一个，我们猜测他肯定会有一个地方去初始化这个类，而在<code>Spring</code> 当中一般就是自动装配类中初始化或者<code>Configuration</code> 中初始化，而<code>ILoadBalancer</code> 正是在<code>RibbonClientConfiguration</code> 类中被加载的：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/66e852f8861b8993d260d51b44f10312.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <h2 id="zoneawareloadbalancer-负载均衡器">ZoneAwareLoadBalancer 负载均衡器</h2> <p>ZoneAwareLoadBalancer 的初始化会调用其父类<code>DynamicServerListLoadBalancer</code> 进行初始化，然后会调用<code>restOfInit</code> 方法进行所有服务的初始化。</p> <h3 id="如何获取所有服务">如何获取所有服务</h3> <p>使用<code>Ribbon</code> 后，我们通讯时并没有指定某一个<code>ip</code> 和端口，而是通过服务名来调用服务，那么这个服务名就可能对应多个真正的服务，那么我们就必然需要先获取到所有服务的<code>ip</code> 和端口等信息，然后才能进行负载均衡处理。</p> <p>获取所有服务有两种方式：</p> <ul> <li>从配置文件获取</li> <li>从<code>Eureka</code> 注册中心获取（需要引入注册中心）。</li> </ul> <p>初始化服务的方式是通过启动一个<code>Scheduled</code> 定时任务来实现的，默认就是<code>30s</code> 更新一次，其实在很多源码中都是通过这种方式来定时更新的，因为源码要考虑的使用的简单性所以不太可能引入一个第三方中间件来实现定时器。</p> <p>具体的源码如下所示：<code>enableAndInitLearnNewServersFeature()</code> 方法启动的定时任务最终仍然你是调用<code>updateListOfServers()</code> 方法来更新服务。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f7ed2b028415533bd7cc78ffbd006c81.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>最终在获取到服务之后会调用父类<code>BaseLoadBalancer</code> 中的将所有服务设置到<code>allServerList</code> 集合中（<code>BaseLoadBalancer</code> 类中维护了一些负载均衡需要使用到的服务相关信息）。</p> <h3 id="如何判断服务是否可用">如何判断服务是否可用</h3> <p>当我们获取到配置文件（或者<code>Eureka</code> 注册中心）中的所有服务，那么这时候能直接执行负载均衡策略进行服务分发吗？显然是不能的，因为已经配置好的服务可能会宕机（下线），从而导致服务不可用，所以在<code>BaseLoadBalancer</code> 中除了有一个<code>allServerList</code> 集合来维护所有服务器，还有一个集合<code>upServerList</code> 用来维护可用服务集合，那么如何判断一个服务是否可用呢？答案就是通过心跳检测来判断一个服务是否可用。</p> <h4 id="心跳检测-task">心跳检测 Task</h4> <p>在讲心跳检测之前，我们先看一下<code>BaseLoadBalancer</code> 中的<code>setServersList</code> 方法，有一段逻辑比较重要：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/c054caab48c6fa4f85ec18401220d89e.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/88ca6077686c5c8644c11aae0adbc323.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>这段逻辑我们看到，默认情况下，如果<code>Ping</code> 的策略是<code>DummyPing</code>，那么默认<code>upServerList = allServerList</code>，而实际上，假如我们没有进行进行特殊配置，其实默认的就是<code>DummyPing</code>，这也是在<code>RibbonClientConfiguration</code> 类中被加载的：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/94f543b227307ee785524881bb72881f.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>在<code>BaseLoadBalancer</code> 初始化过程中，也会启动一个<code>Scheduled</code> 定时任务去定时更新任务，最终和<code>forceQuickPing()</code> 方法一样，调用一个默认策略来触发心跳检测，而默认策略就是<code>DummyPing</code>，也就是默认所有服务都是可用的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/955eb39cc50d88d232eb2a6069073c2f.jpg" alt="Spring Cloud之负载均衡组件Ribbon原理分析"></p> <p>虽然默认不执行真正的心跳检测操作，但是<code>Netflix</code> 中提供了<code>PingUrl</code> 等其他策略，<code>PingUrl</code> 其实就是发起一个<code>http</code> 请求，如果有响应就认为服务可用，没响应就认为服务不可用。</p> <p>修改心跳检测策略可以通过如下配置切换（<code>user-order-service</code> 为客户端的服务名），既然是可配置的，那么也可以自己实现一个策略，只需要实现<code>IPing</code> 接口即可。</p> <pre><code class="language-yaml">user-order-service.ribbon.NFLoadBalancerPingClassName=com.netflix.loadbalancer.PingUrl</code></pre> <h2 id="ribbon-的负载均衡算法">Ribbon 的负载均衡算法</h2> <p>当获取到可用服务之后，那么最后应该选择哪一个服务呢？这就需要使用到负载均衡策略，在<code>Ribbon</code> 中，可以通过配置修改，也可以自定义负载均衡策略（实现<code>IRule</code> 接口）。</p> <ul> <li>RandomRule：随机算法</li> <li>RoundRobinRule：轮询算法</li> <li>ZoneAvoidanceRule：结合分区统计信息筛选出合适的分区（默认的负载均衡算法）</li> <li>RetryRule：在<code>deadline</code> 时间内，如果请求不成功，则重新发起请求知道找到一个可用的服务。</li> <li>WeightedResponseTimeRule：根据服务器的响应时间计算权重值，服务器响应时间越长，这个服务器的权重就越小，会有定时任务对权重值进行更新。</li> <li>AvailabilityFilteringRule：过滤掉短路（连续<code>3</code> 次连接失败）的服务和高并发的服务。</li> <li>BestAvailableRule：选择并发数最低的服务器</li> </ul> <p>负载均衡算法可通过以下配置进行修改：</p> <pre><code class="language-yaml">user-order-service.ribbon.NFLoadBalancerRuleClassName=Rule规则的类名</code></pre> </h1> <p>本文主要讲述了微服务体系下的<code>Spring Cloud Netflix</code> 套件中<code>Ribbon</code> 的使用，并结合部分源码讲述了<code>Ribbon</code> 的底层原理，重点讲述了<code>Ribbon</code> 中是如何获取服务以及如何判定一个服务是否可用，最后也介绍了<code>Ribbon</code> 中默认提供的<code>7</code> 种负载均衡策略。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-80500.htm">动物医院设备采购 动物医院设备采购招标</a></p>
+                                        <p>下一个：<a href="/news/article-81238.htm">动物疫苗周期多长时间 动物疫苗周期多长时间打一次</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="「1月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-49022.htm" title="Antd的Form.Item自定义类型输入框">Antd的Form.Item自定义类型输入框</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-free-subscribe-node.htm" title="「2月8日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月8日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-79838.htm" title="天津猫狗救助站（天津猫狗救助站在哪里）">天津猫狗救助站（天津猫狗救助站在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-48396.htm" title="南京农大动物医院电话号码（南京农业大学动物医院电话）">南京农大动物医院电话号码（南京农业大学动物医院电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-free-node-subscribe.htm" title="「1月26日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月26日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-free-subscribe-node.htm" title="「2月25日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月25日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-node-subscribe-links.htm" title="「2月18日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月18日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-35727.htm" title="动物医院好评模板图片高清大全下载（动物医院好评语）">动物医院好评模板图片高清大全下载（动物医院好评语）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-latest-hiddify-next-node.htm" title="「2月14日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「2月14日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">80</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

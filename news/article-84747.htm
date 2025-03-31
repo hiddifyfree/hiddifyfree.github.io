@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-84747.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MySQL 连接的基本操作：交叉、内和外连接</title>
+        <meta name="description" content="文章目录  MySQL常用的三种连接方式 一，MySQL 交叉连接     1）查询 tb_students_info 表中的数据 2）查询 tb_course 表中的数据 3）使用 CROSS JO" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-84747.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="MySQL 连接的基本操作：交叉、内和外连接" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/3e45a8b33aa683ed9c330a3a7c5cd7e6.webp" />
+        <meta property="og:release_date" content="2025-03-30T09:35:07" />
+    <meta property="og:updated_time" content="2025-03-30T09:35:07" />
+        <meta property="og:description" content="文章目录  MySQL常用的三种连接方式 一，MySQL 交叉连接     1）查询 tb_students_info 表中的数据 2）查询 tb_course 表中的数据 3）使用 CROSS JO" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySQL 连接的基本操作：交叉、内和外连接">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>MySQL 连接的基本操作：交叉、内和外连接</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-kimbie-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#MySQL_3" rel="nofollow">MySQL常用的三种连接方式</a></li> <li><a href="#MySQL__8" rel="nofollow">一，MySQL 交叉连接</a></li> <li> <ul> <li> <ul> <li><a href="#1_tb_students_info__42" rel="nofollow">1）查询 tb_students_info 表中的数据</a></li> <li><a href="#2_tb_course__64" rel="nofollow">2）查询 tb_course 表中的数据</a></li> <li><a href="#3_CROSS_JOIN__81" rel="nofollow">3）使用 CROSS JOIN 查询出两张表中的笛卡尔积</a></li> </ul> </li> <li><a href="#_170" rel="nofollow">笛卡尔积</a></li> </ul> </li> <li><a href="#MySQL__196" rel="nofollow">二，MySQL 内连接</a></li> <li><a href="#MySQL__246" rel="nofollow">三，MySQL 外连接</a></li> <li> <ul> <li> <ul> <li><a href="#1_248" rel="nofollow">1）左连接</a></li> <li><a href="#2_327" rel="nofollow">2）右连接</a></li> </ul> </li> </ul> </li> </ul> </div> <hr/> </h1> <p>前面所说的查询语句都是针对一个表的，但是在关系型数据库中，表与表之间是有联系的，所以在实际应用中，经常使用多表查询。多表查询就是同时查询两个或两个以上的表。</p> <p>在 MySQL 中，多表查询主要有交叉连接、内连接和外连接。</p> </h1> <p>交叉连接（CROSS JOIN）一般用来返回连接表的笛卡尔积。</p> <blockquote> <p>本文的末尾介绍了笛卡尔积，不了解笛卡尔积的读者可以先阅读文章末尾部分，然后再继续学习交叉连接。</p> </blockquote> <p>交叉连接的语法格式如下：</p> <pre><code>SELECT &lt;字段名&gt; FROM &lt;表1&gt; CROSS JOIN &lt;表2&gt; [WHERE子句]</code></pre> <p>或</p> <pre><code>SELECT &lt;字段名&gt; FROM &lt;表1&gt;, &lt;表2&gt; [WHERE子句]</code></pre> <p>语法说明如下：</p> <ul> <li>字段名：需要查询的字段名称。</li> <li>&lt;表1&gt;&lt;表2&gt;：需要交叉连接的表名。</li> <li>WHERE 子句：用来设置交叉连接的查询条件。</li> </ul> <p>注意：多个表交叉连接时，在 FROM 后连续使用 CROSS JOIN 或, 即可。以上两种语法的返回结果是相同的，但是第一种语法才是官方建议的标准写法。</p> <p>当连接的表之间没有关系时，我们会省略掉 WHERE 子句，这时返回结果就是两个表的笛卡尔积，返回结果数量就是两个表的数据行相乘。需要注意的是，如果每个表有 1000 行，那么返回结果的数量就有 1000×1000 = 1000000 行，数据量是非常巨大的。</p> <p>交叉连接可以查询两个或两个以上的表，为了让读者更好的理解，下面先讲解两个表的交叉连接查询。<br /><strong>例 1</strong><br /> 查询学生信息表和科目信息表，并得到一个笛卡尔积。</p> <p>为了方便观察学生信息表和科目表交叉连接后的运行结果，我们先分别查询出这两个表的数据，再进行交叉连接查询。</p> <h3><a id="1_tb_students_info__42" rel="nofollow"></a>1）查询 tb_students_info 表中的数据</h3> <p>SQL 语句和运行结果如下：</p> <pre><code>mysql&gt; SELECT * FROM tb_students_info; +----+--------+------+------+--------+-----------+ | id | name   | age  | sex  | height | course_id | +----+--------+------+------+--------+-----------+ |  1 | Dany   |   25 | 男   |    160 |         1 | |  2 | Green  |   23 | 男   |    158 |         2 | |  3 | Henry  |   23 | 女   |    185 |         1 | |  4 | Jane   |   22 | 男   |    162 |         3 | |  5 | Jim    |   24 | 女   |    175 |         2 | |  6 | John   |   21 | 女   |    172 |         4 | |  7 | Lily   |   22 | 男   |    165 |         4 | |  8 | Susan  |   23 | 男   |    170 |         5 | |  9 | Thomas |   22 | 女   |    178 |         5 | | 10 | Tom    |   23 | 女   |    165 |         5 | +----+--------+------+------+--------+-----------+ 10 rows in set (0.00 sec)</code></pre> <h3><a id="2_tb_course__64" rel="nofollow"></a>2）查询 tb_course 表中的数据</h3> <p>SQL 语句和运行结果如下：</p> <pre><code>mysql&gt; SELECT * FROM tb_course; +----+-------------+ | id | course_name | +----+-------------+ |  1 | Java        | |  2 | MySQL       | |  3 | Python      | |  4 | Go          | |  5 | C++         | +----+-------------+ 5 rows in set (0.00 sec)</code></pre> <h3><a id="3_CROSS_JOIN__81" rel="nofollow"></a>3）使用 CROSS JOIN 查询出两张表中的笛卡尔积</h3> <p>SQL 语句和运行结果如下：</p> <pre><code>mysql&gt; SELECT * FROM tb_course CROSS JOIN tb_students_info; +----+-------------+----+--------+------+------+--------+-----------+ | id | course_name | id | name   | age  | sex  | height | course_id | +----+-------------+----+--------+------+------+--------+-----------+ |  1 | Java        |  1 | Dany   |   25 | 男   |    160 |         1 | |  2 | MySQL       |  1 | Dany   |   25 | 男   |    160 |         1 | |  3 | Python      |  1 | Dany   |   25 | 男   |    160 |         1 | |  4 | Go          |  1 | Dany   |   25 | 男   |    160 |         1 | |  5 | C++         |  1 | Dany   |   25 | 男   |    160 |         1 | |  1 | Java        |  2 | Green  |   23 | 男   |    158 |         2 | |  2 | MySQL       |  2 | Green  |   23 | 男   |    158 |         2 | |  3 | Python      |  2 | Green  |   23 | 男   |    158 |         2 | |  4 | Go          |  2 | Green  |   23 | 男   |    158 |         2 | |  5 | C++         |  2 | Green  |   23 | 男   |    158 |         2 | |  1 | Java        |  3 | Henry  |   23 | 女   |    185 |         1 | |  2 | MySQL       |  3 | Henry  |   23 | 女   |    185 |         1 | |  3 | Python      |  3 | Henry  |   23 | 女   |    185 |         1 | |  4 | Go          |  3 | Henry  |   23 | 女   |    185 |         1 | |  5 | C++         |  3 | Henry  |   23 | 女   |    185 |         1 | |  1 | Java        |  4 | Jane   |   22 | 男   |    162 |         3 | |  2 | MySQL       |  4 | Jane   |   22 | 男   |    162 |         3 | |  3 | Python      |  4 | Jane   |   22 | 男   |    162 |         3 | |  4 | Go          |  4 | Jane   |   22 | 男   |    162 |         3 | |  5 | C++         |  4 | Jane   |   22 | 男   |    162 |         3 | |  1 | Java        |  5 | Jim    |   24 | 女   |    175 |         2 | |  2 | MySQL       |  5 | Jim    |   24 | 女   |    175 |         2 | |  3 | Python      |  5 | Jim    |   24 | 女   |    175 |         2 | |  4 | Go          |  5 | Jim    |   24 | 女   |    175 |         2 | |  5 | C++         |  5 | Jim    |   24 | 女   |    175 |         2 | |  1 | Java        |  6 | John   |   21 | 女   |    172 |         4 | |  2 | MySQL       |  6 | John   |   21 | 女   |    172 |         4 | |  3 | Python      |  6 | John   |   21 | 女   |    172 |         4 | |  4 | Go          |  6 | John   |   21 | 女   |    172 |         4 | |  5 | C++         |  6 | John   |   21 | 女   |    172 |         4 | |  1 | Java        |  7 | Lily   |   22 | 男   |    165 |         4 | |  2 | MySQL       |  7 | Lily   |   22 | 男   |    165 |         4 | |  3 | Python      |  7 | Lily   |   22 | 男   |    165 |         4 | |  4 | Go          |  7 | Lily   |   22 | 男   |    165 |         4 | |  5 | C++         |  7 | Lily   |   22 | 男   |    165 |         4 | |  1 | Java        |  8 | Susan  |   23 | 男   |    170 |         5 | |  2 | MySQL       |  8 | Susan  |   23 | 男   |    170 |         5 | |  3 | Python      |  8 | Susan  |   23 | 男   |    170 |         5 | |  4 | Go          |  8 | Susan  |   23 | 男   |    170 |         5 | |  5 | C++         |  8 | Susan  |   23 | 男   |    170 |         5 | |  1 | Java        |  9 | Thomas |   22 | 女   |    178 |         5 | |  2 | MySQL       |  9 | Thomas |   22 | 女   |    178 |         5 | |  3 | Python      |  9 | Thomas |   22 | 女   |    178 |         5 | |  4 | Go          |  9 | Thomas |   22 | 女   |    178 |         5 | |  5 | C++         |  9 | Thomas |   22 | 女   |    178 |         5 | |  1 | Java        | 10 | Tom    |   23 | 女   |    165 |         5 | |  2 | MySQL       | 10 | Tom    |   23 | 女   |    165 |         5 | |  3 | Python      | 10 | Tom    |   23 | 女   |    165 |         5 | |  4 | Go          | 10 | Tom    |   23 | 女   |    165 |         5 | |  5 | C++         | 10 | Tom    |   23 | 女   |    165 |         5 | +----+-------------+----+--------+------+------+--------+-----------+ 50 rows in set (0.00 sec)</code></pre> <p>由运行结果可以看出，tb_course 和 tb_students_info 表交叉连接查询后，返回了 50 条记录。可以想象，当表中的数据较多时，得到的运行结果会非常长，而且得到的运行结果也没太大的意义。所以，通过交叉连接的方式进行多表查询的这种方法并不常用，我们应该尽量避免这种查询。<br /><strong>例 2</strong><br /> 查询 tb_course 表中的 id 字段和 tb_students_info 表中的 course_id 字段相等的内容， SQL 语句和运行结果如下：</p> <pre><code>mysql&gt; SELECT * FROM tb_course CROSS JOIN tb_students_info      -&gt; WHERE tb_students_info.course_id = tb_course.id; +----+-------------+----+--------+------+------+--------+-----------+ | id | course_name | id | name   | age  | sex  | height | course_id | +----+-------------+----+--------+------+------+--------+-----------+ |  1 | Java        |  1 | Dany   |   25 | 男   |    160 |         1 | |  2 | MySQL       |  2 | Green  |   23 | 男   |    158 |         2 | |  1 | Java        |  3 | Henry  |   23 | 女   |    185 |         1 | |  3 | Python      |  4 | Jane   |   22 | 男   |    162 |         3 | |  2 | MySQL       |  5 | Jim    |   24 | 女   |    175 |         2 | |  4 | Go          |  6 | John   |   21 | 女   |    172 |         4 | |  4 | Go          |  7 | Lily   |   22 | 男   |    165 |         4 | |  5 | C++         |  8 | Susan  |   23 | 男   |    170 |         5 | |  5 | C++         |  9 | Thomas |   22 | 女   |    178 |         5 | |  5 | C++         | 10 | Tom    |   23 | 女   |    165 |         5 | +----+-------------+----+--------+------+------+--------+-----------+ 10 rows in set (0.01 sec)  如果在交叉连接时使用 WHERE 子句，MySQL 会先生成两个表的笛卡尔积，然后再选择满足 WHERE 条件的记录。因此，表的数量较多时，交叉连接会非常非常慢。一般情况下不建议使用交叉连接。</code></pre> <p>在 MySQL 中，多表查询一般使用内连接和外连接，它们的效率要高于交叉连接。请猛击《MySQL内连接》和《MySQL外连接》阅读学习 MySQL 中的内连接和外连接。</p> <h2><a id="_170" rel="nofollow"></a>笛卡尔积</h2> <p>笛卡尔积（Cartesian product）是指两个集合 X 和 Y 的乘积。</p> <p>例如，有 A 和 B 两个集合，它们的值如下：</p> <pre><code>A = {1,2} B = {3,4,5}</code></pre> <p>集合 A×B 和 B×A 的结果集分别表示为：</p> <pre><code>A×B={(1,3), (1,4), (1,5), (2,3), (2,4), (2,5) }; B×A={(3,1), (3,2), (4,1), (4,2), (5,1), (5,2) };</code></pre> <p>以上 A×B 和 B×A 的结果就叫做两个集合的笛卡尔积。</p> <p>并且，从以上结果我们可以看出：</p> <ul> <li>两个集合相乘，不满足交换率，即 A×B≠B×A。</li> <li>A 集合和 B 集合的笛卡尔积是 A 集合的元素个数 × B 集合的元素个数。</li> </ul> <p>多表查询遵循的算法就是以上提到的笛卡尔积，表与表之间的连接可以看成是在做乘法运算。在实际应用中，应避免使用笛卡尔积，因为笛卡尔积中容易存在大量的不合理数据，简单来说就是容易导致查询结果重复、混乱。</p> </h1> <p>内连接（INNER JOIN）主要通过设置连接条件的方式，来移除查询结果中某些数据行的交叉连接。简单来说，就是利用条件表达式来消除交叉连接的某些数据行。</p> <p>内连接使用 INNER JOIN 关键字连接两张表，并使用 ON 子句来设置连接条件。如果没有连接条件，INNER JOIN 和 CROSS JOIN 在语法上是等同的，两者可以互换。</p> <p>内连接的语法格式如下：</p> <pre><code>SELECT &lt;字段名&gt; FROM &lt;表1&gt; INNER JOIN &lt;表2&gt; [ON子句]</code></pre> <p>语法说明如下。</p> <ul> <li>字段名：需要查询的字段名称。</li> <li>&lt;表1&gt;&lt;表2&gt;：需要内连接的表名。</li> <li>INNER JOIN ：内连接中可以省略 INNER 关键字，只用关键字 JOIN。</li> <li>ON 子句：用来设置内连接的连接条件。</li> </ul> <blockquote> <p>INNER JOIN 也可以使用 WHERE 子句指定连接条件，但是 INNER JOIN … ON 语法是官方的标准写法，而且 WHERE 子句在某些时候会影响查询的性能。</p> </blockquote> <p>多个表内连接时，在 FROM 后连续使用 INNER JOIN 或 JOIN 即可。</p> <p>内连接可以查询两个或两个以上的表。为了让大家更好的理解，暂时只讲解两个表的连接查询。<br /><strong>例 1</strong><br /> 在 tb_students_info 表和 tb_course 表之间，使用内连接查询学生姓名和相对应的课程名称，SQL 语句和运行结果如下。</p> <pre><code>mysql&gt; SELECT s.name,c.course_name FROM tb_students_info s INNER JOIN tb_course c      -&gt; ON s.course_id = c.id; +--------+-------------+ | name   | course_name | +--------+-------------+ | Dany   | Java        | | Green  | MySQL       | | Henry  | Java        | | Jane   | Python      | | Jim    | MySQL       | | John   | Go          | | Lily   | Go          | | Susan  | C++         | | Thomas | C++         | | Tom    | C++         | +--------+-------------+ 10 rows in set (0.00 sec)</code></pre> <p>在这里的查询语句中，两个表之间的关系通过 INNER JOIN 指定，连接的条件使用 ON 子句给出。</p> <p>注意：当对多个表进行查询时，要在 SELECT 语句后面指定字段是来源于哪一张表。因此，在多表查询时，SELECT 语句后面的写法是<code>表名.列名</code>。另外，如果表名非常长的话，也可以给表设置别名，这样就可以直接在 SELECT 语句后面写上表的<code>别名.列名</code>。</p> </h1> <p>外连接可以分为左外连接和右外连接，下面根据实例分别介绍左外连接和右外连接。</p> <h3><a id="1_248" rel="nofollow"></a>1）左连接</h3> <p>左外连接又称为左连接，使用 LEFT OUTER JOIN 关键字连接两个表，并使用 ON 子句来设置连接条件。</p> <p>左连接的语法格式如下：</p> <pre><code>SELECT &lt;字段名&gt; FROM &lt;表1&gt; LEFT OUTER JOIN &lt;表2&gt; &lt;ON子句&gt;</code></pre> <p>语法说明如下。</p> <ul> <li>字段名：需要查询的字段名称。</li> <li>&lt;表1&gt;&lt;表2&gt;：需要左连接的表名。</li> <li>LEFT OUTER JOIN：左连接中可以省略 OUTER 关键字，只使用关键字 LEFT JOIN。</li> <li>ON 子句：用来设置左连接的连接条件，不能省略。</li> </ul> <p>上述语法中，“表1”为基表，“表2”为参考表。左连接查询时，可以查询出“表1”中的所有记录和“表2”中匹配连接条件的记录。如果“表1”的某行在“表2”中没有匹配行，那么在返回结果中，“表2”的字段值均为空值（NULL）。<br /><strong>例 1</strong><br /> 在进行左连接查询之前，我们先查看 tb_course 和 tb_students_info 两张表中的数据。SQL 语句和运行结果如下。</p> <pre><code>mysql&gt; SELECT * FROM tb_course; +----+-------------+ | id | course_name | +----+-------------+ |  1 | Java        | |  2 | MySQL       | |  3 | Python      | |  4 | Go          | |  5 | C++         | |  6 | HTML        | +----+-------------+ 6 rows in set (0.00 sec)  mysql&gt; SELECT * FROM tb_students_info; +----+--------+------+------+--------+-----------+ | id | name   | age  | sex  | height | course_id | +----+--------+------+------+--------+-----------+ |  1 | Dany   |   25 | 男   |    160 |         1 | |  2 | Green  |   23 | 男   |    158 |         2 | |  3 | Henry  |   23 | 女   |    185 |         1 | |  4 | Jane   |   22 | 男   |    162 |         3 | |  5 | Jim    |   24 | 女   |    175 |         2 | |  6 | John   |   21 | 女   |    172 |         4 | |  7 | Lily   |   22 | 男   |    165 |         4 | |  8 | Susan  |   23 | 男   |    170 |         5 | |  9 | Thomas |   22 | 女   |    178 |         5 | | 10 | Tom    |   23 | 女   |    165 |         5 | | 11 | LiMing |   22 | 男   |    180 |         7 | +----+--------+------+------+--------+-----------+ 11 rows in set (0.00 sec)</code></pre> <p>在 tb_students_info 表和 tb_course 表中查询所有学生姓名和相对应的课程名称，包括没有课程的学生，SQL 语句和运行结果如下。</p> <pre><code>mysql&gt; SELECT s.name,c.course_name FROM tb_students_info s LEFT OUTER JOIN tb_course c      -&gt; ON s.`course_id`=c.`id`; +--------+-------------+ | name   | course_name | +--------+-------------+ | Dany   | Java        | | Henry  | Java        | | NULL   | Java        | | Green  | MySQL       | | Jim    | MySQL       | | Jane   | Python      | | John   | Go          | | Lily   | Go          | | Susan  | C++         | | Thomas | C++         | | Tom    | C++         | | LiMing | NULL        | +--------+-------------+ 12 rows in set (0.00 sec)</code></pre> <p>可以看到，运行结果显示了 12 条记录，name 为 LiMing 的学生目前没有课程，因为对应的 tb_course 表中没有该学生的课程信息，所以该条记录只取出了 tb_students_info 表中相应的值，而从 tb_course 表中取出的值为 NULL。</p> <h3><a id="2_327" rel="nofollow"></a>2）右连接</h3> <p>右外连接又称为右连接，右连接是左连接的反向连接。使用 RIGHT OUTER JOIN 关键字连接两个表，并使用 ON 子句来设置连接条件。</p> <p>右连接的语法格式如下：</p> <blockquote> <p>SELECT &lt;字段名&gt; FROM &lt;表1&gt; RIGHT OUTER JOIN &lt;表2&gt; &lt;ON子句&gt;</p> </blockquote> <p>语法说明如下。</p> <ul> <li>字段名：需要查询的字段名称。</li> <li>&lt;表1&gt;&lt;表2&gt;：需要右连接的表名。</li> <li>RIGHT OUTER JOIN：右连接中可以省略 OUTER 关键字，只使用关键字 RIGHT JOIN。</li> <li>ON 子句：用来设置右连接的连接条件，不能省略。</li> </ul> <p>与左连接相反，右连接以“表2”为基表，“表1”为参考表。右连接查询时，可以查询出“表2”中的所有记录和“表1”中匹配连接条件的记录。如果“表2”的某行在“表1”中没有匹配行，那么在返回结果中，“表1”的字段值均为空值（NULL）。<br /><strong>例 2</strong><br /> 在 tb_students_info 表和 tb_course 表中查询所有课程，包括没有学生的课程，SQL 语句和运行结果如下。</p> <pre><code>mysql&gt; SELECT s.name,c.course_name FROM tb_students_info s RIGHT OUTER JOIN tb_course c      -&gt; ON s.`course_id`=c.`id`; +--------+-------------+ | name   | course_name | +--------+-------------+ | Dany   | Java        | | Green  | MySQL       | | Henry  | Java        | | Jane   | Python      | | Jim    | MySQL       | | John   | Go          | | Lily   | Go          | | Susan  | C++         | | Thomas | C++         | | Tom    | C++         | | NULL   | HTML        | +--------+-------------+ 11 rows in set (0.00 sec)</code></pre> <p>可以看到，结果显示了 11 条记录，名称为 HTML 的课程目前没有学生，因为对应的 tb_students_info 表中并没有该学生的信息，所以该条记录只取出了 tb_course 表中相应的值，而从 tb_students_info 表中取出的值为 NULL。</p> <blockquote> <p>多个表左/右连接时，在 ON 子句后连续使用 LEFT/RIGHT OUTER JOIN 或 LEFT/RIGHT JOIN 即可。</p> </blockquote> <p>使用外连接查询时，一定要分清需要查询的结果，是需要显示左表的全部记录还是右表的全部记录，然后选择相应的左连接和右连接。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-84031.htm">国内兽药厂家前50名有（国内十大兽药厂排名）</a></p>
+                                        <p>下一个：<a href="/news/article-84748.htm">宠物医院诊疗许可证要求是什么样的（宠物诊所诊疗许可证申请条件）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40101.htm" title="小型宠物粮食加工设备厂家电话地址（宠物粮食加工厂需要投资多少钱）">小型宠物粮食加工设备厂家电话地址（宠物粮食加工厂需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-node-share-links.htm" title="「3月11日」最高速度19.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月11日」最高速度19.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-82602.htm" title="深圳宠物领养中心官网（深圳宠物领养机构）">深圳宠物领养中心官网（深圳宠物领养机构）</a></li>
+                        <li class="py-2"><a href="/news/article-63440.htm" title="宠物养不了该送哪里去无锡（养不了的宠物送去哪里）">宠物养不了该送哪里去无锡（养不了的宠物送去哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-54834.htm" title="python协程编程实例_Python异步IO编程之-asyncio协程应用例子">python协程编程实例_Python异步IO编程之-asyncio协程应用例子</a></li>
+                        <li class="py-2"><a href="/news/article-51605.htm" title="动物疫苗生产厂家排名榜 动物疫苗生产厂家排名榜前十名">动物疫苗生产厂家排名榜 动物疫苗生产厂家排名榜前十名</a></li>
+                        <li class="py-2"><a href="/news/article-57058.htm" title="宠物猫疫苗多少钱一次啊（宠物猫疫苗多少钱一次啊）">宠物猫疫苗多少钱一次啊（宠物猫疫苗多少钱一次啊）</a></li>
+                        <li class="py-2"><a href="/news/article-46053.htm" title="适合新手开店的是什么（适合新手开店的是什么职业）">适合新手开店的是什么（适合新手开店的是什么职业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-today-hiddify-next-node.htm" title="「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月30日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-56483.htm" title="宠物领养协议书模板下载电子版 宠物领养协议书模板下载电子版图片">宠物领养协议书模板下载电子版 宠物领养协议书模板下载电子版图片</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

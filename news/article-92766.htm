@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-92766.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vuex用法及封装</title>
+        <meta name="description" content="Vuex的介绍和使用建议看官方文档，本文更多的是我对Vuex的一个总结。  Vuex介绍及使用 Vuex使用中可能遇到的问题  一.Vuex介绍及使用 1.Vuex是什么 官方的介绍是“Vuex 是状" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-92766.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Vuex用法及封装" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/c35dbdf377a1b8d3371e63d14b6a6aa6.webp" />
+        <meta property="og:release_date" content="2025-04-10T08:18:40" />
+    <meta property="og:updated_time" content="2025-04-10T08:18:40" />
+        <meta property="og:description" content="Vuex的介绍和使用建议看官方文档，本文更多的是我对Vuex的一个总结。  Vuex介绍及使用 Vuex使用中可能遇到的问题  一.Vuex介绍及使用 1.Vuex是什么 官方的介绍是“Vuex 是状" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vuex用法及封装">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Vuex用法及封装</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>Vuex的介绍和使用建议看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://vuex.vuejs.org/zh/"  rel="nofollow">官方文档</a>，本文更多的是我对Vuex的一个总结。</p> <ul> <li>Vuex介绍及使用</li> <li>Vuex使用中可能遇到的问题</li> </ul> <h3>一.Vuex介绍及使用</h3> <p><strong>1.Vuex是什么</strong></p> <p>官方的介绍是“Vuex 是<strong>状态管理模式</strong>”</p> <p>我们在做组件间数据传递的时候，其方式有多种，比如：</p> <ul> <li>组件间通过属性和事件触发的形式进行数据的交互</li> <li>使用缓存localStorage，sessionStorage等</li> <li>router 路由跳转时传值</li> <li>bus总线机制</li> <li>vuex</li> </ul> <p>而vuex最大的特点就是能<strong>实时同步更新数据</strong></p> <p><strong>2.Vuex能解决什么问题</strong></p> <p>在很多场景下，我们可能会有下面的问题：</p> <ul> <li>多个视图依赖于同一状态。</li> <li>来自不同视图的行为需要变更同一状态。</li> </ul> <p><strong>3.什么情况下使用 Vuex</strong></p> <p>官方建议在开发中大型项目的情况下考虑使用Vuex。就我个人而言，当页面的非父子组件间需要<strong>实时同步更新数据</strong>时，才使用vuex，其他情况都不使用。</p> <p><strong>4.Vuex如何使用</strong></p> <p>首先，必须牢记下面这张图</p> <p style="text-align:center;"><img decoding="async" alt="" class="has" height="400" src="http://img.555519.xyz/uploads/20221230/e27c4292ea0538259256f4e3c5b4b7a3.jpg"></p> <p>图中，整个虚线部分就是Vuex，我们可以把它看成一个公共仓库store。store中有Actions（行为）、Mutations（变动）和State（状态）。整个的逻辑是组件通过Dispatch调用Actions中的方法，Actions通过Commit调用Mutations中的方法，Mutatisons改变State中的值。</p> <p>我们看下如何简单使用。首先，在store目录下的index.js文件中写入如下代码：</p> <pre class="has"><code class="language-javascript">import Vue from 'vue' import Vuex from 'vuex'  Vue.use(Vuex)  export default new Vuex.Store({   state: {     city: '重庆'   },   actions: {     changeCity(ctx, city) {       ctx.commit('changeCity2', city) // 调用mutations中的方法改变city     }   },   mutations: {     changeCity2(state, city) {       state.city = city     }   },   getters: { // 类似计算属性，计算state中的数据提供新的数据     doubleCity (state) {       return state.city + ' ' + state.city     }   } })</code></pre> <p>然后，我们在main.js中引入store</p> <pre class="has"><code class="language-javascript">import Vue from 'vue' import App from './App' import store from './store/index'  new Vue({   el: '#app',   store,   components: { App },   template: '&lt;App/&gt;' }) </code></pre> <p>接着，我们就能在组件中使用</p> <pre class="has"><code class="language-html">&lt;div&gt;{<!-- -->{this.$store.state.city}}&lt;/div&gt;</code></pre> <p>我们也可以使用Vuex提供的语法糖，将city映射到组件数据中</p> <p>先引入</p> <pre class="has"><code class="language-javascript">import {mapState} from 'vuex'</code></pre> <p>再映射，这里我们映射到computed中</p> <pre class="has"><code class="language-javascript">  computed: {     // ...为展开运算符 将vuex中的公用属性city映射到计算属性city中     ...mapState(['city'])   }</code></pre> <p>上面，我们只是调用了city数据，那如何改变city呢？</p> <pre class="has"><code class="language-javascript">this.$store.dispatch('changeCity', '北京')</code></pre> <p>我们也可以使用Vuex中的语法糖，将方法映射到组件中</p> <pre class="has"><code class="language-javascript">import {mapActions} from 'vuex'</code></pre> <pre class="has"><code class="language-javascript">    methods: {       ...mapActions([         'changeCity'       ])     }</code></pre> <p>通过上面的操作，我们发现要改变city，需要先调用actions，再调用mutations来改变city，我们能不能直接调用mutations来改变city呢？这是可以的</p> <pre class="has"><code class="language-javascript">this.$store.commit('changeCity2', '北京')</code></pre> <p>当然，我们也可以使用Vuex的语法糖mapMutations来映射，这里不再介绍。</p> <p>注：本着能少写就少写的原则，我们在一般的开发中，可能会省略actions步骤。</p> <p><strong>5.Vuex的简单封装</strong></p> <p>随着项目越来越复杂，若将所有代码写在一起会显得越来越臃肿，所以我们一般都要进行封装分离。这里，我们将state和mutations进行封装，其他的类似。</p> <p>新建state.js</p> <pre class="has"><code class="language-javascript">let state = {   city: '重庆' }  export default state</code></pre> <p>新建mutations.js</p> <pre class="has"><code class="language-javascript">let mutations = {   changeCity (state, city) {     state.city = city   } }  export default mutations </code></pre> <p>然后，我们的代码就可以改成如下这般</p> <pre class="has"><code class="language-javascript">import Vue from 'vue' import Vuex from 'vuex' import state from './state' import mutations from './mutations'  Vue.use(Vuex)  export default new Vuex.Store({   state,   mutations })</code></pre> <h3>二.Vuex使用中可能遇到的问题</h3> <p><strong>1.刷新页面数据被重置为初始状态</strong></p> <p>对于这个问题，我们一般通过 Vuex 与缓存结合使用来解决。</p> <p>读取数据时</p> <pre class="has"><code class="language-javascript">let defaultCity = '' if (localStorage.getItem('city')) {   defaultCity= localStorage.getItem('city') }  const state = {   city: defaultCity }  export default state</code></pre> <p>改变数据时</p> <pre class="has"><code class="language-javascript">const mutations = {   changeCity (state, val) {     localStorage.setItem('city', val)     state.city= val   } }  export default mutations</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92052.htm">免费领养猫平台有哪些（免费领养猫咪是什么套路）</a></p>
+                                        <p>下一个：<a href="/news/article-92767.htm">在vscode中快速新建html文件的2种方法总结_C 语言</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-8-node-share-links.htm" title="「4月8日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月8日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-85464.htm" title="动物诊疗许可证办理多少钱（动物诊疗许可证需要多少钱）">动物诊疗许可证办理多少钱（动物诊疗许可证需要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-92767.htm" title="在vscode中快速新建html文件的2种方法总结_C 语言">在vscode中快速新建html文件的2种方法总结_C 语言</a></li>
+                        <li class="py-2"><a href="/news/article-68440.htm" title="宠物领养数据库设计（宠物领养系统功能模块）">宠物领养数据库设计（宠物领养系统功能模块）</a></li>
+                        <li class="py-2"><a href="/news/article-66528.htm" title="孕妇让猫抓破了流了一点点血要紧吗（孕妇让小猫抓破一点点表皮,没出血）">孕妇让猫抓破了流了一点点血要紧吗（孕妇让小猫抓破一点点表皮,没出血）</a></li>
+                        <li class="py-2"><a href="/news/article-73694.htm" title="领养协议书模板图片大全高清（领养协议范本）">领养协议书模板图片大全高清（领养协议范本）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-free-high-speed-nodes.htm" title="「3月21日」最高速度21.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月21日」最高速度21.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-hiddify-next-windows.htm" title="「3月20日」最高速度20.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月20日」最高速度20.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-hiddify-next-node-share.htm" title="「3月25日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月25日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-69084.htm" title="网上一元店批发（网上一元店批发是正品吗）">网上一元店批发（网上一元店批发是正品吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

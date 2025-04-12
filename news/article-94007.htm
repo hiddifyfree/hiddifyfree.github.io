@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-94007.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>朴素贝叶斯算法详解</title>
+        <meta name="description" content="一、从生活角度来理解朴素贝叶斯算法 朴素贝叶斯算法是统计学味道最浓的一款算法，也是最能体现我们日常生活经验的算法； 与我们读万卷书行万里路形成我们自己的生活经验类似，朴素贝叶斯算法也是基于收集的历史数" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-94007.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="朴素贝叶斯算法详解" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/915ba27de3468ce66ef4ca58c2174e2a.webp" />
+        <meta property="og:release_date" content="2025-04-12T08:53:54" />
+    <meta property="og:updated_time" content="2025-04-12T08:53:54" />
+        <meta property="og:description" content="一、从生活角度来理解朴素贝叶斯算法 朴素贝叶斯算法是统计学味道最浓的一款算法，也是最能体现我们日常生活经验的算法； 与我们读万卷书行万里路形成我们自己的生活经验类似，朴素贝叶斯算法也是基于收集的历史数" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="朴素贝叶斯算法详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>朴素贝叶斯算法详解</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>一、从生活角度来理解朴素贝叶斯算法</p> <p>朴素贝叶斯算法是统计学味道最浓的一款算法，也是最能体现我们日常生活经验的算法；</p> <p>与我们读万卷书行万里路形成我们自己的生活经验类似，朴素贝叶斯算法也是基于收集的历史数据分析得到相关事情发生的原因，从而形成解决问题的模型；</p> <p>与我们面对未知的未来类似，基于自己的生活经验计算各种可能的情况，最终选择一个最大可能的方向进行努力 ，朴素贝叶斯算法也是基于学习的模型计算给定的输入属于各个分类的概率，并选择概率最大的分类作为结果；</p> <p>从我们出生开始，就在不断的进行学习，通过上学、不同的人生体验、阅读不同类型的书籍来学习；我们把人生的前二十多年全力投入到学习之中，就是要尽最大的可能通过各种方式来丰富自己面对未来不确定性的经验；只不过由于各种客观或者主观条件的限制，我们的内化的经验可能会误差比较大，同时可能也不具有统计性规律；</p> <p>二、从数学的角度来理解朴素贝叶斯算法</p> <p>朴素贝叶斯法实现简单，学习与预测的效率都很高，是一种常用的方法；该算法是基于贝叶斯定理和特征条件独立假设的分类算法；该算法首先通过分析训练数据得到先验概率、似然度，从而得到输入输出的联合概率分布；最后基于此训练模型，利用贝叶斯定理计算得到输入的后验概率最大的分类；</p> <p>联合概率P(X,Y)是通过计算先验概率和条件概率得到的；</p> <p>朴素贝叶斯法通过训练数据集学习得到先验概率</p> <div class="math display">\[P(Y = c_{k}) , k = 1,2,3,...,K<br /> \]</div> <p>条件概率</p> <div class="math display">\[P(X = x | Y = c_{k}) = P(X^{(1)} = x^{(1)},..., X^{(n)} = x^{(n)}| Y = c_{k}), k = 1,2,3,...,K<br /> \]</div> <p>由于算法假设特征条件独立性假设，所以条件概率转化为</p> <div class="math display">\[P(X = x | Y = c_{k}) = P(X^{(1)} = x^{(1)},..., X^{(n)} = x^{(n)}| Y = c_{k})<br />                      = \prod_{j=1}^{n} P(X^{(j)} = x^{(j)}| Y = c_{k})<br /> \]</div> <p>当预测分类的时候，对给定的输入x，通过学习到的模型计算后验概率分布，k|X=x），将后验概率最大的类作为x的类输出。后验概率计算根据贝叶斯定理进行：</p> <div class="math display">\[P(Y = c_{k} | X = x) = \frac{P(X = x | Y = c_{k}) P(Y = c_{k})}{P(X = x)}<br />                      = \frac{P(X = x | Y = c_{k}) P(Y = c_{k})}{\sum_{k} P(X = x|Y = c_{k})P(Y = c_{k})}<br /> \]</div> <p>由于分母P(X = x)是对整个训练样本进行计算的，所以这里类似一个常数，故可以忽略；同时结合上边特征独立性得到的条件概率，可以得到</p> <div class="math display">\[y = \underset{c_{k}}{argmax} P(Y = c_{k}) \prod_{j} P(X^{(j)} = x^{(j)} | Y = c_{k})<br /> \]</div> <p>三、朴素贝叶斯算法分类示例</p> <p>在Scikit-Learn库中，基于贝叶斯这一大类的算法模型的相关类库都在sklearn.naive_bayes包之中；</p> <pre><code>from sklearn.datasets import load_iris from sklearn.naive_bayes import MultinomialNB  X, y = load_iris(return_X_y= True) clf = MultinomialNB().fit(X, y) r = clf.predict(X) print(r) s = clf.score(X, y) print(s)    # [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 #  0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 1 2 1 #  1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 #  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 #  2 2] # 0.9533333333333334</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93516.htm">动物打针的故事（动物打针的故事简短）</a></p>
+                                        <p>下一个：<a href="/news/article-94008.htm">穷人养殖业什么最稳泥秋（穷人养羊怎么样）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-node-share-links.htm" title="「4月7日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月7日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-67801.htm" title="免费领养猫猫的app（领养猫咪在哪个软件可以免费领养）">免费领养猫猫的app（领养猫咪在哪个软件可以免费领养）</a></li>
+                        <li class="py-2"><a href="/news/article-86186.htm" title="有回收狗的地方吗（狗回收中心）">有回收狗的地方吗（狗回收中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-latest-hiddify-next-node.htm" title="「3月13日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月13日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-free-node-subscribe.htm" title="「3月31日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月31日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-86898.htm" title="动物疫苗研究动态（动物疫苗发展前景）">动物疫苗研究动态（动物疫苗发展前景）</a></li>
+                        <li class="py-2"><a href="/news/article-85464.htm" title="动物诊疗许可证办理多少钱（动物诊疗许可证需要多少钱）">动物诊疗许可证办理多少钱（动物诊疗许可证需要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-69087.htm" title="领养宠物条件是什么样的（领养宠物需要具备什么条件）">领养宠物条件是什么样的（领养宠物需要具备什么条件）</a></li>
+                        <li class="py-2"><a href="/news/article-81879.htm" title="大型动物医院设备采购 大型动物医院设备采购清单">大型动物医院设备采购 大型动物医院设备采购清单</a></li>
+                        <li class="py-2"><a href="/news/article-79135.htm" title="青浦二中分数线2021高考多少分（青浦二中分数线2021高考多少分录取）">青浦二中分数线2021高考多少分（青浦二中分数线2021高考多少分录取）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-95051.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>转载：Hadoop相关知识整理系列之一：HBase基本架构及原理</title>
+        <meta name="description" content="原始链接：https://www.cnblogs.com/csyuan/p/6543018.html  1. HBase框架简单介绍 HBase是一个分布式的、面向列的开源数据库，它不同于一般的关系数" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-95051.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="转载：Hadoop相关知识整理系列之一：HBase基本架构及原理" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/c755b4914e8290bcab3042fa38442f10.webp" />
+        <meta property="og:release_date" content="2025-04-13T07:19:25" />
+    <meta property="og:updated_time" content="2025-04-13T07:19:25" />
+        <meta property="og:description" content="原始链接：https://www.cnblogs.com/csyuan/p/6543018.html  1. HBase框架简单介绍 HBase是一个分布式的、面向列的开源数据库，它不同于一般的关系数" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="转载：Hadoop相关知识整理系列之一：HBase基本架构及原理">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>转载：Hadoop相关知识整理系列之一：HBase基本架构及原理</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>原始链接：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/csyuan/p/6543018.html"  rel="nofollow">https://www.cnblogs.com/csyuan/p/6543018.html</a></p> </h1> <h2 id="1-hbase框架简单介绍">1. HBase框架简单介绍</h2> <p>HBase是一个分布式的、面向列的开源数据库，它不同于一般的关系数据库,是一个适合于非结构化数据存储的数据库。另一个不同的是HBase基于列的而不是基于行的模式。HBase使用和 BigTable非常相同的数据模型。用户存储数据行在一个表里。一个数据行拥有一个可选择的键和任意数量的列，一个或多个列组成一个ColumnFamily，一个Fmaily下的列位于一个HFile中，易于缓存数据。表是疏松的存储的，因此用户可以给行定义各种不同的列。在HBase中数据按主键排序，同时表按主键划分为多个Region。</p> <p>在分布式的生产环境中，HBase 需要运行在 HDFS 之上，以 HDFS 作为其基础的存储设施。HBase 上层提供了访问的数据的 Java API 层，供应用访问存储在 HBase 的数据。在 HBase 的集群中主要由 Master 和 Region Server 组成，以及 Zookeeper，具体模块如下图所示：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220830/86eef2432a1527c61b706cecbc435e19.jpg"></p> <p>简单介绍一下 HBase 中相关模块的作用：</p> <ul> <li>Master<br /> HBase Master用于协调多个Region Server，侦测各个RegionServer之间的状态，并平衡RegionServer之间的负载。HBaseMaster还有一个职责就是负责分配Region给RegionServer。HBase允许多个Master节点共存，但是这需要Zookeeper的帮助。不过当多个Master节点共存时，只有一个Master是提供服务的，其他的Master节点处于待命的状态。当正在工作的Master节点宕机时，其他的Master则会接管HBase的集群。</li> <li>Region Server<br /> 对于一个RegionServer而言，其包括了多个Region。RegionServer的作用只是管理表格，以及实现读写操作。Client直接连接RegionServer，并通信获取HBase中的数据。对于Region而言，则是真实存放HBase数据的地方，也就说Region是HBase可用性和分布式的基本单位。如果当一个表格很大，并由多个CF组成时，那么表的数据将存放在多个Region之间，并且在每个Region中会关联多个存储的单元（Store）。</li> <li>Zookeeper<br /> 对于 HBase 而言，Zookeeper的作用是至关重要的。首先Zookeeper是作为HBase Master的HA解决方案。也就是说，是Zookeeper保证了至少有一个HBase Master 处于运行状态。并且Zookeeper负责Region和Region Server的注册。其实Zookeeper发展到目前为止，已经成为了分布式大数据框架中容错性的标准框架。不光是HBase，几乎所有的分布式大数据相关的开源框架，都依赖于Zookeeper实现HA。</li> </ul> <h2 id="2-hbase数据模型">2. Hbase数据模型</h2> <h3 id="21-逻辑视图">2.1 逻辑视图</h3> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220830/d3fec243ef801f27309df1bbe09c5728.jpg"></p> <p>基本概念：</p> <ul> <li>RowKey：是Byte array，是表中每条记录的“主键”，方便快速查找，Rowkey的设计非常重要；</li> <li>Column Family：列族，拥有一个名称(string)，包含一个或者多个相关列；</li> <li>Column：属于某一个columnfamily，familyName:columnName，每条记录可动态添加；</li> <li>Version Number：类型为Long，默认值是系统时间戳，可由用户自定义；</li> <li>Value(Cell)：Byte array。</li> </ul> <h3 id="22-物理模型：">2.2 物理模型：</h3> <ul> <li>每个column family存储在HDFS上的一个单独文件中，空值不会被保存。</li> <li>Key 和 Version number在每个column family中均有一份；</li> <li>HBase为每个值维护了多级索引，即：&lt;key, columnfamily, columnname, timestamp&gt;；</li> <li>表在行的方向上分割为多个Region；</li> <li>Region是Hbase中分布式存储和负载均衡的最小单元，不同Region分布到不同RegionServer上。</li> <li>Region按大小分割的，随着数据增多，Region不断增大，当增大到一个阀值的时候，Region就会分成两个新的Region；</li> <li>Region虽然是分布式存储的最小单元，但并不是存储的最小单元。每个Region包含着多个Store对象。每个Store包含一个MemStore或若干StoreFile，StoreFile包含一个或多个HFile。MemStore存放在内存中，StoreFile存储在HDFS上。</li> </ul> <p><strong>疑问</strong>：每一个Region都只存储一个ColumnFamily的数据，并且是该CF中的一段（按Row的区间分成多个 Region）？这个需要查证，每个Region只包含一个ColumnFamily可以提高并行性？然而，我只知道每个Store只包含一个ColumnFamily的数据。</p> <h3 id="23-root表和meta表">2.3 ROOT表和META表</h3> <p>HBase的所有Region元数据被存储在.META.表中，随着Region的增多，.META.表中的数据也会增大，并分裂成多个新的Region。为了定位.META.表中各个Region的位置，把.META.表中所有Region的元数据保存在-ROOT-表中，最后由Zookeeper记录-ROOT-表的位置信息。所有客户端访问用户数据前，需要首先访问Zookeeper获得-ROOT-的位置，然后访问-ROOT-表获得.META.表的位置，最后根据.META.表中的信息确定用户数据存放的位置，如下图所示。<br /><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220830/1e7f59616ee321a80db76822a1d2e213.jpg"></p> <p>-ROOT-表永远不会被分割，它只有一个Region，这样可以保证最多只需要三次跳转就可以定位任意一个Region。为了加快访问速度，.META.表的所有Region全部保存在内存中。客户端会将查询过的位置信息缓存起来，且缓存不会主动失效。如果客户端根据缓存信息还访问不到数据，则询问相关.META.表的Region服务器，试图获取数据的位置，如果还是失败，则询问-ROOT-表相关的.META.表在哪里。最后，如果前面的信息全部失效，则通过ZooKeeper重新定位Region的信息。所以如果客户端上的缓存全部是失效，则需要进行6次网络来回，才能定位到正确的Region。</p> <p>一个完整分布式的HBase的组成示意图如下，后面我们再详细谈其工作原理。<br /><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220830/2a8772fd4f9418ba7a40d85074547437.jpg"></p> <h2 id="3-高可用">3. 高可用</h2> <h3 id="31-write-ahead-log（wal）保障数据高可用">3.1 Write-Ahead-Log（WAL）保障数据高可用</h3> <p>我们理解下HLog的作用。HBase中的HLog机制是WAL的一种实现，而WAL（一般翻译为预写日志）是事务机制中常见的一致性的实现方式。每个RegionServer中都会有一个HLog的实例，RegionServer会将更新操作（如 Put，Delete）先记录到 WAL（也就是HLo）中，然后将其写入到Store的MemStore，最终MemStore会将数据写入到持久化的HFile中（MemStore 到达配置的内存阀值）。这样就保证了HBase的写的可靠性。如果没有 WAL，当RegionServer宕掉的时候，MemStore 还没有写入到HFile，或者StoreFile还没有保存，数据就会丢失。或许有的读者会担心HFile本身会不会丢失，这是由 HDFS 来保证的。在HDFS中的数据默认会有3份。因此这里并不考虑 HFile 本身的可靠性。</p> <p>HFile由很多个数据块（Block）组成，并且有一个固定的结尾块。其中的数据块是由一个Header和多个Key-Value的键值对组成。在结尾的数据块中包含了数据相关的索引信息，系统也是通过结尾的索引信息找到HFile中的数据。</p> <h3 id="32-组件高可用">3.2 组件高可用</h3> <ul> <li>Master容错：Zookeeper重新选择一个新的Master。如果无Master过程中，数据读取仍照常进行，但是，region切分、负载均衡等无法进行；</li> <li>RegionServer容错：定时向Zookeeper汇报心跳，如果一旦时间内未出现心跳，Master将该RegionServer上的Region重新分配到其他RegionServer上，失效服务器上“预写”日志由主服务器进行分割并派送给新的RegionServer；</li> <li>Zookeeper容错：Zookeeper是一个可靠地服务，一般配置3或5个Zookeeper实例。</li> </ul> <h2 id="4-hbase读写流程">4. HBase读写流程</h2> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220830/785f2482315d506715a9c1a546576839.jpg"></p> <p>上图是RegionServer数据存储关系图。上文提到，HBase使用MemStore和StoreFile存储对表的更新。数据在更新时首先写入HLog和MemStore。MemStore中的数据是排序的，当MemStore累计到一定阈值时，就会创建一个新的MemStore，并且将老的MemStore添加到Flush队列，由单独的线程Flush到磁盘上，成为一个StoreFile。与此同时，系统会在Zookeeper中记录一个CheckPoint，表示这个时刻之前的数据变更已经持久化了。当系统出现意外时，可能导致MemStore中的数据丢失，此时使用HLog来恢复CheckPoint之后的数据。<br /> StoreFile是只读的，一旦创建后就不可以再修改。因此Hbase的更新其实是不断追加的操作。当一个Store中的StoreFile达到一定阈值后，就会进行一次合并操作,将对同一个key的修改合并到一起，形成一个大的StoreFile。当StoreFile的大小达到一定阈值后，又会对 StoreFile进行切分操作，等分为两个StoreFile。</p> <h3 id="41-写操作流程">4.1 写操作流程</h3> <ul> <li>(1) Client通过Zookeeper的调度，向RegionServer发出写数据请求，在Region中写数据。</li> <li>(2) 数据被写入Region的MemStore，直到MemStore达到预设阈值。</li> <li>(3) MemStore中的数据被Flush成一个StoreFile。</li> <li>(4) 随着StoreFile文件的不断增多，当其数量增长到一定阈值后，触发Compact合并操作，将多个StoreFile合并成一个StoreFile，同时进行版本合并和数据删除。</li> <li>(5) StoreFiles通过不断的Compact合并操作，逐步形成越来越大的StoreFile。</li> <li>(6) 单个StoreFile大小超过一定阈值后，触发Split操作，把当前Region Split成2个新的Region。父Region会下线，新Split出的2个子Region会被HMaster分配到相应的RegionServer上，使得原先1个Region的压力得以分流到2个Region上。</li> </ul> <p>可以看出HBase只有增添数据，所有的更新和删除操作都是在后续的Compact历程中举行的，使得用户的写操作只要进入内存就可以立刻返回，实现了HBase I/O的高机能。</p> <h3 id="42-读操作流程">4.2 读操作流程</h3> <ul> <li>(1) Client访问Zookeeper，查找-ROOT-表，获取.META.表信息。</li> <li>(2) 从.META.表查找，获取存放目标数据的Region信息，从而找到对应的RegionServer。</li> <li>(3) 通过RegionServer获取需要查找的数据。</li> <li>(4) Regionserver的内存分为MemStore和BlockCache两部分，MemStore主要用于写数据，BlockCache主要用于读数据。读请求先到MemStore中查数据，查不到就到BlockCache中查，再查不到就会到StoreFile上读，并把读的结果放入BlockCache。</li> </ul> <p>寻址过程：client--&gt;Zookeeper--&gt;-ROOT-表--&gt;.META.表--&gt;RegionServer--&gt;Region--&gt;client</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-94008.htm">穷人养殖业什么最稳泥秋（穷人养羊怎么样）</a></p>
+                                        <p>下一个：<a href="/news/article-95052.htm">在哪里可以免费领养宠物狗（哪里可以免费领养犬）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-node-subscribe.htm" title="「3月15日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月15日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-77773.htm" title="高并发下redis缓存常见问题">高并发下redis缓存常见问题</a></li>
+                        <li class="py-2"><a href="/news/article-88342.htm" title="mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中">mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-free-high-speed-nodes.htm" title="「3月27日」最高速度20.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月27日」最高速度20.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-hiddify-next-node-share.htm" title="「3月25日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月25日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-90949.htm" title="不宜养猫的4个属相男人图片大全（不宜养猫的4个属相男人图片大全及名字）">不宜养猫的4个属相男人图片大全（不宜养猫的4个属相男人图片大全及名字）</a></li>
+                        <li class="py-2"><a href="/news/article-94008.htm" title="穷人养殖业什么最稳泥秋（穷人养羊怎么样）">穷人养殖业什么最稳泥秋（穷人养羊怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-75054.htm" title="动物美容师一个月多少钱工资（宠物美容师工资是多少）">动物美容师一个月多少钱工资（宠物美容师工资是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-77097.htm" title="猫三联跟狂犬疫苗多少钱（猫三联和狂犬一共几针）">猫三联跟狂犬疫苗多少钱（猫三联和狂犬一共几针）</a></li>
+                        <li class="py-2"><a href="/news/article-76413.htm" title="宠物医院美团好评文案 宠物医院美团好评文案大全">宠物医院美团好评文案 宠物医院美团好评文案大全</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

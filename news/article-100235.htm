@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-100235.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KCP协议：从TCP到UDP家族QUIC/KCP/ENET</title>
+        <meta name="description" content="TCP  KCP  停等ARQ协议  连续ARQ协议  拥塞窗口  滑动窗口  快速重传： 目录  			 行文前先安利下《再深谈TCP/IP三步握手&amp;四步挥手原理及衍生问题—长文解剖IP&n" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-100235.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="KCP协议：从TCP到UDP家族QUIC/KCP/ENET" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/762eca5d9963b4b33321788944b2544f.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:04:08" />
+    <meta property="og:updated_time" content="2025-04-20T09:04:08" />
+        <meta property="og:description" content="TCP  KCP  停等ARQ协议  连续ARQ协议  拥塞窗口  滑动窗口  快速重传： 目录  			 行文前先安利下《再深谈TCP/IP三步握手&amp;四步挥手原理及衍生问题—长文解剖IP&n" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="KCP协议：从TCP到UDP家族QUIC/KCP/ENET">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>KCP协议：从TCP到UDP家族QUIC/KCP/ENET</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="TCP">TCP</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="KCP">KCP</a></li> <li><i class="be be-arrowright"></i> <a href="#title-2" title="停等ARQ协议">停等ARQ协议</a></li> <li><i class="be be-arrowright"></i> <a href="#title-3" title="连续ARQ协议">连续ARQ协议</a></li> <li><i class="be be-arrowright"></i> <a href="#title-4" title="拥塞窗口">拥塞窗口</a></li> <li><i class="be be-arrowright"></i> <a href="#title-5" title="滑动窗口">滑动窗口</a></li> <li><i class="be be-arrowright"></i> <a href="#title-6" title="快速重传：">快速重传：</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <p>行文前先安利下《<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.zhoulujun.net/html/theory/ComputerScienceTechnology/network/2015_0708_65.html"  target="_blank" rel="nofollow">再深谈TCP/IP三步握手&amp;四步挥手原理及衍生问题—长文解剖IP</a>&nbsp;》、《<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.zhoulujun.net/html/theory/ComputerScienceTechnology/network/2015_1213_360.html"  target="_blank" rel="nofollow">再谈UDP协议—浅入理解深度记忆</a>》</p> <h2>KCP协议科普</h2> <p>KCP是一个快速可靠协议，能以比 TCP浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。</p> <p>纯算法实现，并不负责底层协议（如UDP）的收发，需要使用者自己定义下层数据包的发送方式，以 callback的方式提供给 KCP。 连时钟都需要外部传递进来，内部不会有任何一次系统调用。本文传输协议之考虑UDP的情况。</p> <p><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220510/580998cb20995b470d16b8772a0f0ccd.jpg" alt="KCP协议：从TCP到UDP家族QUIC/KCP/ENET"></p> <p>整个KCP协议主要依靠一个循环ikcp_update来驱动整个算法的运转，所有的数据发送，接收，状态变化都依赖于此，所以如果有操作占用每一次update的周期过长，或者设置内部刷新的时间间隔过大，都会导致整个算法的效率降低。在ikcp_update中最终调用的是ikcp_flush，这是协议中的一个核心函数，将数据，确认包，以及窗口探测和应答发送到对端。</p> <p>KCP使用ikcp_send发送数据，该函数调用ikcp_output发送数据，实际上最终调用事先注册的发送回调发送数据。KCP通过ikcp_recv将数据接收出来，如果被分片发送，将在此自动重组，数据将与发送前保持一致。</p> <h2>KCP为什么存在？</h2> <p>首先要看TCP与UDP的区别，TCP与UDP都是传输层的协议，比较两者的区别主要应该是说TCP比UDP多了什么？</p> <ul class="list-paddingleft-2"> <li> <p><strong>面向连接</strong>：TCP接收方与发送方维持了一个状态（建立连接，断开连接），双方知道对方还在。</p> </li> <li> <p><strong>可靠的</strong>：发送出去的数据对方一定能够接收到，而且是按照发送的顺序收到的。</p> </li> <li> <p><strong>流量控制与拥塞控制</strong>：TCP靠谱通过滑动窗口确保，发送的数据接收方来得及收。TCP无私，发生数据包丢失的时候认为整个网络比较堵，自己放慢数据发送速度。</p> </li> </ul> <h3>TCP/UDP/KCP</h3> <span class="directory"></span><h4 id="title-0">TCP</h4> <ul class="list-paddingleft-2"> <li> <p>TCP协议的可靠性让使用TCP开发更为简单，同时它的这种设计也导致了慢的特点。</p> </li> <li> <p>TCP是为流量设计的（每秒内可以传输多少KB的数据），讲究的是<strong>充分利用带宽</strong>。</p> </li> <li> <p>TCP为了实现网络通信的可靠性，使用了复杂的拥塞控制算法，建立了<strong>繁琐的握手过程以及重传策略</strong>。由于TCP内置在系统协议栈中，极难对其进行改进。</p> </li> </ul> <h3>UDP</h3> <ul class="list-paddingleft-2"> <li> <p>UDP协议简单，所以它更快。但是，UDP毕竟是不可靠的，应用层收到的数据可能是缺失、乱序的。</p> </li> <li> <p>UDP协议以其简单、传输快的优势，在越来越多场景下取代了TCP，如网页浏览、流媒体、实时游戏、物联网。</p> </li> </ul> <p>随着网络技术飞速发展，网速已不再是传输的瓶颈，CDN服务商Akamai报告从2008年到2015年7年时间，各个国家网络平均速率由1.5Mbps提升为5.1Mbps，网速提升近4倍。网络环境变好，网络传输的延迟、稳定性也随之改善，UDP的丢包率低于5%，如果再使用应用层重传，能够完全确保传输的可靠性。</p> <span class="directory"></span><h4 id="title-1">KCP</h4> <p>KCP协议就是在保留UDP快的基础上，提供可靠的传输，应用层使用更加简单——TCP可靠简单，但是复杂无私，所以速度慢。KCP尽可能保留UDP快的特点下，保证可靠。</p> <ul class="list-paddingleft-2"> <li> <p>TCP是为流量设计的（每秒内可以传输多少KB的数据），讲究的是充分利用带宽。</p> </li> <li> <p>KCP是为流速设计的（单个数据包从一端发送到一端需要多少时间），以10%-20%带宽浪费的代价换取了比 TCP快30%-40%的传输速度。</p> </li> </ul> <p>TCP信道是一条流速很慢，但每秒流量很大的大运河，而KCP是水流湍急的小激流。</p> <blockquote> <p>MOBA类和“吃鸡”游戏多使用帧同步为主要同步算法，竞技性也较高，无论从流畅性，还是从公平性要求来说，对响应延迟的要求都最高，根据业内经验，<strong>当客户端与服务器的网络延迟超过150ms时，会开始出现卡顿，当延迟超过250ms时，会对玩家操作造成较大影响，游戏无法公平进行</strong>。类似地，“吃鸡”游戏（如《绝地求生》）玩法对玩家坐标、动作的同步要求极高，延迟稍大导致的数据不一致对体验都会造成较大影响，其实时性要求接近MOBA类游戏。而对于传统mmorpg来说，多采用状态同步算法，以属性养成和装备获取为关注点，也有一定竞技性，出于对游戏流畅性的要求，对延迟也有一定要求，同步算法的优化程度不一样，这一要求也不一样，一般情况下为保证游戏正常进行，需要响应延迟保持在300ms以下。相比之下，对于炉石传说、斗地主、梦幻西游等回合制游戏来说，同时只有一个玩家在操作双方数据，无数据竞争，且时间粒度较粗，甚至可通过特效掩盖延迟，因此对网络延迟的要求不高，即便延迟达到500ms~1000ms，游戏也能正常进行</p> </blockquote> <p>不同传输层协议在可靠性、流量控制等方面都有差别，而这些技术细节会对延迟造成影响。</p> <p><strong>tcp追求的是完全可靠性和顺序性，丢包后会持续重传直至该包被确认，否则后续包也不会被上层接收，且重传采用指数避让策略，决定重传时间间隔的RTO(retransmission timeout)不可控制</strong>，linux内核实现中最低值为200ms，这样的机制会导致丢包率短暂升高的情况下应用层消息响应延迟急剧提高，并不适合实时性高、网络环境复杂的游戏。</p> <p>基于udp定制传输层协议，引入顺序性和适当程度或者可调节程度的可靠性，修改流控算法。适当放弃重传，如：设置最大重传次数，即使重传失败，也不需要重新建立连接。比较知名的tcp加速开源方案有：quic、enet、kcp、udt。</p> <h3>kcp/quic/<strong>enet</strong>协议的区别</h3> <p>先安利下《<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.zhoulujun.net/html/theory/ComputerScienceTechnology/network/2016_0217_5689.html"  target="_blank" rel="nofollow">浅谈QUIC协议原理与性能分析及部署方案</a>》，</p> <ul class="list-paddingleft-2"> <li> <p><strong>quic 是一个完整固化的 http 应用层协议</strong>，目前已经更名 http/3，指定使用 udp（虽然本质上并不一定需要 udp）。其主要目的是为了整合TCP协议的可靠性和udp协议的速度和效率，其主要特性包括：避免前序包阻塞、减少数据包、向前纠错、会话重启和并行下载等，然而QUIC对标的是TCP+TLS+SPDY，相比其他方案更重，目前国内用于网络游戏较少</p> </li> <li> <p><strong>kcp 只是一套基于无连接的数据报文之上的连接和拥塞控制协议</strong>，对底层【无连接的数据报文】没有具体的限制，可以基于 udp，也可以基于伪造的 tcp/icmp 等，也可以基于某些特殊环境的非 internet 网络（比如各种现场通信总线）</p> </li> <li> <p><strong>enet</strong>: 有ARQ协议。收发不用自己实现，提供连接管理，心跳机制。支持人数固定。自己实现跨平台。支持可靠无序通道。没有拥塞控制。线程不安全</p> </li> </ul> <p>其实kcp不能和quic对比(quic vs enet)，只是讲到UDP的时候，顺带搭上QUIC协议，类似的还有WebRTC</p> <p>为什么采用UDP，而不是其他的协议呢？比如SCTP天生就具备TCP/UDP所不具备的各种优点（支持多宿主多流分帧可无序抗syn flooding），但是就比如Windows系统，各种路由器、网关都不支持，无法铺开(除非在私有网络或者专用网络中用)。况且，TCP/UDP的各种问题很多都已经通过技术或技巧给解决了。</p> <h2>KCP的配置模式</h2> <p>在网络中，我们认为传输是不可靠的，而在很多场景下我们需要的是可靠的数据，所谓的<strong>可靠，指的是数据能够正常收到，且能够顺序收到，于是就有了ARQ协议</strong>，TCP之所以可靠就是基于此。</p> <p><strong>ARQ协议(Automatic Repeat-reQuest)，即自动重传请求，是传输层的错误纠正协议之一</strong>，它通过使用确认和超时两个机制，在不可靠的网络上实现可靠的信息传输。</p> <h3>ARQ协议有两种模式：</h3> <span class="directory"></span><h4 id="title-2">停等ARQ协议</h4> <p>同步请求响应模式，基于超时重传保证可靠。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9daa13197019bde08cef47ecc0bd7879.jpg" alt="KCP协议：从TCP到UDP家族QUIC/KCP/ENET"></p> <ol class="list-paddingleft-2"> <li> <p>A会为每个即将发送的数据编号，编号的目的是为了标识数据和给数据排序</p> </li> <li> <p>A发送完数据之后，会给这次发送的数据设置一个超时计时器</p> </li> <li> <p>B收到数据，将会返回一个确认，该确认也有自己的编号</p> </li> <li> <p>A收到确认，将删除副本且取消超时计时器，保留副本的原因是传输可能出错</p> </li> <li> <p>B收到错误的数据，或者数据在传输过程中出错，总之就是说B没有收到想要的数据</p> </li> <li> <p>A在超时计时器的设置时间内没有收到确认，此时重发数据</p> </li> </ol> <p>所以可靠的TCP有32位序列号和32位确认号，TCP和UDP都有16位校验和。</p> <span class="directory"></span><h4 id="title-3">连续ARQ协议</h4> <p>可以连续发送多个分组，而不必每发完一个分组就停下来等待对方确认。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bf60be003711f3c220268df95637bf6f.jpg" alt="KCP协议：从TCP到UDP家族QUIC/KCP/ENET"></p> <p>是不是想到了HTTP1.1中的管道模式与HTTP1.0停等模式，但这里有些许区别，HTTP1.1是中服务器按照顺序响应客户端请求，但连续ARQ协议不会响应每个数据段，而是仅仅响应编号最大的这个数据段，表示之前的数据都收到了，这个叫做UNA模式，而停等ARQ协议可以看作是ACK模式。</p> <p>现在已经能够在不可靠的网络中传输可靠的数据，但这不意味着可以随意发送数据，带宽是有限的，接收方的负载也是有限的，所以引入了窗口协议，做流量控制。</p> <h3>窗口协议中有两种：</h3> <span class="directory"></span><h4 id="title-4">拥塞窗口</h4> <p>防止过多的数据注入到网络中，这样可以使网络中的路由器 和链路不至于过载。</p> <p>与<strong>拥塞控制相关的有慢启动、退半避让、快重传、快恢复等</strong>。</p> <p><strong>慢启动是在刚开始发送数据时让窗口缓慢扩张，退半避让是在网络拥堵时窗口大小减半，快重传是在网络恢复时及时给予响应</strong>，与之配合的就是快恢复。</p> <span class="directory"></span><h4 id="title-5">滑动窗口</h4> <p>接收方告知发送方自己可以接收缓冲区的大小，通常与连续ARQ协议配合使用。</p> <p>TCP协议中的16位窗口大小就是为窗口协议提供支持的。而UDP协议的目标是尽最大努力交付，不管你收到没有，所以没有该字段。</p> <p>TCP协议是面向连接的协议，在数据传输前通过三次握手建立连接，传输完成后通过四次挥手断开连接，整个过程表示一次完整的数据传输，所以需要4位头长告知哪些是正在传输的数据。</p> <p>UDP协议是无连接的，两次数据传输没有任何联系，所以需要16位长度告知本次传输的数据有多少。同时注意，UDP协议每次传输的数据量并不是2^16 - 1 - 8 - 20（8表示UDP头长，20表示IP头长），而是与MTU有关，即数据链路层的最大传输单元(Maximum Transmission Unit)，值是1500。</p> <p>TCP协议中的8位标志位表示不同的功能，例如当SYN = 1时表示建立连接时让ack = seq + 1而不做任何验证，当URG = 1时16位紧急指针生效，紧急指针表示正常数据的起始位置，而之前的数据则表示额外的紧要数据，可以被尽快处理。</p> <p>当清楚TCP和UDP的工作流程，KCP就很容易理解了。</p> <h2>KCP工作模式：</h2> <p>KCP协议默认模式是一个标准的 ARQ，需要通过配置打开各项加速开关：</p> <p>int ikcp_nodelay(ikcpcb *kcp, int nodelay, int interval, int resend, int nc)</p> <ul class="list-paddingleft-2"> <li> <p><strong>nodelay</strong>&nbsp;：是否启用 nodelay模式，0不启用；1启用。</p> </li> <li> <p><strong>interval</strong>&nbsp;：协议内部工作的 interval，单位毫秒，比如 10ms或者 20ms</p> </li> <li> <p><strong>resend</strong>&nbsp;：快速重传模式，默认0关闭，可以设置2（2次ACK跨越将会直接重传）</p> </li> <li> <p><strong>nc</strong>&nbsp;：是否关闭流控，默认是0代表不关闭，1代表关闭。</p> </li> </ul> <p>KCP有正常模式和快速模式两种，通过以下策略达到提高流速的结果：</p> <ul class="list-paddingleft-2"> <li> <p>普通模式/正常模式： ikcp_nodelay(kcp, 0, 40, 0, 0);</p> </li> <li> <p>极速模式/快速模式： ikcp_nodelay(kcp, 1, 10, 2, 1)</p> </li> </ul> <h3>最大窗口：</h3> <p>int ikcp_wndsize(ikcpcb *kcp, int sndwnd, int rcvwnd);</p> <p>该调用将会设置协议的最大发送窗口和最大接收窗口大小，默认为32. 这个可以理解为 TCP的 SND_BUF 和 RCV_BUF，只不过单位不一样 SND/RCV_BUF 单位是字节，这个单位是包。</p> <h3>最大传输单元：</h3> <p>纯算法协议并不负责探测 MTU，默认 mtu是1400字节，可以使用ikcp_setmtu来设置该值。该值将会影响数据包归并及分片时候的最大传输单元。</p> <h3>最小RTO：</h3> <p>TCP超时计算是RTOx2，这样连续丢三次包就变成RTOx8了，十分恐怖，而KCP启动快速模式后不x2，只是x1.5（实验证明1.5这个值相对比较好），提高了传输速度</p> <h2>KCP对比TCP配置</h2> <h3>RTO翻倍vs不翻倍：</h3> <ul class="list-paddingleft-2"> <li> <p>TCP超时计算是RTOx2，这样连续丢三次包就变成RTOx8了，十分恐怖</p> </li> <li> <p>KCP启动快速模式后不x2，只是x1.5（实验证明1.5这个值相对比较好），提高了传输速度</p> </li> </ul> <h3>选择性重传 vs 全部重传：</h3> <ul class="list-paddingleft-2"> <li> <p>TCP丢包时会全部重传从丢的那个包开始以后的数据</p> </li> <li> <p>KCP是选择性重传，只重传真正丢失的数据包。（TCP同样有选择重传SACK，但有区别，后续文章再介绍）。</p> </li> </ul> <span class="directory"></span><h4 id="title-6">快速重传：</h4> <p>与TCP相同，都是通过累计确认实现的，发送端发送了1，2，3，4，5几个包，然后收到远端的ACK：1，3，4，5，当收到ACK = 3时，KCP知道2被跳过1次，收到ACK = 4时，知道2被跳过了2次，此时可以认为2号丢失，不用等超时，直接重传2号包，大大改善了丢包时的传输速度。1字节cmd = 81时，sn相当于TCP中的seq，cmd = 82 时，sn相当于TCP中的ack。cmd相当于WebSocket协议中的openCode，即操作码。</p> <h3>延迟ACK vs 非延迟ACK：</h3> <p>TCP在连续ARQ协议中，不会将一连串的每个数据都响应一次，而是延迟发送ACK，即上文所说的UNA模式，目的是为了充分利用带宽，但是这样会计算出较大的RTT时间，延长了丢包时的判断过程，而KCP的ACK是否延迟发送可以调节。</p> <ul class="list-paddingleft-2"> <li> <p>TCP为了充分利用带宽，延迟发送ACK（NODELAY都没用），这样超时计算会算出较大 RTT时间，延长了丢包时的判断过程。</p> </li> <li> <p>KCP的ACK是否延迟发送可以调节。</p> </li> </ul> <h3>UNA vs ACK+UNA：</h3> <p>ARQ模型响应有两种，UNA（此编号前所有包已收到，如TCP）和ACK（该编号包已收到），光用UNA将导致全部重传，光用ACK则丢失成本太高，以往协议都是二选其一，而 KCP协议中，除去单独的 ACK包外，所有包都有UNA信息。</p> <h3>非退让流控：</h3> <p>KCP正常模式同TCP一样使用公平退让法则，即发送窗口大小由：发送缓存大小、接收端剩余接收缓存大小、丢包退让及慢启动这四要素决定。但传送及时性要求很高的小数据时，可选择通过配置跳过后两步，仅用前两项来控制发送频率。以牺牲部分公平性及带宽利用率之代价，换取了开着BT都能流畅传输的效果</p> <p>在传输及时性要求很高的小数据时，可以通过配置忽略上文所说的窗口协议中的拥塞窗口机制，而仅仅依赖于滑动窗口。2字节wnd与TCP协议中的16位窗口大小意义相同，值得一提的是，KCP协议的窗口控制还有其它途径，当cmd = 83时，表示询问远端窗口大小，当cmd = 84时，表示告知远端窗口大小。</p> <p>4字节conv表示会话匹配数字，为了在KCP基于UDP实现时，让无连接的协议知道哪个是哪个，相当于WEB系统HTTP协议中的SessionID。</p> <p>1字节frg表示拆数据时的编号，4字节len表示整个数据的长度，相当于WebSocket协议中的len。</p> <h2>IKCPCB结构</h2> <p>IKCPCB是KCP中最重要的结构，也是在会话开始就创建的对象，代表着这次会话，所以这个结构体体现了一个会话所需要涉及到的所有组件。其中一些参数在IKCPSEG中已经描述，不再多说。</p> <ul class="list-paddingleft-2"> <li> <p>conv：标识这个会话；</p> </li> <li> <p>mtu：最大传输单元，默认数据为1400，最小为50；</p> </li> <li> <p>mss：最大分片大小，不大于mtu；</p> </li> <li> <p>state：连接状态（0xFFFFFFFF表示断开连接）；</p> </li> <li> <p>snd_una：第一个未确认的包；</p> </li> <li> <p>snd_nxt：下一个待分配的包的序号；</p> </li> <li> <p>rcv_nxt：待接收消息序号。为了保证包的顺序，接收方会维护一个接收窗口，接收窗口有一个起始序号rcv_nxt（待接收消息序号）以及尾序号 rcv_nxt + rcv_wnd（接收窗口大小）；</p> </li> <li> <p>ssthresh：拥塞窗口阈值，以包为单位（TCP以字节为单位）；</p> </li> <li> <p>rx_rttval：RTT的变化量，代表连接的抖动情况；</p> </li> <li> <p>rx_srtt：smoothed round trip time，平滑后的RTT；</p> </li> <li> <p>rx_rto：由ACK接收延迟计算出来的重传超时时间；</p> </li> <li> <p>rx_minrto：最小重传超时时间；</p> </li> <li> <p>snd_wnd：发送窗口大小；</p> </li> <li> <p>rcv_wnd：接收窗口大小；</p> </li> <li> <p>rmt_wnd：远端接收窗口大小；</p> </li> <li> <p>cwnd：拥塞窗口大小；</p> </li> <li> <p>probe：探查变量，IKCP_ASK_TELL表示告知远端窗口大小。IKCP_ASK_SEND表示请求远端告知窗口大小；</p> </li> <li> <p>interval：内部flush刷新间隔，对系统循环效率有非常重要影响；</p> </li> <li> <p>ts_flush：下次flush刷新时间戳；</p> </li> <li> <p>xmit：发送segment的次数，当segment的xmit增加时，xmit增加（第一次或重传除外）；</p> </li> <li> <p>rcv_buf：接收消息的缓存；</p> </li> <li> <p>nrcv_buf：接收缓存中消息数量；</p> </li> <li> <p>snd_buf：发送消息的缓存；</p> </li> <li> <p>nsnd_buf：发送缓存中消息数量；</p> </li> <li> <p>rcv_queue：接收消息的队列</p> </li> <li> <p>nrcv_que：接收队列中消息数量；</p> </li> <li> <p>snd_queue：发送消息的队列；</p> </li> <li> <p>nsnd_que：发送队列中消息数量；</p> </li> <li> <p>nodelay：是否启动无延迟模式。无延迟模式rtomin将设置为0，拥塞控制不启动；</p> </li> <li> <p>updated：是否调用过update函数的标识；</p> </li> <li> <p>ts_probe：下次探查窗口的时间戳；</p> </li> <li> <p>probe_wait：探查窗口需要等待的时间；</p> </li> <li> <p>dead_link：最大重传次数，被认为连接中断；</p> </li> <li> <p>incr：可发送的最大数据量；</p> </li> <li> <p>acklist：待发送的ack列表；</p> </li> <li> <p>ackcount：acklist中ack的数量，每个ack在acklist中存储ts，sn两个量；</p> </li> <li> <p>ackblock：2的倍数，标识acklist最大可容纳的ack数量；</p> </li> <li> <p>user：指针，可以任意放置代表用户的数据，也可以设置程序中需要传递的变量；</p> </li> <li> <p>buffer：存储消息字节流；</p> </li> <li> <p>fastresend：触发快速重传的重复ACK个数；</p> </li> <li> <p>nocwnd：取消拥塞控制；</p> </li> <li> <p>stream：是否采用流传输模式；</p> </li> <li> <p>logmask：日志的类型，如IKCP_LOG_IN_DATA，方便调试；</p> </li> <li> <p>output udp：发送消息的回调函数；</p> </li> <li> <p>writelog：写日志的回调函数。</p> </li> </ul> <p>参考文章：</p> <p>在网络中狂奔：KCP协议<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/112442341"  rel="nofollow">https://zhuanlan.zhihu.com/p/112442341</a></p> <p>可靠UDP，KCP协议快在哪？<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://wetest.qq.com/lab/view/391.html?=content_qcloud"  rel="nofollow">https://wetest.qq.com/lab/view/391.html</a></p> <p>KCP 协议与源码分析（一）<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/yongkai0214/article/details/85156452"  rel="nofollow">https://github.com/skywind3000/kcp</a></p> <p>网络编程懒人入门(五)：快速理解为什么说UDP有时比TCP更有优势<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.52im.net/thread-1277-1-1.html"  rel="nofollow">http://www.52im.net/thread-1277-1-1.html</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99464.htm">动物疫苗多少钱打一次到哪打呢英语作文（给动物打一次疫苗多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-100236.htm">动物疫苗的管理方法有哪些（动物疫苗管理制度）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-99461.htm" title="青浦二中分数线2021高考多少分（青浦二中分数线2021高考多少分录取）">青浦二中分数线2021高考多少分（青浦二中分数线2021高考多少分录取）</a></li>
+                        <li class="py-2"><a href="/news/article-66528.htm" title="孕妇让猫抓破了流了一点点血要紧吗（孕妇让小猫抓破一点点表皮,没出血）">孕妇让猫抓破了流了一点点血要紧吗（孕妇让小猫抓破一点点表皮,没出血）</a></li>
+                        <li class="py-2"><a href="/news/article-73695.htm" title="三国杀武将登场特效是什么样的（三国杀出场特效）">三国杀武将登场特效是什么样的（三国杀出场特效）</a></li>
+                        <li class="py-2"><a href="/news/article-71061.htm" title="猫三针没打完可以打狂犬疫苗吗（猫咪没打完猫三联可以打狂犬疫苗吗）">猫三针没打完可以打狂犬疫苗吗（猫咪没打完猫三联可以打狂犬疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-68440.htm" title="宠物领养数据库设计（宠物领养系统功能模块）">宠物领养数据库设计（宠物领养系统功能模块）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-free-node-subscribe-links.htm" title="「4月19日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月19日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-89795.htm" title="Blazor WebAssembly 渐进式 Web 应用程序 (PWA) 离线处理数据">Blazor WebAssembly 渐进式 Web 应用程序 (PWA) 离线处理数据</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-latest-hiddify-next-node.htm" title="「3月13日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月13日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-87603.htm" title="淘宝爱心领养宠物是真的吗（淘宝爱心捐赠是真是假）">淘宝爱心领养宠物是真的吗（淘宝爱心捐赠是真是假）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-hiddify-next-node-github.htm" title="「4月6日」最高速度21.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月6日」最高速度21.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

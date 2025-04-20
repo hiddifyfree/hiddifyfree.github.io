@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-98670.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spring boot使用druid 数据源 的监控页</title>
+        <meta name="description" content="第一步 引入依赖 &lt;!--        引入 druid 数据源--&gt;         &lt;dependency&gt;             &lt;groupId&gt;com" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-98670.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Spring boot使用druid 数据源 的监控页" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/0415a1cfffff2711785a9d6b2e0ee070.webp" />
+        <meta property="og:release_date" content="2025-04-18T09:40:27" />
+    <meta property="og:updated_time" content="2025-04-18T09:40:27" />
+        <meta property="og:description" content="第一步 引入依赖 &lt;!--        引入 druid 数据源--&gt;         &lt;dependency&gt;             &lt;groupId&gt;com" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring boot使用druid 数据源 的监控页">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Spring boot使用druid 数据源 的监控页</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>第一步 引入依赖</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span><span class="token operator">!</span>--        引入 druid 数据源--<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>dependency<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>groupId<span class="token operator">&gt;</span>com.alibaba<span class="token operator">&lt;</span>/groupId<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>artifactId<span class="token operator">&gt;</span>druid<span class="token operator">&lt;</span>/artifactId<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>version<span class="token operator">&gt;</span><span class="token number">1.1</span>.2<span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>/version<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>/dependency<span class="token operator">&gt;</span> </code></pre> <p>首先开启 druid 的配置文件</p> <pre><code class="prism language-bash">package com.spring.bootinit.config<span class="token punctuation">;</span>  <span class="token function">import</span> com.alibaba.druid.pool.DruidDataSource<span class="token punctuation">;</span> <span class="token function">import</span> com.alibaba.druid.support.http.StatViewServlet<span class="token punctuation">;</span> <span class="token function">import</span> com.alibaba.druid.support.http.WebStatFilter<span class="token punctuation">;</span> <span class="token function">import</span> org.springframework.boot.context.properties.ConfigurationProperties<span class="token punctuation">;</span> <span class="token function">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean<span class="token punctuation">;</span> <span class="token function">import</span> org.springframework.boot.web.servlet.ServletRegistrationBean<span class="token punctuation">;</span> <span class="token function">import</span> org.springframework.context.annotation.Bean<span class="token punctuation">;</span> <span class="token function">import</span> org.springframework.context.annotation.Configuration<span class="token punctuation">;</span>  <span class="token function">import</span> javax.sql.DataSource<span class="token punctuation">;</span> <span class="token function">import</span> java.sql.SQLException<span class="token punctuation">;</span> <span class="token function">import</span> java.util.Arrays<span class="token punctuation">;</span>  /**  * @User: Json  * @Date: <span class="token number">2022</span>/9/6  **/ @Configuration public class DruidConfig <span class="token punctuation">{<!-- --></span>      // 自己设置一个 数据源     // 当容器中 没有 自定义数据源  会导入 HikariPool 数据源     @ConfigurationProperties<span class="token punctuation">(</span><span class="token string">"spring.datasource"</span><span class="token punctuation">)</span>     // 写上这个注解 表示  这个 Druid 数据源的 配置参数 从配置文件中里面 spring.datasource 获取     @Bean     public DataSource dataSource<span class="token punctuation">(</span><span class="token punctuation">)</span> throws SQLException <span class="token punctuation">{<!-- --></span>         DruidDataSource druidDataSource <span class="token operator">=</span> new DruidDataSource<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         // 数据源配置信息 配置在这也不合适  一般会写在 配置文件中 //        druidDataSource.setUsername<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> //        druidDataSource.setPassword<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> //        等等         druidDataSource.setFilters<span class="token punctuation">(</span><span class="token string">"stat,wall"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token function">stat</span> 开启sql监控功能 // wall 开启sql防火墙         //像这种 写法 都可以写在配置文件中          <span class="token builtin class-name">return</span>  druidDataSource<span class="token punctuation">;</span>     <span class="token punctuation">}</span>     /**      * 配置 Druid 的监控页      * */     @Bean     public ServletRegistrationBean <span class="token function-name function">servletRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>          StatViewServlet statViewServlet <span class="token operator">=</span> new StatViewServlet<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         ServletRegistrationBean<span class="token operator">&lt;</span>StatViewServlet<span class="token operator">&gt;</span> statViewServletServletRegistrationBean <span class="token operator">=</span> new ServletRegistrationBean<span class="token operator">&lt;&gt;</span><span class="token punctuation">(</span>statViewServlet, <span class="token string">"/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         statViewServletServletRegistrationBean.addInitParameter<span class="token punctuation">(</span><span class="token string">"loginUsername"</span>,<span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  //给监控页设置 登录密码         statViewServletServletRegistrationBean.addInitParameter<span class="token punctuation">(</span><span class="token string">"loginPassword"</span>,<span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token builtin class-name">return</span> statViewServletServletRegistrationBean<span class="token punctuation">;</span>     <span class="token punctuation">}</span>      /**      *  WebStatFilter 用于采集 web -jdbc 关联监控的数据      *      * **/     @Bean     public FilterRegistrationBean <span class="token function-name function">webStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         WebStatFilter webStatFilter <span class="token operator">=</span> new WebStatFilter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         FilterRegistrationBean<span class="token operator">&lt;</span>WebStatFilter<span class="token operator">&gt;</span> webStatFilterFilterRegistrationBean <span class="token operator">=</span>                 new FilterRegistrationBean<span class="token operator">&lt;</span>WebStatFilter<span class="token operator">&gt;</span><span class="token punctuation">(</span>webStatFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>         //采集哪个路径         webStatFilterFilterRegistrationBean.setUrlPatterns<span class="token punctuation">(</span>Arrays.asList<span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">))</span><span class="token punctuation">;</span>         //排除那些路径 不采集         //exclusions 你要排除 路径的 关键字         webStatFilterFilterRegistrationBean.addInitParameter<span class="token punctuation">(</span><span class="token string">"exclusions"</span>,<span class="token string">"*.js,/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token builtin class-name">return</span> webStatFilterFilterRegistrationBean<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> <p>然后访问 自己的 的域名<br /> http://127.0.0.1:8080/druid/</p> <p>测试结果<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/8a2eeea8295840c0b5ea3a5966f70599.jpg" alt="Spring boot使用druid 数据源 的监控页"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-97995.htm">猫的疫苗可以自己打吗?（猫的疫苗可以自己打吗安全吗）</a></p>
+                                        <p>下一个：<a href="/news/article-98671.htm">哈尔滨猫狗宠物医院（哈尔滨猫狗宠物医院地址）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-hiddify-next-node.htm" title="「3月28日」最高速度22.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月28日」最高速度22.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-69742.htm" title="福州农大动物医院（福建农大宠物医院营业时间）">福州农大动物医院（福建农大宠物医院营业时间）</a></li>
+                        <li class="py-2"><a href="/news/article-99464.htm" title="动物疫苗多少钱打一次到哪打呢英语作文（给动物打一次疫苗多少钱）">动物疫苗多少钱打一次到哪打呢英语作文（给动物打一次疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-18-free-hiddify-next-node.htm" title="「4月18日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月18日」最高速度19.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-73695.htm" title="三国杀武将登场特效是什么样的（三国杀出场特效）">三国杀武将登场特效是什么样的（三国杀出场特效）</a></li>
+                        <li class="py-2"><a href="/news/article-70377.htm" title="PHP如何通过引用传递">PHP如何通过引用传递</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-free-high-speed-nodes.htm" title="「3月27日」最高速度20.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月27日」最高速度20.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-today-hiddify-next-node.htm" title="「3月3日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月3日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-hiddify-next-node-github.htm" title="「4月15日」最高速度19.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月15日」最高速度19.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-81237.htm" title="Spring Cloud之负载均衡组件Ribbon原理分析">Spring Cloud之负载均衡组件Ribbon原理分析</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

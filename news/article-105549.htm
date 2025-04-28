@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-105549.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spark原理篇之Spark Streaming转化操作和输出操作</title>
+        <meta name="description" content="1 转化操作 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DStream的转化操作可以分为无状态和有状态两种。 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-105549.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="Spark原理篇之Spark Streaming转化操作和输出操作" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/5966e3d9a3f28846abd02121a626fc1f.webp" />
+        <meta property="og:release_date" content="2025-04-27T08:29:27" />
+    <meta property="og:updated_time" content="2025-04-27T08:29:27" />
+        <meta property="og:description" content="1 转化操作 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DStream的转化操作可以分为无状态和有状态两种。 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spark原理篇之Spark Streaming转化操作和输出操作">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>Spark原理篇之Spark Streaming转化操作和输出操作</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <h3><a id="1__0" rel="nofollow"></a>1 转化操作</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DStream的转化操作可以分为无状态和有状态两种。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;① 在无状态转化操作中，每个批次的处理不依赖于之前批次的数据。例如map()、filter()和reduceByKey()等都是无状态转化操作。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;② 有状态转化操作需要使用之前批次的数据或者是中间结果来计算当前批次的数据。有状态转化操作包括基于滑动窗口的转化操作和追踪状态变化的转化操作。</p> <h4><a id="11_4" rel="nofollow"></a>1.1无状态转化操作</h4> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无状态转化操作就是把简单的RDD转化操作应用到每个批次上，也就是转化DStream中的每一个RDD。部分无状态转化操作列在了下面：<img decoding="async" src="http://img.555519.xyz/uploads3/20220604/ecb998b1e3dc2974de797f6e4865fc7f.jpg" alt="Spark原理篇之Spark Streaming转化操作和输出操作"><br /><strong>注意</strong>：尽管这些函数看起来像作用在整个流上一样，但事实上每个DStream在内部是由许多RDD（批次）组成，且无状态转化操作时分别应用到每个RDD上的。例如，reduceByKey会规约每个时间区间中的数据，但不会规约不同时间区间之间的数据。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无状态转化操作也能在多个DStream间整合数据，不过也是在各个时间区间内。例如，键值对DStream拥有和RDD一样的与连接相关的转化操作，也就是cogroup()、join()和leftOuterJoin()等。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后，如果这些无状态转化操作不够用，DStream还提供了一个叫作transform()的高级操作符，可以让你直接操作其内部的RDD。这个transform()操作允许你对DStream提供任意一个RDD到RDD的函数。这个函数会在数据流中的每个批次中被调用，生成一个新的流。transform()的一个常见应用就是重用你为RDD写的批处理代码。例如，如果你有一个叫做extractOutliers()的函数，用来从一个日志记录的RDD中提取出异常值的RDD（可能通过对消息进行一些统计），你就可以在transform()中重用它。</p> <h4><a id="12__9" rel="nofollow"></a>1.2 有状态转化操作</h4> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DStream的有状态转化操作是跨时间区间跟踪数据的操作；也就是说，一些先前批次的数据也被用来在新的批次中计算结果。主要的两种类型是华东窗口和updateStateByKey()，前者以一个时间阶段为滑动窗口进行操作，后者则用来跟踪每个键的状态变化（例如构建一个代表用户会话的对象）。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有状态转化操作需要在你的StreamingContext中打开检查点机制来确保容错性。</p> <h5><a id="121__12" rel="nofollow"></a>1.2.1 基于窗口的转化操作</h5> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于窗口的操作会在一个比StreamingContext的批次间隔更长的时间范围内，通过整合多个批次的结果，计算出整个窗口的结果。所有基于窗口的操作都需要两个参数，分别为窗口时长以及滑动步长，两者都必须是StreamingContext的批次间隔的整数倍。窗口时长控制每次计算最近的多少个批次的数据，其实就是最近的windowDuration/batchInterval个批次。如果有一个以10秒为批次间隔的源DStream，要创建一个最近30秒的时间窗口（即最近3个批次），就应当把windowDuration设为30秒。而滑动步长的默认值与批次间隔相等，用来控制对新的DStream进行计算的间隔。如果源DStream批次间隔为10秒，并且我们只希望每两个批次计算一次窗口结果，就应该把华东步长设置为20秒。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对DStream可以用的最简单窗口操作时window()，它返回一个新的DStream来表示所请求的窗口操作的结果数据。换句话说，window()生成的DStream中的每个RDD会包含多个批次中的数据，可以对这些数据进行count()和transform()操作。<img decoding="async" src="http://img.555519.xyz/uploads3/20220604/0eb962c4525dec667891de9495a504b4.jpg" alt="Spark原理篇之Spark Streaming转化操作和输出操作"><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尽管可以使用window()写出所有的窗口操作，Spark Streaming还是提供了一些其他的窗口操作，让用户可以高效而方便地使用。首先，reduceByWindow()和reduceByKeyAndWindow()让我们可以对每个窗口更高效地进行规约操作。它们接收一个规约函数，在整个窗口上执行，比如+。除此以外，它们还有一种特殊的形式，通过只考虑进入窗口的数据和离开窗口的数据，让Spark增量计算规约结果。这种特殊形式需要提供归约函数的一个逆函数，比如+对应的逆函数为-。对于较大的窗口，提供逆函数可以大大提高执行效率。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/b1659a895ed7a71ef2b11970142fb1fa.jpg" alt="Spark原理篇之Spark Streaming转化操作和输出操作"></p> <h5><a id="122_UpdateStateByKey_17" rel="nofollow"></a>1.2.2 UpdateStateByKey转化操作</h5> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateStateByKey()为我们提供了对一个状态变量的访问，用于键值对形式的DStream。给定一个由（键，事件）对构成的DStream，并传递一个指定如何根据新的事件更新每个键对应状态的函数，它可以构建出一个新的DStream，其内部数据为（键，状态）对。例如，在网络服务器日志中，事件可能是对网站的访问，此时键是用户的ID。使用updateStateByKey()可以跟踪每个用户最近访问的10个界面。这个列表就是“状态”对象，我们会在每个时间到来时更新这个状态。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要使用updateStateByKey()，提供了一个update(events,oldState)函数，接收与某键相关的时间以及该键之前对应的状态，返回这个键对应的新状态。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;① events：是在当前批次中收到的事件的列表（可能为空）。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;② oldState：是一个可选的状态对象，存放在Option内；如果一个键没有之前的状态，这个值可以空缺。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③ newState：由函数返回，也以Option形式存在；我们可以返回一个空的Option来表示想要删除该状态。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateStateByKey()的结果会是一个新的DStream，其内部的RDD序列是由每个时间区间对应的（键，状态）对组成的。举个简单的例子，使用updateStateByKey()来跟踪日志消息中各HTTP响应代码的计数。这里的键是响应代码，状态是代表响应代码计数的整数，事件则是页面访问。</p> <h3><a id="2__24" rel="nofollow"></a>2 输出操作</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出操作指定了对流数据经转化操作得到的数据所要执行的操作（例如把结果推入外部数据库或输出到屏幕上）。与RDD中的惰性求值类似，如果一个DStream及其派生出的DStream都没有被执行输出操作，那么这些DStream就都不会被求值。如果StreamingContext中没有设定输出操作，整个context就都不会启动。常用的一种调试性输出操作是print()，它会在每个批次中抓取DStream的前十个元素打印出来。当然还有saveAsTextFiles()和foreachRDD()等输出操作。</p> <p>参考文章：<br /> [1]《Spark快速大数据分析》</p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-105547.htm">加载、链接和初始化（java高级编程1.2.5）</a></p>
+                                        <p>下一个：<a href="/news/article-106349.htm">领养协议狗狗有效吗（犬只领养协议）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-28-hiddify-next-node-github.htm" title="「4月28日」最高速度18.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月28日」最高速度18.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-97992.htm" title="不宜养猫的属相有哪些（什么属相不能养猫养宠物还要看五行八字有点奇特2）">不宜养猫的属相有哪些（什么属相不能养猫养宠物还要看五行八字有点奇特2）</a></li>
+                        <li class="py-2"><a href="/news/article-68440.htm" title="宠物领养数据库设计（宠物领养系统功能模块）">宠物领养数据库设计（宠物领养系统功能模块）</a></li>
+                        <li class="py-2"><a href="/news/article-77098.htm" title="动物疫苗龙头企业名单公示最新（动物疫苗龙头公司）">动物疫苗龙头企业名单公示最新（动物疫苗龙头公司）</a></li>
+                        <li class="py-2"><a href="/news/article-96528.htm" title="最适合穷人开的店收废品回收（开收废品店赚钱吗）">最适合穷人开的店收废品回收（开收废品店赚钱吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-24-latest-hiddify-next-node.htm" title="「3月24日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月24日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-81238.htm" title="动物疫苗周期多长时间 动物疫苗周期多长时间打一次">动物疫苗周期多长时间 动物疫苗周期多长时间打一次</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-free-node-subscribe-links.htm" title="「4月19日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月19日」最高速度21.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-69742.htm" title="福州农大动物医院（福建农大宠物医院营业时间）">福州农大动物医院（福建农大宠物医院营业时间）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-27-free-node-subscribe-links.htm" title="「4月27日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月27日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

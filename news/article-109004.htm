@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifyfree.github.io/news/article-109004.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>从同步函数 hello-world-dotnet 开始探索OpenFunction</title>
+        <meta name="description" content="OpenFunction[1] 是一个现代化的云原生 FaaS（函数即服务）框架，它引入了很多非常优秀的开源技术栈，包括 Knative、Tekton、Shipwright、Dapr、KEDA 等，这" />
+        <link rel="icon" href="/assets/website/img/hiddifyfree/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyFree免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifyfree.github.io/news/article-109004.htm" />
+    <meta property="og:site_name" content="HiddifyFree免费节点官网" />
+    <meta property="og:title" content="从同步函数 hello-world-dotnet 开始探索OpenFunction" />
+    <meta property="og:image" content="https://hiddifyfree.github.io/uploads/20240811-1/72bbe00cdda0bf26f7557568928383c2.webp" />
+        <meta property="og:release_date" content="2025-05-01T09:03:51" />
+    <meta property="og:updated_time" content="2025-05-01T09:03:51" />
+        <meta property="og:description" content="OpenFunction[1] 是一个现代化的云原生 FaaS（函数即服务）框架，它引入了很多非常优秀的开源技术栈，包括 Knative、Tekton、Shipwright、Dapr、KEDA 等，这" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="从同步函数 hello-world-dotnet 开始探索OpenFunction">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/assets/website/css/hiddifyfree/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FSSSCJKV0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FSSSCJKV0R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-page="detail">
+        <!-- navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                                <span>Hiddify Free</span>
+                                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- home section -->
+    <div id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+                    <h1>从同步函数 hello-world-dotnet 开始探索OpenFunction</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p>OpenFunction<sup>[1]</sup> 是一个现代化的云原生 FaaS（函数即服务）框架，它引入了很多非常优秀的开源技术栈，包括 Knative、Tekton、Shipwright、Dapr、KEDA 等，这些技术栈为打造新一代开源函数计算平台提供了无限可能：</p> <ul> <li>Shipwright 可以在函数构建的过程中让用户自由选择和切换镜像构建的工具，并对其进行抽象，提供了统一的 API；</li> <li>Knative 提供了优秀的同步函数运行时，具有强大的自动伸缩能力；</li> <li>KEDA 可以基于更多类型的指标来自动伸缩，更加灵活；</li> <li>Dapr 可以将不同应用的通用能力进行抽象，减轻开发分布式应用的工作量。</li> </ul> <p><img fetchpriority="high" decoding="async" width="894" height="497" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/3c64f10807ed3abc40dfe9a18fcd23fa.jpg"></p> <p>OpenFunction 最新发布了0.6版本，而且2022 年 4 月 27 日，OpenFunction<sup>[1]</sup> 顺利通过了云原生计算基金会 CNCF 技术监督委员会（TOC）的投票，正式进入 CNCF 沙箱（Sandbox）托管。OpenFunction 也将真正变成一个由 100% 社区驱动的开源项目。最近我也加入了OpenFunction项目开始规划dotnet的支持开发，dotnet 框架支持的仓库<sup>[2]</sup>，目前完成0.1版本的开发。</p> <p><img decoding="async" width="850" height="578" src="http://img.555519.xyz/uploads3/20220509/659cf9c514c6fa5f12715534aa94c9dd.jpg" alt="从同步函数 hello-world-dotnet 开始探索OpenFunction"/></p> <p>经过我这2周时间的摸索，本文将会带领大家快速部署和上手 OpenFunction，并通过一个 demo{hello-world-dotnet} 来体验同步函数是如何运作的，以便对函数计算有一个感性的认知。</p> <p><strong>OpenFunction CLI 介绍</strong></p> <p>OpenFunction 从 0.5 版本开始使用全新的命令行工具 ofn<sup>[3]</sup> 来安装各个依赖组件，它的功能更加全面，支持一键部署、一键卸载以及 Demo 演示的功能。用户可以通过设置相应的参数自定义地选择安装各个组件，同时可以选择特定的版本，使安装更为灵活，安装进程也提供了实时展示，使得界面更为美观。它支持的组件和其依赖的 Kubernetes 版本如下：</p> <p><img decoding="async" width="950" height="540" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/849ae165b97856d5d506f4cc3886071c.jpg"></p> <p>ofn 的安装参数<code>ofn install</code> 解决了 OpenFunction 和 Kubernetes 的兼容问题，会自动根据 Kubernetes 版本选择兼容组件进行安装，同时提供多种参数以供用户选择。</p> <p><img loading="lazy" decoding="async" width="951" height="758" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/b0ae786dadb1fd40dcc5884a5d722ca1.jpg"></p> <p><strong>使用 OpenFunction CLI 部署 OpenFunction</strong></p> <p>有了命令行工具 ofn 之后，OpenFunction 部署起来非常简单。首先需要安装 ofn，以 amd64 版本的 Linux 为例，仅需两步即可：</p> <p>1、下载 ofn，最新的ofn 是0.5.3</p> <p>$ wget -chttps://github.com/OpenFunction/cli/releases/download/v0.5.3/ofn_linux_amd64.tar.gz -O - | tar –xz</p> <p>2、为 ofn 赋予权限并移动到<code>/usr/local/bin/</code> 文件夹下。</p> <p>$ chmod +x ofn &amp;&amp; mv ofn /usr/local/bin/</p> <p>安装好 ofn 之后，仅需一步即可完成 OpenFunction 的安装。虽然使用<code>--all</code> 选项可以安装所有组件，也可以选择安装指定需要安装的组件，我们的集群里面已经安装了Dapr的情况下，我们就不想额外安装一遍Dapr ，不过如果集群里面已经安装了Dapr的情况下他也不会给重新安装的，具体可以看下图。</p> <p><img loading="lazy" decoding="async" width="980" height="537" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/977ac2fa6483ae38e76ca4f83e483baa.jpg"></p> <p>安装成功了，之后我们就可以开始运行同步函数了，OpenFunction 还支持异步函数，这部分今天就不演示了，留作后续在dotnet框架里面实现了异步函数的时候再来。</p> <p><strong>同步函数 demo 示例</strong></p> <p>OpenFunction 官方仓库提供了多种语言的同步函数示例<sup>[4]</sup>：</p> <p><img loading="lazy" decoding="async" width="940" height="347" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/9675e218620a89f2f1ccfb56fac663f3.jpg"></p> <p>这里我们选择 dotnet 的函数示例，先来看一下最核心的部署清单：</p> <p>apiVersion: core.openfunction.io/v1beta1<br /> kind: Function<br /> metadata:<br />&nbsp;&nbsp; name: dotnet-sample<br />&nbsp;&nbsp; namespace: default<br /> spec:<br />&nbsp;&nbsp; version: "v1.0.0"<br />&nbsp;&nbsp; image: "geffzhang/sample-dotnet-func:v1"<br />&nbsp;&nbsp; imageCredentials:<br />&nbsp;&nbsp;&nbsp;&nbsp; name: push-secret<br />&nbsp;&nbsp; port: 8080 # default to 8080<br />&nbsp;&nbsp; build:<br />&nbsp;&nbsp;&nbsp;&nbsp; builder: "openfunction/gcp-builder:v1"<br />&nbsp;&nbsp;&nbsp;&nbsp; env:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GOOGLE_FUNCTION_TARGET: "helloworld"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GOOGLE_FUNCTION_SIGNATURE_TYPE: "http"<br />&nbsp;&nbsp;&nbsp;&nbsp; srcRepo:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url: "https://github.com/openfunction/samples.git"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sourceSubPath: "functions/knative/hello-world-dotnet"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; revision: "release-0.6"<br />&nbsp;&nbsp; serving:<br />&nbsp;&nbsp;&nbsp;&nbsp; runtime: "knative" # default to knative<br />&nbsp;&nbsp;&nbsp;&nbsp; template:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; containers:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - name: function<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; imagePullPolicy: IfNotPresent</p> <p><code>Function</code> 是由 CRD 定义的一个 CR，用来将函数转换为最终运行的应用。这个例子里面包含了两个组件：</p> <ul> <li><strong>build</strong> : 通过 Shipwright 选择不同的镜像构建工具，最终将应用构建为容器镜像；</li> <li><strong>Serving</strong> : 通过 Serving CRD 将应用部署到不同的运行时中，可以选择同步运行时或异步运行时。这里选择的是同步运行时 knative。</li> </ul> <p>运行这个示例之前，需要在运行函数的命名空间下创建Secret ，生成一个Secret 来访问您的容器注册表，例如Docker Hub<sup>[5]</sup> 或Quay.io<sup>[6]</sup> 上的一个。<font color="#ff0000">这一点非常重要，不然就在Build 阶段就失败了</font><font color="#ff0000">。</font></p> <p><code>REGISTRY_SERVER</code>您可以通过编辑以下命令中的<code>REGISTRY_USER</code>和字段来创建此密钥<code>REGISTRY_PASSWORD</code>，然后运行它。</p> <p>REGISTRY_SERVER=https://index.docker.io/v1/ REGISTRY_USER= &lt; your_registry_user &gt; REGISTRY_PASSWORD= &lt; your_registry_password &gt;<br /> kubectl create secret –n default docker-registry push-secret \<br />&nbsp;&nbsp;&nbsp;&nbsp; --docker-server= $REGISTRY_SERVER \<br />&nbsp;&nbsp;&nbsp;&nbsp; --docker-username= $REGISTRY_USER \<br />&nbsp;&nbsp;&nbsp;&nbsp; --docker-password= $REGISTRY_PASSWORD</p> <p></p> <p>然后将上面的部署清单保存为function-dotnet-sample.yaml ，修改spec.image 字段为您自己的容器注册表地址，使用以下命令创建此函数：</p> <p>kubectl apply –f&nbsp; function-dotnet-sample.yaml</p> <p>在Build 阶段，builder会启动一个 Pod 来构建镜像，这个 Pod 中包含了 4 个容器：</p> <ul> <li><strong>step-source-default</strong> : 拉取源代码；</li> <li><strong>step-prepare</strong> : 设置环境变量；</li> <li><strong>step-create</strong> : 构建镜像；</li> <li><strong>step-results</strong> : 输出镜像的 digest。</li> </ul> <p></p> <p>您可以使用以下命令观察函数的过程。</p> <p>kubectl get functions -n default</p> <p>NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BUILDSTATE&nbsp;&nbsp; SERVINGSTATE&nbsp;&nbsp; BUILDER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SERVING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AGE<br /> dotnet-sample&nbsp;&nbsp;&nbsp;&nbsp; Succeeded&nbsp;&nbsp;&nbsp; Running&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; builder-hf74t&nbsp;&nbsp; serving-wh6hshttp://openfunction.io/default/dotnet-sample&nbsp;&nbsp;&nbsp;&nbsp; 54m</p> <p><code>URL</code>是OpenFunction Domain提供的可以访问的地址。要通过此 URL 地址访问该功能，您需要确保 DNS 可以解析此地址。使用以下命令在集群中创建一个 pod，并从该 pod 访问该功能</p> <p>kubectl run&nbsp; curl --image=radial/busyboxplus:curl -i –tty</p> <p>[ root@curl:/ ]$ curl http://openfunction.io.svc.cluster.local/default/dotnet-sample/</p> <p>还可以通过 Knative Services 提供的访问地址触发该功能</p> <p>kubectl get ksvc</p> <p>geffzhang@edgevm1:~/openfunctionsamples/functions/knative/hello-world-dotnet$ sudo kubectl get ksvc<br /> NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LATESTCREATED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LATESTREADY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READY&nbsp;&nbsp; REASON<br /> serving-wh6hs-ksvc-m7fc9http://serving-wh6hs-ksvc-m7fc9.default.20.239.115.228.sslip.io&nbsp;&nbsp; serving-wh6hs-ksvc-m7fc9-v100&nbsp;&nbsp; serving-wh6hs-ksvc-m7fc9-v100&nbsp;&nbsp; True</p> <p>这个地址是可以直接访问的</p> <p><img loading="lazy" decoding="async" width="935" height="151" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/7910767ec8c46cab179995dd38acc0ef.jpg"></p> <p>访问这个函数时会自动触发运行一个 Pod：</p> <p><img loading="lazy" decoding="async" width="969" height="60" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/32c2b75d813a90670270b067b30aa8c4.jpg"></p> <p>这个 Pod 使用的镜像就是之前 build 阶段构建的镜像。事实上这个 Pod 是由 Deployment 控制的，在没有流量时，这个 Deployment 的副本数是 0。当有新的流量进入时，会先进入 Knative 的 Activator，Activator 接收到流量后会通知 Autoscaler（自动伸缩控制器），然后 Autoscaler 将 Deployment 的副本数扩展到 1，最后 Activator 会将流量转发到实际的 Pod 中，从而实现服务调用。这个过程也叫<strong>冷启动</strong>。</p> <p>如果你不再访问这个入口，过一段时间之后，Deployment 的副本数就会被收缩为 0：</p> <p><img loading="lazy" decoding="async" width="987" height="61" title="image" style="display: inline; background-image: none" alt="image" src="http://img.555519.xyz/uploads3/20220509/3acccdbef05ea0021f17c50891723459.jpg"></p> <p></p> <p>通过上面的示例，相信大家应该能够体会到一些函数计算的优势，我们只需要专注于业务开发，编写函数代码，并上传到代码仓库，其他的东西不需要关心，就连Dockerfile都不需要编写，不需要了解基础设施，甚至不需要知道容器和 Kubernetes 的存在。函数计算平台会自动为您分配好计算资源，并弹性地运行任务，只有当您需要访问的时候，才会通过扩容来运行任务，其他时间并不会消耗计算资源，可以充分利用dotnet在云原生时代的优势，使用dotnet写函数是很高效的，大家可以体验一下我上面的示例http://serving-wh6hs-ksvc-m7fc9.default.20.239.115.228.sslip.io 。OpenFunction基于Dapr 所提供的各种分布式能力，让我们轻松的实现无服务微服务架构，获得像Azure 容器应用<sup>[7]</sup> 一样的能力。</p> <p></p> <h5>相关链接</h5> <p>[1] openFunction:<em>https://github.com/OpenFunction/OpenFunction</em></p> <p>[2] functions-framework-dotnet:https://github.com/OpenFunction/functions-framework-dotnet</p> <p>[3] ofn:<em>https://github.com/OpenFunction/cli</em></p> <p>[4] OpenFunction 官方仓库提供了多种语言的同步函数示例:<em>https://github.com/OpenFunction/samples/tree/main/functions/knative</em></p> <p>[5] Docker Hub:https://hub.docker.com/</p> <p>[6] Quay.io:https://quay.io/</p> <p>[7] Azure 容器应用:https://www.cnblogs.com/shanyou/p/15509042.html</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-109001.htm">Web前端：Ruby On Rails与JavaScript的主要差异</a></p>
+                                        <p>下一个：<a href="/news/article-109842.htm">超详细讲解JPA查询数据库</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-today-hiddify-next-node.htm" title="「4月11日」最高速度20.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月11日」最高速度20.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-102400.htm" title="宠物粮生产基地有哪些 宠物粮生产基地有哪些地方">宠物粮生产基地有哪些 宠物粮生产基地有哪些地方</a></li>
+                        <li class="py-2"><a href="/news/article-95051.htm" title="转载：Hadoop相关知识整理系列之一：HBase基本架构及原理">转载：Hadoop相关知识整理系列之一：HBase基本架构及原理</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-20-free-node-subscribe.htm" title="「4月20日」最高速度22.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月20日」最高速度22.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-89796.htm" title="合肥宠物救助站 合肥宠物救助领养中心">合肥宠物救助站 合肥宠物救助领养中心</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-free-node-subscribe-links.htm" title="「4月2日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月2日」最高速度18M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-16-free-node-subscribe.htm" title="「4月16日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月16日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-104861.htm" title="spring boot actuator监控详细介绍一(超级详细)">spring boot actuator监控详细介绍一(超级详细)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-23-latest-hiddify-next-node.htm" title="「4月23日」最高速度22M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月23日」最高速度22M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-100235.htm" title="KCP协议：从TCP到UDP家族QUIC/KCP/ENET">KCP协议：从TCP到UDP家族QUIC/KCP/ENET</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>HiddifyFree免费节点官网 版权所有 Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scrolltop section -->
+    <a href="#top" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <!-- javascript js -->
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/nivo-lightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/smoothscroll.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/isotope.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/imagesloaded.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifyfree/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

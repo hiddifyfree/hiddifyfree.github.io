@@ -390,6 +390,21 @@ A：优质服务商会每天更新配置；如节点长期不可用，建议联�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Shadowrocket 支持自动测速吗？</h5></div>
+    <div class="panel-body">
+        支持。Shadowrocket 可以批量测速节点延迟并标记最佳连接。用户还可设置自动切换到最低延迟节点，实现稳定高速的上网体验，尤其在网络波动较大的环境中效果明显。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 支持哪些定制化分流策略？</h5></div>
+    <div class="panel-body">
+        QuantumultX 支持域名、IP、端口、协议以及用户自定义脚本分流。结合策略组使用，可实现广告屏蔽、视频加速、游戏优化等功能，提高访问速度和个性化网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何优化流量？</h5></div>
+    <div class="panel-body">
+        Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 是否兼容 Clash 配置文件？</h5></div>
     <div class="panel-body">
         部分兼容。Sing-box 支持从 Clash 订阅转换工具导入节点，但配置语法略有不同。建议使用第三方订阅转换器，如 sub-converter，将 Clash 格式转换为 Sing-box JSON 格式使用。<hr />    </div>
@@ -400,14 +415,9 @@ A：优质服务商会每天更新配置；如节点长期不可用，建议联�
         Clash 会定期测试节点延迟，并结合策略组自动选择最优节点。避免访问高延迟或失效节点，提升网页浏览、视频播放和游戏速度及稳定性，提高整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
+    <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
     <div class="panel-body">
-        Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 的 UDP 转发如何配置？</h5></div>
-    <div class="panel-body">
-        Netch 可在客户端设置 UDP 转发开关，选择需要代理的 UDP 流量端口或应用。适用于游戏、语音或实时视频，确保这些应用在代理环境下低延迟且稳定。<hr />    </div>
+        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow 的 TUN 模式能全局代理吗？</h5></div>
@@ -415,29 +425,19 @@ A：优质服务商会每天更新配置；如节点长期不可用，建议联�
         TUN 模式拦截系统 IP 层流量，可实现全局代理，无需手动设置浏览器或应用代理。适合需要全局科学上网或游戏加速的场景，保证所有流量均走代理节点。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 的 UDP 转发如何配置？</h5></div>
+    <div class="panel-body">
+        Netch 可在客户端设置 UDP 转发开关，选择需要代理的 UDP 流量端口或应用。适用于游戏、语音或实时视频，确保这些应用在代理环境下低延迟且稳定。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 如何实现延迟自动切换？</h5></div>
     <div class="panel-body">
         Clash 可以结合策略组和延迟检测功能，自动选择延迟最低的节点。保证网页、视频和游戏流量通过最优节点，提高访问速度和稳定性，减少掉线和卡顿。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何优化流量？</h5></div>
+    <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
     <div class="panel-body">
-        Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 支持哪些定制化分流策略？</h5></div>
-    <div class="panel-body">
-        QuantumultX 支持域名、IP、端口、协议以及用户自定义脚本分流。结合策略组使用，可实现广告屏蔽、视频加速、游戏优化等功能，提高访问速度和个性化网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 支持自动测速吗？</h5></div>
-    <div class="panel-body">
-        支持。Shadowrocket 可以批量测速节点延迟并标记最佳连接。用户还可设置自动切换到最低延迟节点，实现稳定高速的上网体验，尤其在网络波动较大的环境中效果明显。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
-    <div class="panel-body">
-        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。    </div>
+        Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -466,16 +466,16 @@ A：优质服务商会每天更新配置；如节点长期不可用，建议联�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-23-free-node-subscribe-links.htm" title="「10月23日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月23日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-14-free-node-subscribe.htm" title="「10月14日」最高速度20.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月14日」最高速度20.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-4-free-hiddify-next-node.htm" title="「10月4日」最高速度21.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月4日」最高速度21.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-16-free-hiddify-next-node.htm" title="「10月16日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月16日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-17-hiddify-next-node-share.htm" title="「10月17日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月17日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-26-free-node-subscribe.htm" title="「10月26日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月26日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-15-free-hiddify-next-node.htm" title="「10月15日」最高速度22.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月15日」最高速度22.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-10-latest-hiddify-next-node.htm" title="「10月10日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月10日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-subscribe-node.htm" title="「10月24日」最高速度22M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月24日」最高速度22M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-2-hiddify-next-node-share.htm" title="「11月2日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月2日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-13-hiddify-next-node-github.htm" title="「10月13日」最高速度21.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月13日」最高速度21.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-27-hiddify-next-windows.htm" title="「10月27日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月27日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-12-free-hiddify-next-node.htm" title="「10月12日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月12日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-25-hiddify-next-node-github.htm" title="「10月25日」最高速度20.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月25日」最高速度20.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-3-latest-hiddify-next-node.htm" title="「10月3日」最高速度20.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月3日」最高速度20.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-7-hiddify-next-github.htm" title="「10月7日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月7日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-hiddify-next-node-github.htm" title="「11月5日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月5日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-20-node-share.htm" title="「10月20日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月20日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-3-free-high-speed-nodes.htm" title="「11月3日」最高速度20.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月3日」最高速度20.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -487,7 +487,7 @@ A：优质服务商会每天更新配置；如节点长期不可用，建议联�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>

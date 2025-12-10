@@ -343,9 +343,29 @@ AWS、Vultr、DigitalOcean、阿里云、腾讯云等。</p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的策略组如何提升分流效率？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 使用 mKCP 有哪些适合场景？</h5></div>
     <div class="panel-body">
-        策略组可以将多个节点或规则组合在一起，实现按条件自动选择最佳节点。通过策略组，用户无需手动切换节点即可根据延迟、地理位置或流量类型自动分流，提高网络效率。<hr />    </div>
+        mKCP 是基于 UDP 的传输协议，适合高丢包或不稳定网络环境。结合策略组使用，可优化网页浏览、视频播放和游戏体验，减少延迟和掉线，提高连接稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
+    <div class="panel-body">
+        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的节点健康检测如何工作？</h5></div>
+    <div class="panel-body">
+        Clash 会定期对每个节点进行延迟和丢包率测试，并根据结果标记节点健康状态。结合策略组，可以自动切换到最优节点，避免访问高延迟或失效节点，提高整体网络稳定性和效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 的重写规则可实现哪些功能？</h5></div>
+    <div class="panel-body">
+        QuantumultX 的重写规则支持请求头修改、响应内容修改、广告屏蔽及自动跳转。结合脚本可实现自动签到、流量统计和定制化网络访问，极大增强客户端灵活性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + XTLS 如何在高延迟网络中优化连接？</h5></div>
+    <div class="panel-body">
+        XTLS 模式通过减少握手和加密开销降低延迟。结合策略组和多节点切换，可在高延迟或不稳定网络环境下保证网页浏览、视频播放和游戏连接稳定，提高整体体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2RayA 在 Linux 系统中如何开机自启？</h5></div>
@@ -358,24 +378,9 @@ AWS、Vultr、DigitalOcean、阿里云、腾讯云等。</p>
         可以。VLess + Reality 是目前最受欢迎的组合之一。它在无证书情况下实现加密传输，同时具备隐蔽性与速度优势，非常适合需要安全访问的高级代理配置。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 混淆方式如何提高抗封锁能力？</h5></div>
+    <div class="panel-heading"><h5>Clash 的策略组如何提升分流效率？</h5></div>
     <div class="panel-body">
-        SSR 混淆可将流量伪装成正常 HTTPS 或 HTTP 数据，降低被 DPI 检测风险。合理选择协议和混淆参数组合，可以提高节点稳定性和长期可用性，保证科学上网体验顺畅。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的节点健康检测如何工作？</h5></div>
-    <div class="panel-body">
-        Clash 会定期对每个节点进行延迟和丢包率测试，并根据结果标记节点健康状态。结合策略组，可以自动切换到最优节点，避免访问高延迟或失效节点，提高整体网络稳定性和效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
-    <div class="panel-body">
-        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 如何在高延迟网络中优化连接？</h5></div>
-    <div class="panel-body">
-        XTLS 模式通过减少握手和加密开销降低延迟。结合策略组和多节点切换，可在高延迟或不稳定网络环境下保证网页浏览、视频播放和游戏连接稳定，提高整体体验。<hr />    </div>
+        策略组可以将多个节点或规则组合在一起，实现按条件自动选择最佳节点。通过策略组，用户无需手动切换节点即可根据延迟、地理位置或流量类型自动分流，提高网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 如何选择合适混淆提高稳定性？</h5></div>
@@ -383,14 +388,9 @@ AWS、Vultr、DigitalOcean、阿里云、腾讯云等。</p>
         选择混淆方式时应根据网络环境和封锁程度，例如 tls1.2_ticket_auth 可模拟 HTTPS 流量。合理组合协议和混淆可提升节点稳定性和抗封锁能力，确保长期科学上网体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 的重写规则可实现哪些功能？</h5></div>
+    <div class="panel-heading"><h5>SSR 混淆方式如何提高抗封锁能力？</h5></div>
     <div class="panel-body">
-        QuantumultX 的重写规则支持请求头修改、响应内容修改、广告屏蔽及自动跳转。结合脚本可实现自动签到、流量统计和定制化网络访问，极大增强客户端灵活性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 使用 mKCP 有哪些适合场景？</h5></div>
-    <div class="panel-body">
-        mKCP 是基于 UDP 的传输协议，适合高丢包或不稳定网络环境。结合策略组使用，可优化网页浏览、视频播放和游戏体验，减少延迟和掉线，提高连接稳定性。    </div>
+        SSR 混淆可将流量伪装成正常 HTTPS 或 HTTP 数据，降低被 DPI 检测风险。合理选择协议和混淆参数组合，可以提高节点稳定性和长期可用性，保证科学上网体验顺畅。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -419,16 +419,16 @@ AWS、Vultr、DigitalOcean、阿里云、腾讯云等。</p>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-17-hiddify-next-node-share.htm" title="「10月17日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月17日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-2-hiddify-next-node.htm" title="「12月2日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月2日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-2-hiddify-next-node-share.htm" title="「11月2日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月2日」最高速度22.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-5-hiddify-next-node-github.htm" title="「11月5日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月5日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-7-hiddify-next-github.htm" title="「10月7日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月7日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-14-free-node-subscribe.htm" title="「10月14日」最高速度20.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月14日」最高速度20.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-7-today-hiddify-next-node.htm" title="「12月7日」最高速度19.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月7日」最高速度19.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-19-node-share-links.htm" title="「11月19日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月19日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-free-node-subscribe-links.htm" title="「11月21日」最高速度20.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月21日」最高速度20.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-15-hiddify-next-github.htm" title="「11月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月15日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-18-free-node-subscribe-links.htm" title="「10月18日」最高速度22.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月18日」最高速度22.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-hiddify-next-node.htm" title="「11月18日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月18日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-27-hiddify-next-windows.htm" title="「10月27日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「10月27日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-20-hiddify-next-windows.htm" title="「11月20日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月20日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-hiddify-next-node.htm" title="「11月7日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月7日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-10-today-hiddify-next-node.htm" title="「12月10日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月10日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-6-free-hiddify-next-node.htm" title="「12月6日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月6日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-free-node-subscribe-links.htm" title="「11月14日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月14日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -440,13 +440,10 @@ AWS、Vultr、DigitalOcean、阿里云、腾讯云等。</p>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>

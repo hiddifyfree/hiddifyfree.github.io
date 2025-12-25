@@ -327,14 +327,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 支持哪些定制化分流策略？</h5></div>
+    <div class="panel-heading"><h5>Clash 如何实现节点健康监测？</h5></div>
     <div class="panel-body">
-        QuantumultX 支持域名、IP、端口、协议以及用户自定义脚本分流。结合策略组使用，可实现广告屏蔽、视频加速、游戏优化等功能，提高访问速度和个性化网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 如何使用分流策略实现广告屏蔽？</h5></div>
-    <div class="panel-body">
-        QuantumultX 可通过规则匹配广告域名或路径，将请求重定向或直接阻断。结合策略组，可实现自动屏蔽网页和应用广告，提高用户浏览体验。<hr />    </div>
+        Clash 支持定期测速节点延迟和丢包率，将节点状态显示在客户端。结合策略组，可以自动选择健康节点进行访问，避免访问高延迟或失效节点，提高网络稳定性和效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 的 Rule-Set 与 Clash Premium 是否兼容？</h5></div>
@@ -342,19 +337,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Mihomo 完全兼容 Clash Premium 的 Rule-Set 格式，支持相同的远程规则订阅与策略分组。用户可直接迁移原 Clash 配置，无需额外修改或转换。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 如何实现节点健康监测？</h5></div>
+    <div class="panel-heading"><h5>如何在路由器上使用 PassWall2 为不同设备设置不同策略？</h5></div>
     <div class="panel-body">
-        Clash 支持定期测速节点延迟和丢包率，将节点状态显示在客户端。结合策略组，可以自动选择健康节点进行访问，避免访问高延迟或失效节点，提高网络稳定性和效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 的规则订阅更新机制是怎样的？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持远程规则订阅 URL，可自动下载并更新节点和分流规则。用户可设置更新频率，如每天或每小时，确保规则和节点始终保持最新状态，提高网络管理效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否可以导入多个节点？</h5></div>
-    <div class="panel-body">
-        支持。用户可手动输入或扫描二维码导入多个节点，并可修改或删除节点信息。虽然不支持自动订阅更新，但足以满足轻量用户对节点管理和分流需求。<hr />    </div>
+        在 PassWall2 的规则或策略组中为固定 IP 或 MAC 地址创建特定路由条目，将其映射到不同的策略组（如工作机走直连、游戏机走低延迟节点），并保存规则后重载以生效。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 的延迟测速功能如何提高网络体验？</h5></div>
@@ -362,9 +347,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         PassWall2 可以定期测速节点延迟，并结合策略组自动选择最优节点。这样在访问网站或视频时，可以始终使用延迟最低的线路，提高网络稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在路由器上使用 PassWall2 为不同设备设置不同策略？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 如何实现按应用分流？</h5></div>
     <div class="panel-body">
-        在 PassWall2 的规则或策略组中为固定 IP 或 MAC 地址创建特定路由条目，将其映射到不同的策略组（如工作机走直连、游戏机走低延迟节点），并保存规则后重载以生效。<hr />    </div>
+        QuantumultX 可以根据不同应用程序的流量类型设置分流规则，通过策略组选择最优节点。这样可保证游戏、视频和浏览器流量经过最优节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 如何使用分流策略实现广告屏蔽？</h5></div>
+    <div class="panel-body">
+        QuantumultX 可通过规则匹配广告域名或路径，将请求重定向或直接阻断。结合策略组，可实现自动屏蔽网页和应用广告，提高用户浏览体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 的多出口策略有什么作用？</h5></div>
@@ -372,9 +362,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         多出口策略允许不同流量通过不同节点访问。例如视频流量通过高速节点，普通网页使用备用节点，实现资源优化与智能分流，提高网络使用体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 如何实现按应用分流？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 支持哪些定制化分流策略？</h5></div>
     <div class="panel-body">
-        QuantumultX 可以根据不同应用程序的流量类型设置分流规则，通过策略组选择最优节点。这样可保证游戏、视频和浏览器流量经过最优节点，提高访问速度和网络稳定性。    </div>
+        QuantumultX 支持域名、IP、端口、协议以及用户自定义脚本分流。结合策略组使用，可实现广告屏蔽、视频加速、游戏优化等功能，提高访问速度和个性化网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否可以导入多个节点？</h5></div>
+    <div class="panel-body">
+        支持。用户可手动输入或扫描二维码导入多个节点，并可修改或删除节点信息。虽然不支持自动订阅更新，但足以满足轻量用户对节点管理和分流需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 的规则订阅更新机制是怎样的？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持远程规则订阅 URL，可自动下载并更新节点和分流规则。用户可设置更新频率，如每天或每小时，确保规则和节点始终保持最新状态，提高网络管理效率。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -403,16 +403,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-21-free-node-subscribe-links.htm" title="「11月21日」最高速度20.7M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月21日」最高速度20.7M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-3-latest-hiddify-next-node.htm" title="「12月3日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月3日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-14-free-node-subscribe-links.htm" title="「11月14日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月14日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-26-free-high-speed-nodes.htm" title="「11月26日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月26日」最高速度20.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-18-free-high-speed-nodes.htm" title="「12月18日」最高速度22.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月18日」最高速度22.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-hiddify-next-node.htm" title="「11月18日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月18日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-10-node-share-links.htm" title="「11月10日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月10日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-hiddify-next-node.htm" title="「12月2日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月2日」最高速度20.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-19-node-share-links.htm" title="「11月19日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月19日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-hiddify-next-node.htm" title="「11月7日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月7日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-12-6-free-hiddify-next-node.htm" title="「12月6日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月6日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-node-subscribe.htm" title="「11月6日」最高速度20.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月6日」最高速度20.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-28-hiddify-next-node-share.htm" title="「11月28日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月28日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-29-hiddify-next-windows.htm" title="「11月29日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月29日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-15-node-share-links.htm" title="「12月15日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月15日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-25-latest-hiddify-next-node.htm" title="「12月25日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月25日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-hiddify-next-node-github.htm" title="「11月9日」最高速度21.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月9日」最高速度21.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-free-node-subscribe-links.htm" title="「11月14日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月14日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-7-today-hiddify-next-node.htm" title="「12月7日」最高速度19.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月7日」最高速度19.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -424,7 +424,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">19</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>

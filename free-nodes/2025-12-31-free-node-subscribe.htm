@@ -253,17 +253,18 @@ A4：理论上可运行，但性能受限，建议尽量使用性能较好的设
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2025-12-27-hiddify-next-node-github.htm">「12月27日」最高速度22.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></p>
+        <p>下一个：<a href="/free-nodes/2026-1-1-hiddify-next-github.htm">「1月1日」最高速度18.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 服务器启动后提示端口被占用，该如何处理？</h5></div>
+    <div class="panel-heading"><h5>Netch 支持游戏加速吗？</h5></div>
     <div class="panel-body">
-        先用 netstat 或 ss 工具查看占用该端口的进程（例如 `ss -ltnp`），确认是旧进程或其他服务占用。停止占用进程或修改 V2Ray 配置端口，然后重启服务并检查防火墙规则是否开放了新端口。<hr />    </div>
+        Netch 专为游戏加速设计，支持 UDP 转发和 TAP 驱动，可有效降低延迟。用户可以为特定游戏添加路由规则，实现分流加速，从而提升国际游戏体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 WebSocket + TLS 如何防止流量被检测？</h5></div>
+    <div class="panel-heading"><h5>Clash 的 Rule Provider 有什么作用？</h5></div>
     <div class="panel-body">
-        WebSocket + TLS 可将 V2Ray 流量伪装成正常 HTTPS 请求，隐藏真实数据特征，配合域名伪装和策略组使用，可有效绕过封锁，提高节点安全性和连接稳定性。<hr />    </div>
+        Rule Provider 是 Clash 的规则分发机制。用户可以订阅不同的规则集，比如广告拦截、社交媒体、流媒体等，实现按需加载。它让配置文件更加简洁、动态更新，并支持多源规则管理。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 支持哪些类型的节点导入？</h5></div>
@@ -271,19 +272,9 @@ A4：理论上可运行，但性能受限，建议尽量使用性能较好的设
         Surfboard 支持 VMess、VLESS、Trojan、Shadowsocks 等节点类型。用户可通过 YAML 或 JSON 文件导入，配置策略组和规则，实现自动分流和节点管理。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 如何结合手动节点选择优化访问？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 服务器启动后提示端口被占用，该如何处理？</h5></div>
     <div class="panel-body">
-        用户可根据网络延迟和用途手动切换节点，选择最优节点处理不同流量。虽然不支持自动更新，但在节点不稳定或特定需求下可以灵活调整，提高访问效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 的策略组可按 IP 段分流吗？</h5></div>
-    <div class="panel-body">
-        支持。可通过 IP 段匹配将流量分流到指定节点。结合策略组，可实现国内直连、国外代理或游戏加速，实现精细化流量管理和优化网络访问。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何使用 Docker 部署 sing-box 或 v2ray？</h5></div>
-    <div class="panel-body">
-        选择官方或社区维护的 Docker 镜像，编写 docker-compose.yml 指定配置文件挂载、网络模式与端口映射。使用容器管理可以隔离运行环境、便于日志采集并与反向代理（如 Nginx）协同工作。<hr />    </div>
+        先用 netstat 或 ss 工具查看占用该端口的进程（例如 `ss -ltnp`），确认是旧进程或其他服务占用。停止占用进程或修改 V2Ray 配置端口，然后重启服务并检查防火墙规则是否开放了新端口。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 可以兼容旧版 Hiddify 吗？</h5></div>
@@ -291,19 +282,29 @@ A4：理论上可运行，但性能受限，建议尽量使用性能较好的设
         Hiddify Next 完全向下兼容旧版配置，用户可直接导入原有 JSON 或 YAML 文件。系统会自动检测格式并进行迁移，非常适合升级旧环境到新版客户端。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 支持游戏加速吗？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 的策略组可按 IP 段分流吗？</h5></div>
     <div class="panel-body">
-        Netch 专为游戏加速设计，支持 UDP 转发和 TAP 驱动，可有效降低延迟。用户可以为特定游戏添加路由规则，实现分流加速，从而提升国际游戏体验。<hr />    </div>
+        支持。可通过 IP 段匹配将流量分流到指定节点。结合策略组，可实现国内直连、国外代理或游戏加速，实现精细化流量管理和优化网络访问。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 WebSocket + TLS 如何防止流量被检测？</h5></div>
+    <div class="panel-body">
+        WebSocket + TLS 可将 V2Ray 流量伪装成正常 HTTPS 请求，隐藏真实数据特征，配合域名伪装和策略组使用，可有效绕过封锁，提高节点安全性和连接稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何使用 Docker 部署 sing-box 或 v2ray？</h5></div>
+    <div class="panel-body">
+        选择官方或社区维护的 Docker 镜像，编写 docker-compose.yml 指定配置文件挂载、网络模式与端口映射。使用容器管理可以隔离运行环境、便于日志采集并与反向代理（如 Nginx）协同工作。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 如何结合手动节点选择优化访问？</h5></div>
+    <div class="panel-body">
+        用户可根据网络延迟和用途手动切换节点，选择最优节点处理不同流量。虽然不支持自动更新，但在节点不稳定或特定需求下可以灵活调整，提高访问效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的传输协议选择对性能有何影响？</h5></div>
     <div class="panel-body">
-        V2Ray 支持 TCP、WebSocket、gRPC、QUIC 等多种传输协议。不同协议在延迟、抗封锁和吞吐量上差异明显。用户可根据网络环境选择最优协议，以获得稳定且高速的连接体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的 Rule Provider 有什么作用？</h5></div>
-    <div class="panel-body">
-        Rule Provider 是 Clash 的规则分发机制。用户可以订阅不同的规则集，比如广告拦截、社交媒体、流媒体等，实现按需加载。它让配置文件更加简洁、动态更新，并支持多源规则管理。    </div>
+        V2Ray 支持 TCP、WebSocket、gRPC、QUIC 等多种传输协议。不同协议在延迟、抗封锁和吞吐量上差异明显。用户可根据网络环境选择最优协议，以获得稳定且高速的连接体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -332,16 +333,16 @@ A4：理论上可运行，但性能受限，建议尽量使用性能较好的设
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-29-hiddify-next-windows.htm" title="「11月29日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月29日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-27-hiddify-next-node-github.htm" title="「12月27日」最高速度22.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月27日」最高速度22.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-12-hiddify-next-github.htm" title="「11月12日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月12日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-18-free-high-speed-nodes.htm" title="「12月18日」最高速度22.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月18日」最高速度22.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-22-latest-hiddify-next-node.htm" title="「12月22日」最高速度22.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月22日」最高速度22.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-1-free-high-speed-nodes.htm" title="「12月1日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月1日」最高速度21.1M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-10-today-hiddify-next-node.htm" title="「12月10日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月10日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-22-node-share-links.htm" title="「11月22日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月22日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-13-hiddify-next-node-share.htm" title="「12月13日」最高速度20.4M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月13日」最高速度20.4M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-hiddify-next-node.htm" title="「11月7日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月7日」最高速度21M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-14-free-hiddify-next-node.htm" title="「12月14日」最高速度22.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月14日」最高速度22.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-25-latest-hiddify-next-node.htm" title="「12月25日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月25日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-28-hiddify-next-node-share.htm" title="「11月28日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月28日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-23-hiddify-next-node-github.htm" title="「12月23日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月23日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-hiddify-next-node-github.htm" title="「11月5日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月5日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-4-hiddify-next-node-share.htm" title="「1月4日」最高速度19.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月4日」最高速度19.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-20-hiddify-next-windows.htm" title="「11月20日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享">「11月20日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-6-free-node-subscribe-links.htm" title="「1月6日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「1月6日」最高速度18.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-6-free-hiddify-next-node.htm" title="「12月6日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月6日」最高速度20.3M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-19-node-share.htm" title="「12月19日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「12月19日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -352,6 +353,9 @@ A4：理论上可运行，但性能受限，建议尽量使用性能较好的设
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+            </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>

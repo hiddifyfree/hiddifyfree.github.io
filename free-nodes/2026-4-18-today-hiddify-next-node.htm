@@ -364,6 +364,16 @@ sudo iptables-save
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 的多路复用如何提高传输效率？</h5></div>
+    <div class="panel-body">
+        Hysteria2 利用 QUIC 的多路复用功能，将多个请求共享单个 UDP 连接，减少握手次数和延迟，提升整体吞吐量。尤其在高并发场景中效果显著。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
+    <div class="panel-body">
+        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 用户流量配额如何设置？</h5></div>
     <div class="panel-body">
         管理员可为每个用户设置带宽和流量上限，超出限制时可降速或阻止访问。确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和使用效率。<hr />    </div>
@@ -374,24 +384,14 @@ sudo iptables-save
         Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的自动测速功能如何设置？</h5></div>
-    <div class="panel-body">
-        Clash 支持定期测速节点延迟，用户可以设置测速频率和超时时间。测速结果会影响策略组的节点选择，从而自动切换至最优节点，提高访问速度和连接稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的多路复用如何提高传输效率？</h5></div>
-    <div class="panel-body">
-        Hysteria2 利用 QUIC 的多路复用功能，将多个请求共享单个 UDP 连接，减少握手次数和延迟，提升整体吞吐量。尤其在高并发场景中效果显著。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
-    <div class="panel-body">
-        mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS Reality 模式与 XTLS 模式有何不同？</h5></div>
     <div class="panel-body">
         VLESS Reality 通过伪造握手和真实网站的 TLS 指纹实现高仿真加密，而 XTLS 强调高性能传输。Reality 更注重隐蔽性，适合高安全需求环境；XTLS 则偏重传输效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的自动测速功能如何设置？</h5></div>
+    <div class="panel-body">
+        Clash 支持定期测速节点延迟，用户可以设置测速频率和超时时间。测速结果会影响策略组的节点选择，从而自动切换至最优节点，提高访问速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 如何选择全局代理与规则代理模式？</h5></div>
@@ -399,19 +399,19 @@ sudo iptables-save
         全局代理适合所有流量走节点，如游戏和全局科学上网；规则代理仅针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据使用场景选择模式。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 节点如何正确配置证书？</h5></div>
-    <div class="panel-body">
-        TLS 证书必须有效且域名匹配，否则客户端无法建立连接。建议使用受信任证书并确保证书链完整，可保证节点安全和长期可用性，同时提高伪装效果和抗封锁能力。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 的节点测速结果能影响策略组吗？</h5></div>
     <div class="panel-body">
         可以。Matsuri 会将延迟最低的节点自动标记为优先节点，结合策略组，程序会优先选择最佳节点处理流量，保证访问速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
+    <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
     <div class="panel-body">
-        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。    </div>
+        mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 节点如何正确配置证书？</h5></div>
+    <div class="panel-body">
+        TLS 证书必须有效且域名匹配，否则客户端无法建立连接。建议使用受信任证书并确保证书链完整，可保证节点安全和长期可用性，同时提高伪装效果和抗封锁能力。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -440,16 +440,16 @@ sudo iptables-save
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2026-4-20-free-node-subscribe-links.htm" title="「4月20日」最高速度20M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月20日」最高速度20M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-23-free-node-subscribe-links.htm" title="「4月23日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月23日」最高速度18.6M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-26-node-share-links.htm" title="「3月26日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月26日」最高速度22.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-12-hiddify-next-github.htm" title="「3月12日」最高速度20M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月12日」最高速度20M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-22-latest-hiddify-next-node.htm" title="「3月22日」最高速度19.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月22日」最高速度19.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-7-hiddify-next-github.htm" title="「3月7日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月7日」最高速度18.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-27-free-node-subscribe-links.htm" title="「3月27日」最高速度21.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月27日」最高速度21.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-9-hiddify-next-windows.htm" title="「4月9日」最高速度20M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月9日」最高速度20M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-19-hiddify-next-node-github.htm" title="「4月19日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月19日」最高速度19.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-17-free-hiddify-next-node.htm" title="「3月17日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月17日」最高速度19M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-18-free-hiddify-next-node.htm" title="「3月18日」最高速度20.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月18日」最高速度20.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-free-subscribe-node.htm" title="「4月13日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月13日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-12-node-share.htm" title="「4月12日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月12日」最高速度22.2M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-30-today-hiddify-next-node.htm" title="「3月30日」最高速度19.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月30日」最高速度19.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-27-node-share.htm" title="「4月27日」最高速度19.8M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月27日」最高速度19.8M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-13-free-high-speed-nodes.htm" title="「3月13日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享">「3月13日」最高速度21.5M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-24-free-high-speed-nodes.htm" title="「4月24日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月24日」最高速度23M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-25-free-hiddify-next-node.htm" title="「4月25日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享">「4月25日」最高速度22.9M/S，2025年Hiddify每天更新免费订阅节点地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -461,7 +461,7 @@ sudo iptables-save
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>

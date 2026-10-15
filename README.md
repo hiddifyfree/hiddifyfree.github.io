@@ -1,4 +1,4 @@
-# 「10月7日」最高速度21.6M/S，2025年Hiddify每天更新免费订阅节点地址分享  更新时间 2026-10-07 09:57:12
+# 「10月15日」最高速度21.8M/S，2025年Hiddify每天更新免费订阅节点地址分享  更新时间 2026-10-15 00:28:13
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hiddifyfree.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://hiddifyfree.github.io/uploads/2026/10/0-20261007.yaml
-- https://hiddifyfree.github.io/uploads/2026/10/1-20261007.yaml
-- https://hiddifyfree.github.io/uploads/2026/10/2-20261007.yaml
-- https://hiddifyfree.github.io/uploads/2026/10/3-20261007.yaml
-- https://hiddifyfree.github.io/uploads/2026/10/4-20261007.yaml
+- https://hiddifyfree.github.io/uploads/2026/10/0-20261015.yaml
+- https://hiddifyfree.github.io/uploads/2026/10/1-20261015.yaml
+- https://hiddifyfree.github.io/uploads/2026/10/2-20261015.yaml
+- https://hiddifyfree.github.io/uploads/2026/10/3-20261015.yaml
+- https://hiddifyfree.github.io/uploads/2026/10/4-20261015.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://hiddifyfree.github.io/uploads/2026/10/0-20261007.txt
-- https://hiddifyfree.github.io/uploads/2026/10/1-20261007.txt
-- https://hiddifyfree.github.io/uploads/2026/10/2-20261007.txt
-- https://hiddifyfree.github.io/uploads/2026/10/3-20261007.txt
-- https://hiddifyfree.github.io/uploads/2026/10/4-20261007.txt
+- https://hiddifyfree.github.io/uploads/2026/10/0-20261015.txt
+- https://hiddifyfree.github.io/uploads/2026/10/1-20261015.txt
+- https://hiddifyfree.github.io/uploads/2026/10/2-20261015.txt
+- https://hiddifyfree.github.io/uploads/2026/10/3-20261015.txt
+- https://hiddifyfree.github.io/uploads/2026/10/4-20261015.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://hiddifyfree.github.io/uploads/2026/10/20261007.json
+- https://hiddifyfree.github.io/uploads/2026/10/20261015.json
 
 ## 更多Clash节点订阅 ：
 
